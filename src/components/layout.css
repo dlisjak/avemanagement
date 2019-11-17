@@ -1,3 +1,44 @@
+.category-cards {
+}
+
+.category-card {
+  width: 25%;
+  text-decoration: none;
+}
+
+.category-card-title {
+  font-size: 16px;
+  color: black;
+}
+
+.category-card-image {
+  max-height: 350px;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
