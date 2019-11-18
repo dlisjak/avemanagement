@@ -3,7 +3,33 @@ const slash = require(`slash`)
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   // query content for WordPress posts
-  const result = await graphql(`
+  const homepage = await graphql(`
+    {
+      allWordpressPage(filter: { title: { eq: "Home" } }) {
+        edges {
+          node {
+            title
+            acf {
+              main_video
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const indexTemplate = path.resolve(`./src/templates/index.js`)
+  homepage.data.allWordpressPage.edges.forEach(edge => {
+    createPage({
+      path: "/",
+      component: slash(indexTemplate),
+      context: {
+        video: edge.node.acf.main_video,
+      },
+    })
+  })
+
+  const categories = await graphql(`
     query {
       allWordpressCategory(filter: { name: { nin: "Uncategorized" } }) {
         edges {
@@ -15,8 +41,9 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
+
   const categoryTemplate = path.resolve(`./src/templates/category.js`)
-  result.data.allWordpressCategory.edges.forEach(edge => {
+  categories.data.allWordpressCategory.edges.forEach(edge => {
     createPage({
       // will be the url for the page
       path: edge.node.slug,

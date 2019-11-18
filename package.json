@@ -19,7 +19,11 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-helmet": "^5.2.1",
-    "slash": "^3.0.0"
+    "react-id-swiper": "^2.4.0",
+    "react-ticker": "^1.2.1",
+    "slash": "^3.0.0",
+    "swiper": "^5.2.0",
+    "video-react": "^0.14.1"
   },
   "devDependencies": {
     "prettier": "^1.19.1"
