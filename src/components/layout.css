@@ -1,3 +1,19 @@
+header a {
+  color: #222;
+}
+
+header a[aria-current="page"] {
+  font-weight: bold;
+}
+
+header div.active {
+  font-weight: bold;
+}
+
+header .flex > :first-child {
+  padding-left: 0 !important;
+}
+
 .category-cards {
 }
 

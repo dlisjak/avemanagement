@@ -6,7 +6,7 @@ import TickerText from "./Ticker"
 
 const News = () => (
   <>
-    <TickerText title="News" />
+    <TickerText title="NEWS" />
     <StaticQuery
       query={graphql`
         query News {
