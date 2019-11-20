@@ -17,8 +17,21 @@ header .flex > :first-child {
 .category-cards {
 }
 
+.category-card:first-child {
+  margin-left: 0;
+}
+
+.category-card:nth-child(4n) {
+  margin-right: 0;
+}
+
+.category-card:nth-child(5n) {
+  margin-left: 0;
+}
+
 .category-card {
-  width: 25%;
+  margin: 0 5px;
+  width: calc(25% - 10px);
   text-decoration: none;
 }
 

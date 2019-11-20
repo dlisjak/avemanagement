@@ -56,4 +56,53 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+
+  const womenModels = await graphql(`
+    query WomenModels {
+      allWordpressPost(filter: { acf: { gender: { eq: "female" } } }) {
+        edges {
+          node {
+            acf {
+              last_name
+              instagram
+              gender
+              first_name
+              featured_image {
+                url
+                name
+                title
+                alt
+              }
+              bio_waist
+              bio_shoes
+              bio_hips
+              bio_height
+              bio_hair
+              bio_eyes
+              bio_dress
+              bio_bust
+              polaroids
+            }
+            title
+            slug
+          }
+        }
+      }
+    }
+  `)
+  const modelTemplate = path.resolve(`./src/templates/model.js`)
+  womenModels.data.allWordpressPost.edges.forEach(({ node }) => {
+    createPage({
+      // will be the url for the page
+      path: node.slug,
+      // specify the component template of your choice
+      component: slash(modelTemplate),
+      // In the ^template's GraphQL query, 'id' will be available
+      // as a GraphQL variable to query for this posts's data.
+      context: {
+        name: node.title,
+        acf: node.acf,
+      },
+    })
+  })
 }

@@ -5,7 +5,6 @@ import { graphql, Link } from "gatsby"
 const Category = props => {
   return (
     <Layout>
-      <h1>Category page</h1>
       <div className="flex flex-wrap category-cards">
         {props.data.allWordpressPost.edges.map(
           (
@@ -19,7 +18,7 @@ const Category = props => {
             index
           ) => (
             <Link
-              to={`${props.path}/${path}`}
+              to={path}
               className="flex flex-column justify-between category-card"
               key={index}
             >
@@ -28,6 +27,7 @@ const Category = props => {
                 src={featured_image.url}
                 alt={featured_image.alt}
                 title={featured_image.title}
+                style={{ marginBottom: 0 }}
               />
               <h3 className="category-card-title flex flex-wrap width-100">
                 <span className="width-100">{first_name}</span>
