@@ -14,6 +14,17 @@ header .flex > :first-child {
   padding-left: 0 !important;
 }
 
+.model-portfolio-image {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  object-position: top;
+}
+
+.model-portfolio-image:hover {
+  cursor: pointer;
+}
+
 .category-cards {
 }
 
@@ -21,17 +32,17 @@ header .flex > :first-child {
   margin-left: 0;
 }
 
-.category-card:nth-child(4n) {
+.category-card:nth-child(4n + 0) {
   margin-right: 0;
 }
 
-.category-card:nth-child(5n) {
+.category-card:nth-child(4n + 1) {
   margin-left: 0;
 }
 
 .category-card {
   margin: 0 5px;
-  width: calc(25% - 10px);
+  width: calc(25% - 8px);
   text-decoration: none;
 }
 

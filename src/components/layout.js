@@ -33,11 +33,10 @@ const Layout = ({ children }) => {
           margin: `0 auto`,
           maxWidth: 1080,
           paddingTop: 0,
-          marginLeft: 250,
         }}
       >
         <Header siteTitle={data.site.siteMetadata.title} />
-        <main>{children}</main>
+        <main style={{ width: "100%" }}>{children}</main>
         <footer>
           © {new Date().getFullYear()}, Built with
           {` `}

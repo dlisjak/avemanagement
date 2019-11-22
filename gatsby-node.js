@@ -1,7 +1,57 @@
 const path = require(`path`)
 const slash = require(`slash`)
+const axios = require("axios")
+const crypto = require("crypto")
+
+exports.sourceNodes = async ({ actions }) => {
+  const { createNode } = actions
+
+  const fetchModels = async () => {
+    let response = []
+    for (let i = 1; i < 5; i++) {
+      const arrayOfModels = await axios.get(
+        `http://avemanagement1.eu/wp-json/wp/v2/posts?per_page=100&page=${i}`
+      )
+      response = [...response, ...arrayOfModels.data]
+      if (!arrayOfModels.data) break
+    }
+    return response
+  }
+
+  const data = await fetchModels()
+
+  const res = {
+    data,
+  }
+
+  res.data.map((user, i) => {
+    const userNode = {
+      id: `${i}`,
+      parent: `__SOURCE__`,
+      internal: {
+        type: `Model`,
+      },
+      children: [],
+
+      slug: user.slug,
+      title: user.title.rendered,
+      acf: user.acf,
+    }
+
+    const contentDigest = crypto
+      .createHash(`md5`)
+      .update(JSON.stringify(userNode))
+      .digest(`hex`)
+
+    userNode.internal.contentDigest = contentDigest
+
+    createNode(userNode)
+  })
+  return
+}
+
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage, createNode } = actions
   // query content for WordPress posts
   const homepage = await graphql(`
     {
@@ -57,41 +107,65 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  const womenModels = await graphql(`
-    query WomenModels {
-      allWordpressPost(filter: { acf: { gender: { eq: "female" } } }) {
+  const allModels = await graphql(`
+    query AllModels {
+      allModel {
         edges {
           node {
+            slug
+            title
             acf {
               last_name
               instagram
               gender
               first_name
+              bio_bust
+              bio_dress
+              bio_eyes
+              bio_hair
+              bio_height
+              bio_hips
+              bio_shoes
+              bio_waist
               featured_image {
                 url
-                name
                 title
+                name
                 alt
               }
-              bio_waist
-              bio_shoes
-              bio_hips
-              bio_height
-              bio_hair
-              bio_eyes
-              bio_dress
-              bio_bust
-              polaroids
+              portfolio {
+                title
+                url
+                description
+                alt
+                name
+              }
+              polaroids {
+                url
+                title
+                name
+              }
+              videos {
+                video_url
+              }
+              eyes_for_male
+              hair_for_male
+              height_for_male
+              inseam_for_male
+              shirt_for_male
+              shoes_for_male
+              sub_title
+              suit_for_male
+              waist_for_male
             }
-            title
-            slug
           }
         }
       }
     }
   `)
+
   const modelTemplate = path.resolve(`./src/templates/model.js`)
-  womenModels.data.allWordpressPost.edges.forEach(({ node }) => {
+  allModels.data.allModel.edges.forEach(({ node }) => {
     createPage({
       // will be the url for the page
       path: node.slug,
@@ -100,8 +174,28 @@ exports.createPages = async ({ graphql, actions }) => {
       // In the ^template's GraphQL query, 'id' will be available
       // as a GraphQL variable to query for this posts's data.
       context: {
-        name: node.title,
-        acf: node.acf,
+        firstName: node.acf.first_name,
+        lastName: node.acf.last_name,
+        title: node.title,
+        acf: {
+          featuredImage: node.acf.featured_image,
+          portfolio: node.acf.portfolio,
+          videos: node.acf.videos,
+          instagram: node.acf.instagram,
+          bio: {
+            height: node.acf.bio_height || node.acf.height_for_male,
+            hair: node.acf.bio_hair || node.acf.hair_for_male,
+            eyes: node.acf.bio_eyes || node.acf.eyes_for_male,
+            bust: node.acf.bio_bust || null,
+            waist: node.acf.bio_waist || node.acf.waist_for_male,
+            hips: node.acf.bio_hips || null,
+            dress: node.acf.bio_dress || null,
+            shoes: node.acf.bio_shoes || node.acf.shoes_for_male,
+            suit: node.acf.suit_for_male || null,
+            shirt: node.acf.shirt_for_male || null,
+            inseam: node.acf.inseam_for_male || null,
+          },
+        },
       },
     })
   })
