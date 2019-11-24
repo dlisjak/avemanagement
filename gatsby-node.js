@@ -199,4 +199,38 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+
+  const allNews = await graphql(`
+    query AllNews {
+      allWordpressWpNews {
+        edges {
+          node {
+            title
+            slug
+            acf {
+              video
+              news_post_image {
+                name
+                title
+                url
+                alt
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const newsTemplate = `./src/templates/news.js`
+  allNews.data.allWordpressWpNews.edges.forEach(({ node }, index) => {
+    createPage({
+      path: `/news/${node.slug}`,
+      component: slash(newsTemplate),
+      context: {
+        title: node.title,
+        acf: node.acf,
+      },
+    })
+  })
 }

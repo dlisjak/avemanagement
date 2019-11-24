@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import Layout from "../components/layout"
-import { graphql, Link } from "gatsby"
 
 const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
-  const [image, setImage] = useState(acf.featuredImage.url)
-
-  console.log({ acf })
+  const [image, setImage] = useState(acf.featuredImage)
+  const [tab, setTab] = useState("portfolio")
 
   return (
     <Layout>
@@ -20,8 +18,12 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
             style={{ width: "30%", justifyContent: "space-between" }}
           >
             <div className="flex flex-column">
-              {acf.portfolio && <span>PORTFOLIO</span>}
-              {acf.videos && <span>VIDEOS</span>}
+              {acf.portfolio && (
+                <span onClick={() => setTab("portfolio")}>PORTFOLIO</span>
+              )}
+              {acf.videos && (
+                <span onClick={() => setTab("videos")}>VIDEOS</span>
+              )}
               {acf.bio && <span>BIO</span>}
               {acf.instagram && <span>INSTAGRAM</span>}
             </div>
@@ -90,7 +92,8 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
           </div>
           <div>
             <img
-              src={image}
+              src={image.url}
+              alt={image.alt}
               style={{
                 marginBottom: 0,
                 objectFit: "contain",
@@ -101,25 +104,39 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
           </div>
         </div>
         <div className="flex flex-wrap" style={{ marginTop: 10 }}>
-          {acf.portfolio.map(({ title, name, url, alt = "" }, index) => (
-            <div
-              className="flex-column justify-between category-card"
-              style={{ marginBottom: 10 }}
-              onClick={() => {
-                setImage(url)
-                window.scrollTo(0, 26)
-              }}
-              key={index}
-            >
-              <img
-                className="model-portfolio-image"
-                src={url}
-                alt={alt}
-                title={title}
-                name={name}
-              />
-            </div>
-          ))}
+          {tab === "portfolio" &&
+            acf.portfolio &&
+            acf.portfolio.map(({ title, name, url, alt = "" }, index) => (
+              <div
+                className="flex-column justify-between category-card"
+                style={{ marginBottom: 10 }}
+                onClick={() => {
+                  setImage({ title, name, url, alt })
+                  window.scrollTo(0, 26)
+                }}
+                key={index}
+              >
+                <img
+                  className="model-portfolio-image"
+                  src={url}
+                  alt={alt}
+                  title={title}
+                  name={name}
+                />
+              </div>
+            ))}
+
+          {tab === "videos" &&
+            acf.videos &&
+            acf.videos.map(({ video_url }, index) => (
+              <iframe
+                src={video_url}
+                width="560"
+                height="315"
+                title={`${video_url}-${index}`}
+                key={index}
+              ></iframe>
+            ))}
         </div>
       </div>
     </Layout>
