@@ -233,4 +233,21 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+
+  const allNewsEdges = allNews.data.allWordpressWpNews.edges
+  const allNewsTemplate = path.resolve(`./src/templates/allNews.js`)
+  const newsPerPage = 10
+  const numOfPages = Math.ceil(allNewsEdges.length / newsPerPage)
+  Array.from({ length: numOfPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/news/1` : `/news/${i + 1}`,
+      component: slash(allNewsTemplate),
+      context: {
+        limit: newsPerPage,
+        skip: i * newsPerPage,
+        numOfPages,
+        currentPage: i + 1,
+      },
+    })
+  })
 }

@@ -14,18 +14,73 @@ header .flex > :first-child {
   padding-left: 0 !important;
 }
 
-/* with flexbox */
-.grid {
-  columns: 4 auto;
-  column-gap: 1rem;
+.pagination-item {
+  margin: 0 1rem;
+  position: absolute;
 }
 
-.grid-item {
-  width: 25%;
-  margin: 0 1rem 1rem 0;
-  display: inline-block;
-  width: 100%;
-  text-align: center;
+.pagination-item.first {
+  transform: translateX(-80px);
+}
+
+.pagination-item.prev {
+  transform: translateX(-40px);
+}
+
+.pagination-item.current {
+  transform: translateX(0);
+}
+
+.pagination-item.next {
+  transform: translateX(40px);
+}
+
+.pagination-item.last {
+  transform: translateX(80px);
+}
+
+.news-card {
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+.news-card-title {
+  font-size: 16px;
+}
+
+/* with flexbox */
+.grid {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.grid-col {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+/* 2 columns by default, hide columns 3 & 4 */
+.grid-col--3,
+.grid-col--4 {
+  display: none;
+}
+
+/* 3 columns at medium size */
+@media (min-width: 768px) {
+  .grid-col--3 {
+    display: block;
+  } /* show column 2 */
+}
+
+/* 4 columns at large size */
+@media (min-width: 1080px) {
+  .grid-col--4 {
+    display: block;
+  } /* show column 3 */
 }
 
 .model-portfolio-image {
@@ -83,6 +138,14 @@ header .flex > :first-child {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
 }
 
 .flex-column {
