@@ -1,7 +1,9 @@
 import React, { useEffect } from "react"
-import Layout from "../components/layout"
 import { Link } from "gatsby"
 import Colcade from "colcade"
+
+import Layout from "../components/layout"
+import Ticker from "../components/Ticker"
 
 const NewsPage = ({ data, pageContext }) => {
   const { currentPage, numOfPages } = pageContext
@@ -26,14 +28,13 @@ const NewsPage = ({ data, pageContext }) => {
     content[0] = `<b>${content[0]}</b>`
     content[1] = `<b>${content[1]}</b>`
     content = content.join(" ")
-    console.log(content)
     return content
   }
 
   return (
     <Layout>
-      <h2>News</h2>
-      <div className="grid">
+      <Ticker title="NEWS" />
+      <div className="grid" style={{ marginTop: 50 }}>
         <div className="grid-col grid-col--1"></div>
         <div className="grid-col grid-col--2"></div>
         <div className="grid-col grid-col--3"></div>

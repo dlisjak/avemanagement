@@ -1,13 +1,18 @@
 import React from "react"
-import Ticker from "react-ticker"
 
 const TickerText = ({ title }) => {
-  const data = ` ${title} `
+  let data = ""
+
+  for (let i = 0; i < 50; i++) {
+    data += `${title} `
+  }
+
   return (
-    <div className="width-100">
-      <Ticker speed={5} direction="toRight">
-        {({ index }) => <span key={index}>{data}</span>}
-      </Ticker>
+    <div className="ticker flex width-100">
+      <div id="tickerwrap">
+        <div id="ticker">{data}</div>
+        <div id="ticker2">{data}</div>
+      </div>
     </div>
   )
 }

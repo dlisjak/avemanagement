@@ -110,7 +110,13 @@ class Header extends Component {
       <>
         <div
           className="width-100"
-          style={{ position: "absolute", top: 0, height: 26, zIndex: 999 }}
+          style={{
+            position: "absolute",
+            top: 0,
+            height: 26,
+            zIndex: 999,
+            cursor: "pointer",
+          }}
           onClick={() => this.toggleMenu()}
         ></div>
         <Ticker title={"MENU"} />

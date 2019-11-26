@@ -1,3 +1,71 @@
+.ticker {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding-left: 0;
+  box-sizing: content-box;
+}
+
+#tickerwrap {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  color: black;
+  padding-left: 100%;
+}
+
+#ticker {
+  display: inline-block;
+  white-space: nowrap;
+  padding-right: 100%;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-name: customticker;
+  animation-name: customticker;
+  -webkit-animation-duration: 27s;
+  animation-duration: 27s;
+}
+
+#ticker2 {
+  display: inline-block;
+  white-space: nowrap;
+  padding-right: 100%;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-name: customtickerTwo;
+  animation-name: customtickerTwo;
+  -webkit-animation-duration: 27s;
+  animation-duration: 27s;
+}
+
+@keyframes customticker {
+  0% {
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes customtickerTwo {
+  0% {
+    -webkit-transform: translate3d(50%, 0, 0);
+    transform: translate3d(50%, 0, 0);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
 header a {
   color: #222;
 }

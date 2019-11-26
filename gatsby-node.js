@@ -208,14 +208,15 @@ exports.createPages = async ({ graphql, actions }) => {
             title
             slug
             acf {
-              video
               news_post_image {
-                name
-                title
                 url
-                alt
+                title
+                height
+                width
+                name
               }
             }
+            content
           }
         }
       }
@@ -230,6 +231,7 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         title: node.title,
         acf: node.acf,
+        content: node.content,
       },
     })
   })
