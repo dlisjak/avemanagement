@@ -1,6 +1,8 @@
 import React, { useEffect } from "react"
 import { Link } from "gatsby"
-import Colcade from "colcade"
+if (window) {
+  import Colcade from "colcade"
+}
 
 import Layout from "../components/layout"
 import Ticker from "../components/Ticker"
