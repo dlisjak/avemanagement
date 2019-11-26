@@ -1,17 +1,18 @@
 import React, { useEffect } from "react"
 import { Link } from "gatsby"
-import Colcade from "colcade"
 
 import Layout from "../components/layout"
 import Ticker from "../components/Ticker"
 
 const NewsPage = ({ data, pageContext }) => {
+  let Colcade
   const { currentPage, numOfPages } = pageContext
   useEffect(() => {
     // componentDidMount
     const initGrid = async () => {
       var grid = document.querySelector(".grid")
       if (typeof window !== "undefined") {
+        Colcade = require("colcade")
         var colc = new Colcade(grid, {
           columns: ".grid-col",
           items: ".grid-item",
