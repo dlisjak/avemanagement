@@ -11,7 +11,7 @@ const NewsPage = ({ data, pageContext }) => {
     // componentDidMount
     const initGrid = async () => {
       var grid = document.querySelector(".grid")
-      if (window) {
+      if (typeof window !== "undefined") {
         var colc = new Colcade(grid, {
           columns: ".grid-col",
           items: ".grid-item",
