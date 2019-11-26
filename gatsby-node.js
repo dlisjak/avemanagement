@@ -222,7 +222,7 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  const newsTemplate = `./src/templates/news.js`
+  const newsTemplate = path.resolve(`./src/templates/news.js`)
   allNews.data.allWordpressWpNews.edges.forEach(({ node }, index) => {
     createPage({
       path: `/news/${node.slug}`,

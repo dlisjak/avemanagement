@@ -112,7 +112,7 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
                 style={{ marginBottom: 10 }}
                 onClick={() => {
                   setImage({ title, name, url, alt })
-                  window.scrollTo(0, 26)
+                  window.scrollTo(0, 0)
                 }}
                 key={index}
               >

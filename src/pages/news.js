@@ -1,17 +1,27 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import Layout from "../components/layout"
 import { Link } from "gatsby"
 
 const NewsPage = ({ data }) => {
+  useEffect(() => {
+    // componentDidMount
+    const fetchData = async () => {}
+    fetchData()
+  }, [])
+
+  console.log(data)
+
   return (
     <Layout>
       <h2>News</h2>
-      <div className="flex flex-wrap">
+      <div className="grid">
         {data.allWordpressWpNews.edges.map(
           ({ node: { title, slug, acf } }, index) => (
-            <Link to={`/${slug}`} key={index}>
-              <img src={acf.news_post_image.url} />
-            </Link>
+            <div className="grid-item">
+              <Link to={`/${slug}`} key={index}>
+                <img src={acf.news_post_image.url} />
+              </Link>
+            </div>
           )
         )}
       </div>
