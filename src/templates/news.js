@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import Layout from "../components/layout"
 import Ticker from "../components/Ticker"
-import { Link } from "gatsby"
 
 const News = ({ pageContext }) => {
-  console.log(pageContext)
   const formatContent = content => {
     const splitContent = content.split("<p>")
     const lastContent = splitContent.length
