@@ -1,8 +1,6 @@
 import React, { useEffect } from "react"
 import { Link } from "gatsby"
-if (window) {
-  import Colcade from "colcade"
-}
+import Colcade from "colcade"
 
 import Layout from "../components/layout"
 import Ticker from "../components/Ticker"
@@ -13,11 +11,12 @@ const NewsPage = ({ data, pageContext }) => {
     // componentDidMount
     const initGrid = async () => {
       var grid = document.querySelector(".grid")
-      if (!window) return
-      var colc = new Colcade(grid, {
-        columns: ".grid-col",
-        items: ".grid-item",
-      })
+      if (window) {
+        var colc = new Colcade(grid, {
+          columns: ".grid-col",
+          items: ".grid-item",
+        })
+      }
     }
     initGrid()
   }, [])
