@@ -1,6 +1,5 @@
 import React from "react"
 import Layout from "../components/layout"
-import Colcade from "colcade"
 
 const News = data => {
   console.log(data)
