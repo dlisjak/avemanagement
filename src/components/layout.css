@@ -1,4 +1,8 @@
 @media only screen and (max-width: 480px) {
+  .header__menu--desktop {
+    /* display: none !important; */
+  }
+
   .news-card {
     min-width: 150px;
   }
@@ -58,8 +62,9 @@
 }
 
 @media only screen and (min-width: 480px) {
-  header {
-  }
+  /* .header__menu--desktop {
+    display: flex;
+  } */
 
   .news-card {
     min-width: 250px;

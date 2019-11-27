@@ -158,6 +158,7 @@ class Header extends Component {
         </Link>
         <Ticker title={"MENU"} toggleMenu={this.toggleMenu} />
         <header
+          className="header__menu--desktop"
           style={{
             background: `white`,
             flexDirection: "column",
@@ -166,7 +167,10 @@ class Header extends Component {
           }}
         >
           <>
-            <div className="flex">
+            <div style={{ display: this.state.isMobile ? "flex" : "none" }}>
+              <h2>Mobile header</h2>
+            </div>
+            <div style={{ display: !this.state.isMobile ? "flex" : "none" }}>
               {this.props.data.allWordpressMenusMenusItems.edges[0].node.items.map(
                 (mainItem, index) => {
                   if (mainItem.url.includes("#") && !this.state.isMobile) {
