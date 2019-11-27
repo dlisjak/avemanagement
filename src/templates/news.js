@@ -30,6 +30,7 @@ const News = ({ pageContext }) => {
           }}
         />
         <img
+          className="news-card__image"
           src={pageContext.acf.news_post_image.url}
           height={pageContext.acf.news_post_image.height}
           width={pageContext.acf.news_post_image.width}

@@ -7,27 +7,56 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
 
   return (
     <Layout>
-      <div className="flex flex-column">
+      <div className="flex model flex-column">
         <h2 className="flex flex-column">
           <span>{firstName}</span>
           <span>{lastName}</span>
         </h2>
-        <div className="flex" style={{ maxHeight: 600 }}>
+        <div className="flex model__main">
           <div
-            className="flex flex-column"
-            style={{ width: "30%", justifyContent: "space-between" }}
+            className="flex model__main-container flex-column"
+            style={{ justifyContent: "space-between" }}
           >
-            <div className="flex flex-column">
+            <div className="flex model__menu">
               {acf.portfolio && (
-                <span onClick={() => setTab("portfolio")}>PORTFOLIO</span>
+                <span
+                  onClick={() => setTab("portfolio")}
+                  style={{
+                    fontWeight: tab === "portfolio" ? "bold" : "normal",
+                    cursor: "pointer",
+                  }}
+                >
+                  PORTFOLIO
+                </span>
               )}
               {acf.videos && (
-                <span onClick={() => setTab("videos")}>VIDEOS</span>
+                <span
+                  onClick={() => setTab("videos")}
+                  style={{
+                    fontWeight: tab === "videos" ? "bold" : "normal",
+                    cursor: "pointer",
+                  }}
+                >
+                  VIDEOS
+                </span>
               )}
-              {acf.bio && <span>BIO</span>}
-              {acf.instagram && <span>INSTAGRAM</span>}
+              {acf.bio && (
+                <a
+                  href="#"
+                  style={{
+                    cursor: "pointer",
+                    textDecoration: "none",
+                    color: "hsla(0, 0%, 0%, 0.8)",
+                  }}
+                >
+                  BIO
+                </a>
+              )}
+              {acf.instagram && (
+                <span style={{ cursor: "pointer" }}>INSTAGRAM</span>
+              )}
             </div>
-            <div className="flex flex-column">
+            <div id="bio" className="model__bio flex flex-column">
               {acf.bio.height && (
                 <span>
                   HEIGHT{" "}

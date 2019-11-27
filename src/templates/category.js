@@ -1,11 +1,17 @@
 import React from "react"
 import Layout from "../components/layout"
 import { graphql, Link } from "gatsby"
+import Ticker from "../components/Ticker"
 
 const Category = props => {
+  const title = props.pageContext.title.toUpperCase()
   return (
     <Layout>
-      <div className="flex flex-wrap category-cards">
+      <Ticker title={title} />
+      <div
+        className="flex flex-wrap category-cards"
+        style={{ marginTop: 50, marginBottom: 50 }}
+      >
         {props.data.allWordpressPost.edges.map(
           (
             {

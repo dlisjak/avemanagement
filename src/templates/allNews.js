@@ -45,11 +45,7 @@ const NewsPage = ({ data, pageContext }) => {
 
         {data.allWordpressWpNews.edges.map(
           ({ node: { title, content, slug, acf } }, index) => (
-            <div
-              className="grid-item news-card"
-              style={{ minWidth: 250 }}
-              key={index}
-            >
+            <div className="grid-item news-card" key={index}>
               <Link to={`/news/${slug}`} key={index}>
                 <img
                   src={acf.news_post_image.url}

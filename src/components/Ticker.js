@@ -1,20 +1,36 @@
 import React from "react"
 
-const TickerText = ({ title }) => {
+const TickerText = ({ title, toggleMenu }) => {
   let data = ""
 
   for (let i = 0; i < 50; i++) {
     data += `${title} `
   }
 
-  return (
-    <div className="ticker flex width-100">
-      <div id="tickerwrap">
-        <div id="ticker">{data}</div>
-        <div id="ticker2">{data}</div>
-      </div>
-    </div>
-  )
+  {
+    if (title === "MENU") {
+      return (
+        <div
+          className="ticker__menu ticker flex width-100"
+          onClick={() => toggleMenu()}
+        >
+          <div id="tickerwrap">
+            <div id="ticker">{data}</div>
+            <div id="ticker2">{data}</div>
+          </div>
+        </div>
+      )
+    } else {
+      return (
+        <div className="ticker flex width-100">
+          <div id="tickerwrap">
+            <div id="ticker">{data}</div>
+            <div id="ticker2">{data}</div>
+          </div>
+        </div>
+      )
+    }
+  }
 }
 
 export default TickerText

@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import { StaticQuery, Link, graphql } from "gatsby"
 
+import Logo from "../images/logo.png"
+
 import Ticker from "./Ticker"
 
 class Header extends Component {
@@ -11,19 +13,35 @@ class Header extends Component {
       visible: false,
       selectedItem: null,
       childItems: [],
+      isMobile: false,
     }
 
     this.navigationObj = {
       women: ["women-in-town", "women-direct", "women-asian-pan-asian"],
       men: ["men-in-town", "men-direct", "men-asian-pan-asian"],
     }
+
+    this.toggleMenu = this.toggleMenu.bind(this)
+    this.resizeHeader = this.resizeHeader.bind(this)
   }
 
   componentDidMount() {
+    this.resizeHeader()
+    window.addEventListener("resize", this.resizeHeader)
     const navigationData = localStorage.getItem("ave-navigation")
     if (!navigationData) return
 
     this.setUpNav(navigationData)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.resizeHeader)
+  }
+
+  resizeHeader() {
+    this.setState({
+      isMobile: window.innerWidth < 480,
+    })
   }
 
   deleteLS() {
@@ -36,13 +54,15 @@ class Header extends Component {
   setUpNav(navigationData) {
     if (navigationData) {
       const selector = document.querySelector(
-        `[data-title="${navigationData.toUpperCase()}"]`
+        `[data-title="${navigationData}"]`
       )
-      selector.classList.add("active")
+      if (selector) {
+        selector.classList.add("active")
+      }
 
       if (navigationData[1]) {
         const selectorTwo = document.querySelector(
-          `[data-title="${navigationData.toUpperCase()}"]`
+          `[data-title="${navigationData}"]`
         )
         if (selectorTwo) {
           selectorTwo.classList.add("active")
@@ -55,9 +75,14 @@ class Header extends Component {
     const prevEl = document.querySelector("div.active")
     if (prevEl) prevEl.classList.remove("active")
     e.target.classList.add("active")
-    if (!item.child_items) return
-
-    localStorage.setItem("ave-navigation", item.title)
+    if (!item.child_items) {
+      localStorage.setItem("ave-navigation", item.url.replace("/", ""))
+      this.setState({
+        selectedItem: null,
+        childItems: null,
+      })
+      return
+    }
 
     this.setState({
       selectedItem: item,
@@ -69,7 +94,7 @@ class Header extends Component {
     const lsItem = localStorage.getItem("ave-navigation")
     if (lsItem) {
       let selector = {}
-      if (lsItem === "WOMEN") {
+      if (lsItem.includes("women")) {
         selector = {
           child_items: [
             { title: "IN TOWN", url: "/women-in-town" },
@@ -79,7 +104,7 @@ class Header extends Component {
           title: "WOMEN",
           url: "#",
         }
-      } else {
+      } else if (lsItem.includes("men")) {
         selector = {
           child_items: [
             { title: "IN TOWN", url: "/men-in-town" },
@@ -89,6 +114,8 @@ class Header extends Component {
           title: "MEN",
           url: "#",
         }
+      } else {
+        console.log("do something")
       }
 
       this.setState({
@@ -101,8 +128,6 @@ class Header extends Component {
     this.setState({
       visible: !this.state.visible,
     })
-
-    console.log(this.state)
   }
 
   render() {
@@ -112,14 +137,26 @@ class Header extends Component {
           className="width-100"
           style={{
             position: "absolute",
+            left: 0,
             top: 0,
             height: 26,
             zIndex: 999,
             cursor: "pointer",
           }}
-          onClick={() => this.toggleMenu()}
         ></div>
-        <Ticker title={"MENU"} />
+        <Link to="/">
+          <img
+            src={Logo}
+            style={{
+              margin: 5,
+              marginLeft: 0,
+              marginBottom: 0,
+              maxHeight: 50,
+              cursor: "pointer",
+            }}
+          />
+        </Link>
+        <Ticker title={"MENU"} toggleMenu={this.toggleMenu} />
         <header
           style={{
             background: `white`,
@@ -128,82 +165,41 @@ class Header extends Component {
             display: this.state.visible ? "flex" : "none",
           }}
         >
-          <StaticQuery
-            query={graphql`
-              query MainMenu {
-                allWordpressMenusMenusItems(filter: { name: { eq: "Main" } }) {
-                  edges {
-                    node {
-                      name
-                      slug
-                      items {
-                        title
-                        child_items {
-                          title
-                          url
-                        }
-                        url
-                      }
-                    }
+          <>
+            <div className="flex">
+              {this.props.data.allWordpressMenusMenusItems.edges[0].node.items.map(
+                (mainItem, index) => {
+                  if (mainItem.url.includes("#") && !this.state.isMobile) {
+                    return (
+                      <div
+                        onClick={e => this.setChildElements(e, mainItem)}
+                        key={index}
+                        data-title={mainItem.title}
+                        style={{
+                          paddingLeft: 10,
+                          paddingRight: 10,
+                          paddingTop: 5,
+                          paddingBottom: 5,
+                          fontSize: 14,
+                          textDecoration: "none",
+                          cursor: "pointer",
+                        }}
+                      >
+                        {mainItem.title}
+                      </div>
+                    )
                   }
-                }
-              }
-            `}
-            render={({ allWordpressMenusMenusItems }) => (
-              <>
-                <div className="flex">
-                  {allWordpressMenusMenusItems.edges[0].node.items.map(
-                    (mainItem, index) => {
-                      if (mainItem.url.includes("#")) {
-                        return (
-                          <div
-                            onClick={e => this.setChildElements(e, mainItem)}
-                            key={index}
-                            data-title={mainItem.title}
-                            style={{
-                              paddingLeft: 10,
-                              paddingRight: 10,
-                              paddingTop: 5,
-                              paddingBottom: 5,
-                              fontSize: 14,
-                              textDecoration: "none",
-                            }}
-                          >
-                            {mainItem.title}
-                          </div>
-                        )
-                      }
-                      return (
-                        <div
-                          onClick={e => this.setChildElements(e, mainItem)}
-                          key={index}
-                          data-title={mainItem.title}
-                          style={{ display: "flex" }}
-                        >
-                          <Link
-                            to={mainItem.url}
-                            style={{
-                              paddingLeft: 10,
-                              paddingRight: 10,
-                              paddingTop: 5,
-                              paddingBottom: 5,
-                              fontSize: 14,
-                              textDecoration: "none",
-                            }}
-                          >
-                            {mainItem.title}
-                          </Link>
-                        </div>
-                      )
-                    }
-                  )}
-                </div>
-                <div className="flex">
-                  {this.state.childItems &&
-                    this.state.childItems.map((childItem, index) => (
+                  return (
+                    <div
+                      onClick={e => {
+                        this.setChildElements(e, mainItem)
+                      }}
+                      key={index}
+                      data-title={mainItem.title}
+                      style={{ display: "flex" }}
+                    >
                       <Link
-                        to={childItem.url}
-                        data-title={childItem.title}
+                        to={mainItem.url}
                         style={{
                           paddingLeft: 10,
                           paddingRight: 10,
@@ -212,15 +208,38 @@ class Header extends Component {
                           fontSize: 14,
                           textDecoration: "none",
                         }}
-                        key={index}
                       >
-                        {childItem.title}
+                        {mainItem.title}
                       </Link>
-                    ))}
-                </div>
-              </>
-            )}
-          />
+                    </div>
+                  )
+                }
+              )}
+            </div>
+            <div className="flex">
+              {this.state.childItems &&
+                this.state.childItems.map((childItem, index) => (
+                  <Link
+                    onClick={e => {
+                      this.setChildElements(e, childItem)
+                    }}
+                    to={childItem.url}
+                    data-title={childItem.url}
+                    style={{
+                      paddingLeft: 10,
+                      paddingRight: 10,
+                      paddingTop: 5,
+                      paddingBottom: 5,
+                      fontSize: 14,
+                      textDecoration: "none",
+                    }}
+                    key={index}
+                  >
+                    {childItem.title}
+                  </Link>
+                ))}
+            </div>
+          </>
         </header>
       </>
     )

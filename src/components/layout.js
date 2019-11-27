@@ -14,10 +14,21 @@ import "./layout.css"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
+    {
+      allWordpressMenusMenusItems(filter: { name: { eq: "Main" } }) {
+        edges {
+          node {
+            name
+            slug
+            items {
+              title
+              child_items {
+                title
+                url
+              }
+              url
+            }
+          }
         }
       }
     }
@@ -28,19 +39,16 @@ const Layout = ({ children }) => {
       <div
         style={{
           display: "flex",
-          justifyContent: "center",
           flexWrap: "wrap",
           margin: `0 auto`,
           maxWidth: 1080,
           paddingTop: 0,
         }}
       >
-        <Header siteTitle={data.site.siteMetadata.title} />
+        <Header data={data} />
         <main style={{ width: "100%" }}>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+        <footer className="flex justify-center width-100">
+          <span>© {new Date().getFullYear()}</span>
         </footer>
       </div>
     </>
