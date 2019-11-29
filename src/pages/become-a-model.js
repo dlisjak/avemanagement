@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import { Formik, ErrorMessage, Form, Field } from "formik"
 import axios from "axios"
 import { GlobalStateContext } from "../context/GlobalContextProvider";
@@ -8,15 +8,16 @@ import ImageUpload from "../components/imageUpload"
 import Ticker from "../components/Ticker"
 
 const BecomeAModel = () => {
+  const [isMobile, toggleIsMobile] = useState(false);
   const state = useContext(GlobalStateContext)
 
   useEffect(() => {
     // componentDidMount
-    const componentDidMount = () => {
-      console.log(state);
+    const checkIfMobile = () => {
+      if (window.innerWidth < 480) toggleIsMobile(true);
     }
-    componentDidMount();
-  }, [state]);
+    checkIfMobile();
+  });
 
   return (
     <Layout style={{ marginBottom: 50 }}>
@@ -103,7 +104,7 @@ const BecomeAModel = () => {
           handleBlur,
           /* and other goodies */
         }) => (
-          <div className="flex" style={{ marginTop: 50 }}>
+          <div className="flex content-padding" style={{ marginTop: 50 }}>
             <Form
               id="become-a-model"
               className="flex flex-column contact-form"
@@ -364,7 +365,7 @@ const BecomeAModel = () => {
         )}
       </Formik>
       <div
-        className="flex flex-column contact-body-text"
+        className="flex flex-column contact-body-text content-padding"
         style={{ marginTop: 50, marginBottom: 50 }}
       >
         <h4 style={{ marginBottom: 0 }}>Upload photographs</h4>
@@ -381,12 +382,12 @@ const BecomeAModel = () => {
         </p>
       </div>
       <div className="flex flex-column">
-        <span>ENSURE YOUR IMAGES ARE NOT LARGER THAN 2MB EACH IN SIZE</span>
-        <div className="flex">
-          <ImageUpload order={0} title="headShot" />
-          <ImageUpload order={1} title="profile" />
-          <ImageUpload order={2} title="midLength" />
-          <ImageUpload order={3} title="fullLength" />
+        <span className="content-padding">ENSURE YOUR IMAGES ARE NOT LARGER THAN 2MB EACH IN SIZE</span>
+        <div className="flex flex-wrap">
+          <ImageUpload isMobile={isMobile} order={0} title="headShot" />
+          <ImageUpload isMobile={isMobile} order={1} title="profile" />
+          <ImageUpload isMobile={isMobile} order={2} title="midLength" />
+          <ImageUpload isMobile={isMobile} order={3} title="fullLength" />
         </div>
       </div>
 

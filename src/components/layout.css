@@ -1,6 +1,22 @@
 @media only screen and (max-width: 480px) {
-  .header__menu--desktop {
-    /* display: none !important; */
+  .content-padding {
+    padding: 0 5px;
+  }
+  .contact-image-upload {
+    border: 1px solid;
+    margin-top: 5px;
+  }
+  .contact-image-upload:first-child {
+    margin-left: 5px;
+    margin-right: 2.5px;
+  }
+  .contact-image-upload:nth-child(2n) {
+    margin-right: 5px;
+    margin-left: 2.5px;
+  }
+  .contact-image-upload:nth-child(2n+1) {
+    margin-left: 5px;
+    margin-right: 2.5px;
   }
 
   .news-card {
@@ -30,7 +46,8 @@
   }
 
   div.model__bio span {
-    margin: 0 5px;
+    margin-right: 10px;
+    text-transform: uppercase;
   }
 
   .model__main {
@@ -39,13 +56,15 @@
   }
 
   .model__menu {
+    margin: 10px 0;
     justify-content: flex-start;
     flex-direction: row;
   }
 
-  .model__menu span,
-  .model__menu a {
-    margin: 0 5px;
+  .model__menu span {
+    width: 25%;
+    display: flex;
+    justify-content: center;
   }
 
   .category-card {
@@ -69,6 +88,15 @@
 }
 
 @media only screen and (min-width: 480px) {
+  .search-queries {
+    width: 50%;
+  }
+  .search-queries button {
+    background: 0;
+    padding: 0;
+    text-align: left;
+    border: 0;
+  }
   .contact-form {
     padding-right: 100px;
   }

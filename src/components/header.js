@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from "react"
 import { Link } from "gatsby"
-import { GlobalDispatchContext, GlobalStateContext } from "../context/GlobalContextProvider";
 
 import Logo from "../images/logo.png"
 
@@ -79,7 +78,7 @@ const Header = ({data}) => {
         <Ticker title={"MENU"} />
       </div>
       <header
-        className="header__menu--desktop flex-column"
+        className="header__menu--desktop flex-column content-padding"
         style={{
           background: `white`,
           width: "100%",

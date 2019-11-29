@@ -8,11 +8,11 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
   return (
     <Layout>
       <div className="flex model flex-column">
-        <h2 className="flex model__name flex-column">
+        <h2 className="flex model__name flex-column content-padding">
           <span>{firstName}</span>
           <span>{lastName}</span>
         </h2>
-        <div className="flex model__main">
+        <div className="flex model__main content-padding">
           <div
             className="flex model__main-container flex-column"
             style={{ justifyContent: "space-between" }}
@@ -41,7 +41,7 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
                 </span>
               )}
               {acf.bio && (
-                <a
+                <span
                   style={{
                     cursor: "pointer",
                     textDecoration: "none",
@@ -49,7 +49,7 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
                   }}
                 >
                   BIO
-                </a>
+                </span>
               )}
               {acf.instagram && (
                 <span style={{ cursor: "pointer" }}>INSTAGRAM</span>
