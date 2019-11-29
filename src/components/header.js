@@ -26,15 +26,12 @@ const Header = ({data}) => {
     getPath();
   },[]);
 
-  useEffect(() => {
-    console.log(selectedItem)
-  }, [selectedItem])
-
   const toggleMenu = (isVisible) => {
     setVisibleMenu(!isVisible);
   }
 
   const selectItem = (e, item) => {
+    console.log(item)
     const prevActiveItem = document.querySelector(`[data-title=${selectedItem.title}]`);
     if (prevActiveItem) {
       prevActiveItem.classList.remove("active")
@@ -91,6 +88,11 @@ const Header = ({data}) => {
               <NavigationItem item={item} />
             </div>
           ))}
+          {!isMobile && (
+            <div className="flex" onClick={(e) => selectItem(e, {title: "SEARCH", url: "/search"})} key={"search"}>
+              <NavigationItem item={{title: "SEARCH", url: "/search"}} />
+            </div>
+          )}
         </div>
         <div className="flex">
           {childItems && childItems.map((childItem, index) => (
