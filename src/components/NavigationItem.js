@@ -5,6 +5,7 @@ const NavigationItem = ({ item }) => {
   if (item.url.includes('#')) {
     return (
       <div
+        data-title={item.title}
         style={{
           paddingLeft: 10,
           paddingRight: 10,
@@ -22,6 +23,7 @@ const NavigationItem = ({ item }) => {
     return (
       <Link
         to={item.url}
+        data-title={item.url.replace("/", "")}
         style={{
           paddingLeft: 10,
           paddingRight: 10,

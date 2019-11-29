@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 import News from "../components/News"
+import Instagram from "../components/Instagram"
 
 const Home = ({ pageContext }) => {
   return (
@@ -20,6 +21,9 @@ const Home = ({ pageContext }) => {
       </video>
       <div className="home-news" style={{ marginTop: 30 }}>
         <News />
+      </div>
+      <div className="home-instagram" style={{ marginTop: 30, marginBottom: 50 }}>
+        <Instagram />
       </div>
     </Layout>
   )

@@ -8,6 +8,7 @@ import Ticker from "./Ticker"
 import NavigationItem from "./NavigationItem";
 
 const Header = ({data}) => {
+  const [isMobile, toggleIsMobile] = useState(false);
   const [isVisible, setVisibleMenu] = useState(false);
   const [selectedItem, setSelectedItem] = useState({});
   const [childItems, setChildItems] = useState([]);
@@ -19,22 +20,45 @@ const Header = ({data}) => {
       if (!selectedItemFromLS) return;
       selectItem(null, selectedItemFromLS);
     }
+    const checkIfMobile = () => {
+      if (window.innerWidth < 480) toggleIsMobile(true);
+    }
+    checkIfMobile();
     getPath();
+  },[]);
 
-  }, []);
+  useEffect(() => {
+    console.log(selectedItem)
+  }, [selectedItem])
 
   const toggleMenu = (isVisible) => {
     setVisibleMenu(!isVisible);
   }
 
   const selectItem = (e, item) => {
+    const prevActiveItem = document.querySelector(`[data-title=${selectedItem.title}]`);
+    if (prevActiveItem) {
+      prevActiveItem.classList.remove("active")
+    }
+
     setSelectedItem(item);
+
     if (item.child_items) {
+      setActiveMenuItemClass(item);
       localStorage.setItem("ave-navigation", JSON.stringify(item))
       setChildItems(item.child_items);
     } else {
       localStorage.removeItem("ave-navigation")
     }
+  }
+
+  const setActiveMenuItemClass = (item) => {
+    const itemTitle = item.title;
+
+    const activeItem = document.querySelector(`[data-title=${itemTitle}]`)
+    if (!activeItem) return;
+    activeItem.classList.add("active");
+
   }
 
   return (
@@ -62,7 +86,7 @@ const Header = ({data}) => {
           }}
         />
       </Link>
-      <div className="width-100" onClick={() => toggleMenu(isVisible)}>
+      <div className="width-100" onClick={() => toggleMenu(isVisible)} style={{ cursor: "pointer" }}>
         <Ticker title={"MENU"} />
       </div>
       <header
@@ -75,7 +99,7 @@ const Header = ({data}) => {
       >
         <div className="flex">
           {data.allWordpressMenusMenusItems.edges[0].node.items.map((item, index) => (
-            <div className="flex" onClick={(e) => selectItem(e, item)} key={index} style={{ fontWeight: item.title === selectedItem.title ? "bold" : "regular" }}>
+            <div className="flex" onClick={(e) => selectItem(e, item)} key={index}>
               <NavigationItem item={item} />
             </div>
           ))}
@@ -93,81 +117,3 @@ const Header = ({data}) => {
 }
 
 export default Header;
-
-
-/*
-<div style={{ display: !this.state.isMobile ? "flex" : "none" }}>
-              {this.props.data.allWordpressMenusMenusItems.edges[0].node.items.map(
-                (mainItem, index) => {
-                  if (mainItem.url.includes("#") && !this.state.isMobile) {
-                    return (
-                      <div
-                        onClick={e => this.setChildElements(e, mainItem)}
-                        key={index}
-                        data-title={mainItem.title}
-                        style={{
-                          paddingLeft: 10,
-                          paddingRight: 10,
-                          paddingTop: 5,
-                          paddingBottom: 5,
-                          fontSize: 14,
-                          textDecoration: "none",
-                          cursor: "pointer",
-                        }}
-                      >
-                        {mainItem.title}
-                      </div>
-                    )
-                  }
-                  return (
-                    <div
-                      onClick={e => {
-                        this.setChildElements(e, mainItem)
-                      }}
-                      key={index}
-                      data-title={mainItem.title}
-                      style={{ display: "flex" }}
-                    >
-                      <Link
-                        to={mainItem.url}
-                        style={{
-                          paddingLeft: 10,
-                          paddingRight: 10,
-                          paddingTop: 5,
-                          paddingBottom: 5,
-                          fontSize: 14,
-                          textDecoration: "none",
-                        }}
-                      >
-                        {mainItem.title}
-                      </Link>
-                    </div>
-                  )
-                }
-              )}
-            </div>
-            <div className="flex">
-              {this.state.childItems &&
-                this.state.childItems.map((childItem, index) => (
-                  <Link
-                    onClick={e => {
-                      this.setChildElements(e, childItem)
-                    }}
-                    to={childItem.url}
-                    data-title={childItem.url}
-                    style={{
-                      paddingLeft: 10,
-                      paddingRight: 10,
-                      paddingTop: 5,
-                      paddingBottom: 5,
-                      fontSize: 14,
-                      textDecoration: "none",
-                    }}
-                    key={index}
-                  >
-                    {childItem.title}
-                  </Link>
-                ))}
-            </div>
-
-*/
