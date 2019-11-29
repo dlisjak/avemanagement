@@ -5,6 +5,10 @@ export const GlobalDispatchContext = React.createContext()
 
 const initialState = {
   path: "",
+  headShot: null,
+  profile: null,
+  midLength: null,
+  fullLength: null,
 }
 
 function reducer(state, action) {
@@ -16,8 +20,36 @@ function reducer(state, action) {
       }
     }
 
+    case "headShot": {
+      return {
+        ...state,
+        headShot: action.payload
+      }
+    }
+
+    case "profile": {
+      return {
+        ...state,
+        profile: action.payload
+      }
+    }
+
+    case "midLength": {
+      return {
+        ...state,
+        midLength: action.payload
+      }
+    }
+
+    case "fullLength": {
+      return {
+        ...state,
+        fullLength: action.payload
+      }
+    }
+
     default:
-      throw new Error("Bad action type")
+      console.log(action.type)
   }
 }
 

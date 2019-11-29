@@ -1,10 +1,13 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
+import { GlobalDispatchContext, GlobalStateContext } from "../context/GlobalContextProvider";
 
-const ImageUpload = (title, order) => {
-  const [file, setFile] = useState({ file: null })
+const ImageUpload = ({title, order}) => {
+  const [file, setFile] = useState("")
+  const dispatch = useContext(GlobalDispatchContext)
 
   const handleChange = e => {
-    setFile({ file: URL.createObjectURL(e.target.files[0]) })
+    setFile(URL.createObjectURL(e.target.files[0]))
+    dispatch({ type: title, payload: e.target.files[0] })
   }
 
   return (
@@ -20,7 +23,7 @@ const ImageUpload = (title, order) => {
       />
       <img
         className="contact-image-upload--image"
-        src={file.file}
+        src={file}
         style={{ zIndex: 99 }}
       />
     </div>

@@ -1,12 +1,23 @@
-import React from "react"
+import React, { useContext, useEffect } from "react"
 import { Formik, ErrorMessage, Form, Field } from "formik"
 import axios from "axios"
+import { GlobalStateContext } from "../context/GlobalContextProvider";
 
 import Layout from "../components/layout"
 import ImageUpload from "../components/imageUpload"
 import Ticker from "../components/Ticker"
 
 const BecomeAModel = () => {
+  const state = useContext(GlobalStateContext)
+
+  useEffect(() => {
+    // componentDidMount
+    const componentDidMount = () => {
+      console.log(state);
+    }
+    componentDidMount();
+  }, [state]);
+
   return (
     <Layout style={{ marginBottom: 50 }}>
       <Ticker title="BECOME A MODEL" />
@@ -73,6 +84,10 @@ const BecomeAModel = () => {
           bodyFormData.set("age", values.age)
           bodyFormData.set("gender", values.gender)
           bodyFormData.set("instagram", values.instagram)
+          bodyFormData.set("headShot", state.headShot)
+          bodyFormData.set("profile", state.profile)
+          bodyFormData.set("midLength", state.midLength)
+          bodyFormData.set("fullLength", state.fullLength)
           setTimeout(() => {
             axios.post(
               "http://avemanagement1.eu/wp-json/contact-form-7/v1/contact-forms/16319/feedback",
@@ -368,10 +383,10 @@ const BecomeAModel = () => {
       <div className="flex flex-column">
         <span>ENSURE YOUR IMAGES ARE NOT LARGER THAN 2MB EACH IN SIZE</span>
         <div className="flex">
-          <ImageUpload order={1} title="Head Shot" />
-          <ImageUpload order={2} title="Profile" />
-          <ImageUpload order={3} title="Mid Length" />
-          <ImageUpload order={4} title="Full length" />
+          <ImageUpload order={0} title="headShot" />
+          <ImageUpload order={1} title="profile" />
+          <ImageUpload order={2} title="midLength" />
+          <ImageUpload order={3} title="fullLength" />
         </div>
       </div>
 
