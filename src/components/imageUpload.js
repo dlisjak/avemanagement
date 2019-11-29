@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-const ImageUpload = title => {
+const ImageUpload = (title, order) => {
   const [file, setFile] = useState({ file: null })
 
   const handleChange = e => {

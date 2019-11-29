@@ -1,21 +1,40 @@
 import React from "react"
 import { Link } from "gatsby"
 
-const NavigationItem = ({ item: { title, url, child_items } }) => {
-  return (
-    <div className="flex nav__item">
-      <Link to={url}>{title}</Link>
-      {child_items && (
-        <div className="flex">
-          {child_items.map((childItem, index) => (
-            <Link className="flex" to={childItem.url} key={index}>
-              {childItem.title}
-            </Link>
-          ))}
-        </div>
-      )}
-    </div>
-  )
+const NavigationItem = ({ item }) => {
+  if (item.url.includes('#')) {
+    return (
+      <div
+        style={{
+          paddingLeft: 10,
+          paddingRight: 10,
+          paddingTop: 5,
+          paddingBottom: 5,
+          fontSize: 14,
+          textDecoration: "none",
+          cursor: "pointer",
+        }}
+      >
+        {item.title}
+      </div>
+    )
+  } else {
+    return (
+      <Link
+        to={item.url}
+        style={{
+          paddingLeft: 10,
+          paddingRight: 10,
+          paddingTop: 5,
+          paddingBottom: 5,
+          fontSize: 14,
+          textDecoration: "none",
+        }}
+      >
+        {item.title}
+      </Link>
+    )
+  }
 }
 
 export default NavigationItem

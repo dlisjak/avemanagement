@@ -232,6 +232,11 @@ header .flex > :first-child {
   padding-left: 0 !important;
 }
 
+.navigation-item {
+  border: 0;
+  background: 0;
+}
+
 .pagination-item {
   margin: 0 1rem;
   position: absolute;
@@ -493,7 +498,7 @@ select {
 [type="submit"],
 button,
 html [type="button"] {
-  -webkit-appearance: button;
+  /* -webkit-appearance: button; */
 }
 [type="button"]::-moz-focus-inner,
 [type="reset"]::-moz-focus-inner,

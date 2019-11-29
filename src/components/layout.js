@@ -1,18 +1,25 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
-import React from "react"
-import PropTypes from "prop-types"
+import React, { useEffect, useContext } from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import { GlobalDispatchContext, GlobalStateContext } from "../context/GlobalContextProvider";
 
 import Header from "./header"
 import "./layout.css"
 
-const Layout = ({ children }) => {
+const Layout = ({children}) => {
+  const dispatch = useContext(GlobalDispatchContext)
+  const state = useContext(GlobalStateContext)
+  useEffect(() => {
+    // componentDidMount
+    const setPath = () => {
+      dispatch({ type: "SET_PATH", payload: window.location.pathname });
+    }
+    setPath();
+
+    // componentDidUnmount
+    return () => {
+    }
+  }, []);
+
   const data = useStaticQuery(graphql`
     {
       allWordpressMenusMenusItems(filter: { name: { eq: "Main" } }) {
@@ -53,10 +60,6 @@ const Layout = ({ children }) => {
       </div>
     </>
   )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default Layout

@@ -10,10 +10,7 @@ const TickerText = ({ title, toggleMenu }) => {
   {
     if (title === "MENU") {
       return (
-        <div
-          className="ticker__menu ticker flex width-100"
-          onClick={() => toggleMenu()}
-        >
+        <div className="ticker__menu ticker flex width-100">
           <div id="tickerwrap">
             <div id="ticker">{data}</div>
             <div id="ticker2">{data}</div>

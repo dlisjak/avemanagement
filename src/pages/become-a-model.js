@@ -368,10 +368,10 @@ const BecomeAModel = () => {
       <div className="flex flex-column">
         <span>ENSURE YOUR IMAGES ARE NOT LARGER THAN 2MB EACH IN SIZE</span>
         <div className="flex">
-          <ImageUpload title="Head Shot" />
-          <ImageUpload title="Profile" />
-          <ImageUpload title="Mid Length" />
-          <ImageUpload title="Full length" />
+          <ImageUpload order={1} title="Head Shot" />
+          <ImageUpload order={2} title="Profile" />
+          <ImageUpload order={3} title="Mid Length" />
+          <ImageUpload order={4} title="Full length" />
         </div>
       </div>
 
