@@ -8,7 +8,7 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
   return (
     <Layout>
       <div className="flex model flex-column">
-        <h2 className="flex flex-column">
+        <h2 className="flex model__name flex-column">
           <span>{firstName}</span>
           <span>{lastName}</span>
         </h2>
@@ -42,7 +42,6 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
               )}
               {acf.bio && (
                 <a
-                  href="#"
                   style={{
                     cursor: "pointer",
                     textDecoration: "none",
@@ -138,7 +137,7 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
             acf.portfolio.map(({ title, name, url, alt = "" }, index) => (
               <div
                 className="flex-column justify-between category-card"
-                style={{ marginBottom: 10 }}
+                style={{ marginBottom: 5 }}
                 onClick={() => {
                   setImage({ title, name, url, alt })
                   window.scrollTo(0, 0)

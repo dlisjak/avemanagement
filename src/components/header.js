@@ -63,17 +63,6 @@ const Header = ({data}) => {
 
   return (
     <>
-      <div
-        className="width-100"
-        style={{
-          position: "absolute",
-          left: 0,
-          top: 0,
-          height: 26,
-          zIndex: 999,
-          cursor: "pointer",
-        }}
-      ></div>
       <Link to="/">
         <img
           src={Logo}

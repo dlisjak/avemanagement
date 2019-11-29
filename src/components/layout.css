@@ -16,6 +16,10 @@
     margin-top: 25px;
   }
 
+  .model__name {
+    margin-bottom: 0;
+  }
+
   div.model__bio {
     margin-top: 5px;
     flex-direction: row;
@@ -45,19 +49,22 @@
   }
 
   .category-card {
-    width: calc(50% - 8px);
+    width: calc(50% - 7.5px);
   }
-
   .category-card:first-child {
-    margin-left: 0;
+    margin-left: 5px;
+    margin-right: 2.5px;
   }
-
-  .category-card:nth-child(2n + 0) {
-    margin-right: 0;
+  .category-card:nth-child(2n) {
+    margin-right: 5px;
+    margin-left: 2.5px;
   }
-
   .category-card:nth-child(2n + 1) {
-    margin-left: 0;
+    margin-left: 5px;
+    margin-right: 2.5px;
+  }
+  .category-card h3 {
+    margin-bottom: 15px;
   }
 }
 
@@ -122,6 +129,10 @@
   .category-card {
     width: calc(25% - 8px);
   }
+  .category-card {
+    margin: 0 5px;
+    text-decoration: none;
+  }
   .category-card:first-child {
     margin-left: 0;
   }
@@ -141,11 +152,6 @@
 
 .relative {
   position: relative;
-}
-
-.category-card {
-  margin: 0 5px;
-  text-decoration: none;
 }
 
 .ticker {
@@ -361,8 +367,22 @@ header .flex > :first-child {
   flex-wrap: wrap;
 }
 
+@font-face {
+  font-family: "HelveticaNeue";
+  font-weight: 700;
+  src: url("../fonts/HelveticaNeueHeavy.woff") format("woff");
+  src: url("../fonts/HelveticaNeueHeavy.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "HelveticaNeue";
+  font-weight: 400;
+  src: url("../fonts/HelveticaNeue-Light.woff") format("woff");
+  src: url("../fonts/HelveticaNeue-Light.woff2") format("woff2");
+  }
+
 html {
-  font-family: sans-serif;
+  font-family: "HelveticaNeue";
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -555,7 +575,6 @@ textarea {
   font: inherit;
 }
 html {
-  font: 112.5%/1.45em georgia, serif;
   box-sizing: border-box;
   overflow-y: scroll;
 }
@@ -570,7 +589,7 @@ html {
 }
 body {
   color: hsla(0, 0%, 0%, 0.8);
-  font-family: georgia, serif;
+  font-family: "HelveticaNeue";
   font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;
@@ -600,8 +619,7 @@ h1 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "HelveticaNeue";
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 2.25rem;
@@ -617,8 +635,7 @@ h2 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "HelveticaNeue";
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 1.62671rem;
@@ -634,8 +651,7 @@ h3 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "HelveticaNeue";
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 1.38316rem;
@@ -651,8 +667,7 @@ h4 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "HelveticaNeue";
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 1rem;
@@ -668,8 +683,7 @@ h5 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "HelveticaNeue";
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 0.85028rem;
@@ -685,8 +699,7 @@ h6 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "HelveticaNeue";
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 0.78405rem;
@@ -961,8 +974,7 @@ tt,
 code {
   background-color: hsla(0, 0%, 0%, 0.04);
   border-radius: 3px;
-  font-family: "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono",
-    "Liberation Mono", Menlo, Courier, monospace;
+  font-family: "HelveticaNeue";
   padding: 0;
   padding-top: 0.2em;
   padding-bottom: 0.2em;
