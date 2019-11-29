@@ -31,7 +31,6 @@ const Header = ({data}) => {
   }
 
   const selectItem = (e, item) => {
-    console.log(item)
     const prevActiveItem = document.querySelector(`[data-title=${selectedItem.title}]`);
     if (prevActiveItem) {
       prevActiveItem.classList.remove("active")

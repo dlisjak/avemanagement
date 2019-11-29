@@ -19,10 +19,29 @@ const NavigationItem = ({ item }) => {
         {item.title}
       </div>
     )
+  } else if (item.url.includes("http")) {
+    return (
+      <a
+        href={item.url}
+        target="_blank"
+        data-title={item.url.replace("/", "")}
+        style={{
+          paddingLeft: 10,
+          paddingRight: 10,
+          paddingTop: 5,
+          paddingBottom: 5,
+          fontSize: 14,
+          textDecoration: "none",
+        }}
+      >
+        {item.title}
+      </a>
+    )
   } else {
     return (
       <Link
         to={item.url}
+        target="_blank"
         data-title={item.url.replace("/", "")}
         style={{
           paddingLeft: 10,
