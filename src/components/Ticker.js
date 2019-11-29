@@ -19,7 +19,7 @@ const TickerText = ({ title, toggleMenu }) => {
       )
     } else {
       return (
-        <div className="ticker flex width-100">
+        <div className="ticker flex width-100" style={{ fontWeight: 700 }}>
           <div id="tickerwrap">
             <div id="ticker">{data}</div>
             <div id="ticker2">{data}</div>
