@@ -4,56 +4,72 @@ import { Link } from "gatsby"
 import Logo from "../images/logo.png"
 
 import Ticker from "./Ticker"
-import NavigationItem from "./NavigationItem";
+import NavigationItem from "./NavigationItem"
 
-const Header = ({data}) => {
-  const [isMobile, toggleIsMobile] = useState(false);
-  const [isVisible, setVisibleMenu] = useState(false);
-  const [selectedItem, setSelectedItem] = useState({});
-  const [childItems, setChildItems] = useState([]);
+const Header = ({ data }) => {
+  const [isMobile, toggleIsMobile] = useState(false)
+  const [isVisible, setVisibleMenu] = useState(false)
+  const [selectedItem, setSelectedItem] = useState({})
+  const [childItems, setChildItems] = useState([])
 
   useEffect(() => {
     // componentDidMount
     const getPath = () => {
-      const selectedItemFromLS = JSON.parse(localStorage.getItem("ave-navigation"));
-      if (!selectedItemFromLS) return;
-      selectItem(null, selectedItemFromLS);
+      const selectedItemFromLS = JSON.parse(
+        localStorage.getItem("ave-navigation")
+      )
+      if (!selectedItemFromLS) return
+      setUpNav(selectedItemFromLS)
     }
     const checkIfMobile = () => {
-      if (window.innerWidth < 480) toggleIsMobile(true);
+      if (window.innerWidth < 480) toggleIsMobile(true)
     }
-    checkIfMobile();
-    getPath();
-  },[]);
+    checkIfMobile()
+    getPath()
+  }, [])
 
-  const toggleMenu = (isVisible) => {
-    setVisibleMenu(!isVisible);
+  const setUpNav = item => {
+    setSelectedItem(item)
+    setActiveMenuItemClass(item)
+    setChildItems(item.child_items)
+  }
+
+  const toggleMenu = isVisible => {
+    setVisibleMenu(!isVisible)
   }
 
   const selectItem = (e, item) => {
-    const prevActiveItem = document.querySelector(`[data-title=${selectedItem.title}]`);
+    const prevActiveItem = document.querySelector(
+      `[data-title=${selectedItem.title}]`
+    )
     if (prevActiveItem) {
       prevActiveItem.classList.remove("active")
     }
 
-    setSelectedItem(item);
+    setSelectedItem(item)
 
     if (item.child_items) {
-      setActiveMenuItemClass(item);
+      setActiveMenuItemClass(item)
       localStorage.setItem("ave-navigation", JSON.stringify(item))
-      setChildItems(item.child_items);
+      setChildItems(item.child_items)
     } else {
-      localStorage.removeItem("ave-navigation")
+      if (
+        localStorage.getItem("ave-navigation") &&
+        !item.url
+          .toUpperCase()
+          .includes(JSON.parse(localStorage.getItem("ave-navigation")).title)
+      ) {
+        localStorage.removeItem("ave-navigation")
+      }
     }
   }
 
-  const setActiveMenuItemClass = (item) => {
-    const itemTitle = item.title;
+  const setActiveMenuItemClass = item => {
+    const itemTitle = item.title || item
 
     const activeItem = document.querySelector(`[data-title=${itemTitle}]`)
-    if (!activeItem) return;
-    activeItem.classList.add("active");
-
+    if (!activeItem) return
+    activeItem.classList.add("active")
   }
 
   return (
@@ -70,7 +86,11 @@ const Header = ({data}) => {
           }}
         />
       </Link>
-      <div className="width-100" onClick={() => toggleMenu(isVisible)} style={{ cursor: "pointer" }}>
+      <div
+        className="width-100"
+        onClick={() => toggleMenu(isVisible)}
+        style={{ cursor: "pointer" }}
+      >
         <Ticker title={"MENU"} />
       </div>
       <header
@@ -82,27 +102,42 @@ const Header = ({data}) => {
         }}
       >
         <div className="flex">
-          {data.allWordpressMenusMenusItems.edges[0].node.items.map((item, index) => (
-            <div className="flex" onClick={(e) => selectItem(e, item)} key={index}>
-              <NavigationItem item={item} />
-            </div>
-          ))}
+          {data.allWordpressMenusMenusItems.edges[0].node.items.map(
+            (item, index) => (
+              <div
+                className="flex"
+                onClick={e => selectItem(e, item)}
+                key={index}
+              >
+                <NavigationItem item={item} />
+              </div>
+            )
+          )}
           {!isMobile && (
-            <div className="flex" onClick={(e) => selectItem(e, {title: "SEARCH", url: "/search"})} key={"search"}>
-              <NavigationItem item={{title: "SEARCH", url: "/search"}} />
+            <div
+              className="flex"
+              onClick={e => selectItem(e, { title: "SEARCH", url: "/search" })}
+              key={"search"}
+            >
+              <NavigationItem item={{ title: "SEARCH", url: "/search" }} />
             </div>
           )}
         </div>
         <div className="flex">
-          {childItems && childItems.map((childItem, index) => (
-            <div className="flex" key={index}>
-              <NavigationItem item={childItem} />
-            </div>
-          ))}
+          {childItems &&
+            childItems.map((childItem, index) => (
+              <div
+                className="flex"
+                onClick={e => selectItem(e, childItem)}
+                key={index}
+              >
+                <NavigationItem item={childItem} />
+              </div>
+            ))}
         </div>
       </header>
     </>
   )
 }
 
-export default Header;
+export default Header
