@@ -31,12 +31,14 @@ const ImageUpload = ({ title, order, isMobile, text }) => {
         onChange={e => handleChange(e)}
         style={{ width: "100%", border: 0, opacity: 0 }}
       />
-      <img
-        className="contact-image-upload--image"
-        alt={`Your ${title}`}
-        src={file}
-        style={{ zIndex: 99 }}
-      />
+      {file && (
+        <img
+          className="contact-image-upload--image"
+          alt={`Your ${title}`}
+          src={file}
+          style={{ zIndex: 99 }}
+        />
+      )}
     </div>
   )
 }
