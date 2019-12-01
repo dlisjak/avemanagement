@@ -7,26 +7,27 @@ const TickerText = ({ title, toggleMenu }) => {
     data += `${title} `
   }
 
-  {
-    if (title === "MENU") {
-      return (
-        <div className="ticker__menu ticker flex width-100" style={{ fontWeight: 700 }}>
-          <div id="tickerwrap">
-            <div id="ticker">{data}</div>
-            <div id="ticker2">{data}</div>
-          </div>
+  if (title === "MENU") {
+    return (
+      <div
+        className="ticker__menu ticker flex width-100"
+        style={{ fontWeight: 700 }}
+      >
+        <div id="tickerwrap">
+          <div id="ticker">{data}</div>
+          <div id="ticker2">{data}</div>
         </div>
-      )
-    } else {
-      return (
-        <div className="ticker flex width-100" style={{ fontWeight: 700 }}>
-          <div id="tickerwrap">
-            <div id="ticker">{data}</div>
-            <div id="ticker2">{data}</div>
-          </div>
+      </div>
+    )
+  } else {
+    return (
+      <div className="ticker flex width-100" style={{ fontWeight: 700 }}>
+        <div id="tickerwrap">
+          <div id="ticker">{data}</div>
+          <div id="ticker2">{data}</div>
         </div>
-      )
-    }
+      </div>
+    )
   }
 }
 

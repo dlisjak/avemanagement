@@ -15,6 +15,8 @@ const News = ({ pageContext }) => {
     return content
   }
 
+  console.log(pageContext)
+
   return (
     <Layout>
       <Ticker title="NEWS" />
@@ -31,6 +33,7 @@ const News = ({ pageContext }) => {
         />
         <img
           className="news-card__image"
+          alt={pageContext.acf.news_post_image.title}
           src={pageContext.acf.news_post_image.url}
           height={pageContext.acf.news_post_image.height}
           width={pageContext.acf.news_post_image.width}

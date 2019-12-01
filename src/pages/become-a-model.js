@@ -1,23 +1,23 @@
 import React, { useContext, useState, useEffect } from "react"
 import { Formik, ErrorMessage, Form, Field } from "formik"
 import axios from "axios"
-import { GlobalStateContext } from "../context/GlobalContextProvider";
+import { GlobalStateContext } from "../context/GlobalContextProvider"
 
 import Layout from "../components/layout"
 import ImageUpload from "../components/imageUpload"
 import Ticker from "../components/Ticker"
 
 const BecomeAModel = () => {
-  const [isMobile, toggleIsMobile] = useState(false);
+  const [isMobile, toggleIsMobile] = useState(false)
   const state = useContext(GlobalStateContext)
 
   useEffect(() => {
     // componentDidMount
     const checkIfMobile = () => {
-      if (window.innerWidth < 480) toggleIsMobile(true);
+      if (window.innerWidth < 480) toggleIsMobile(true)
     }
-    checkIfMobile();
-  });
+    checkIfMobile()
+  })
 
   return (
     <Layout style={{ marginBottom: 50 }}>
@@ -169,7 +169,7 @@ const BecomeAModel = () => {
                   Date of Birth
                 </label>
                 <Field
-                  className="contact-input"
+                  className="contact-input contact-input--date"
                   type="input"
                   name="dateOfBirth"
                   placeholder="DD / MM / YYYY"
@@ -370,29 +370,74 @@ const BecomeAModel = () => {
       >
         <h4 style={{ marginBottom: 0 }}>Upload photographs</h4>
         <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum
+          Submit only natural photographs, no professional studio shots are
+          required, as we wish to see you in your most natural state.
+        </p>
+        <p>
+          please submit 4 photographs of yourself, Head-shot, profile,
+          mid-length & full-length. All photographs must be in color.
+        </p>
+        <p>Do not submit digitally enhanced photographs.</p>
+        <p>
+          please do not wear make-up, as we must see your true skin complexion.
+        </p>
+        <p>
+          the head-shot must be taken front-on and should fully show your face.
+          please relax your face, do not smile or pout in the photographs, as
+          this is like a passport photograph to document your look for us.
+        </p>
+        <p>
+          keep hair natural as possible, and it must not obstruct your face and
+          bone structure in the head-shot.
+        </p>
+        <p>
+          in the profile shot, we need to see the jawline. hair needs to be kept
+          away from the face.
+        </p>
+        <p>
+          the mid-length and full-length shots should be taken whilst fully
+          clothed. avoid wearing baggy clothes and stand up straight with your
+          shoulders back. try to look as natural as possible.
         </p>
       </div>
       <div className="flex flex-column">
-        <span className="content-padding">ENSURE YOUR IMAGES ARE NOT LARGER THAN 2MB EACH IN SIZE</span>
+        <span className="content-padding" style={{ fontWeight: 700 }}>
+          ENSURE YOUR IMAGES ARE NOT LARGER THAN 2MB EACH IN SIZE
+        </span>
         <div className="flex flex-wrap">
-          <ImageUpload isMobile={isMobile} order={0} title="headShot" />
-          <ImageUpload isMobile={isMobile} order={1} title="profile" />
-          <ImageUpload isMobile={isMobile} order={2} title="midLength" />
-          <ImageUpload isMobile={isMobile} order={3} title="fullLength" />
+          <ImageUpload
+            isMobile={isMobile}
+            order={0}
+            title="headShot"
+            text="HEAD SHOT"
+          />
+          <ImageUpload
+            isMobile={isMobile}
+            order={1}
+            title="profile"
+            text="PROFILE"
+          />
+          <ImageUpload
+            isMobile={isMobile}
+            order={2}
+            title="midLength"
+            text="MID LENGTH"
+          />
+          <ImageUpload
+            isMobile={isMobile}
+            order={3}
+            title="fullLength"
+            text="FULL LENGTH"
+          />
         </div>
       </div>
 
       <div style={{ marginTop: 25, marginBottom: 50 }}>
-        <label tabIndex="0" htmlFor="submit-form" style={{ marginTop: 10 }}>
+        <label
+          tabIndex="0"
+          htmlFor="submit-form"
+          style={{ marginTop: 10, fontWeight: 700 }}
+        >
           Submit
         </label>
       </div>

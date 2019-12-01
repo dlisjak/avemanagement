@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 
 const NavigationItem = ({ item }) => {
-  if (item.url.includes('#')) {
+  if (item.url.includes("#")) {
     return (
       <div
         data-title={item.title}
@@ -24,6 +24,7 @@ const NavigationItem = ({ item }) => {
       <a
         href={item.url}
         target="_blank"
+        rel="noopener noreferrer"
         data-title={item.url.replace("/", "")}
         style={{
           paddingLeft: 10,

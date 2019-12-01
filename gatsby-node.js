@@ -1,3 +1,4 @@
+const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 const path = require(`path`)
 const slash = require(`slash`)
 const axios = require("axios")
@@ -48,6 +49,34 @@ exports.sourceNodes = async ({ actions }) => {
     createNode(userNode)
   })
   return
+}
+
+exports.createResolvers = ({
+  actions,
+  cache,
+  createNodeId,
+  createResolvers,
+  store,
+  reporter,
+}) => {
+  const { createNode } = actions
+  createResolvers({
+    wpgql_mediaItem: {
+      imageFile: {
+        type: `File`,
+        resolve(source, args, context, info) {
+          return createRemoteFileNode({
+            url: source.sourceUrl,
+            store,
+            cache,
+            createNode,
+            createNodeId,
+            reporter,
+          })
+        },
+      },
+    },
+  })
 }
 
 exports.createPages = async ({ graphql, actions }) => {

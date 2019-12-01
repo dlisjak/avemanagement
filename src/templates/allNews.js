@@ -5,8 +5,9 @@ import Layout from "../components/layout"
 import Ticker from "../components/Ticker"
 
 const NewsPage = ({ data, pageContext }) => {
-  let Colcade
   const { currentPage, numOfPages } = pageContext
+  let Colcade
+
   useEffect(() => {
     // componentDidMount
     const initGrid = async () => {
@@ -45,17 +46,23 @@ const NewsPage = ({ data, pageContext }) => {
 
         {data.allWordpressWpNews.edges.map(
           ({ node: { title, content, slug, acf } }, index) => (
-            <div className="grid-item news-card" key={index}>
-              <Link to={`/news/${slug}`} key={index}>
+            <div
+              style={{ marginTop: 10 }}
+              className="grid-item news-card"
+              key={index}
+            >
+              <Link to={`/news/${slug}`} style={{ textDecoration: "none" }}>
                 <img
                   src={acf.news_post_image.url}
+                  alt={title}
                   style={{ marginBottom: 0 }}
                 />
+                <div
+                  style={{ textDecoration: "none", color: "black" }}
+                  className="news-card-title"
+                  dangerouslySetInnerHTML={{ __html: formatContent(content) }}
+                />
               </Link>
-              <div
-                className="news-card-title"
-                dangerouslySetInnerHTML={{ __html: formatContent(content) }}
-              />
             </div>
           )
         )}

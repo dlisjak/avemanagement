@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -8,6 +7,7 @@ import News from "../components/News"
 import Instagram from "../components/Instagram"
 
 const Home = ({ pageContext }) => {
+  localStorage.removeItem("ave-navigation")
   return (
     <Layout>
       <SEO title="Home" />
@@ -22,7 +22,10 @@ const Home = ({ pageContext }) => {
       <div className="home-news" style={{ marginTop: 30 }}>
         <News />
       </div>
-      <div className="home-instagram" style={{ marginTop: 30, marginBottom: 50 }}>
+      <div
+        className="home-instagram"
+        style={{ marginTop: 30, marginBottom: 50 }}
+      >
         <Instagram />
       </div>
     </Layout>

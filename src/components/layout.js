@@ -1,24 +1,29 @@
-import React, { useEffect, useContext } from "react"
+import React, { useEffect, useState, useContext } from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { GlobalDispatchContext, GlobalStateContext } from "../context/GlobalContextProvider";
+import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 
 import Header from "./header"
+import GetToTop from "./getToTop"
 import "./layout.css"
 
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
+  const [isMobile, toggleIsMobile] = useState(false)
+
   const dispatch = useContext(GlobalDispatchContext)
-  const state = useContext(GlobalStateContext)
   useEffect(() => {
     // componentDidMount
     const setPath = () => {
-      dispatch({ type: "SET_PATH", payload: window.location.pathname });
+      dispatch({ type: "SET_PATH", payload: window.location.pathname })
     }
-    setPath();
+    const checkIfMobile = () => {
+      if (window.innerWidth < 480) toggleIsMobile(true)
+    }
+    checkIfMobile()
+    setPath()
 
     // componentDidUnmount
-    return () => {
-    }
-  }, []);
+    return () => {}
+  }, [dispatch])
 
   const data = useStaticQuery(graphql`
     {
@@ -54,6 +59,7 @@ const Layout = ({children}) => {
       >
         <Header data={data} />
         <main style={{ width: "100%" }}>{children}</main>
+        {isMobile && <GetToTop />}
         <footer className="flex justify-center width-100">
           <span>© {new Date().getFullYear()}</span>
         </footer>

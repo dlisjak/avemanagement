@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 
 import Logo from "../images/logo.png"
@@ -13,6 +13,12 @@ const Header = ({ data }) => {
   const [childItems, setChildItems] = useState([])
 
   useEffect(() => {
+    const setUpNav = item => {
+      setSelectedItem(item)
+      setActiveMenuItemClass(item)
+      setChildItems(item.child_items)
+    }
+
     // componentDidMount
     const getPath = () => {
       const selectedItemFromLS = JSON.parse(
@@ -27,12 +33,6 @@ const Header = ({ data }) => {
     checkIfMobile()
     getPath()
   }, [])
-
-  const setUpNav = item => {
-    setSelectedItem(item)
-    setActiveMenuItemClass(item)
-    setChildItems(item.child_items)
-  }
 
   const toggleMenu = isVisible => {
     setVisibleMenu(!isVisible)
@@ -77,6 +77,7 @@ const Header = ({ data }) => {
       <Link to="/">
         <img
           src={Logo}
+          alt="Ave Management Logo"
           style={{
             margin: 5,
             marginLeft: 0,

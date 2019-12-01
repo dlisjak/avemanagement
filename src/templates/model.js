@@ -19,37 +19,44 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
           >
             <div className="flex model__menu">
               {acf.portfolio && (
-                <span
+                <a
+                  href="#content"
                   onClick={() => setTab("portfolio")}
                   style={{
                     fontWeight: tab === "portfolio" ? "bold" : "normal",
                     cursor: "pointer",
+                    color: "black",
+                    textDecoration: "none",
                   }}
                 >
                   PORTFOLIO
-                </span>
+                </a>
               )}
               {acf.videos && (
-                <span
+                <a
+                  href="#content"
                   onClick={() => setTab("videos")}
                   style={{
                     fontWeight: tab === "videos" ? "bold" : "normal",
                     cursor: "pointer",
+                    color: "black",
+                    textDecoration: "none",
                   }}
                 >
                   VIDEOS
-                </span>
+                </a>
               )}
               {acf.bio && (
-                <span
+                <a
+                  href="#bio"
                   style={{
                     cursor: "pointer",
+                    color: "black",
                     textDecoration: "none",
-                    color: "hsla(0, 0%, 0%, 0.8)",
                   }}
                 >
                   BIO
-                </span>
+                </a>
               )}
               {acf.instagram && (
                 <span style={{ cursor: "pointer" }}>INSTAGRAM</span>
@@ -131,7 +138,7 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
             />
           </div>
         </div>
-        <div className="flex flex-wrap" style={{ marginTop: 10 }}>
+        <div id="content" className="flex flex-wrap" style={{ marginTop: 10 }}>
           {tab === "portfolio" &&
             acf.portfolio &&
             acf.portfolio.map(({ title, name, url, alt = "" }, index) => (

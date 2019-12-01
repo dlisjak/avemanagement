@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react"
-import { GlobalDispatchContext, GlobalStateContext } from "../context/GlobalContextProvider";
+import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 
-const ImageUpload = ({title, order, isMobile}) => {
+const ImageUpload = ({ title, order, isMobile, text }) => {
   const [file, setFile] = useState("")
   const dispatch = useContext(GlobalDispatchContext)
 
@@ -13,16 +13,27 @@ const ImageUpload = ({title, order, isMobile}) => {
   return (
     <div
       className="flex flex-column justify-center align-center contact-image-upload relative"
-      style={{ width: !isMobile ? `calc(25% - 8px)` : `calc(50% - 7.5px)`, height: !isMobile ? 350 : 250 }}
+      style={{
+        width: !isMobile ? `calc(25% - 8px)` : `calc(50% - 7.5px)`,
+        height: !isMobile ? 350 : 250,
+      }}
     >
+      <div
+        className="flex flex-column align-center"
+        style={{ cursor: "pointer" }}
+      >
+        <span style={{ fontWeight: 700 }}>{text}</span>
+        <span style={{ cursor: "pointer" }}>CLICK TO UPLOAD</span>
+      </div>
       <input
         className="flex flex-wrap absolute"
         type="file"
         onChange={e => handleChange(e)}
-        style={{ width: "100%", border: 0 }}
+        style={{ width: "100%", border: 0, opacity: 0 }}
       />
       <img
         className="contact-image-upload--image"
+        alt={`Your ${title}`}
         src={file}
         style={{ zIndex: 99 }}
       />
