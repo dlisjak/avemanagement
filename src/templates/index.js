@@ -7,7 +7,9 @@ import News from "../components/News"
 import Instagram from "../components/Instagram"
 
 const Home = ({ pageContext }) => {
-  localStorage.removeItem("ave-navigation")
+  if (typeof window !== "undefined") {
+    localStorage.removeItem("ave-navigation")
+  }
   return (
     <Layout>
       <SEO title="Home" />
