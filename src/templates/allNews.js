@@ -12,15 +12,16 @@ const NewsPage = ({ data, pageContext }) => {
   useEffect(() => {
     // componentDidMount
     const initGrid = async () => {
-      var grid = document.querySelector(".grid")
+      const grid = document.querySelector(".grid")
       if (typeof window !== "undefined") {
         Colcade = require("colcade")
-        var colc = new Colcade(grid, {
+        const colc = new Colcade(grid, {
           columns: ".grid-col",
           items: ".grid-item",
         })
       }
     }
+
     initGrid()
   }, [])
 
@@ -54,6 +55,7 @@ const NewsPage = ({ data, pageContext }) => {
             >
               <Link to={`/news/${slug}`} style={{ textDecoration: "none" }}>
                 <SmoothImage
+                  className="news-card-image"
                   src={acf.news_post_image.url}
                   alt={title}
                   transitionTime={0.5}

@@ -4,7 +4,9 @@ import { StaticQuery, Link, graphql } from "gatsby"
 import Slider from "./Slider"
 import TickerText from "./Ticker"
 
-const News = () => (
+const News = () => {
+
+  return (
   <>
     <TickerText title="NEWS" />
     <StaticQuery
@@ -33,10 +35,11 @@ const News = () => (
               ({ node: { title, slug, acf } }, i) => (
                 <Link to={`/news/${slug}`} key={i}>
                   <img
+                    className="news-card-image"
                     src={acf.news_post_image.url}
                     alt={title}
                     title={title}
-                    style={{ height: 333, width: "100%" }}
+                    style={{ width: "100%" }}
                   />
                 </Link>
               )
@@ -46,6 +49,7 @@ const News = () => (
       )}
     />
   </>
-)
+  )
+}
 
 export default News
