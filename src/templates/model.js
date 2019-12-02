@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import SmoothImage from 'react-smooth-image';
 import Layout from "../components/layout"
 
 const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
@@ -129,6 +130,7 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
             <img
               src={image.url}
               alt={image.alt}
+              transitionTime={0.5}
               style={{
                 marginBottom: 0,
                 objectFit: "contain",
@@ -151,10 +153,13 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
                 }}
                 key={index}
               >
-                <img
-                  className="model-portfolio-image"
+                <SmoothImage
                   src={url}
                   alt={alt}
+                  className="model-portfolio-image"
+                  transitionTime={0.5}
+                  containerStyles={{ paddingBottom: "130%" }}
+                  imageStyles={{ height: "100%" }}
                   title={title}
                   name={name}
                 />

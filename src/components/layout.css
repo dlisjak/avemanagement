@@ -2,6 +2,7 @@
   .content-padding {
     padding: 0 5px;
   }
+
   .contact-image-upload {
     border: 1px solid;
     margin-top: 5px;
@@ -113,7 +114,8 @@
     color: red;
     position: absolute;
     right: 0px;
-    top: 5px;
+    top: 9px;
+    font-weight: 700;
   }
   .contact-body-text {
     width: 60%;
@@ -155,10 +157,10 @@
   }
 
   .category-card {
-    width: calc(25% - 8px);
+    width: calc(25% - 4px);
   }
   .category-card {
-    margin: 0 5px;
+    margin: 0 2.5px;
     text-decoration: none;
   }
   .category-card:first-child {
@@ -298,7 +300,10 @@ header .flex > :first-child {
   background: 0;
 }
 
+
 .pagination-item {
+  text-decoration: none;
+  color: black;
   margin: 0 1rem;
   position: absolute;
 }
@@ -325,7 +330,7 @@ header .flex > :first-child {
 
 .news-card {
   text-decoration: none;
-  margin: 0 5px;
+  margin: 0 2.5px;
 }
 
 .news-card-title {

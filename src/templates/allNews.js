@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import { Link } from "gatsby"
+import SmoothImage from 'react-smooth-image';
 
 import Layout from "../components/layout"
 import Ticker from "../components/Ticker"
@@ -52,9 +53,11 @@ const NewsPage = ({ data, pageContext }) => {
               key={index}
             >
               <Link to={`/news/${slug}`} style={{ textDecoration: "none" }}>
-                <img
+                <SmoothImage
                   src={acf.news_post_image.url}
                   alt={title}
+                  transitionTime={0.5}
+                  containerStyles={{ paddingBottom: "130%" }}
                   style={{ marginBottom: 0 }}
                 />
                 <div

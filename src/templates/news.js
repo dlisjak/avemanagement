@@ -1,4 +1,5 @@
 import React from "react"
+import SmoothImage from 'react-smooth-image';
 import Layout from "../components/layout"
 import Ticker from "../components/Ticker"
 
@@ -15,7 +16,6 @@ const News = ({ pageContext }) => {
     return content
   }
 
-  console.log(pageContext)
 
   return (
     <Layout>
@@ -31,10 +31,12 @@ const News = ({ pageContext }) => {
             __html: formatContent(pageContext.content),
           }}
         />
-        <img
+        <SmoothImage
           className="news-card__image"
-          alt={pageContext.acf.news_post_image.title}
           src={pageContext.acf.news_post_image.url}
+          alt={pageContext.acf.news_post_image.title}
+          transitionTime={0.5}
+          containerStyles={{ paddingBottom: "130%" }}
           height={pageContext.acf.news_post_image.height}
           width={pageContext.acf.news_post_image.width}
         />

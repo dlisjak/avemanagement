@@ -1,6 +1,7 @@
 import React from "react"
 import Layout from "../components/layout"
 import { graphql, Link } from "gatsby"
+import SmoothImage from 'react-smooth-image';
 import Ticker from "../components/Ticker"
 
 const Category = props => {
@@ -28,11 +29,14 @@ const Category = props => {
               className="flex flex-column justify-between category-card"
               key={index}
             >
-              <img
-                className="category-card-image"
+              <SmoothImage
                 src={featured_image.url}
                 alt={featured_image.alt}
+                className="category-card-image"
                 title={featured_image.title}
+                transitionTime={0.5}
+                containerStyles={{ paddingBottom: "130%" }}
+                imageStyles={{ height: "100%" }}
                 style={{ marginBottom: 0 }}
               />
               <h3 className="category-card-title flex flex-wrap width-100">
