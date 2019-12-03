@@ -49,7 +49,7 @@ const News = ({ pageContext, data }) => {
 
 export const query = graphql`
 query SingleNews($slug: String) {
-  wordpressWpNews(slug: {eq: slug}) {
+  wordpressWpNews(slug: {eq: $slug}) {
     ACF {
       news_post_image {
         localFile {
