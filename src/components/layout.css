@@ -129,10 +129,14 @@
 }
 
 @media only screen and (min-width: 480px) {
+  .model {
+    margin-top: 50px;
+  }
   .search-queries {
     width: 50%;
   }
   .news-card-image {
+    min-width: 250px;
     height: 333px
   }
   .search-queries button {
@@ -215,7 +219,7 @@
 
   .category-card {
     width: calc(25% - 4px);
-    margin: 0 2.5px;
+    margin: 2.5px 2.5px;
     text-decoration: none;
   }
   .category-card:first-child {
@@ -425,10 +429,15 @@ header .flex > :first-child {
   cursor: pointer;
 }
 
+.gatsby-image-wrapper > div {
+  padding-bottom: 145% !important;
+}
+
 .category-cards {
 }
 
 .category-card-title {
+  margin-bottom: 0;
   font-size: 16px;
   color: black;
 }

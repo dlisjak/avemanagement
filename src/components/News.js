@@ -20,7 +20,7 @@ const News = () => {
                 acf {
                   news_post_image {
                     title
-                    url
+                    source_url
                   }
                 }
               }
@@ -36,7 +36,7 @@ const News = () => {
                 <Link to={`/news/${slug}`} key={i}>
                   <img
                     className="news-card-image"
-                    src={acf.news_post_image.url}
+                    src={acf.news_post_image.source_url}
                     alt={title}
                     title={title}
                     style={{ width: "100%" }}

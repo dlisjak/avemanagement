@@ -130,7 +130,7 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
             <img
               src={image.url}
               alt={image.alt}
-              transitionTime={0.5}
+              transitiontime={0.5}
               style={{
                 marginBottom: 0,
                 objectFit: "contain",
@@ -146,11 +146,12 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
             acf.portfolio.map(({ title, name, url, alt = "" }, index) => (
               <div
                 className="flex-column justify-between category-card"
-                style={{ marginBottom: 5 }}
+                style={{ marginBottom: 2.5 }}
                 onClick={() => {
                   setImage({ title, name, url, alt })
                   window.scrollTo(0, 0)
                 }}
+                style={{ cursor: "pointer" }}
                 key={index}
               >
                 <SmoothImage
@@ -159,7 +160,7 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
                   className="model-portfolio-image"
                   transitionTime={0.5}
                   containerStyles={{ paddingBottom: "130%" }}
-                  imageStyles={{ height: "100%" }}
+                  imageStyles={{ height: "100%", objectFit: "cover" }}
                   title={title}
                   name={name}
                 />

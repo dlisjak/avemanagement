@@ -1,4 +1,3 @@
-const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 const path = require(`path`)
 const slash = require(`slash`)
 const axios = require("axios")
@@ -51,45 +50,21 @@ exports.sourceNodes = async ({ actions }) => {
   return
 }
 
-exports.createResolvers = ({
-  actions,
-  cache,
-  createNodeId,
-  createResolvers,
-  store,
-  reporter,
-}) => {
-  const { createNode } = actions
-  createResolvers({
-    wpgql_mediaItem: {
-      imageFile: {
-        type: `File`,
-        resolve(source, args, context, info) {
-          return createRemoteFileNode({
-            url: source.sourceUrl,
-            store,
-            cache,
-            createNode,
-            createNodeId,
-            reporter,
-          })
-        },
-      },
-    },
-  })
-}
-
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage, createNode } = actions
   // query content for WordPress posts
   const homepage = await graphql(`
     {
-      allWordpressPage(filter: { title: { eq: "Home" } }) {
+      allWordpressPage(filter: {title: {eq: "Home"}}) {
         edges {
           node {
             title
             acf {
-              main_video
+              main_video {
+                localFile {
+                  relativePath
+                }
+              }
             }
           }
         }
@@ -236,16 +211,6 @@ exports.createPages = async ({ graphql, actions }) => {
           node {
             title
             slug
-            acf {
-              news_post_image {
-                url
-                title
-                height
-                width
-                name
-              }
-            }
-            content
           }
         }
       }
@@ -258,9 +223,7 @@ exports.createPages = async ({ graphql, actions }) => {
       path: `/news/${node.slug}`,
       component: slash(newsTemplate),
       context: {
-        title: node.title,
-        acf: node.acf,
-        content: node.content,
+        slug: node.slug,
       },
     })
   })

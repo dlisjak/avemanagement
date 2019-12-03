@@ -21,6 +21,7 @@ const ImageUpload = ({ title, order, isMobile, text }) => {
       style={{
         width: !isMobile ? `calc(25% - 8px)` : `calc(50% - 7.5px)`,
         height: !isMobile ? 350 : 250,
+        marginBottom: file ? 25 : 0,
       }}
     >
       <div
@@ -37,19 +38,19 @@ const ImageUpload = ({ title, order, isMobile, text }) => {
         style={{ width: "100%", border: 0, opacity: 0 }}
       />
       {file && (
-          <img
-            className="contact-image-upload--image"
-            src={file}
-            alt={`Your ${title}`}
-            transitionTime={0.5}
-            containerStyles={{ paddingBottom: "130%" }}
-            style={{ zIndex: 99 }}
-          />
+        <img
+          className="contact-image-upload--image"
+          src={file}
+          alt={`Your ${title}`}
+          transitionTime={0.5}
+          containerStyles={{ paddingBottom: "130%" }}
+          style={{ zIndex: 99 }}
+        />
       )}
       {file && (
-        <button className="absolute" style={{ margin: 10, border: 0, background: 0, textTransform: "uppercase", bottom: -35 }} onClick={() => removeImage()}>Remove image</button>
+        <button className="absolute" style={{ margin: 10, border: 0, background: 0, textTransform: "uppercase", bottom: -30, fontSize: 13 }} onClick={() => removeImage()}>Remove image</button>
       )}
-    </div>
+      </div>
     </>
   )
 }

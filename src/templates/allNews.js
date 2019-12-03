@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import { Link } from "gatsby"
+import Img from "gatsby-image"
 import SmoothImage from 'react-smooth-image';
 
 import Layout from "../components/layout"
@@ -8,6 +9,7 @@ import Ticker from "../components/Ticker"
 const NewsPage = ({ data, pageContext }) => {
   const { currentPage, numOfPages } = pageContext
   let Colcade
+  console.log(data)
 
   useEffect(() => {
     // componentDidMount
@@ -54,9 +56,8 @@ const NewsPage = ({ data, pageContext }) => {
               key={index}
             >
               <Link to={`/news/${slug}`} style={{ textDecoration: "none" }}>
-                <SmoothImage
-                  className="news-card-image"
-                  src={acf.news_post_image.url}
+                <Img
+                  fluid={acf.news_post_image.localFile.childImageSharp.fluid}
                   alt={title}
                   transitionTime={0.5}
                   containerStyles={{ paddingBottom: "130%" }}
@@ -117,19 +118,22 @@ export const query = graphql`
         node {
           title
           slug
+          content
           acf {
             news_post_image {
-              url
-              title
-              height
-              width
-              name
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 500) {
+                    ...GatsbyImageSharpFluid_withWebp
+                  }
+                }
+              }
             }
           }
-          content
         }
       }
     }
   }
+
 `
 export default NewsPage

@@ -1,11 +1,12 @@
 import React from "react"
 import Layout from "../components/layout"
 import { graphql, Link } from "gatsby"
+import Img from "gatsby-image"
 import SmoothImage from 'react-smooth-image';
 import Ticker from "../components/Ticker"
 
-const Category = props => {
-  const title = props.pageContext.title.toUpperCase()
+const Category = ({ data, pageContext }) => {
+  const title = pageContext.title.toUpperCase()
   return (
     <Layout>
       <Ticker title={title} />
@@ -13,7 +14,7 @@ const Category = props => {
         className="flex flex-wrap category-cards"
         style={{ marginTop: 50, marginBottom: 50 }}
       >
-        {props.data.allWordpressPost.edges.map(
+        {data.allWordpressPost.edges.map(
           (
             {
               node: {
@@ -29,16 +30,7 @@ const Category = props => {
               className="flex flex-column justify-between category-card"
               key={index}
             >
-              <SmoothImage
-                src={featured_image.url}
-                alt={featured_image.alt}
-                className="category-card-image"
-                title={featured_image.title}
-                transitionTime={0.5}
-                containerStyles={{ paddingBottom: "130%" }}
-                imageStyles={{ height: "100%" }}
-                style={{ marginBottom: 0 }}
-              />
+            <Img fluid={featured_image.localFile.childImageSharp.fluid} />
               <h3 className="category-card-title flex flex-wrap width-100">
                 <span className="width-100">{first_name}</span>
                 <span className="width-100">{last_name}</span>
@@ -52,18 +44,20 @@ const Category = props => {
 }
 export const query = graphql`
   query CategoryPage($title: String) {
-    allWordpressPost(
-      filter: { categories: { elemMatch: { name: { eq: $title } } } }
-    ) {
+    allWordpressPost(filter: {categories: {elemMatch: {name: {eq: $title}}}}) {
       edges {
         node {
           path
           title
           acf {
             featured_image {
-              alt
-              title
-              url
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 500) {
+                    ...GatsbyImageSharpFluid_withWebp
+                  }
+                }
+              }
             }
             first_name
             last_name
