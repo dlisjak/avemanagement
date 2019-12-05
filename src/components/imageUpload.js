@@ -22,8 +22,10 @@ const ImageUpload = ({ title, order, isMobile, text }) => {
         className="flex flex-column align-center"
         style={{ cursor: "pointer" }}
       >
-        <span style={{ fontWeight: 700 }}>{text}</span>
-        <span style={{ cursor: "pointer" }}>CLICK TO UPLOAD</span>
+        <span style={{}}>{text}</span>
+        <span style={{ cursor: "pointer", fontWeight: 700 }}>
+          CLICK TO UPLOAD
+        </span>
       </div>
       <input
         className="flex flex-wrap absolute"

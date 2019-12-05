@@ -170,12 +170,13 @@ const BecomeAModel = () => {
                 </label>
                 <Field
                   className="contact-input contact-input--date"
-                  type="input"
+                  type="date"
                   name="dateOfBirth"
                   placeholder="DD / MM / YYYY"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.message}
+                  value={values.dateOfBirth}
+                  style={{ paddingRight: !values.dateOfBirth ? 100 : 0 }}
                 />
                 <ErrorMessage
                   className="contact-error"
@@ -199,7 +200,7 @@ const BecomeAModel = () => {
                   name="mobileNumber"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.message}
+                  value={values.mobileNumber}
                 />
                 <ErrorMessage
                   className="contact-error"
@@ -223,7 +224,7 @@ const BecomeAModel = () => {
                   name="address"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.message}
+                  value={values.address}
                 />
                 <ErrorMessage
                   className="contact-error"
@@ -247,7 +248,7 @@ const BecomeAModel = () => {
                   name="height"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.message}
+                  value={values.height}
                 />
                 <ErrorMessage
                   className="contact-error"
@@ -271,7 +272,7 @@ const BecomeAModel = () => {
                   name="age"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.message}
+                  value={values.age}
                 />
                 <ErrorMessage
                   className="contact-error"
@@ -295,7 +296,7 @@ const BecomeAModel = () => {
                   name="gender"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.message}
+                  value={values.gender}
                 />
                 <ErrorMessage
                   className="contact-error"
@@ -319,7 +320,7 @@ const BecomeAModel = () => {
                   name="instagram"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.message}
+                  value={values.instagram}
                 />
                 <ErrorMessage
                   className="contact-error"
@@ -343,7 +344,7 @@ const BecomeAModel = () => {
                   name="email"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.message}
+                  value={values.email}
                 />
                 <ErrorMessage
                   className="contact-error"

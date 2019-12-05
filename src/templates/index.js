@@ -13,20 +13,15 @@ const Home = ({ pageContext }) => {
   return (
     <Layout>
       <SEO title="Home" />
-      <video
-        autoPlay
-        muted
-        className="home-video width-100"
-        style={{ background: "#000", paddingTop: "2rem" }}
-      >
+      <video autoPlay muted className="home-video width-100" style={{}}>
         <source src={pageContext.video} type="video/mp4" />
       </video>
-      <div className="home-news" style={{ marginTop: 30 }}>
+      <div className="home-news" style={{ marginTop: 50 }}>
         <News />
       </div>
       <div
         className="home-instagram"
-        style={{ marginTop: 30, marginBottom: 50 }}
+        style={{ marginTop: 50, marginBottom: 50 }}
       >
         <Instagram />
       </div>

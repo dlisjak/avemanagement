@@ -31,9 +31,13 @@ const News = () => (
           <Slider>
             {allWordpressWpNews.edges.map(
               ({ node: { title, slug, acf } }, i) => (
-                <Link to={`/news/${slug}`}>
+                <Link to={`/news/${slug}`} style={{ display: "flex" }}>
                   <img
-                    style={{ height: 333, width: "100%" }}
+                    style={{
+                      height: "auto",
+                      width: "100%",
+                      objectFit: "cover",
+                    }}
                     key={i}
                     src={acf.news_post_image.url}
                     alt={title}

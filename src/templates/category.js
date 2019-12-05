@@ -8,9 +8,23 @@ const Category = props => {
   return (
     <Layout>
       <Ticker title={title} />
+      <button
+        onClick={() => console.log("search")}
+        style={{
+          position: "absolute",
+          right: 0,
+          top: 70,
+          background: 0,
+          border: 0,
+          fontWeight: 700,
+          padding: 0,
+        }}
+      >
+        SEARCH
+      </button>
       <div
-        className="flex flex-wrap category-cards"
-        style={{ marginTop: 50, marginBottom: 50 }}
+        className="flex flex-wrap category-cards relative"
+        style={{ marginTop: 75, marginBottom: 75 }}
       >
         {props.data.allWordpressPost.edges.map(
           (
@@ -35,9 +49,11 @@ const Category = props => {
                 title={featured_image.title}
                 style={{ marginBottom: 0 }}
               />
-              <h3 className="category-card-title flex flex-wrap width-100">
+              <h3 className="category-card-title flex flex-wrap width-100 relative">
                 <span className="width-100">{first_name}</span>
-                <span className="width-100">{last_name}</span>
+                <span className="width-100 absolute" style={{ top: 15 }}>
+                  {last_name}
+                </span>
               </h3>
             </Link>
           )

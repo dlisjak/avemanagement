@@ -8,12 +8,13 @@ import NavigationItem from "./NavigationItem"
 
 const Header = ({ data }) => {
   const [isMobile, toggleIsMobile] = useState(false)
-  const [isVisible, setVisibleMenu] = useState(false)
+  const [isVisible, setVisibleMenu] = useState(true)
   const [selectedItem, setSelectedItem] = useState({})
   const [childItems, setChildItems] = useState([])
 
   useEffect(() => {
     const setUpNav = item => {
+      setVisibleMenu(true)
       setSelectedItem(item)
       setActiveMenuItemClass(item)
       setChildItems(item.child_items)
@@ -82,61 +83,73 @@ const Header = ({ data }) => {
             margin: 5,
             marginLeft: 0,
             marginBottom: 0,
-            maxHeight: 50,
+            maxHeight: 75,
             cursor: "pointer",
           }}
         />
       </Link>
       <div
-        className="width-100"
-        onClick={() => toggleMenu(isVisible)}
-        style={{ cursor: "pointer" }}
-      >
-        <Ticker title={"MENU"} />
-      </div>
-      <header
-        className="header__menu--desktop flex-column content-padding"
         style={{
-          background: `white`,
+          display: "flex",
+          position: "relative",
+          flexDirection: "column",
           width: "100%",
-          display: isVisible ? "flex" : "none",
         }}
       >
-        <div className="flex">
-          {data.allWordpressMenusMenusItems.edges[0].node.items.map(
-            (item, index) => (
+        <div
+          className="width-100"
+          onClick={() => toggleMenu(isVisible)}
+          style={{ cursor: "pointer" }}
+        >
+          <Ticker title={"MENU"} />
+        </div>
+        <header
+          className="header__menu--desktop flex-column content-padding"
+          style={{
+            background: `white`,
+            width: "100%",
+            display: isVisible ? "flex" : "none",
+            marginBottom: isVisible ? 20 : 0,
+          }}
+        >
+          <div className="flex">
+            {data.allWordpressMenusMenusItems.edges[0].node.items.map(
+              (item, index) => (
+                <div
+                  className="flex"
+                  onClick={e => selectItem(e, item)}
+                  key={index}
+                >
+                  <NavigationItem item={item} />
+                </div>
+              )
+            )}
+            {!isMobile && (
               <div
                 className="flex"
-                onClick={e => selectItem(e, item)}
-                key={index}
+                onClick={e =>
+                  selectItem(e, { title: "SEARCH", url: "/search" })
+                }
+                key={"search"}
               >
-                <NavigationItem item={item} />
+                <NavigationItem item={{ title: "SEARCH", url: "/search" }} />
               </div>
-            )
-          )}
-          {!isMobile && (
-            <div
-              className="flex"
-              onClick={e => selectItem(e, { title: "SEARCH", url: "/search" })}
-              key={"search"}
-            >
-              <NavigationItem item={{ title: "SEARCH", url: "/search" }} />
-            </div>
-          )}
-        </div>
-        <div className="flex">
-          {childItems &&
-            childItems.map((childItem, index) => (
-              <div
-                className="flex"
-                onClick={e => selectItem(e, childItem)}
-                key={index}
-              >
-                <NavigationItem item={childItem} />
-              </div>
-            ))}
-        </div>
-      </header>
+            )}
+          </div>
+          <div className="flex">
+            {childItems &&
+              childItems.map((childItem, index) => (
+                <div
+                  className="flex"
+                  onClick={e => selectItem(e, childItem)}
+                  key={index}
+                >
+                  <NavigationItem item={childItem} />
+                </div>
+              ))}
+          </div>
+        </header>
+      </div>
     </>
   )
 }

@@ -49,19 +49,19 @@ const Layout = ({ children }) => {
   return (
     <>
       <div
+        className="layout-main"
         style={{
           display: "flex",
           flexWrap: "wrap",
           margin: `0 auto`,
-          maxWidth: 1080,
           paddingTop: 0,
         }}
       >
         <Header data={data} />
-        <main style={{ width: "100%" }}>{children}</main>
+        <main style={{ width: "100%", position: "relative" }}>{children}</main>
         {isMobile && <GetToTop />}
         <footer className="flex justify-center width-100">
-          <span>© {new Date().getFullYear()}</span>
+          <span>© AVEMANAGEMENT {new Date().getFullYear()}</span>
         </footer>
       </div>
     </>

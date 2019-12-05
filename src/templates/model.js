@@ -8,9 +8,11 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
   return (
     <Layout>
       <div className="flex model flex-column">
-        <h2 className="flex model__name flex-column content-padding">
+        <h2 className="flex model__name flex-column content-padding relative">
           <span>{firstName}</span>
-          <span>{lastName}</span>
+          <span className="absolute" style={{ top: 20 }}>
+            {lastName}
+          </span>
         </h2>
         <div className="flex model__main content-padding">
           <div
@@ -125,15 +127,15 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
               )}
             </div>
           </div>
-          <div>
+          <div style={{ display: "flex", justifyContent: "center" }}>
             <img
               src={image.url}
               alt={image.alt}
               style={{
                 marginBottom: 0,
                 objectFit: "contain",
-                height: "100%",
-                width: "100%",
+                height: "auto",
+                width: "75%",
               }}
             />
           </div>
@@ -147,7 +149,7 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
                 style={{ marginBottom: 5 }}
                 onClick={() => {
                   setImage({ title, name, url, alt })
-                  window.scrollTo(0, 0)
+                  window.scrollTo(0, 200)
                 }}
                 key={index}
               >

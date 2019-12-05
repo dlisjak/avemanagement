@@ -1,10 +1,10 @@
 import React from "react"
 
 const TickerText = ({ title, toggleMenu }) => {
-  let data = ""
+  let data = " "
 
   for (let i = 0; i < 50; i++) {
-    data += `${title} `
+    data += ` ${title} `
   }
 
   if (title === "MENU") {
@@ -21,10 +21,15 @@ const TickerText = ({ title, toggleMenu }) => {
     )
   } else {
     return (
-      <div className="ticker flex width-100" style={{ fontWeight: 700 }}>
+      <div
+        className="ticker__page ticker flex width-100"
+        style={{ fontWeight: 700 }}
+      >
         <div id="tickerwrap">
-          <div id="ticker">{data}</div>
-          <div id="ticker2">{data}</div>
+          <div id="tickerReverse" style={{ marginRight: 5 }}>
+            {data}
+          </div>
+          <div id="ticker2Reverse">{data}</div>
         </div>
       </div>
     )

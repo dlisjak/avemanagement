@@ -88,6 +88,13 @@
 }
 
 @media only screen and (min-width: 480px) {
+  .header__menu--desktop {
+    padding-top: 15px;
+  }
+  .layout-main {
+    width: 80%;
+    max-width: 960px;
+  }
   .search-queries {
     width: 50%;
   }
@@ -106,7 +113,7 @@
   .contact-label {
     display: flex;
     align-items: flex-end;
-    width: 350px;
+    min-width: 250px;
     font-weight: bold;
   }
   .contact-error {
@@ -146,12 +153,19 @@
     min-width: 250px;
   }
 
+  .model {
+    margin-top: 50px;
+  }
+  .model-name {
+    position: relative;
+  }
   .model__menu {
     flex-direction: column;
   }
 
   .model__main-container {
     width: 30%;
+    padding-top: 10px;
   }
 
   .category-card {
@@ -177,7 +191,9 @@
 .contact-input {
   font-weight: 700;
 }
-
+.contact-input--date {
+  text-transform: inherit;
+}
 .contact-input--date::-webkit-input-placeholder {
   font-weight: 700;
   color: black;
@@ -215,6 +231,11 @@
   padding-left: 100%;
 }
 
+.ticker__page #tickerwrap {
+  padding-right: 100%;
+  padding-left: 0;
+}
+
 #ticker {
   display: inline-block;
   white-space: nowrap;
@@ -243,6 +264,33 @@
   animation-duration: 27s;
 }
 
+#tickerReverse {
+  display: inline-block;
+  white-space: nowrap;
+  padding-right: 100%;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-name: customtickerReverse;
+  animation-name: customtickerReverse;
+  -webkit-animation-duration: 27s;
+  animation-duration: 27s;
+}
+#ticker2Reverse {
+  display: inline-block;
+  white-space: nowrap;
+  padding-right: 100%;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-name: customtickerReverse;
+  animation-name: customtickerReverse;
+  -webkit-animation-duration: 27s;
+  animation-duration: 27s;
+}
+
 @keyframes customticker {
   0% {
     -webkit-transform: translate3d(-50%, 0, 0);
@@ -264,6 +312,18 @@
   100% {
     -webkit-transform: translate3d(100%, 0, 0);
     transform: translate3d(100%, 0, 0);
+  }
+}
+
+@keyframes customtickerReverse {
+  0% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+    visibility: visible;
   }
 }
 
@@ -382,12 +442,12 @@ header .flex > :first-child {
 }
 
 .category-card-title {
-  font-size: 16px;
+  font-size: 18px;
   color: black;
 }
 
 .category-card-image {
-  max-height: 350px;
+  max-height: 300px;
   height: 100%;
   width: 100%;
   object-fit: cover;
