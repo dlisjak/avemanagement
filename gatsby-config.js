@@ -13,8 +13,6 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -81,6 +79,7 @@ module.exports = {
           "**/categories",
           "**/tags",
           "**/posts",
+          "**/media",
           "**/pages",
           "**/taxonomies",
           "**/users",
@@ -100,25 +99,7 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: "gatsby-source-graphql",
-      options: {
-        // Arbitrary name for the remote schema Query type
-        typeName: "WPGQL",
-        // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
-        fieldName: "wpgql",
-        // Url to query from
-        url: "http://avemanagement1.eu/graphql",
-      },
-    },
-    {
-      resolve: "gatsby-wpgraphql-inline-images",
-      options: {
-        wordPressUrl: "http://avemanagement1.eu/",
-        uploadsUrl: "http://avemanagement1.eu/wp-content/uploads/",
-        processPostTypes: ["Post", "News"],
-        graphqlTypeName: "WPGraphQL",
-      },
-    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
   ],
 }

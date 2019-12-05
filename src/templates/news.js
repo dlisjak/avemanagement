@@ -1,8 +1,12 @@
 import React from "react"
+import SmoothImage from 'react-smooth-image';
+import { graphql } from "gatsby"
+import Img from "gatsby-image"
 import Layout from "../components/layout"
 import Ticker from "../components/Ticker"
 
-const News = ({ pageContext }) => {
+const News = ({ pageContext, data }) => {
+  console.log(pageContext, data)
   const formatContent = content => {
     const splitContent = content.split("<p>")
     const lastContent = splitContent.length
@@ -14,8 +18,6 @@ const News = ({ pageContext }) => {
     content = content.join(" ")
     return content
   }
-
-  console.log(pageContext)
 
   return (
     <Layout>
@@ -31,10 +33,12 @@ const News = ({ pageContext }) => {
             __html: formatContent(pageContext.content),
           }}
         />
-        <img
+        <Img
           className="news-card__image"
+          fluid={pageContext.acf.news_post_image.localFile.childImageSharp.fluid}
           alt={pageContext.acf.news_post_image.title}
-          src={pageContext.acf.news_post_image.url}
+          transitionTime={0.5}
+          containerStyles={{ paddingBottom: "130%" }}
           height={pageContext.acf.news_post_image.height}
           width={pageContext.acf.news_post_image.width}
         />
@@ -42,5 +46,27 @@ const News = ({ pageContext }) => {
     </Layout>
   )
 }
+
+export const query = graphql`
+query SingleNews($slug: String) {
+  wordpressWpNews(slug: {eq: $slug}) {
+    ACF {
+      news_post_image {
+        localFile {
+          childImageSharp {
+            fluid {
+              src
+            }
+          }
+        }
+        slug
+        title
+      }
+      video
+    }
+  }
+}
+
+`
 
 export default News

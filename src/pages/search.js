@@ -53,7 +53,7 @@ const Search = ({ data }) => {
             )
           }
           if (genderQuery) {
-            if (genderQuery !== node.acf.gender) return
+            if (genderQuery !== node.acf.gender) return null
           }
           return (
             <Link

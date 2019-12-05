@@ -1,10 +1,12 @@
 import React from "react"
 import Layout from "../components/layout"
 import { graphql, Link } from "gatsby"
+import Img from "gatsby-image"
+import SmoothImage from "react-smooth-image"
 import Ticker from "../components/Ticker"
 
-const Category = props => {
-  const title = props.pageContext.title.toUpperCase()
+const Category = ({ data, pageContext }) => {
+  const title = pageContext.title.toUpperCase()
   return (
     <Layout>
       <Ticker title={title} />
@@ -26,7 +28,7 @@ const Category = props => {
         className="flex flex-wrap category-cards relative"
         style={{ marginTop: 75, marginBottom: 75 }}
       >
-        {props.data.allWordpressPost.edges.map(
+        {data.allWordpressPost.edges.map(
           (
             {
               node: {
@@ -73,9 +75,13 @@ export const query = graphql`
           title
           acf {
             featured_image {
-              alt
-              title
-              url
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 500) {
+                    ...GatsbyImageSharpFluid_withWebp
+                  }
+                }
+              }
             }
             first_name
             last_name

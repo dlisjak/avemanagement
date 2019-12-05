@@ -10,16 +10,22 @@ const ImageUpload = ({ title, order, isMobile, text }) => {
     dispatch({ type: title, payload: e.target.files[0] })
   }
 
+  const removeImage = () => {
+    setFile(null);
+  }
+
   return (
+    <>
     <div
       className="flex flex-column justify-center align-center contact-image-upload relative"
       style={{
         width: !isMobile ? `calc(25% - 8px)` : `calc(50% - 7.5px)`,
         height: !isMobile ? 350 : 250,
+        marginBottom: file ? 25 : 0,
       }}
     >
       <div
-        className="flex flex-column align-center"
+        className="flex flex-column align-center absolute"
         style={{ cursor: "pointer" }}
       >
         <span style={{}}>{text}</span>
@@ -36,12 +42,18 @@ const ImageUpload = ({ title, order, isMobile, text }) => {
       {file && (
         <img
           className="contact-image-upload--image"
-          alt={`Your ${title}`}
           src={file}
+          alt={`Your ${title}`}
+          transitionTime={0.5}
+          containerStyles={{ paddingBottom: "130%" }}
           style={{ zIndex: 99 }}
         />
       )}
-    </div>
+      {file && (
+        <button className="absolute" style={{ margin: 10, border: 0, background: 0, textTransform: "uppercase", bottom: -30, fontSize: 13 }} onClick={() => removeImage()}>Remove image</button>
+      )}
+      </div>
+    </>
   )
 }
 
