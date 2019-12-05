@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { Link } from "gatsby"
 import Img from "gatsby-image"
-import SmoothImage from 'react-smooth-image';
+import SmoothImage from "react-smooth-image"
 
 import Layout from "../components/layout"
 import Ticker from "../components/Ticker"
@@ -121,19 +121,13 @@ export const query = graphql`
           content
           acf {
             news_post_image {
-              localFile {
-                childImageSharp {
-                  fluid(maxWidth: 500) {
-                    ...GatsbyImageSharpFluid_withWebp
-                  }
-                }
-              }
+              title
+              url
             }
           }
         }
       }
     }
   }
-
 `
 export default NewsPage

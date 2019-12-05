@@ -19,7 +19,7 @@ const News = () => {
                   acf {
                     news_post_image {
                       title
-                      source_url
+                      url
                     }
                   }
                 }

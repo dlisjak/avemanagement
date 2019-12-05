@@ -1,7 +1,6 @@
 import React from "react"
 import Layout from "../components/layout"
 import { graphql, Link } from "gatsby"
-import Img from "gatsby-image"
 import SmoothImage from "react-smooth-image"
 import Ticker from "../components/Ticker"
 
@@ -44,12 +43,17 @@ const Category = ({ data, pageContext }) => {
               className="flex flex-column justify-between category-card"
               key={index}
             >
-              <img
+              <SmoothImage
                 className="category-card-image"
                 src={featured_image.url}
                 alt={featured_image.alt}
                 title={featured_image.title}
                 style={{ marginBottom: 0 }}
+                imageStyles={{
+                  objectFit: "cover",
+                  height: "100%",
+                  width: "100%",
+                }}
               />
               <h3 className="category-card-title flex flex-wrap width-100 relative">
                 <span className="width-100">{first_name}</span>
@@ -75,13 +79,9 @@ export const query = graphql`
           title
           acf {
             featured_image {
-              localFile {
-                childImageSharp {
-                  fluid(maxWidth: 500) {
-                    ...GatsbyImageSharpFluid_withWebp
-                  }
-                }
-              }
+              alt
+              title
+              url
             }
             first_name
             last_name

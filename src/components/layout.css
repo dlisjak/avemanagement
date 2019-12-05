@@ -3,7 +3,7 @@
     padding: 0 5px;
   }
   .news-card-image {
-    height: 150px
+    height: 150px;
   }
   .search-queries {
     align-items: flex-start;
@@ -42,7 +42,7 @@
     min-width: 150px;
   }
   .grid {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
   }
   .news-card__image {
     width: 100%;
@@ -129,24 +129,22 @@
 }
 
 @media only screen and (min-width: 480px) {
-<<<<<<< HEAD
   .header__menu--desktop {
     padding-top: 15px;
   }
   .layout-main {
     width: 80%;
     max-width: 960px;
-=======
+  }
   .model {
     margin-top: 50px;
->>>>>>> 669e553d34221d21ba268845e686050f007ab1bc
   }
   .search-queries {
     width: 50%;
   }
   .news-card-image {
     min-width: 250px;
-    height: 333px
+    height: 333px;
   }
   .search-queries button {
     background: 0;
@@ -235,8 +233,11 @@
 
   .category-card {
     width: calc(25% - 4px);
-    margin: 2.5px 2.5px;
+    margin: 2.5px 2.5px 20px 2.5px;
     text-decoration: none;
+  }
+  .category-card > div {
+    padding-bottom: 130% !important;
   }
   .category-card:first-child {
     margin-left: 0;
@@ -254,11 +255,9 @@
 .contact-input {
   font-weight: 700;
 }
-<<<<<<< HEAD
 .contact-input--date {
   text-transform: inherit;
 }
-=======
 .contact-error {
   color: red;
   position: absolute;
@@ -267,7 +266,6 @@
   font-weight: 700;
 }
 
->>>>>>> 669e553d34221d21ba268845e686050f007ab1bc
 .contact-input--date::-webkit-input-placeholder {
   font-weight: 700;
   color: black;
@@ -432,7 +430,6 @@ header .flex > :first-child {
   background: 0;
 }
 
-
 .pagination-item {
   text-decoration: none;
   color: black;
@@ -503,12 +500,8 @@ header .flex > :first-child {
 }
 
 .category-card-title {
-<<<<<<< HEAD
   font-size: 18px;
-=======
   margin-bottom: 0;
-  font-size: 16px;
->>>>>>> 669e553d34221d21ba268845e686050f007ab1bc
   color: black;
 }
 
