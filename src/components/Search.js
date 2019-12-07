@@ -3,9 +3,14 @@ import { Link } from "gatsby"
 
 import TickerText from "./Ticker"
 
-const Search = ({ isShown, models }) => {
+const Search = ({ isShown, models, title }) => {
   const data = []
   const [genderQuery, setGender] = useState(null)
+
+  console.log({ models })
+  models.sort((a, b) =>
+    a.node.acf.first_name.localeCompare(b.node.acf.first_name)
+  )
 
   const setSearchGender = (e, gender) => {
     setGender(gender)
@@ -27,18 +32,22 @@ const Search = ({ isShown, models }) => {
         >
           ALL
         </button>
-        <button
-          onClick={e => setSearchGender(e, "male")}
-          style={{ fontWeight: genderQuery === "male" ? 700 : 400 }}
-        >
-          MEN
-        </button>
-        <button
-          onClick={e => setSearchGender(e, "female")}
-          style={{ fontWeight: genderQuery === "female" ? 700 : 400 }}
-        >
-          WOMEN
-        </button>
+        {models.some(model => model.node.acf.gender === "male") && (
+          <button
+            onClick={e => setSearchGender(e, "male")}
+            style={{ fontWeight: genderQuery === "male" ? 700 : 400 }}
+          >
+            MEN
+          </button>
+        )}
+        {models.some(model => model.node.acf.gender === "female") && (
+          <button
+            onClick={e => setSearchGender(e, "female")}
+            style={{ fontWeight: genderQuery === "female" ? 700 : 400 }}
+          >
+            WOMEN
+          </button>
+        )}
       </div>
       <div
         className="flex flex-column search-queries"

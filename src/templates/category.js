@@ -10,13 +10,16 @@ const Category = ({ data, pageContext }) => {
   const title = pageContext.title.toUpperCase()
 
   const openSearch = () => {
-    console.log("search open")
     toggleSearch(!searchOpen)
   }
 
   return (
     <Layout>
-      <Search models={data.allWordpressPost.edges} isShown={searchOpen} />
+      <Search
+        models={data.allWordpressPost.edges}
+        isShown={searchOpen}
+        title={title}
+      />
       <Ticker title={title} />
       <button
         className="category-search--desktop"
@@ -107,6 +110,7 @@ export const query = graphql`
             }
             first_name
             last_name
+            gender
           }
         }
       }
