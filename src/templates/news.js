@@ -6,7 +6,6 @@ import Layout from "../components/layout"
 import Ticker from "../components/Ticker"
 
 const News = ({ pageContext, data }) => {
-  console.log(pageContext, data)
   const formatContent = content => {
     const splitContent = content.split("<p>")
     const lastContent = splitContent.length

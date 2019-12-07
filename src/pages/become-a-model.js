@@ -14,7 +14,6 @@ const BecomeAModel = () => {
   window.addEventListener("resize", checkIfMobile)
 
   const checkIfMobile = () => {
-    console.log(isMobile)
     const a = window.innerWidth < 1015
     toggleIsMobile(a)
   }

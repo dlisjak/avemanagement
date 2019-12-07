@@ -201,12 +201,6 @@
     width: 30%;
     padding-top: 10px;
   }
-
-  .category-card {
-    width: calc(25% - 4px);
-    margin: 2.5px 2.5px 20px 2.5px;
-    text-decoration: none;
-  }
   .category-card > div {
     padding-bottom: 130% !important;
   }
@@ -232,6 +226,11 @@
   .contact-body-text {
     width: 100%;
   }
+
+  .model__name {
+    margin-bottom: 20px;
+  }
+
   .contact-error {
     font-size: 12px;
   }
@@ -258,6 +257,7 @@
   .category-card {
     text-decoration: none;
     width: calc(50% - 7.5px);
+    margin: 2.5px 0;
   }
   .category-card:first-child {
     margin-right: 2.5px;
@@ -290,6 +290,41 @@
   }
   .contact-image-upload:nth-child(4) {
     margin-left: 5px;
+  }
+  .category-card {
+    text-decoration: none;
+    width: calc(25% - 7.5px);
+    margin: 2.5px 0;
+  }
+  .category-card:first-child {
+    margin-right: 2.5px;
+  }
+  .category-card:nth-child(2) {
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+  }
+  .category-card:nth-child(3) {
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+  }
+  .category-card:nth-child(4) {
+    margin-left: 2.5px;
+    margin-right: 0;
+  }
+  .category-card:nth-child(4n + 1) {
+    margin-left: 0;
+    margin-right: 2.5px;
+  }
+  .category-card:nth-child(4n + 2) {
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+  }
+  .category-card:nth-child(4n + 3) {
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+  }
+  .category-card:nth-child(4n) {
+    margin-left: 2.5px;
   }
 }
 

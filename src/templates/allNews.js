@@ -9,7 +9,6 @@ import Ticker from "../components/Ticker"
 const NewsPage = ({ data, pageContext }) => {
   const { currentPage, numOfPages } = pageContext
   let Colcade
-  console.log(data)
 
   useEffect(() => {
     // componentDidMount
