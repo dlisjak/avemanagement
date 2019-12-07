@@ -16,10 +16,7 @@ const Category = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <Search
-        models={data.allWordpressPost}
-        style={{ display: searchOpen ? "block" : "none" }}
-      />
+      <Search models={data.allWordpressPost.edges} isShown={searchOpen} />
       <Ticker title={title} />
       <button
         className="category-search--desktop"

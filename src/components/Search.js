@@ -1,11 +1,9 @@
 import React, { useState } from "react"
-import Layout from "./layout"
 import { Link } from "gatsby"
 
 import TickerText from "./Ticker"
 
-const Search = props => {
-  console.log(props)
+const Search = ({ isShown, models }) => {
   const data = []
   const [genderQuery, setGender] = useState(null)
 
@@ -14,7 +12,10 @@ const Search = props => {
   }
 
   return (
-    <Layout>
+    <div
+      className="flex flex-column search-overlay"
+      style={{ display: isShown ? "block" : "none" }}
+    >
       <TickerText title="SEARCH" />
       <div
         className="flex flex-column search-queries"
@@ -43,7 +44,7 @@ const Search = props => {
         className="flex flex-column search-queries"
         style={{ paddingTop: 50, paddingBottom: 25 }}
       >
-        {data.allModel.edges.map(({ node }, index, arr) => {
+        {models.map(({ node }, index, arr) => {
           if (index === 0 || node.title[0] !== arr[index - 1].node.title[0]) {
             return (
               <span
@@ -72,7 +73,7 @@ const Search = props => {
           )
         })}
       </div>
-    </Layout>
+    </div>
   )
 }
 
