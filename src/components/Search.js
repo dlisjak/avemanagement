@@ -47,12 +47,25 @@ const Search = ({ isShown, models }) => {
         {models.map(({ node }, index, arr) => {
           if (index === 0 || node.title[0] !== arr[index - 1].node.title[0]) {
             return (
-              <span
-                style={{ marginTop: 20, marginBottom: 5, fontWeight: 700 }}
-                key={index}
-              >
-                {arr[index].node.title[0]}
-              </span>
+              <>
+                <span
+                  style={{ marginTop: 20, marginBottom: 5, fontWeight: 700 }}
+                  key={index}
+                >
+                  {arr[index].node.title[0]}
+                </span>
+                <Link
+                  to={`/${node.slug}`}
+                  style={{
+                    textDecoration: "none",
+                    color: "black",
+                    lineHeight: 1.8,
+                  }}
+                  key={`model-${index}`}
+                >
+                  {node.title.toUpperCase()}
+                </Link>
+              </>
             )
           }
           if (genderQuery) {
