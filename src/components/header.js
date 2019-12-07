@@ -20,7 +20,9 @@ const Header = ({ data }) => {
       setChildItems(item.child_items)
     }
 
-    window.addEventListener("resize", checkIfMobile)
+    if (typeof window !== "undefined") {
+      window.addEventListener("resize", checkIfMobile)
+    }
 
     // componentDidMount
     const getPath = () => {

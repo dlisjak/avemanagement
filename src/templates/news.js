@@ -1,7 +1,6 @@
 import React from "react"
 import SmoothImage from "react-smooth-image"
 import { graphql } from "gatsby"
-import Img from "gatsby-image"
 import Layout from "../components/layout"
 import Ticker from "../components/Ticker"
 

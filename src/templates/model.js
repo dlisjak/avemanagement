@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import SmoothImage from 'react-smooth-image';
+import SmoothImage from "react-smooth-image"
 import Layout from "../components/layout"
 
 const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
@@ -147,13 +147,13 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
             acf.portfolio &&
             acf.portfolio.map(({ title, name, url, alt = "" }, index) => (
               <div
+                role="button"
                 className="flex-column justify-between category-card"
-                style={{ marginBottom: 2.5 }}
                 onClick={() => {
                   setImage({ title, name, url, alt })
                   window.scrollTo(0, 200)
                 }}
-                style={{ cursor: "pointer" }}
+                style={{ cursor: "pointer", marginBottom: 2.5 }}
                 key={index}
               >
                 <SmoothImage

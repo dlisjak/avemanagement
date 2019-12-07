@@ -60,9 +60,7 @@ const Layout = ({ children }) => {
         <Header data={data} />
         <main style={{ width: "100%", position: "relative" }}>{children}</main>
         {isMobile && <GetToTop />}
-        <footer className="flex justify-center width-100">
-          <span>© AVEMANAGEMENT {new Date().getFullYear()}</span>
-        </footer>
+        <footer className="flex justify-center width-100"></footer>
       </div>
     </>
   )

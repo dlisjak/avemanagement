@@ -1,6 +1,5 @@
 import React, { useEffect } from "react"
 import { Link } from "gatsby"
-import Img from "gatsby-image"
 import SmoothImage from "react-smooth-image"
 
 import Layout from "../components/layout"

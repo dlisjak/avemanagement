@@ -1,17 +1,29 @@
-import React from "react"
+import React, { useState } from "react"
 import Layout from "../components/layout"
 import { graphql, Link } from "gatsby"
 import SmoothImage from "react-smooth-image"
 import Ticker from "../components/Ticker"
+import Search from "../components/Search"
 
 const Category = ({ data, pageContext }) => {
+  const [searchOpen, toggleSearch] = useState(false)
   const title = pageContext.title.toUpperCase()
+
+  const openSearch = () => {
+    console.log("search open")
+    toggleSearch(!searchOpen)
+  }
+
   return (
     <Layout>
+      <Search
+        models={data.allWordpressPost}
+        style={{ display: searchOpen ? "block" : "none" }}
+      />
       <Ticker title={title} />
       <button
         className="category-search--desktop"
-        onClick={() => console.log("search")}
+        onClick={() => openSearch()}
         style={{
           position: "absolute",
           right: 0,
@@ -68,7 +80,7 @@ const Category = ({ data, pageContext }) => {
       </div>
       <button
         className="category-search--mobile"
-        onClick={() => console.log("search")}
+        onClick={() => openSearch()}
         style={{
           background: 0,
           border: 0,

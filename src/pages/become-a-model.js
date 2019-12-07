@@ -11,7 +11,9 @@ const BecomeAModel = () => {
   const [isMobile, toggleIsMobile] = useState(false)
   const state = useContext(GlobalStateContext)
 
-  window.addEventListener("resize", checkIfMobile)
+  if (typeof window !== "undefined") {
+    window.addEventListener("resize", checkIfMobile)
+  }
 
   const checkIfMobile = () => {
     const a = window.innerWidth < 1015
