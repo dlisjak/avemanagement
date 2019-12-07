@@ -8,7 +8,7 @@ import ImageUpload from "../components/imageUpload"
 import Ticker from "../components/Ticker"
 
 const BecomeAModel = () => {
-  const [isMobile, toggleIsMobile] = useState(window.innerWidth)
+  const [isMobile, toggleIsMobile] = useState(false)
   const state = useContext(GlobalStateContext)
 
   window.addEventListener("resize", checkIfMobile)

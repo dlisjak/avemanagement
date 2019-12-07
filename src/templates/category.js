@@ -10,6 +10,7 @@ const Category = ({ data, pageContext }) => {
     <Layout>
       <Ticker title={title} />
       <button
+        className="category-search--desktop"
         onClick={() => console.log("search")}
         style={{
           position: "absolute",
@@ -65,6 +66,18 @@ const Category = ({ data, pageContext }) => {
           )
         )}
       </div>
+      <button
+        className="category-search--mobile"
+        onClick={() => console.log("search")}
+        style={{
+          background: 0,
+          border: 0,
+          fontWeight: 700,
+          padding: 0,
+        }}
+      >
+        SEARCH
+      </button>
     </Layout>
   )
 }
