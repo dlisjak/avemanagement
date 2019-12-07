@@ -1,13 +1,39 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 
 import TickerText from "./Ticker"
+import GetToTop from "./getToTop"
 
-const Search = ({ isShown, models, title }) => {
+const Search = ({ isShown, models, closeSearch }) => {
+  const [isOpen, toggleOverlay] = useState(true)
+
+  useEffect(() => {
+    const openOverlay = () => {
+      const el = document.querySelector("body")
+      el.classList.add("overlay")
+    }
+    openOverlay()
+
+    return () => {
+      const el = document.querySelector("body")
+      el.classList.remove("overlay")
+    }
+  }, [])
+
+  const closeOverlay = () => {
+    closeSearch()
+  }
+
+  const scrollToTopSearch = () => {
+    const el = document.querySelector(".search-overlay")
+    el.scrollTop = 0
+  }
+
   let sortedModels = models.map(model => model)
   sortedModels = sortedModels.sort((a, b) =>
     a.node.acf.first_name.localeCompare(b.node.acf.first_name)
   )
+
   const [genderQuery, setGender] = useState(null)
 
   const setSearchGender = (e, gender) => {
@@ -18,7 +44,7 @@ const Search = ({ isShown, models, title }) => {
     <div
       className="flex flex-column search-overlay"
       style={{
-        display: isShown ? "block" : "none",
+        display: isShown && isOpen ? "block" : "none",
         position: "fixed",
         zIndex: 999,
         background: "white",
@@ -58,7 +84,7 @@ const Search = ({ isShown, models, title }) => {
       </div>
       <div
         className="flex flex-column search-queries"
-        style={{ paddingTop: 50, paddingBottom: 25 }}
+        style={{ paddingTop: 50, paddingBottom: 50, marginBottom: 150 }}
       >
         {sortedModels.map(({ node }, index, arr) => {
           if (index === 0 || node.title[0] !== arr[index - 1].node.title[0]) {
@@ -100,6 +126,27 @@ const Search = ({ isShown, models, title }) => {
             </Link>
           )
         })}
+      </div>
+      <div
+        className="flex"
+        style={{
+          position: "fixed",
+          bottom: 0,
+          padding: 10,
+          background: "white",
+          width: "80%",
+          justifyContent: "spaceBetween",
+        }}
+      >
+        <button
+          onClick={() => closeOverlay()}
+          style={{ background: 0, border: 0, fontWeight: 700 }}
+        >
+          BACK
+        </button>
+        <div className="flex justify-end width-100">
+          <i className="up-arrow" onClick={() => scrollToTopSearch()} />
+        </div>
       </div>
     </div>
   )

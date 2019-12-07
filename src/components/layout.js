@@ -55,6 +55,7 @@ const Layout = ({ children }) => {
           flexWrap: "wrap",
           margin: `0 auto`,
           paddingTop: 0,
+          marginBottom: 100,
         }}
       >
         <Header data={data} />

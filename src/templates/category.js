@@ -10,31 +10,23 @@ const Category = ({ data, pageContext }) => {
   const title = pageContext.title.toUpperCase()
 
   const openSearch = () => {
-    if (searchOpen) {
-      overlayClose()
-    } else {
-      overlayOpen()
-    }
     toggleSearch(!searchOpen)
   }
 
-  const overlayOpen = () => {
-    const el = document.querySelector("body")
-    el.classList.add("overlay")
-  }
-
-  const overlayClose = () => {
-    const el = document.querySelector("body")
-    el.classList.remove("overlay")
+  const closeSearch = () => {
+    toggleSearch(false)
   }
 
   return (
     <Layout>
-      <Search
-        models={data.allWordpressPost.edges}
-        isShown={searchOpen}
-        title={title}
-      />
+      {searchOpen && (
+        <Search
+          models={data.allWordpressPost.edges}
+          isShown={searchOpen}
+          title={title}
+          closeSearch={closeSearch}
+        />
+      )}
       <Ticker title={title} />
       <button
         className="category-search--desktop"
@@ -98,7 +90,6 @@ const Category = ({ data, pageContext }) => {
         className="category-search--mobile"
         onClick={() => {
           openSearch()
-          overlayOpen()
         }}
         style={{
           background: 0,
