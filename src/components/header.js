@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
+import posed from "react-pose"
 
 import Logo from "../images/logo.png"
 
 import Ticker from "./Ticker"
 import NavigationItem from "./NavigationItem"
 
+const NavBar = posed.header({
+  isVisible: {},
+})
+
 const Header = ({ data }) => {
   const [isMobile, toggleIsMobile] = useState(false)
-  const [isVisible, setVisibleMenu] = useState(true)
+  const [isVisible, setVisibleMenu] = useState(false)
   const [selectedItem, setSelectedItem] = useState({})
   const [childItems, setChildItems] = useState([])
 
   useEffect(() => {
     const setUpNav = item => {
-      setVisibleMenu(true)
       setSelectedItem(item)
       setActiveMenuItemClass(item)
       setChildItems(item.child_items)
@@ -80,7 +84,16 @@ const Header = ({ data }) => {
   }
 
   return (
-    <>
+    <div
+      className="header-fixed-container flex-column"
+      style={{
+        position: "fixed",
+        maxWidth: 960,
+        display: "block",
+        zIndex: 999999,
+        background: "white",
+      }}
+    >
       <Link to="/">
         <img
           src={Logo}
@@ -159,7 +172,7 @@ const Header = ({ data }) => {
           </div>
         </header>
       </div>
-    </>
+    </div>
   )
 }
 

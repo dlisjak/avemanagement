@@ -28,22 +28,25 @@ const Category = ({ data, pageContext }) => {
         />
       )}
       <Ticker title={title} />
-      <button
-        className="category-search--desktop"
-        onClick={() => openSearch()}
-        style={{
-          position: "absolute",
-          right: 0,
-          top: 70,
-          background: 0,
-          border: 0,
-          fontWeight: 700,
-          padding: 0,
-          zIndex: 9999,
-        }}
-      >
-        SEARCH
-      </button>
+      {!searchOpen && (
+        <button
+          className="category-search--desktop"
+          onClick={() => openSearch()}
+          style={{
+            position: "absolute",
+            right: 0,
+            top: 70,
+            background: 0,
+            border: 0,
+            fontWeight: 700,
+            padding: 0,
+            zIndex: 9999,
+          }}
+        >
+          SEARCH
+        </button>
+      )}
+
       <div
         className="flex flex-wrap category-cards relative"
         style={{ marginTop: 75, marginBottom: 75 }}
@@ -86,21 +89,23 @@ const Category = ({ data, pageContext }) => {
           )
         )}
       </div>
-      <button
-        className="category-search--mobile"
-        onClick={() => {
-          openSearch()
-        }}
-        style={{
-          background: 0,
-          border: 0,
-          fontWeight: 700,
-          padding: 0,
-          zIndex: 9999,
-        }}
-      >
-        SEARCH
-      </button>
+      {!searchOpen && (
+        <button
+          className="category-search--mobile"
+          onClick={() => {
+            openSearch()
+          }}
+          style={{
+            background: 0,
+            border: 0,
+            fontWeight: 700,
+            padding: 0,
+            zIndex: 9999,
+          }}
+        >
+          SEARCH
+        </button>
+      )}
     </Layout>
   )
 }

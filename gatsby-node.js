@@ -139,6 +139,8 @@ exports.createPages = async ({ graphql, actions }) => {
                 description
                 alt
                 name
+                height
+                width
               }
               polaroids {
                 url

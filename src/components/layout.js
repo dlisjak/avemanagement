@@ -59,7 +59,9 @@ const Layout = ({ children }) => {
         }}
       >
         <Header data={data} />
-        <main style={{ width: "100%", position: "relative" }}>{children}</main>
+        <main style={{ width: "100%", position: "relative", marginTop: 102 }}>
+          {children}
+        </main>
         {isMobile && <GetToTop />}
         <footer className="flex justify-center width-100"></footer>
       </div>

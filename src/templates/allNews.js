@@ -47,28 +47,33 @@ const NewsPage = ({ data, pageContext }) => {
         <div className="grid-col grid-col--4"></div>
 
         {data.allWordpressWpNews.edges.map(
-          ({ node: { title, content, slug, acf } }, index) => (
-            <div
-              style={{ marginTop: 10 }}
-              className="grid-item news-card"
-              key={index}
-            >
-              <Link to={`/news/${slug}`} style={{ textDecoration: "none" }}>
-                <SmoothImage
-                  src={acf.news_post_image.url}
-                  alt={title}
-                  transitionTime={0.5}
-                  containerStyles={{ paddingBottom: "130%" }}
-                  style={{ marginBottom: 0 }}
-                />
-                <div
-                  style={{ textDecoration: "none", color: "black" }}
-                  className="news-card-title"
-                  dangerouslySetInnerHTML={{ __html: formatContent(content) }}
-                />
-              </Link>
-            </div>
-          )
+          ({ node: { title, content, slug, acf } }, index) => {
+            const ratio = acf.news_post_image.height / acf.news_post_image.width
+            return (
+              <div
+                style={{ marginTop: 10 }}
+                className="grid-item news-card"
+                key={index}
+              >
+                <Link to={`/news/${slug}`} style={{ textDecoration: "none" }}>
+                  <SmoothImage
+                    src={acf.news_post_image.url}
+                    alt={title}
+                    transitionTime={0.5}
+                    containerStyles={{
+                      paddingBottom: `${ratio * 100}%`,
+                    }}
+                    style={{ marginBottom: 0 }}
+                  />
+                  <div
+                    style={{ textDecoration: "none", color: "black" }}
+                    className="news-card-title"
+                    dangerouslySetInnerHTML={{ __html: formatContent(content) }}
+                  />
+                </Link>
+              </div>
+            )
+          }
         )}
       </div>
       <div
@@ -121,6 +126,8 @@ export const query = graphql`
             news_post_image {
               title
               url
+              width
+              height
             }
           }
         }

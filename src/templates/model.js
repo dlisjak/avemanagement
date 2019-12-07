@@ -1,10 +1,27 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import SmoothImage from "react-smooth-image"
 import Layout from "../components/layout"
 
 const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
   const [image, setImage] = useState(acf.featuredImage)
   const [tab, setTab] = useState("portfolio")
+  let Colcade
+
+  useEffect(() => {
+    // componentDidMount
+    const initGrid = async () => {
+      const grid = document.querySelector(".grid")
+      if (typeof window !== "undefined") {
+        Colcade = require("colcade")
+        const colc = new Colcade(grid, {
+          columns: ".grid-col",
+          items: ".grid-item",
+        })
+      }
+    }
+
+    initGrid()
+  }, [])
 
   return (
     <Layout>
@@ -128,7 +145,13 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
               )}
             </div>
           </div>
-          <div style={{ display: "flex", justifyContent: "center" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              width: "100%",
+            }}
+          >
             <img
               src={image.url}
               alt={image.alt}
@@ -137,38 +160,54 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
                 marginBottom: 0,
                 objectFit: "contain",
                 height: "auto",
-                width: "75%",
+                maxHeight: 600,
               }}
             />
           </div>
         </div>
-        <div id="content" className="flex flex-wrap" style={{ marginTop: 10 }}>
-          {tab === "portfolio" &&
-            acf.portfolio &&
-            acf.portfolio.map(({ title, name, url, alt = "" }, index) => (
-              <div
-                role="button"
-                className="flex-column justify-between category-card"
-                onClick={() => {
-                  setImage({ title, name, url, alt })
-                  window.scrollTo(0, 200)
-                }}
-                style={{ cursor: "pointer", marginBottom: 2.5 }}
-                key={index}
-              >
-                <SmoothImage
-                  src={url}
-                  alt={alt}
-                  className="model-portfolio-image"
-                  transitionTime={0.5}
-                  containerStyles={{ paddingBottom: "130%" }}
-                  imageStyles={{ height: "100%", objectFit: "cover" }}
-                  title={title}
-                  name={name}
-                />
-              </div>
-            ))}
 
+        <div
+          id="content"
+          className="flex flex-wrap grid"
+          style={{ marginTop: 10 }}
+        >
+          {tab === "portfolio" && (
+            <>
+              <div className="grid-col grid-col--1"></div>
+              <div className="grid-col grid-col--2"></div>
+              <div className="grid-col grid-col--3"></div>
+              <div className="grid-col grid-col--4"></div>
+              {acf.portfolio &&
+                acf.portfolio.map(
+                  ({ title, name, url, alt = "", height, width }, index) => {
+                    const ratio = height / width
+                    return (
+                      <div
+                        role="button"
+                        className="flex-column justify-between grid-item"
+                        onClick={() => {
+                          setImage({ title, name, url, alt })
+                          window.scrollTo(0, 200)
+                        }}
+                        style={{ cursor: "pointer", marginBottom: 5 }}
+                        key={index}
+                      >
+                        <SmoothImage
+                          src={url}
+                          alt={alt}
+                          className="model-portfolio-image"
+                          transitionTime={0.5}
+                          containerStyles={{ paddingBottom: `${ratio * 100}%` }}
+                          imageStyles={{ height: "100%", objectFit: "cover" }}
+                          title={title}
+                          name={name}
+                        />
+                      </div>
+                    )
+                  }
+                )}
+            </>
+          )}
           {tab === "videos" &&
             acf.videos &&
             acf.videos.map(({ video_url }, index) => (
