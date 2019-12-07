@@ -56,8 +56,8 @@ const NewsPage = ({ data, pageContext }) => {
               key={index}
             >
               <Link to={`/news/${slug}`} style={{ textDecoration: "none" }}>
-                <Img
-                  fluid={acf.news_post_image.localFile.childImageSharp.fluid}
+                <SmoothImage
+                  src={acf.news_post_image.url}
                   alt={title}
                   transitionTime={0.5}
                   containerStyles={{ paddingBottom: "130%" }}

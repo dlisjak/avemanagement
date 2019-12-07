@@ -20,6 +20,8 @@ const Header = ({ data }) => {
       setChildItems(item.child_items)
     }
 
+    window.addEventListener("resize", checkIfMobile)
+
     // componentDidMount
     const getPath = () => {
       const selectedItemFromLS = JSON.parse(
@@ -28,12 +30,14 @@ const Header = ({ data }) => {
       if (!selectedItemFromLS) return
       setUpNav(selectedItemFromLS)
     }
-    const checkIfMobile = () => {
-      if (window.innerWidth < 480) toggleIsMobile(true)
-    }
     checkIfMobile()
     getPath()
   }, [])
+
+  const checkIfMobile = () => {
+    const a = window.innerWidth < 1015
+    toggleIsMobile(a)
+  }
 
   const toggleMenu = isVisible => {
     setVisibleMenu(!isVisible)
@@ -112,7 +116,10 @@ const Header = ({ data }) => {
             marginBottom: isVisible ? 20 : 0,
           }}
         >
-          <div className="flex">
+          <div
+            className="flex"
+            style={{ flexDirection: isMobile ? "column" : "row" }}
+          >
             {data.allWordpressMenusMenusItems.edges[0].node.items.map(
               (item, index) => (
                 <div

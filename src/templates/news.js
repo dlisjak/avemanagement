@@ -35,7 +35,7 @@ const News = ({ pageContext, data }) => {
         />
         <SmoothImage
           className="news-card__image"
-          src={pageContext.acf.news_post_image.localFile.childImageSharp.fluid}
+          src={pageContext.acf.news_post_image.url}
           alt={pageContext.acf.news_post_image.title}
           transitionTime={0.5}
           containerStyles={{ paddingBottom: "130%" }}

@@ -8,16 +8,16 @@ import ImageUpload from "../components/imageUpload"
 import Ticker from "../components/Ticker"
 
 const BecomeAModel = () => {
-  const [isMobile, toggleIsMobile] = useState(false)
+  const [isMobile, toggleIsMobile] = useState(window.innerWidth)
   const state = useContext(GlobalStateContext)
 
-  useEffect(() => {
-    // componentDidMount
-    const checkIfMobile = () => {
-      if (window.innerWidth < 480) toggleIsMobile(true)
-    }
-    checkIfMobile()
-  })
+  window.addEventListener("resize", checkIfMobile)
+
+  const checkIfMobile = () => {
+    console.log(isMobile)
+    const a = window.innerWidth < 1015
+    toggleIsMobile(a)
+  }
 
   return (
     <Layout style={{ marginBottom: 50 }}>
@@ -176,7 +176,6 @@ const BecomeAModel = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.dateOfBirth}
-                  style={{ paddingRight: !values.dateOfBirth ? 100 : 0 }}
                 />
                 <ErrorMessage
                   className="contact-error"
@@ -367,7 +366,10 @@ const BecomeAModel = () => {
       </Formik>
       <div
         className="flex flex-column contact-body-text content-padding"
-        style={{ marginTop: 50, marginBottom: 50 }}
+        style={{
+          marginTop: 50,
+          marginBottom: 50,
+        }}
       >
         <h4 style={{ marginBottom: 0 }}>Upload photographs</h4>
         <p>
@@ -433,7 +435,10 @@ const BecomeAModel = () => {
         </div>
       </div>
 
-      <div className="contact-form-submit" style={{ marginTop: 50, marginBottom: 50 }}>
+      <div
+        className="contact-form-submit"
+        style={{ marginTop: 50, marginBottom: 50 }}
+      >
         <label
           tabIndex="0"
           htmlFor="submit-form"

@@ -13,6 +13,8 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -79,7 +81,6 @@ module.exports = {
           "**/categories",
           "**/tags",
           "**/posts",
-          "**/media",
           "**/pages",
           "**/taxonomies",
           "**/users",
@@ -99,7 +100,5 @@ module.exports = {
         },
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
   ],
 }

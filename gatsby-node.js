@@ -55,16 +55,12 @@ exports.createPages = async ({ graphql, actions }) => {
   // query content for WordPress posts
   const homepage = await graphql(`
     {
-      allWordpressPage(filter: {title: {eq: "Home"}}) {
+      allWordpressPage(filter: { title: { eq: "Home" } }) {
         edges {
           node {
             title
             acf {
-              main_video {
-                localFile {
-                  relativePath
-                }
-              }
+              main_video
             }
           }
         }
@@ -211,6 +207,15 @@ exports.createPages = async ({ graphql, actions }) => {
           node {
             title
             slug
+            acf {
+              news_post_image {
+                url
+                title
+                height
+                width
+                name
+              }
+            }
             content
           }
         }
@@ -224,7 +229,9 @@ exports.createPages = async ({ graphql, actions }) => {
       path: `/news/${node.slug}`,
       component: slash(newsTemplate),
       context: {
-        slug: node.slug,
+        title: node.title,
+        acf: node.acf,
+        content: node.content,
       },
     })
   })
