@@ -10,7 +10,22 @@ const Category = ({ data, pageContext }) => {
   const title = pageContext.title.toUpperCase()
 
   const openSearch = () => {
+    if (searchOpen) {
+      overlayClose()
+    } else {
+      overlayOpen()
+    }
     toggleSearch(!searchOpen)
+  }
+
+  const overlayOpen = () => {
+    const el = document.querySelector("body")
+    el.classList.add("overlay")
+  }
+
+  const overlayClose = () => {
+    const el = document.querySelector("body")
+    el.classList.remove("overlay")
   }
 
   return (
@@ -32,6 +47,7 @@ const Category = ({ data, pageContext }) => {
           border: 0,
           fontWeight: 700,
           padding: 0,
+          zIndex: 9999,
         }}
       >
         SEARCH
@@ -80,12 +96,16 @@ const Category = ({ data, pageContext }) => {
       </div>
       <button
         className="category-search--mobile"
-        onClick={() => openSearch()}
+        onClick={() => {
+          openSearch()
+          overlayOpen()
+        }}
         style={{
           background: 0,
           border: 0,
           fontWeight: 700,
           padding: 0,
+          zIndex: 9999,
         }}
       >
         SEARCH
