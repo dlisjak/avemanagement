@@ -28,14 +28,12 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
       <div className="flex model flex-column">
         <h2 className="flex model__name flex-column content-padding relative">
           <span>{firstName}</span>
-          <span className="absolute" style={{ top: 20 }}>
-            {lastName}
-          </span>
+          <span>{lastName}</span>
         </h2>
         <div className="flex model__main content-padding">
           <div
             className="flex model__main-container flex-column"
-            style={{ justifyContent: "space-between" }}
+            style={{ justifyContent: "space-between", fontSize: 24 }}
           >
             <div className="flex model__menu">
               {acf.portfolio && (
@@ -146,9 +144,9 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
             </div>
           </div>
           <div
+            className="model__main--image"
             style={{
               display: "flex",
-              justifyContent: "flex-start",
               width: "100%",
             }}
           >

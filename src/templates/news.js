@@ -36,7 +36,10 @@ const News = ({ pageContext, data }) => {
           src={pageContext.acf.news_post_image.url}
           alt={pageContext.acf.news_post_image.title}
           transitionTime={0.5}
-          containerStyles={{ paddingBottom: "130%" }}
+          containerStyles={{
+            paddingBottom: pageContext.acf.news_post_image.height,
+          }}
+          imageStyles={{ width: "auto", maxHeight: 500 }}
           height={pageContext.acf.news_post_image.height}
           width={pageContext.acf.news_post_image.width}
         />

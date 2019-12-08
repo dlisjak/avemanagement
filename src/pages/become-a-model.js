@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react"
+import React, { useContext, useState } from "react"
 import { Formik, ErrorMessage, Form, Field } from "formik"
 import axios from "axios"
 import { GlobalStateContext } from "../context/GlobalContextProvider"
@@ -8,6 +8,8 @@ import ImageUpload from "../components/imageUpload"
 import Ticker from "../components/Ticker"
 
 const BecomeAModel = () => {
+  const [mobileNum, setMobileNum] = useState("")
+  const [countryCode, setCountryCode] = useState("")
   const [isMobile, toggleIsMobile] = useState(false)
   const state = useContext(GlobalStateContext)
 
@@ -18,6 +20,17 @@ const BecomeAModel = () => {
   const checkIfMobile = () => {
     const a = window.innerWidth < 1015
     toggleIsMobile(a)
+  }
+
+  const handleMobileChange = e => {
+    if (e.target.value.length > 17) return
+    setMobileNum(e.target.value)
+  }
+
+  const handleCountryCodeChange = e => {
+    if (e.target.value.length > 4) return
+
+    setCountryCode(e.target.value)
   }
 
   return (
@@ -54,7 +67,7 @@ const BecomeAModel = () => {
           if (!values.dateOfBirth) {
             errors.dateOfBirth = "Required"
           }
-          if (!values.mobileNumber) {
+          if (!mobileNum) {
             errors.mobileNumber = "Required"
           }
           if (!values.address) {
@@ -74,13 +87,14 @@ const BecomeAModel = () => {
           }
           return errors
         }}
+        setFieldValue={("mobileNumber", handleMobileChange)}
         onSubmit={(values, { setSubmitting }) => {
           const bodyFormData = new FormData()
           bodyFormData.set("firstName", values.firstName)
           bodyFormData.set("lastName", values.lastName)
           bodyFormData.set("email", values.email)
           bodyFormData.set("dateOfBirth", values.dateOfBirth)
-          bodyFormData.set("mobileNumber", values.firstmobileNumberName)
+          bodyFormData.set("mobileNumber", `${countryCode} ${mobileNum}`)
           bodyFormData.set("address", values.address)
           bodyFormData.set("height", values.height)
           bodyFormData.set("age", values.age)
@@ -101,6 +115,7 @@ const BecomeAModel = () => {
       >
         {({
           values,
+          xx,
           handleChange,
           handleBlur,
           /* and other goodies */
@@ -194,19 +209,31 @@ const BecomeAModel = () => {
                 <label className="contact-label" htmlFor="mobileNumber">
                   Mobile
                 </label>
-                <Field
-                  className="contact-input"
-                  type="input"
-                  name="mobileNumber"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.mobileNumber}
-                />
-                <ErrorMessage
-                  className="contact-error"
-                  name="mobileNumber"
-                  component="div"
-                />
+                <div className="flex width-100" style={{ maxWidth: 650 }}>
+                  <input
+                    className="contact-input contact-input--country-code"
+                    type="input"
+                    name="mobileNumber"
+                    placeholder="+65"
+                    onChange={e => handleCountryCodeChange(e)}
+                    onBlur={handleBlur}
+                    value={countryCode}
+                  />
+                  <input
+                    className="contact-input contact-input--mobile"
+                    type="number"
+                    name="mobileNumber"
+                    placeholder="43555555"
+                    onChange={e => handleMobileChange(e)}
+                    onBlur={handleBlur}
+                    value={mobileNum}
+                  />
+                  <ErrorMessage
+                    className="contact-error"
+                    name="mobileNumber"
+                    component="div"
+                  />
+                </div>
               </div>
               <div
                 className="flex"

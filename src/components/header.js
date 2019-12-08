@@ -54,6 +54,7 @@ const Header = ({ data }) => {
       `[data-title=${selectedItem.title}]`
     )
     if (prevActiveItem) {
+      if (prevActiveItem.baseURI.includes(item.url)) return
       prevActiveItem.classList.remove("active")
     }
 
@@ -88,7 +89,7 @@ const Header = ({ data }) => {
       className="header-fixed-container flex-column"
       style={{
         position: "fixed",
-        maxWidth: 960,
+        maxWidth: 1366,
         display: "block",
         zIndex: 999999,
         background: "white",

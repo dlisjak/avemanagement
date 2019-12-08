@@ -49,7 +49,7 @@ const Search = ({ isShown, models, closeSearch }) => {
         zIndex: 999,
         background: "white",
         width: "80%",
-        maxWidth: 960,
+        maxWidth: 1366,
         height: "100%",
         top: 85,
         overflow: "scroll",
@@ -136,7 +136,7 @@ const Search = ({ isShown, models, closeSearch }) => {
           padding: 10,
           background: "white",
           width: "80%",
-          maxWidth: 960,
+          maxWidth: 1366,
           justifyContent: "spaceBetween",
         }}
       >

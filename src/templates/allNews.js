@@ -40,7 +40,7 @@ const NewsPage = ({ data, pageContext }) => {
   return (
     <Layout>
       <Ticker title="NEWS" />
-      <div className="grid" style={{ marginTop: 50 }}>
+      <div id="content" className="grid" style={{ marginTop: 50 }}>
         <div className="grid-col grid-col--1"></div>
         <div className="grid-col grid-col--2"></div>
         <div className="grid-col grid-col--3"></div>
@@ -52,7 +52,7 @@ const NewsPage = ({ data, pageContext }) => {
             return (
               <div
                 style={{ marginTop: 10 }}
-                className="grid-item news-card"
+                className="flex-column justify-between grid-item"
                 key={index}
               >
                 <Link to={`/news/${slug}`} style={{ textDecoration: "none" }}>
