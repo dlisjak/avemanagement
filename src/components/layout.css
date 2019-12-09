@@ -2,6 +2,9 @@
   .header-fixed-container {
     width: 100%;
   }
+  .swiper-slide {
+    max-height: 120px;
+  }
   .content-padding {
     padding: 0 5px;
   }
@@ -65,6 +68,15 @@
 
   .pagination-item.last {
     transform: translateX(60px);
+  }
+  .model__name {
+    font-size: 32px;
+  }
+  .model__main-container {
+    font-size: 16px;
+  }
+  .logo {
+    height: 60px;
   }
 }
 
@@ -166,12 +178,18 @@
   .category-card:nth-child(4n + 1) {
     margin-left: 0;
   }
+  .logo {
+    height: 75px;
+  }
 }
 .contact-body-text {
   width: 60%;
 }
 
 @media only screen and (max-width: 767px) {
+  .grid-col {
+    width: 50%;
+  }
   #content .grid-col--1 {
     margin-right: 2.5px;
     margin-left: 0;
@@ -182,42 +200,15 @@
   }
 }
 
-@media only screen and (max-width: 1079px) and (min-width: 768px) {
-  #content .grid-col--1 {
-    margin-right: 2.5px;
-  }
-  #content .grid-col--2 {
-    margin-right: 2.5px;
-    margin-left: 2.5px;
-  }
-  #content .grid-col--3 {
-    margin-left: 2.5px;
-  }
-}
-
-@media only screen and (min-width: 1079px) {
-  #content .grid-col--1 {
-    margin-right: 2.5px;
-  }
-  #content .grid-col--2 {
-    margin-right: 2.5px;
-    margin-left: 2.5px;
-  }
-  #content .grid-col--3 {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-  #content .grid-col--4 {
-    margin-left: 2.5px;
-  }
-}
-
 @media only screen and (max-width: 850px) {
   .contact-body-text {
     width: 100%;
   }
+  .swiper-slide {
+    max-height: 200px;
+  }
   .model__name {
-    margin-bottom: 20px;
+    margin-bottom: 5px;
   }
   .model {
     margin-top: 25px;
@@ -247,7 +238,7 @@
     justify-content: center;
   }
   .model__menu {
-    margin: 10px 0;
+    margin: 5px 0;
     justify-content: flex-start;
     flex-direction: row;
   }
@@ -264,21 +255,22 @@
     padding-right: 66px;
   }
 
-  .contact-image-upload {
+  div.contact-image-upload {
     height: 250px;
     width: calc(50% - 5px);
+    margin: 0;
   }
   .contact-image-upload:first-child {
-    margin-right: 2.5px;
+    margin-right: 5px;
   }
   .contact-image-upload:nth-child(2) {
-    margin-left: 2.5px;
+    margin-left: 5px;
   }
   .contact-image-upload:nth-child(3) {
-    margin-right: 2.5px;
+    margin-right: 5px;
   }
   .contact-image-upload:nth-child(4) {
-    margin-left: 2.5px;
+    margin-left: 5px;
   }
   .category-card {
     text-decoration: none;
@@ -309,28 +301,50 @@
   .model__menu {
     flex-direction: column;
   }
+  .model__main--image {
+    padding-left: 20%;
+  }
+  .swiper-slide {
+    max-height: 300px;
+  }
   .model__main-container {
     max-width: 300px;
+    font-size: 20px;
   }
-  .contact-image-upload {
-    height: 350px;
-    width: calc(25% - 7.5px);
-    margin: 0 5px;
+  .model-bio-property {
+    font-size: 16px;
+  }
+  .model-bio-value {
+    font-size: 21px;
+  }
+  .category-card-title {
+    font-size: 32px;
+    line-height: 0.8;
   }
   .contact-input--date {
     padding-right: 100px;
   }
-  .contact-image-upload:first-child {
+  .contact-image-upload {
+    width: calc(25% - 10px);
+  }
+  .contact-image-upload:nth-child(2) {
     margin-right: 5px;
+    margin-left: 5px;
+  }
+  .contact-image-upload:nth-child(3) {
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+  .contact-image-upload:first-child {
+    margin-right: 10px;
   }
   .contact-image-upload:nth-child(4) {
-    margin-left: 5px;
+    margin-left: 10px;
   }
   .category-card {
     text-decoration: none;
     width: calc(25% - 4px);
     margin: 2.5px 0;
-    margin-bottom: 20px;
   }
   .category-card:first-child {
     margin-right: 2.5px;
@@ -365,6 +379,68 @@
   .category-search--mobile {
     display: none;
   }
+  .logo {
+    height: 80px;
+  }
+}
+
+@media only screen and (max-width: 1079px) and (min-width: 768px) {
+  .grid-col {
+    width: 33%;
+  }
+  #content .grid-col--1 {
+    margin-right: 2.5px;
+  }
+  #content .grid-col--2 {
+    margin-right: 2.5px;
+    margin-left: 2.5px;
+  }
+  #content .grid-col--3 {
+    margin-left: 2.5px;
+  }
+  .contact-image-upload {
+    height: calc(500px - 20vh);
+    width: calc(25% - 7.5px);
+  }
+  .logo {
+    height: 90px;
+  }
+}
+
+@media only screen and (min-width: 1079px) {
+  #content .grid-col {
+    width: calc(25% - 5px);
+  }
+  .grid-col {
+    width: 25%;
+  }
+  .swiper-slide {
+    max-height: 500px;
+  }
+  .news-card-title {
+    font-size: 20px;
+  }
+  #content .grid-col--1 {
+    margin-right: 2.5px;
+  }
+  #content .grid-col--2 {
+    margin-right: 2.5px;
+    margin-left: 2.5px;
+  }
+  #content .grid-col--3 {
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+  }
+  #content .grid-col--4 {
+    margin-left: 2.5px;
+  }
+  .contact-image-upload {
+    height: calc(600px - 20vh);
+    width: calc(25% - 7.5px);
+  }
+  .logo {
+    height: 100px;
+  }
 }
 
 .contact-input {
@@ -386,6 +462,28 @@
 .contact-input--mobile {
   width: 100%;
 }
+.contact-button-submit:hover {
+  color: #ccc;
+}
+.contact-image-upload {
+  border: 1px solid lightgrey;
+}
+.contact-form-submit-label:hover {
+  color: #ccc;
+  cursor: pointer;
+}
+.contact-image-upload--span:hover {
+  color: #ccc;
+  cursor: pointer;
+  z-index: 999;
+}
+.ticker__page {
+  position: fixed;
+  z-index: 999999;
+  background: white;
+  width: 80%;
+  max-width: 1366px;
+}
 .contact-input--date::-webkit-input-placeholder {
   font-weight: 700;
   color: black;
@@ -405,6 +503,10 @@
 
 .relative {
   position: relative;
+}
+
+.contact-image-upload {
+  margin: 0 5px;
 }
 
 .ticker {
@@ -563,7 +665,8 @@ header .flex > :first-child {
 }
 
 .news-card-title {
-  font-size: 16px;
+  line-height: 0.9;
+  margin-top: 2px;
 }
 
 /* with flexbox */
@@ -620,9 +723,9 @@ header .flex > :first-child {
 }
 
 .category-card-title {
-  font-size: 18px;
   margin-bottom: 0;
   color: black;
+  line-height: 0.8;
 }
 
 .category-card-image {
@@ -936,13 +1039,12 @@ h2 {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 1.45rem;
   color: inherit;
   font-family: "HelveticaNeue";
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 3.2rem;
-  line-height: 0.73;
+  line-height: 0.8;
 }
 h3 {
   margin-left: 0;

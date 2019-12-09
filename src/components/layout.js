@@ -8,10 +8,23 @@ import "./layout.css"
 
 const Layout = ({ children }) => {
   const [isMobile, toggleIsMobile] = useState(false)
+  const [isNavRelative, setNavState] = useState(true)
+
+  const headerScroll = () => {
+    console.log("scroll")
+    if (window.scrollY === 0) {
+      setNavState(true)
+    } else {
+      setNavState(false)
+    }
+  }
 
   const dispatch = useContext(GlobalDispatchContext)
   useEffect(() => {
     // componentDidMount
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", headerScroll)
+    }
     const setPath = () => {
       dispatch({ type: "SET_PATH", payload: window.location.pathname })
     }
@@ -55,11 +68,17 @@ const Layout = ({ children }) => {
           flexWrap: "wrap",
           margin: `0 auto`,
           paddingTop: 0,
-          marginBottom: 100,
+          marginBottom: 125,
         }}
       >
-        <Header data={data} />
-        <main style={{ width: "100%", position: "relative", marginTop: 102 }}>
+        <Header isNavRelative={isNavRelative} data={data} />
+        <main
+          style={{
+            width: "100%",
+            position: "relative",
+            marginTop: isNavRelative ? 0 : 102,
+          }}
+        >
           {children}
         </main>
         {isMobile && <GetToTop />}

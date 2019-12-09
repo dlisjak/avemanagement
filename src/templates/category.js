@@ -27,7 +27,7 @@ const Category = ({ data, pageContext }) => {
           closeSearch={closeSearch}
         />
       )}
-      <Ticker title={title} />
+      <Ticker fixed={true} title={title} />
       {!searchOpen && (
         <button
           className="category-search--desktop"
@@ -35,7 +35,7 @@ const Category = ({ data, pageContext }) => {
           style={{
             position: "absolute",
             right: 0,
-            top: 70,
+            top: 25,
             background: 0,
             border: 0,
             fontWeight: 700,
@@ -49,7 +49,7 @@ const Category = ({ data, pageContext }) => {
 
       <div
         className="flex flex-wrap category-cards relative"
-        style={{ marginTop: 75, marginBottom: 75 }}
+        style={{ marginTop: 50, marginBottom: 75 }}
       >
         {data.allWordpressPost.edges.map(
           (
@@ -61,32 +61,31 @@ const Category = ({ data, pageContext }) => {
               },
             },
             index
-          ) => (
-            <Link
-              to={path}
-              className="flex flex-column justify-between category-card"
-              key={index}
-            >
-              <SmoothImage
-                className="category-card-image"
-                src={featured_image.url}
-                alt={featured_image.alt}
-                title={featured_image.title}
-                style={{ marginBottom: 0 }}
-                imageStyles={{
-                  objectFit: "cover",
-                  height: "100%",
-                  width: "100%",
-                }}
-              />
-              <h3 className="category-card-title flex flex-wrap width-100 relative">
-                <span className="width-100">{first_name}</span>
-                <span className="width-100 absolute" style={{ top: 15 }}>
-                  {last_name}
-                </span>
-              </h3>
-            </Link>
-          )
+          ) => {
+            return (
+              <Link
+                to={path}
+                className="flex flex-column justify-between category-card"
+                key={index}
+              >
+                <SmoothImage
+                  className="category-card-image"
+                  src={featured_image.url}
+                  alt={featured_image.alt}
+                  title={featured_image.title}
+                  style={{ marginBottom: 0 }}
+                  containerStyles={{ paddingBottom: `130%` }}
+                  imageStyles={{ height: "100%", objectFit: "cover" }}
+                />
+                <h3 className="category-card-title flex flex-wrap width-100 relative">
+                  <span className="width-100">{first_name}</span>
+                  <span className="width-100" style={{ top: 15 }}>
+                    {last_name}
+                  </span>
+                </h3>
+              </Link>
+            )
+          }
         )}
       </div>
       {!searchOpen && (
@@ -123,6 +122,8 @@ export const query = graphql`
               alt
               title
               url
+              height
+              width
             }
             first_name
             last_name

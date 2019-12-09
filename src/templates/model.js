@@ -26,14 +26,17 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
   return (
     <Layout>
       <div className="flex model flex-column">
-        <h2 className="flex model__name flex-column content-padding relative">
+        <h2
+          className="flex model__name flex-column content-padding relative"
+          style={{ marginBottom: 0 }}
+        >
           <span>{firstName}</span>
           <span>{lastName}</span>
         </h2>
         <div className="flex model__main content-padding">
           <div
             className="flex model__main-container flex-column"
-            style={{ justifyContent: "space-between", fontSize: 24 }}
+            style={{ justifyContent: "space-between" }}
           >
             <div className="flex model__menu">
               {acf.portfolio && (
@@ -82,63 +85,113 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
             </div>
             <div id="bio" className="model__bio flex flex-column">
               {acf.bio.height && (
-                <span>
+                <span className="model-bio-property">
                   HEIGHT{" "}
-                  <span style={{ fontWeight: "bold" }}>{acf.bio.height}</span>
+                  <span
+                    className="model-bio-value"
+                    style={{ fontWeight: "bold" }}
+                  >
+                    {acf.bio.height}
+                  </span>
                 </span>
               )}
               {acf.bio.hair && (
-                <span>
+                <span className="model-bio-property">
                   HAIR{" "}
-                  <span style={{ fontWeight: "bold" }}>{acf.bio.hair}</span>
+                  <span
+                    className="model-bio-value"
+                    style={{ fontWeight: "bold" }}
+                  >
+                    {acf.bio.hair}
+                  </span>
                 </span>
               )}
               {acf.bio.eyes && (
-                <span>
+                <span className="model-bio-property">
                   EYES{" "}
-                  <span style={{ fontWeight: "bold" }}>{acf.bio.eyes}</span>
+                  <span
+                    className="model-bio-value"
+                    style={{ fontWeight: "bold" }}
+                  >
+                    {acf.bio.eyes}
+                  </span>
                 </span>
               )}
               {acf.bio.bust && (
-                <span>
+                <span className="model-bio-property">
                   BUST{" "}
-                  <span style={{ fontWeight: "bold" }}>{acf.bio.bust}</span>
+                  <span
+                    className="model-bio-value"
+                    style={{ fontWeight: "bold" }}
+                  >
+                    {acf.bio.bust}
+                  </span>
                 </span>
               )}
               {acf.bio.suit && (
-                <span>
+                <span className="model-bio-property">
                   SUIT{" "}
-                  <span style={{ fontWeight: "bold" }}>{acf.bio.suit}</span>
+                  <span
+                    className="model-bio-value"
+                    style={{ fontWeight: "bold" }}
+                  >
+                    {acf.bio.suit}
+                  </span>
                 </span>
               )}
               {acf.bio.shirt && (
-                <span>
+                <span className="model-bio-property">
                   SHIRT{" "}
-                  <span style={{ fontWeight: "bold" }}>{acf.bio.shirt}</span>
+                  <span
+                    className="model-bio-value"
+                    style={{ fontWeight: "bold" }}
+                  >
+                    {acf.bio.shirt}
+                  </span>
                 </span>
               )}
               {acf.bio.waist && (
-                <span>
+                <span className="model-bio-property">
                   WAIST{" "}
-                  <span style={{ fontWeight: "bold" }}>{acf.bio.waist}</span>
+                  <span
+                    className="model-bio-value"
+                    style={{ fontWeight: "bold" }}
+                  >
+                    {acf.bio.waist}
+                  </span>
                 </span>
               )}
               {acf.bio.hips && (
-                <span>
+                <span className="model-bio-property">
                   HIPS{" "}
-                  <span style={{ fontWeight: "bold" }}>{acf.bio.hips}</span>
+                  <span
+                    className="model-bio-value"
+                    style={{ fontWeight: "bold" }}
+                  >
+                    {acf.bio.hips}
+                  </span>
                 </span>
               )}
               {acf.bio.inseam && (
-                <span>
+                <span className="model-bio-property">
                   INSEAM{" "}
-                  <span style={{ fontWeight: "bold" }}>{acf.bio.inseam}</span>
+                  <span
+                    className="model-bio-value"
+                    style={{ fontWeight: "bold" }}
+                  >
+                    {acf.bio.inseam}
+                  </span>
                 </span>
               )}
               {acf.bio.shoes && (
-                <span>
+                <span className="model-bio-property">
                   SHOES{" "}
-                  <span style={{ fontWeight: "bold" }}>{acf.bio.shoes}</span>
+                  <span
+                    className="model-bio-value"
+                    style={{ fontWeight: "bold" }}
+                  >
+                    {acf.bio.shoes}
+                  </span>
                 </span>
               )}
             </div>
@@ -158,7 +211,7 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
                 marginBottom: 0,
                 objectFit: "contain",
                 height: "auto",
-                maxHeight: 600,
+                maxHeight: 520,
               }}
             />
           </div>
@@ -167,7 +220,7 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
         <div
           id="content"
           className="flex flex-wrap grid"
-          style={{ marginTop: 10 }}
+          style={{ marginTop: 5 }}
         >
           {tab === "portfolio" && (
             <>

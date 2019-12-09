@@ -11,7 +11,7 @@ const NavBar = posed.header({
   isVisible: {},
 })
 
-const Header = ({ data }) => {
+const Header = ({ data, isNavRelative }) => {
   const [isMobile, toggleIsMobile] = useState(false)
   const [isVisible, setVisibleMenu] = useState(false)
   const [selectedItem, setSelectedItem] = useState({})
@@ -88,8 +88,9 @@ const Header = ({ data }) => {
     <div
       className="header-fixed-container flex-column"
       style={{
-        position: "fixed",
+        position: isNavRelative ? "relative" : "fixed",
         maxWidth: 1366,
+        width: (isMobile && !isNavRelative) || !isNavRelative ? "80%" : "100%",
         display: "block",
         zIndex: 999999,
         background: "white",
@@ -98,12 +99,12 @@ const Header = ({ data }) => {
       <Link to="/">
         <img
           src={Logo}
+          className="logo"
           alt="Ave Management Logo"
           style={{
             margin: 5,
             marginLeft: 0,
             marginBottom: 0,
-            maxHeight: 75,
             cursor: "pointer",
           }}
         />

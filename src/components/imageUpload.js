@@ -1,7 +1,10 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useRef, useEffect } from "react"
 
 const ImageUpload = ({ title, order, text }) => {
   const [file, setFile] = useState("")
+  const inputField = useRef(null)
+
+  useEffect(() => {}, [])
 
   const handleChange = e => {
     setFile(URL.createObjectURL(e.target.files[0]))
@@ -11,12 +14,19 @@ const ImageUpload = ({ title, order, text }) => {
     setFile(null)
   }
 
+  const fireImageSearch = e => {
+    e.preventDefault()
+    e.stopPropagation()
+    console.log(inputField)
+    inputField.current.click()
+  }
+
   return (
     <>
       <div
         className="flex flex-column justify-center align-center contact-image-upload relative"
         style={{
-          marginBottom: file ? 25 : 5,
+          marginBottom: file ? 25 : 10,
         }}
       >
         <div
@@ -24,15 +34,25 @@ const ImageUpload = ({ title, order, text }) => {
           style={{ cursor: "pointer" }}
         >
           <span style={{}}>{text}</span>
-          <span style={{ cursor: "pointer", fontWeight: 700 }}>
+          <span
+            className="contact-image-upload--span"
+            style={{ cursor: "pointer", fontWeight: 700 }}
+            onClick={e => fireImageSearch(e)}
+          >
             CLICK TO UPLOAD
           </span>
         </div>
         <input
-          className="flex flex-wrap absolute"
+          ref={inputField}
+          className="flex flex-wrap absolute contact-image-upload--input"
           type="file"
           onChange={e => handleChange(e)}
-          style={{ width: "100%", border: 0, opacity: 0 }}
+          style={{
+            width: "100%",
+            border: 0,
+            opacity: 0,
+            pointerEvents: "none",
+          }}
         />
         {file && (
           <img
@@ -46,7 +66,7 @@ const ImageUpload = ({ title, order, text }) => {
         )}
         {file && (
           <button
-            className="absolute"
+            className="absolute contact-button-submit"
             style={{
               margin: 10,
               border: 0,
