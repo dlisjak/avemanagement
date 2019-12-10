@@ -5,11 +5,16 @@ const TickerText = ({ title, fixed = false }) => {
   let data = " "
 
   if (title) {
-    title = title.replace(reg, " ")
+    const titleTicker = title.replace(reg, " ")
 
     for (let i = 0; i < 50; i++) {
-      data += ` ${title} `
+      data += ` ${titleTicker} `
     }
+  }
+
+  const goBack = () => {
+    if (window.location.pathname === title) return
+    window.location = title
   }
 
   if (title === "MENU") {
@@ -27,9 +32,14 @@ const TickerText = ({ title, fixed = false }) => {
   } else if (fixed) {
     return (
       <div
-        onClick={() => window.history.back()}
+        onClick={() => goBack()}
         className="ticker__page--fixed ticker flex"
-        style={{ fontWeight: 700, position: "fixed", maxWidth: 1366 }}
+        style={{
+          fontWeight: 700,
+          position: "fixed",
+          maxWidth: 1366,
+          cursor: "pointer",
+        }}
       >
         <div id="tickerwrap">
           <div id="tickerReverse" style={{ marginRight: 5 }}>
