@@ -25,8 +25,12 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
     }
     const setPath = () => {
       tickerText = localStorage.getItem("ave-ticker")
-      console.log(tickerText)
-      dispatch({ type: "SET_PATH", payload: tickerText })
+      if (tickerText) {
+        dispatch({ type: "SET_PATH", payload: tickerText })
+      } else {
+        tickerText = window.location.pathname
+        dispatch({ type: "SET_PATH", payload: tickerText })
+      }
     }
     setPath()
     initGrid()

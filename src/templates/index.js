@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useContext } from "react"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -6,7 +6,24 @@ import SEO from "../components/seo"
 import News from "../components/News"
 import Instagram from "../components/Instagram"
 
+import { GlobalDispatchContext } from "../context/GlobalContextProvider"
+
 const Home = ({ pageContext }) => {
+  const dispatch = useContext(GlobalDispatchContext)
+  let tickerText
+
+  useEffect(() => {
+    const setPath = () => {
+      localStorage.removeItem("ave-ticker")
+      tickerText = window.location.pathname
+      dispatch({ type: "SET_PATH", payload: tickerText })
+    }
+    setPath()
+    return () => {
+      localStorage.setItem("ave-ticker", tickerText)
+    }
+  }, [])
+
   if (typeof window !== "undefined") {
     localStorage.removeItem("ave-navigation")
   }

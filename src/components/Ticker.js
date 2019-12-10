@@ -6,7 +6,6 @@ const TickerText = ({ title, fixed = false }) => {
 
   if (title) {
     title = title.replace(reg, " ")
-    console.log(title)
 
     for (let i = 0; i < 50; i++) {
       data += ` ${title} `
@@ -28,8 +27,9 @@ const TickerText = ({ title, fixed = false }) => {
   } else if (fixed) {
     return (
       <div
+        onClick={() => window.history.back()}
         className="ticker__page--fixed ticker flex"
-        style={{ fontWeight: 700, position: "fixed" }}
+        style={{ fontWeight: 700, position: "fixed", maxWidth: 1366 }}
       >
         <div id="tickerwrap">
           <div id="tickerReverse" style={{ marginRight: 5 }}>
@@ -43,7 +43,7 @@ const TickerText = ({ title, fixed = false }) => {
     return (
       <div
         className="ticker__page ticker flex width-100"
-        style={{ fontWeight: 700 }}
+        style={{ fontWeight: 700, maxWidth: 1366 }}
       >
         <div id="tickerwrap">
           <div id="tickerReverse" style={{ marginRight: 5 }}>
