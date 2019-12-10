@@ -2,7 +2,6 @@ import React from "react"
 import SmoothImage from "react-smooth-image"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import Ticker from "../components/Ticker"
 
 const News = ({ pageContext, data }) => {
   const formatContent = content => {
@@ -19,7 +18,6 @@ const News = ({ pageContext, data }) => {
 
   return (
     <Layout>
-      <Ticker title="NEWS" />
       <div
         className="flex flex-column"
         style={{ marginTop: 50, marginBottom: 50 }}

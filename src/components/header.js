@@ -12,9 +12,9 @@ const NavBar = posed.header({
 })
 
 const Header = ({ data, isNavRelative }) => {
-  const [isMobile, toggleIsMobile] = useState(false)
-  const [isVisible, setVisibleMenu] = useState(false)
   const [selectedItem, setSelectedItem] = useState({})
+  const [isVisible, setVisibleMenu] = useState(false)
+  const [isMobile, toggleIsMobile] = useState(false)
   const [childItems, setChildItems] = useState([])
 
   useEffect(() => {
@@ -41,7 +41,7 @@ const Header = ({ data, isNavRelative }) => {
   }, [])
 
   const checkIfMobile = () => {
-    const a = window.innerWidth < 1015
+    const a = window.innerWidth <= 480
     toggleIsMobile(a)
   }
 
@@ -90,7 +90,7 @@ const Header = ({ data, isNavRelative }) => {
       style={{
         position: isNavRelative ? "relative" : "fixed",
         maxWidth: 1366,
-        width: (isMobile && !isNavRelative) || !isNavRelative ? "80%" : "100%",
+        width: isMobile || isNavRelative ? "100%" : "80%",
         display: "block",
         zIndex: 999999,
         background: "white",

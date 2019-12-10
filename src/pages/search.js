@@ -1,11 +1,27 @@
-import React, { useState } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import { graphql, Link } from "gatsby"
 
-import TickerText from "../components/Ticker"
 import Layout from "../components/layout"
 
+import { GlobalDispatchContext } from "../context/GlobalContextProvider"
+
 const Search = ({ data }) => {
+  const dispatch = useContext(GlobalDispatchContext)
   const [genderQuery, setGender] = useState(null)
+  let tickerText
+
+  useEffect(() => {
+    const setPath = () => {
+      localStorage.removeItem("ave-ticker")
+      tickerText = window.location.pathname
+      dispatch({ type: "SET_PATH", payload: tickerText })
+    }
+    setPath()
+
+    return () => {
+      localStorage.setItem("ave-ticker", tickerText)
+    }
+  }, [])
 
   const setSearchGender = (e, gender) => {
     setGender(gender)
@@ -13,7 +29,6 @@ const Search = ({ data }) => {
 
   return (
     <Layout>
-      <TickerText title="SEARCH" />
       <div
         className="flex flex-column search-queries"
         style={{ paddingTop: 50, paddingBottom: 25, borderBottom: "1px solid" }}

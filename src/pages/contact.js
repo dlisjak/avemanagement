@@ -1,7 +1,25 @@
-import React from "react"
+import React, { useEffect, useContext } from "react"
 import Layout from "../components/layout"
 
-const contact = () => {
+import { GlobalDispatchContext } from "../context/GlobalContextProvider"
+
+const Contact = () => {
+  const dispatch = useContext(GlobalDispatchContext)
+  let tickerText
+
+  useEffect(() => {
+    const setPath = () => {
+      localStorage.removeItem("ave-ticker")
+      tickerText = window.location.pathname
+      dispatch({ type: "SET_PATH", payload: tickerText })
+    }
+    setPath()
+
+    return () => {
+      localStorage.setItem("ave-ticker", tickerText)
+    }
+  }, [])
+
   return (
     <Layout>
       <div
@@ -42,4 +60,4 @@ const contact = () => {
   )
 }
 
-export default contact
+export default Contact

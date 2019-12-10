@@ -1,13 +1,28 @@
-import React, { useState } from "react"
+import React, { useEffect, useState, useContext } from "react"
 import Layout from "../components/layout"
 import { graphql, Link } from "gatsby"
 import SmoothImage from "react-smooth-image"
-import Ticker from "../components/Ticker"
 import Search from "../components/Search"
 
+import { GlobalDispatchContext } from "../context/GlobalContextProvider"
+
 const Category = ({ data, pageContext }) => {
+  const dispatch = useContext(GlobalDispatchContext)
   const [searchOpen, toggleSearch] = useState(false)
   const title = pageContext.title.toUpperCase()
+  let tickerText
+
+  useEffect(() => {
+    const setPath = () => {
+      localStorage.removeItem("ave-ticker")
+      tickerText = window.location.pathname
+      dispatch({ type: "SET_PATH", payload: tickerText })
+    }
+    setPath()
+    return () => {
+      localStorage.setItem("ave-ticker", tickerText)
+    }
+  }, [])
 
   const openSearch = () => {
     toggleSearch(!searchOpen)
@@ -27,7 +42,6 @@ const Category = ({ data, pageContext }) => {
           closeSearch={closeSearch}
         />
       )}
-      <Ticker fixed={true} title={title} />
       {!searchOpen && (
         <button
           className="category-search--desktop"
@@ -35,7 +49,7 @@ const Category = ({ data, pageContext }) => {
           style={{
             position: "absolute",
             right: 0,
-            top: 25,
+            top: 75,
             background: 0,
             border: 0,
             fontWeight: 700,
@@ -49,7 +63,7 @@ const Category = ({ data, pageContext }) => {
 
       <div
         className="flex flex-wrap category-cards relative"
-        style={{ marginTop: 50, marginBottom: 75 }}
+        style={{ marginTop: 100, marginBottom: 75 }}
       >
         {data.allWordpressPost.edges.map(
           (

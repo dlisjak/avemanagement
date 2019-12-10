@@ -4,6 +4,7 @@ export const GlobalStateContext = React.createContext()
 export const GlobalDispatchContext = React.createContext()
 
 const initialState = {
+  category: "",
   path: "",
   headShot: null,
   profile: null,
@@ -20,31 +21,38 @@ function reducer(state, action) {
       }
     }
 
+    case "SET_CATEGORY": {
+      return {
+        ...state,
+        category: action.payload,
+      }
+    }
+
     case "headShot": {
       return {
         ...state,
-        headShot: action.payload
+        headShot: action.payload,
       }
     }
 
     case "profile": {
       return {
         ...state,
-        profile: action.payload
+        profile: action.payload,
       }
     }
 
     case "midLength": {
       return {
         ...state,
-        midLength: action.payload
+        midLength: action.payload,
       }
     }
 
     case "fullLength": {
       return {
         ...state,
-        fullLength: action.payload
+        fullLength: action.payload,
       }
     }
 
@@ -53,7 +61,7 @@ function reducer(state, action) {
   }
 }
 
-const GlobalContextProvider = ({children}) => {
+const GlobalContextProvider = ({ children }) => {
   const [state, dispatch] = React.useReducer(reducer, initialState)
   return (
     <GlobalStateContext.Provider value={state}>
@@ -64,5 +72,4 @@ const GlobalContextProvider = ({children}) => {
   )
 }
 
-
-export default GlobalContextProvider;
+export default GlobalContextProvider

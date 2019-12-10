@@ -1,17 +1,36 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import { Formik, ErrorMessage, Form, Field } from "formik"
 import axios from "axios"
-import { GlobalStateContext } from "../context/GlobalContextProvider"
+
+import {
+  GlobalDispatchContext,
+  GlobalStateContext,
+} from "../context/GlobalContextProvider"
 
 import Layout from "../components/layout"
 import ImageUpload from "../components/imageUpload"
-import Ticker from "../components/Ticker"
 
 const BecomeAModel = () => {
+  const dispatch = useContext(GlobalDispatchContext)
+  const state = useContext(GlobalStateContext)
+
   const [mobileNum, setMobileNum] = useState("")
   const [countryCode, setCountryCode] = useState("")
   const [isMobile, toggleIsMobile] = useState(false)
-  const state = useContext(GlobalStateContext)
+  let tickerText
+
+  useEffect(() => {
+    const setPath = () => {
+      localStorage.removeItem("ave-ticker")
+      tickerText = window.location.pathname
+      dispatch({ type: "SET_PATH", payload: tickerText })
+    }
+    setPath()
+
+    return () => {
+      localStorage.setItem("ave-ticker", tickerText)
+    }
+  }, [])
 
   if (typeof window !== "undefined") {
     window.addEventListener("resize", checkIfMobile)
@@ -34,8 +53,7 @@ const BecomeAModel = () => {
   }
 
   return (
-    <Layout style={{ marginBottom: 50 }}>
-      <Ticker title="BECOME A MODEL" />
+    <Layout title={window.location.pathname} style={{ marginBottom: 50 }}>
       <Formik
         initialValues={{
           firstName: "",

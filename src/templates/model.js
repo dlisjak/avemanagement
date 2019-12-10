@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import SmoothImage from "react-smooth-image"
 import Layout from "../components/layout"
 
+import { GlobalDispatchContext } from "../context/GlobalContextProvider"
+
 const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
+  const dispatch = useContext(GlobalDispatchContext)
   const [image, setImage] = useState(acf.featuredImage)
   const [tab, setTab] = useState("portfolio")
   let Colcade
+  let tickerText
 
   useEffect(() => {
     // componentDidMount
@@ -19,7 +23,12 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
         })
       }
     }
-
+    const setPath = () => {
+      tickerText = localStorage.getItem("ave-ticker")
+      console.log(tickerText)
+      dispatch({ type: "SET_PATH", payload: tickerText })
+    }
+    setPath()
     initGrid()
   }, [])
 
@@ -67,7 +76,7 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
                   VIDEOS
                 </a>
               )}
-              {acf.bio && (
+              {false && (
                 <a
                   href="#bio"
                   style={{
@@ -211,7 +220,7 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
                 marginBottom: 0,
                 objectFit: "contain",
                 height: "auto",
-                maxHeight: 520,
+                maxHeight: 620,
               }}
             />
           </div>
@@ -238,7 +247,7 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
                         className="flex-column justify-between grid-item"
                         onClick={() => {
                           setImage({ title, name, url, alt })
-                          window.scrollTo(0, 200)
+                          window.scrollTo(0, 27)
                         }}
                         style={{ cursor: "pointer", marginBottom: 5 }}
                         key={index}

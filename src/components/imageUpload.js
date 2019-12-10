@@ -17,7 +17,6 @@ const ImageUpload = ({ title, order, text }) => {
   const fireImageSearch = e => {
     e.preventDefault()
     e.stopPropagation()
-    console.log(inputField)
     inputField.current.click()
   }
 

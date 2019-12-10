@@ -1,13 +1,15 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useContext } from "react"
 import { Link } from "gatsby"
 import SmoothImage from "react-smooth-image"
 
 import Layout from "../components/layout"
-import Ticker from "../components/Ticker"
+import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 
 const NewsPage = ({ data, pageContext }) => {
+  const dispatch = useContext(GlobalDispatchContext)
   const { currentPage, numOfPages } = pageContext
   let Colcade
+  let tickerText
 
   useEffect(() => {
     // componentDidMount
@@ -21,8 +23,17 @@ const NewsPage = ({ data, pageContext }) => {
         })
       }
     }
-
+    const setPath = () => {
+      localStorage.removeItem("ave-ticker")
+      tickerText = window.location.pathname
+      dispatch({ type: "SET_PATH", payload: tickerText })
+    }
+    setPath()
     initGrid()
+
+    return () => {
+      localStorage.setItem("ave-ticker", tickerText)
+    }
   }, [])
 
   const formatContent = content => {
@@ -39,7 +50,6 @@ const NewsPage = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <Ticker title="NEWS" />
       <div id="content" className="grid" style={{ marginTop: 50 }}>
         <div className="grid-col grid-col--1"></div>
         <div className="grid-col grid-col--2"></div>

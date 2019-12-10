@@ -1,10 +1,16 @@
 import React from "react"
 
 const TickerText = ({ title, fixed = false }) => {
+  const reg = new RegExp("([^a-zA-Z])", "g")
   let data = " "
 
-  for (let i = 0; i < 50; i++) {
-    data += ` ${title} `
+  if (title) {
+    title = title.replace(reg, " ")
+    console.log(title)
+
+    for (let i = 0; i < 50; i++) {
+      data += ` ${title} `
+    }
   }
 
   if (title === "MENU") {
@@ -22,8 +28,8 @@ const TickerText = ({ title, fixed = false }) => {
   } else if (fixed) {
     return (
       <div
-        className="ticker__page ticker flex width-100"
-        style={{ fontWeight: 700, width: "80%", position: "fixed" }}
+        className="ticker__page--fixed ticker flex"
+        style={{ fontWeight: 700, position: "fixed" }}
       >
         <div id="tickerwrap">
           <div id="tickerReverse" style={{ marginRight: 5 }}>
