@@ -4,6 +4,8 @@ const TickerText = ({ title, fixed = false }) => {
   const reg = new RegExp("([^a-zA-Z])", "g")
   let data = " "
 
+  // console.log(title)
+
   if (title) {
     const titleTicker = title.replace(reg, " ")
 

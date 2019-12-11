@@ -22,10 +22,10 @@ const NavigationItem = ({ item }) => {
   } else if (item.url.includes("http")) {
     return (
       <a
-        href={item.url}
+        href={`${item.url}/`}
         target="_blank"
         rel="noopener noreferrer"
-        data-title={item.url.replace("/", "")}
+        data-title={item.title.replace(/\s/g, "-")}
         style={{
           paddingLeft: 10,
           paddingRight: 10,
@@ -41,9 +41,9 @@ const NavigationItem = ({ item }) => {
   } else {
     return (
       <Link
-        to={item.url}
+        to={`${item.url}/`}
         target="_blank"
-        data-title={item.url.replace("/", "")}
+        data-title={item.title.replace(/\s/g, "-")}
         style={{
           paddingLeft: 10,
           paddingRight: 10,

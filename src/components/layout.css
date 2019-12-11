@@ -99,9 +99,7 @@
   div.ticker__page--fixed {
     width: 80%;
   }
-  .header__menu--desktop {
-    padding-top: 15px;
-  }
+
   .layout-main {
     width: 80%;
     max-width: 1366px;
@@ -529,6 +527,9 @@
   width: 80%;
   max-width: 1366px;
 }
+.ticker__menu {
+  background: white;
+}
 .contact-input--date::-webkit-input-placeholder {
   font-weight: 700;
   color: black;
@@ -674,7 +675,8 @@ header a[aria-current="page"] {
   font-weight: bold;
 }
 
-header div.active {
+header div.active,
+header a.active {
   font-weight: bold;
 }
 

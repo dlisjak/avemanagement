@@ -30,7 +30,7 @@ const Layout = ({ children }) => {
       if (window.innerWidth < 480) toggleIsMobile(true)
     }
     const checkUrl = () => {
-      console.log(state.path)
+      // console.log(state.path)
     }
     checkIfMobile()
     checkUrl()
@@ -60,6 +60,8 @@ const Layout = ({ children }) => {
     }
   `)
 
+  // console.log(state.path)
+
   return (
     <>
       <div
@@ -72,7 +74,7 @@ const Layout = ({ children }) => {
           marginBottom: 125,
         }}
       >
-        <Header isNavRelative={isNavRelative} data={data} />
+        <Header isNavRelative={isNavRelative} path={state.path} data={data} />
         <main
           style={{
             width: "100%",

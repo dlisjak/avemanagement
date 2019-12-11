@@ -8,80 +8,124 @@ import Ticker from "./Ticker"
 import NavigationItem from "./NavigationItem"
 
 const NavBar = posed.header({
-  isVisible: {},
+  hidden: { opacity: 0, marginTop: -25 },
+  visible: { opacity: 1, marginTop: 0 },
 })
 
-const Header = ({ data, isNavRelative }) => {
-  const [selectedItem, setSelectedItem] = useState({})
+const SubNavBar = posed.div({
+  childHidden: { height: 0 },
+  childVisible: { height: 27 },
+})
+
+const Header = ({ data, isNavRelative, path }) => {
+  const [selectedItem, setSelectedItem] = useState(null)
   const [isVisible, setVisibleMenu] = useState(false)
   const [isMobile, toggleIsMobile] = useState(false)
   const [childItems, setChildItems] = useState([])
 
   useEffect(() => {
-    const setUpNav = item => {
-      setSelectedItem(item)
-      setActiveMenuItemClass(item)
-      setChildItems(item.child_items)
+    const setUpNav = () => {
+      const parsedPage = parsePage(path)
+      if (!parsedPage || parsedPage.length < 1) return
+      setActiveMenuItemClass(parsedPage)
+      showNavChildren(parsedPage)
     }
 
     if (typeof window !== "undefined") {
       window.addEventListener("resize", checkIfMobile)
     }
-
-    // componentDidMount
-    const getPath = () => {
-      const selectedItemFromLS = JSON.parse(
-        localStorage.getItem("ave-navigation")
-      )
-      if (!selectedItemFromLS) return
-      setUpNav(selectedItemFromLS)
-    }
     checkIfMobile()
-    getPath()
-  }, [])
+    setUpNav()
+  }, [path])
+
+  const parsePage = path => {
+    const reg = new RegExp("([^a-zA-Z-])", "g")
+    return path.replace(reg, " ")
+  }
 
   const checkIfMobile = () => {
     const a = window.innerWidth <= 480
     toggleIsMobile(a)
   }
 
+  const showNavChildren = path => {
+    let item
+    if (path.includes("women")) {
+      item = {
+        child_items: [
+          {
+            title: "IN TOWN",
+            url: "/women-in-town",
+          },
+          {
+            title: "DIRECT",
+            url: "/women-direct",
+          },
+          {
+            title: "ASIAN / PAN ASIAN",
+            url: "/women-asian-pan-asian",
+          },
+        ],
+        title: "WOMEN",
+        url: "#",
+      }
+    } else if (path.includes("men")) {
+      item = {
+        title: "MEN",
+        url: "#",
+        child_items: [
+          {
+            title: "IN TOWN",
+            url: "/men-in-town",
+          },
+          {
+            title: "DIRECT",
+            url: "/men-direct",
+          },
+          {
+            title: "ASIAN / PAN ASIAN",
+            url: "/men-asian-pan-asian",
+          },
+        ],
+      }
+    }
+
+    selectItem(item)
+  }
+
   const toggleMenu = isVisible => {
     setVisibleMenu(!isVisible)
   }
 
-  const selectItem = (e, item) => {
-    const prevActiveItem = document.querySelector(
-      `[data-title=${selectedItem.title}]`
-    )
-    if (prevActiveItem) {
-      if (prevActiveItem.baseURI.includes(item.url)) return
-      prevActiveItem.classList.remove("active")
-    }
-
-    setSelectedItem(item)
-
+  const selectItem = item => {
+    if (!item) return
     if (item.child_items) {
+      setSelectedItem(item)
       setActiveMenuItemClass(item)
-      localStorage.setItem("ave-navigation", JSON.stringify(item))
       setChildItems(item.child_items)
-    } else {
-      if (
-        localStorage.getItem("ave-navigation") &&
-        !item.url
-          .toUpperCase()
-          .includes(JSON.parse(localStorage.getItem("ave-navigation")).title)
-      ) {
-        localStorage.removeItem("ave-navigation")
-      }
     }
   }
 
   const setActiveMenuItemClass = item => {
-    const itemTitle = item.title || item
+    let itemTitle = item.title || item
 
-    const activeItem = document.querySelector(`[data-title=${itemTitle}]`)
-    if (!activeItem) return
-    activeItem.classList.add("active")
+    const prevActiveItem = document.querySelector(".active")
+    if (prevActiveItem) {
+      prevActiveItem.classList.remove("active")
+    }
+
+    if (itemTitle.includes("women") || itemTitle.includes("men")) {
+      itemTitle = itemTitle.split("-")
+      itemTitle = itemTitle[0].toUpperCase()
+    }
+
+    if (itemTitle.length > 2) {
+      const activeItem = document.querySelector(
+        "[data-title=" + itemTitle + "]"
+      )
+      if (!activeItem) return
+      activeItem.classList.add("active")
+    }
   }
 
   return (
@@ -120,59 +164,64 @@ const Header = ({ data, isNavRelative }) => {
         <div
           className="width-100"
           onClick={() => toggleMenu(isVisible)}
-          style={{ cursor: "pointer" }}
+          style={{ cursor: "pointer", zIndex: 99 }}
         >
           <Ticker title={"MENU"} />
         </div>
-        <header
+        <NavBar
           className="header__menu--desktop flex-column content-padding"
+          pose={isVisible ? "visible" : "hidden"}
           style={{
             background: `white`,
             width: "100%",
-            display: isVisible ? "flex" : "none",
-            marginBottom: isVisible ? 20 : 0,
+            zIndex: isVisible ? 999 : 0,
           }}
         >
           <div
             className="flex"
-            style={{ flexDirection: isMobile ? "column" : "row" }}
+            style={{
+              flexDirection: isMobile ? "column" : "row",
+            }}
           >
             {data.allWordpressMenusMenusItems.edges[0].node.items.map(
-              (item, index) => (
-                <div
-                  className="flex"
-                  onClick={e => selectItem(e, item)}
-                  key={index}
-                >
-                  <NavigationItem item={item} />
-                </div>
-              )
+              (item, index) => {
+                return (
+                  <div
+                    className="flex"
+                    onClick={() => selectItem(item)}
+                    key={index}
+                  >
+                    <NavigationItem item={item} />
+                  </div>
+                )
+              }
             )}
             {!isMobile && (
               <div
                 className="flex"
-                onClick={e =>
-                  selectItem(e, { title: "SEARCH", url: "/search" })
-                }
+                onClick={() => selectItem({ title: "SEARCH", url: "/search" })}
                 key={"search"}
               >
                 <NavigationItem item={{ title: "SEARCH", url: "/search" }} />
               </div>
             )}
           </div>
-          <div className="flex">
+          <SubNavBar
+            pose={isVisible ? "childVisible" : "childHidden"}
+            className="flex subnav"
+          >
             {childItems &&
               childItems.map((childItem, index) => (
                 <div
                   className="flex"
-                  onClick={e => selectItem(e, childItem)}
+                  onClick={() => selectItem(childItem)}
                   key={index}
                 >
                   <NavigationItem item={childItem} />
                 </div>
               ))}
-          </div>
-        </header>
+          </SubNavBar>
+        </NavBar>
       </div>
     </div>
   )
