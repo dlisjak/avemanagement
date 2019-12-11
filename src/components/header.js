@@ -8,8 +8,8 @@ import Ticker from "./Ticker"
 import NavigationItem from "./NavigationItem"
 
 const NavBar = posed.header({
-  hidden: { opacity: 0, marginTop: -25 },
-  visible: { opacity: 1, marginTop: 0 },
+  hidden: { opacity: 0, marginTop: -25, paddingTop: 0, paddingBottom: 0 },
+  visible: { opacity: 1, marginTop: 0, paddingTop: 15, paddingBottom: 15 },
 })
 
 const SubNavBar = posed.div({
@@ -28,6 +28,7 @@ const Header = ({ data, isNavRelative, path }) => {
       const parsedPage = parsePage(path)
       if (!parsedPage || parsedPage.length < 1) return
       setActiveMenuItemClass(parsedPage)
+      console.log(parsedPage)
       showNavChildren(parsedPage)
     }
 
@@ -49,7 +50,7 @@ const Header = ({ data, isNavRelative, path }) => {
   }
 
   const showNavChildren = path => {
-    let item
+    let item = path
     if (path.includes("women")) {
       item = {
         child_items: [
@@ -99,10 +100,13 @@ const Header = ({ data, isNavRelative, path }) => {
 
   const selectItem = item => {
     if (!item) return
+    console.log(item)
     if (item.child_items) {
       setSelectedItem(item)
       setActiveMenuItemClass(item)
       setChildItems(item.child_items)
+    } else {
+      setChildItems(null)
     }
   }
 
@@ -207,7 +211,7 @@ const Header = ({ data, isNavRelative, path }) => {
             )}
           </div>
           <SubNavBar
-            pose={isVisible ? "childVisible" : "childHidden"}
+            pose={childItems && isVisible ? "childVisible" : "childHidden"}
             className="flex subnav"
           >
             {childItems &&
