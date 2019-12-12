@@ -11,6 +11,7 @@ const Layout = ({ children }) => {
   const state = useContext(GlobalStateContext)
 
   const [isMobile, toggleIsMobile] = useState(false)
+  const [isTablet, toggleIsTablet] = useState(false)
   const [isNavRelative, setNavState] = useState(true)
 
   const headerScroll = () => {
@@ -27,6 +28,7 @@ const Layout = ({ children }) => {
       window.addEventListener("scroll", headerScroll)
     }
     const checkIfMobile = () => {
+      if (window.innerWidth < 769) toggleIsTablet(true)
       if (window.innerWidth < 480) toggleIsMobile(true)
     }
     const checkUrl = () => {
@@ -74,12 +76,23 @@ const Layout = ({ children }) => {
           marginBottom: 125,
         }}
       >
-        <Header isNavRelative={isNavRelative} path={state.path} data={data} />
+        <Header
+          isNavRelative={isNavRelative}
+          path={state.path}
+          isTablet={isTablet}
+          isMobile={isMobile}
+          data={data}
+        />
         <main
           style={{
             width: "100%",
             position: "relative",
-            marginTop: isNavRelative ? 0 : 127,
+            marginTop:
+              isTablet ||
+              (isMobile && isNavRelative) ||
+              !isTablet || (!isMobile && isNavRelative)
+                ? 0
+                : 100,
           }}
         >
           <Ticker fixed={true} title={state.path} />

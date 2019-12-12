@@ -91,12 +91,12 @@ const Category = ({ data, pageContext }) => {
                   containerStyles={{ paddingBottom: `130%` }}
                   imageStyles={{ height: "100%", objectFit: "cover" }}
                 />
-                <h3 className="category-card-title flex flex-wrap width-100 relative">
+                <h2 className="category-card-title flex flex-wrap width-100 relative">
                   <span className="width-100">{first_name}</span>
                   <span className="width-100" style={{ top: 15 }}>
                     {last_name}
                   </span>
-                </h3>
+                </h2>
               </Link>
             )
           }

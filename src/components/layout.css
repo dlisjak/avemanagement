@@ -332,7 +332,6 @@
     font-size: 21px;
   }
   .category-card-title {
-    font-size: 32px;
     line-height: 0.8;
     padding-top: 5px;
     padding-bottom: 25px;
@@ -486,6 +485,31 @@
   }
 }
 
+.mobile-navigation {
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  padding: 5px 0;
+}
+.mobile-navigation div {
+  font-weight: 700 !important;
+}
+
+.mobile-navigation div,
+.mobile-navigation a {
+  font-size: 28px !important;
+  color: #222;
+  font-weight: 400;
+}
+.mobile-navigation a[aria-current="page"] {
+  font-weight: 700;
+}
+
+.mobile-navigation--child a {
+  font-size: 20px !important;
+  line-height: 0.7;
+}
+
 .contact-input {
   font-weight: 700;
 }
@@ -518,11 +542,11 @@
 .contact-image-upload--span:hover {
   color: #ccc;
   cursor: pointer;
-  z-index: 999;
+  z-index: 99;
 }
 .ticker__page {
   position: fixed;
-  z-index: 999999;
+  z-index: 99;
   background: white;
   width: 80%;
   max-width: 1366px;
