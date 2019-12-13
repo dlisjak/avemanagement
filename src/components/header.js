@@ -15,8 +15,6 @@ const Header = ({ data, isNavRelative, path, isMobile, isTablet }) => {
     setVisibleMenu(!isVisible)
   }
 
-  console.log(isMobile)
-
   return (
     <div
       className="header-fixed-container flex-column"

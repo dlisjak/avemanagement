@@ -38,7 +38,6 @@ const MobileNav = ({ isVisible, path, data, toggleMenu }) => {
 
   const showChildren = item => {
     if (!item.child_items) return
-    console.log(item)
     if (item.title === "WOMEN") {
       showWomen(!womenIsShown)
     } else if (item.title === "MEN") {

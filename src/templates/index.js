@@ -14,23 +14,18 @@ const Home = ({ pageContext }) => {
 
   useEffect(() => {
     const setPath = () => {
-      if (typeof window !== "undefined") {
-        localStorage.removeItem("ave-ticker")
-        tickerText = window.location.pathname
-        dispatch({ type: "SET_PATH", payload: tickerText })
-      }
+      localStorage.removeItem("ave-ticker")
+      tickerText = typeof window !== "undefined" ? window.location.pathname : ""
+      dispatch({ type: "SET_PATH", payload: tickerText })
     }
     setPath()
     return () => {
-      if (typeof window !== "undefined") {
-        localStorage.setItem("ave-ticker", tickerText)
-      }
+      localStorage.setItem("ave-ticker", tickerText)
     }
   }, [])
 
-  if (typeof window !== "undefined") {
-    localStorage.removeItem("ave-navigation")
-  }
+  localStorage.removeItem("ave-navigation")
+
   return (
     <Layout>
       <SEO title="Home" />

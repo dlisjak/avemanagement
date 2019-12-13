@@ -25,14 +25,13 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
       }
     }
     const setPath = () => {
-      if (typeof window !== "undefined") {
-        tickerText = localStorage.getItem("ave-ticker")
-        if (tickerText) {
-          dispatch({ type: "SET_PATH", payload: tickerText })
-        } else {
-          tickerText = window.location.pathname
-          dispatch({ type: "SET_PATH", payload: tickerText })
-        }
+      tickerText = localStorage.getItem("ave-ticker")
+      if (tickerText) {
+        dispatch({ type: "SET_PATH", payload: tickerText })
+      } else {
+        tickerText =
+          typeof window !== "undefined" ? window.location.pathname : ""
+        dispatch({ type: "SET_PATH", payload: tickerText })
       }
     }
     setPath()

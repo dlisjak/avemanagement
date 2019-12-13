@@ -25,19 +25,15 @@ const NewsPage = ({ data, pageContext }) => {
       }
     }
     const setPath = () => {
-      if (typeof window !== "undefined") {
-        localStorage.removeItem("ave-ticker")
-        tickerText = window.location.pathname
-        dispatch({ type: "SET_PATH", payload: tickerText })
-      }
+      localStorage.removeItem("ave-ticker")
+      tickerText = typeof window !== "undefined" ? window.location.pathname : ""
+      dispatch({ type: "SET_PATH", payload: tickerText })
     }
     setPath()
     initGrid()
 
     return () => {
-      if (typeof window !== "undefined") {
-        localStorage.setItem("ave-ticker", tickerText)
-      }
+      localStorage.setItem("ave-ticker", tickerText)
     }
   }, [])
 

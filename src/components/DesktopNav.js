@@ -23,7 +23,6 @@ const MobileNav = ({ isVisible, path, data }) => {
       const parsedPage = parsePage(path)
       if (!parsedPage || parsedPage.length < 1) return
       setActiveMenuItemClass(parsedPage)
-      console.log(parsedPage)
       showNavChildren(parsedPage)
     }
 
@@ -82,7 +81,6 @@ const MobileNav = ({ isVisible, path, data }) => {
 
   const selectItem = item => {
     if (!item) return
-    console.log(item)
     if (item.child_items) {
       setSelectedItem(item)
       setActiveMenuItemClass(item)
