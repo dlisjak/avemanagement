@@ -10,22 +10,22 @@ const Slider = props => {
     spaceBetween: 5,
   }
 
-  if (typeof window === "undefined") return
-
-  if (window.innerWidth < 950) {
-    params = {
-      slidesPerView: 3,
-      spaceBetween: 5,
-    }
-  } else if (window.innerWidth < 1150) {
-    params = {
-      slidesPerView: 4,
-      spaceBetween: 5,
-    }
-  } else {
-    params = {
-      slidesPerView: 5,
-      spaceBetween: 5,
+  if (typeof window !== "undefined") {
+    if (window.innerWidth < 950) {
+      params = {
+        slidesPerView: 3,
+        spaceBetween: 5,
+      }
+    } else if (window.innerWidth < 1150) {
+      params = {
+        slidesPerView: 4,
+        spaceBetween: 5,
+      }
+    } else {
+      params = {
+        slidesPerView: 5,
+        spaceBetween: 5,
+      }
     }
   }
 
