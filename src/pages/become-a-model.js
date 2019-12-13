@@ -21,17 +21,19 @@ const BecomeAModel = () => {
 
   useEffect(() => {
     const setPath = () => {
-      localStorage.removeItem("ave-ticker")
-
-      if (typeof window === "undefined") return
-      tickerText = window.location.pathname
-
-      dispatch({ type: "SET_PATH", payload: tickerText })
+      if (typeof window !== "undefined") {
+        localStorage.removeItem("ave-ticker")
+        tickerText = window.location.pathname
+        dispatch({ type: "SET_PATH", payload: tickerText })
+      }
     }
     setPath()
 
     return () => {
-      localStorage.setItem("ave-ticker", tickerText)
+      if (typeof window !== "undefined") {
+        localStorage.setItem("ave-ticker", tickerText)
+      }
+      s
     }
   }, [])
 
@@ -40,9 +42,10 @@ const BecomeAModel = () => {
   }
 
   const checkIfMobile = () => {
-    if (typeof window === "undefined") return
-    const a = window.innerWidth < 1015
-    toggleIsMobile(a)
+    if (typeof window !== "undefined") {
+      const a = window.innerWidth < 1015
+      toggleIsMobile(a)
+    }
   }
 
   const handleMobileChange = e => {
@@ -52,7 +55,6 @@ const BecomeAModel = () => {
 
   const handleCountryCodeChange = e => {
     if (e.target.value.length > 4) return
-
     setCountryCode(e.target.value)
   }
 

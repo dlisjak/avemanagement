@@ -16,24 +16,28 @@ const NewsPage = ({ data, pageContext }) => {
     const initGrid = async () => {
       const grid = document.querySelector(".grid")
 
-      if (typeof window === "undefined") return
-
-      Colcade = require("colcade")
-      const colc = new Colcade(grid, {
-        columns: ".grid-col",
-        items: ".grid-item",
-      })
+      if (typeof window !== "undefined") {
+        Colcade = require("colcade")
+        const colc = new Colcade(grid, {
+          columns: ".grid-col",
+          items: ".grid-item",
+        })
+      }
     }
     const setPath = () => {
-      localStorage.removeItem("ave-ticker")
-      tickerText = window.location.pathname
-      dispatch({ type: "SET_PATH", payload: tickerText })
+      if (typeof window !== "undefined") {
+        localStorage.removeItem("ave-ticker")
+        tickerText = window.location.pathname
+        dispatch({ type: "SET_PATH", payload: tickerText })
+      }
     }
     setPath()
     initGrid()
 
     return () => {
-      localStorage.setItem("ave-ticker", tickerText)
+      if (typeof window !== "undefined") {
+        localStorage.setItem("ave-ticker", tickerText)
+      }
     }
   }, [])
 

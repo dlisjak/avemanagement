@@ -16,20 +16,23 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
     const initGrid = async () => {
       const grid = document.querySelector(".grid")
 
-      if (typeof window === "undefined") return
-      Colcade = require("colcade")
-      const colc = new Colcade(grid, {
-        columns: ".grid-col",
-        items: ".grid-item",
-      })
+      if (typeof window !== "undefined") {
+        Colcade = require("colcade")
+        const colc = new Colcade(grid, {
+          columns: ".grid-col",
+          items: ".grid-item",
+        })
+      }
     }
     const setPath = () => {
-      tickerText = localStorage.getItem("ave-ticker")
-      if (tickerText) {
-        dispatch({ type: "SET_PATH", payload: tickerText })
-      } else {
-        tickerText = window.location.pathname
-        dispatch({ type: "SET_PATH", payload: tickerText })
+      if (typeof window !== "undefined") {
+        tickerText = localStorage.getItem("ave-ticker")
+        if (tickerText) {
+          dispatch({ type: "SET_PATH", payload: tickerText })
+        } else {
+          tickerText = window.location.pathname
+          dispatch({ type: "SET_PATH", payload: tickerText })
+        }
       }
     }
     setPath()

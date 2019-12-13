@@ -14,16 +14,17 @@ const Category = ({ data, pageContext }) => {
 
   useEffect(() => {
     const setPath = () => {
-      localStorage.removeItem("ave-ticker")
-
-      if (typeof window === "undefined") return
-      tickerText = window.location.pathname
-
-      dispatch({ type: "SET_PATH", payload: tickerText })
+      if (typeof window !== "undefined") {
+        localStorage.removeItem("ave-ticker")
+        tickerText = window.location.pathname
+        dispatch({ type: "SET_PATH", payload: tickerText })
+      }
     }
     setPath()
     return () => {
-      localStorage.setItem("ave-ticker", tickerText)
+      if (typeof window !== "undefined") {
+        localStorage.setItem("ave-ticker", tickerText)
+      }
     }
   }, [])
 
