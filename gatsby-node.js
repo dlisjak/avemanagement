@@ -12,12 +12,15 @@ exports.sourceNodes = async ({ actions }) => {
       const arrayOfModels = await axios.get(
         `http://avemanagement1.eu/wp-json/wp/v2/posts?per_page=100&page=${i}`
       )
-      // const arrayOfNews = await axios.get(
-      //   `http://avemanagement1.eu/wp-json/wp/v2/news?per_page=100&page=${i}`
-      // )
-      // if (!arrayOfNews.data) break
-      if (!arrayOfModels.data) break
       response = [...response, ...arrayOfModels.data]
+      if (!arrayOfModels.data) break
+    }
+    for (let i = 1; i < 5; i++) {
+      const arrayOfNews = await axios.get(
+        `http://avemanagement1.eu/wp-json/wp/v2/news?per_page=100&page=${i}`
+      )
+      response = [...response, ...arrayOfNews.data]
+      if (!arrayOfNews.data) break
     }
     return response
   }
