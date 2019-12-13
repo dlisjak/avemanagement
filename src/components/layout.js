@@ -15,6 +15,7 @@ const Layout = ({ children }) => {
   const [isNavRelative, setNavState] = useState(true)
 
   const headerScroll = () => {
+    if (typeof window === "undefined") return
     if (window.scrollY === 0) {
       setNavState(true)
     } else {
@@ -28,6 +29,7 @@ const Layout = ({ children }) => {
       window.addEventListener("scroll", headerScroll)
     }
     const checkIfMobile = () => {
+      if (typeof window === "undefined") return
       if (window.innerWidth < 769) toggleIsTablet(true)
       if (window.innerWidth < 480) toggleIsMobile(true)
     }
@@ -90,7 +92,8 @@ const Layout = ({ children }) => {
             marginTop:
               isTablet ||
               (isMobile && isNavRelative) ||
-              !isTablet || (!isMobile && isNavRelative)
+              !isTablet ||
+              (!isMobile && isNavRelative)
                 ? 0
                 : 100,
           }}

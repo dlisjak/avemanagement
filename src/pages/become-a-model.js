@@ -22,7 +22,10 @@ const BecomeAModel = () => {
   useEffect(() => {
     const setPath = () => {
       localStorage.removeItem("ave-ticker")
+
+      if (typeof window === "undefined") return
       tickerText = window.location.pathname
+
       dispatch({ type: "SET_PATH", payload: tickerText })
     }
     setPath()
@@ -37,6 +40,7 @@ const BecomeAModel = () => {
   }
 
   const checkIfMobile = () => {
+    if (typeof window === "undefined") return
     const a = window.innerWidth < 1015
     toggleIsMobile(a)
   }
@@ -53,7 +57,7 @@ const BecomeAModel = () => {
   }
 
   return (
-    <Layout title={window.location.pathname} style={{ marginBottom: 50 }}>
+    <Layout style={{ marginBottom: 50 }}>
       <Formik
         initialValues={{
           firstName: "",

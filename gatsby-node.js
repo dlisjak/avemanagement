@@ -18,10 +18,24 @@ exports.sourceNodes = async ({ actions }) => {
     return response
   }
 
+  const fetchNews = async () => {
+    let response = []
+    for (let i = 1; i < 5; i++) {
+      const arrayOfNews = await axios.get(
+        `http://avemanagement1.eu/wp-json/wp/v2/news?per_page=100&page=${i}`
+      )
+      response = [...response, ...arrayOfNews.data]
+      if (!arrayOfNews.data) break
+    }
+    return response
+  }
+
   const data = await fetchModels()
+  const news = await fetchNews()
 
   const res = {
     data,
+    news,
   }
 
   res.data.map((user, i) => {

@@ -15,13 +15,14 @@ const NewsPage = ({ data, pageContext }) => {
     // componentDidMount
     const initGrid = async () => {
       const grid = document.querySelector(".grid")
-      if (typeof window !== "undefined") {
-        Colcade = require("colcade")
-        const colc = new Colcade(grid, {
-          columns: ".grid-col",
-          items: ".grid-item",
-        })
-      }
+
+      if (typeof window === "undefined") return
+
+      Colcade = require("colcade")
+      const colc = new Colcade(grid, {
+        columns: ".grid-col",
+        items: ".grid-item",
+      })
     }
     const setPath = () => {
       localStorage.removeItem("ave-ticker")

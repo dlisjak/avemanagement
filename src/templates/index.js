@@ -15,7 +15,10 @@ const Home = ({ pageContext }) => {
   useEffect(() => {
     const setPath = () => {
       localStorage.removeItem("ave-ticker")
+
+      if (typeof window === "undefined") return
       tickerText = window.location.pathname
+
       dispatch({ type: "SET_PATH", payload: tickerText })
     }
     setPath()
