@@ -14,17 +14,19 @@ const Home = ({ pageContext }) => {
 
   useEffect(() => {
     const setPath = () => {
-      localStorage.removeItem("ave-ticker")
-      tickerText = typeof window !== "undefined" ? window.location.pathname : ""
-      dispatch({ type: "SET_PATH", payload: tickerText })
+      if (typeof window !== "undefined") {
+        localStorage.removeItem("ave-navigation")
+
+        tickerText = window.location.pathname
+
+        dispatch({ type: "SET_PATH", payload: tickerText })
+      }
     }
     setPath()
     return () => {
       localStorage.setItem("ave-ticker", tickerText)
     }
   }, [])
-
-  localStorage.removeItem("ave-navigation")
 
   return (
     <Layout>
