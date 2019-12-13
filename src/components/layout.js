@@ -15,11 +15,12 @@ const Layout = ({ children }) => {
   const [isNavRelative, setNavState] = useState(true)
 
   const headerScroll = () => {
-    if (typeof window === "undefined") return
-    if (window.scrollY === 0) {
-      setNavState(true)
-    } else {
-      setNavState(false)
+    if (typeof window !== "undefined") {
+      if (window.scrollY === 0) {
+        setNavState(true)
+      } else {
+        setNavState(false)
+      }
     }
   }
 
@@ -29,9 +30,10 @@ const Layout = ({ children }) => {
       window.addEventListener("scroll", headerScroll)
     }
     const checkIfMobile = () => {
-      if (typeof window === "undefined") return
-      if (window.innerWidth < 769) toggleIsTablet(true)
-      if (window.innerWidth < 480) toggleIsMobile(true)
+      if (typeof window !== "undefined") {
+        if (window.innerWidth < 769) toggleIsTablet(true)
+        if (window.innerWidth < 480) toggleIsMobile(true)
+      }
     }
     const checkUrl = () => {
       // console.log(state.path)
