@@ -4,42 +4,23 @@ import { GlobalStateContext } from "../context/GlobalContextProvider"
 
 import Header from "./header"
 import GetToTop from "./getToTop"
-import Ticker from "../components/Ticker"
 import "./layout.css"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, isHomepage }) => {
   const state = useContext(GlobalStateContext)
-
   const [isMobile, toggleIsMobile] = useState(false)
   const [isTablet, toggleIsTablet] = useState(false)
-  const [isNavRelative, setNavState] = useState(true)
-
-  const headerScroll = () => {
-    if (typeof window !== "undefined") {
-      if (window.scrollY === 0) {
-        setNavState(true)
-      } else {
-        setNavState(false)
-      }
-    }
-  }
 
   useEffect(() => {
     // componentDidMount
-    if (typeof window !== "undefined") {
-      window.addEventListener("scroll", headerScroll)
-    }
     const checkIfMobile = () => {
       if (typeof window !== "undefined") {
-        if (window.innerWidth < 769) toggleIsTablet(true)
+        console.log(window.innerWidth)
         if (window.innerWidth < 480) toggleIsMobile(true)
+        if (window.innerWidth < 769) toggleIsTablet(true)
       }
     }
-    const checkUrl = () => {
-      // console.log(state.path)
-    }
     checkIfMobile()
-    checkUrl()
 
     // componentDidUnmount
     return () => {}
@@ -81,7 +62,6 @@ const Layout = ({ children }) => {
         }}
       >
         <Header
-          isNavRelative={isNavRelative}
           path={state.path}
           isTablet={isTablet}
           isMobile={isMobile}
@@ -91,16 +71,9 @@ const Layout = ({ children }) => {
           style={{
             width: "100%",
             position: "relative",
-            marginTop:
-              isTablet ||
-              (isMobile && isNavRelative) ||
-              !isTablet ||
-              (!isMobile && isNavRelative)
-                ? 0
-                : 100,
+            marginTop: !isMobile && !isTablet && !isHomepage ? 225 : 125,
           }}
         >
-          <Ticker fixed={true} title={state.path} />
           {children}
         </main>
         {isMobile && <GetToTop />}

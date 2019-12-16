@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import { Link } from "gatsby"
 
 import Logo from "../images/logo.png"
 
 import Ticker from "./Ticker"
+import { GlobalStateContext } from "../context/GlobalContextProvider"
 
 import DesktopNav from "./DesktopNav"
 import MobileNav from "./MobileNav"
 
-const Header = ({ data, isNavRelative, path, isMobile, isTablet }) => {
+const Header = ({ data, path, isMobile, isTablet }) => {
+  const state = useContext(GlobalStateContext)
+
   const [isVisible, setVisibleMenu] = useState(false)
 
   const toggleMenu = isVisible => {
@@ -19,9 +22,9 @@ const Header = ({ data, isNavRelative, path, isMobile, isTablet }) => {
     <div
       className="header-fixed-container flex-column"
       style={{
-        position: isNavRelative ? "relative" : "fixed",
+        position: "fixed",
         maxWidth: 1366,
-        width: isMobile || isNavRelative ? "100%" : "80%",
+        width: isMobile ? "100%" : "80%",
         display: "block",
         zIndex: 999999,
         background: "white",
@@ -66,6 +69,7 @@ const Header = ({ data, isNavRelative, path, isMobile, isTablet }) => {
           <DesktopNav isVisible={isVisible} path={path} data={data} />
         )}
       </div>
+      <Ticker title={state.path} />
     </div>
   )
 }

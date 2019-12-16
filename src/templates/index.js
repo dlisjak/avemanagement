@@ -29,7 +29,7 @@ const Home = ({ pageContext }) => {
   }, [])
 
   return (
-    <Layout>
+    <Layout isHomepage={true}>
       <SEO title="Home" />
       <video autoPlay muted className="home-video width-100" style={{}}>
         <source src={pageContext.video} type="video/mp4" />

@@ -45,6 +45,8 @@ const MobileNav = ({ isVisible, path, data, toggleMenu }) => {
     }
   }
 
+  console.log(womenIsShown)
+
   return (
     <MobileNavPose
       className="flex flex-column"
@@ -60,7 +62,7 @@ const MobileNav = ({ isVisible, path, data, toggleMenu }) => {
         zIndex: 999,
         pointerEvents: isVisible ? "inherit" : "none",
         alignItems: "center",
-        paddingTop: 80,
+        paddingTop: 60,
       }}
     >
       <button
@@ -98,6 +100,7 @@ const MobileNav = ({ isVisible, path, data, toggleMenu }) => {
                       : "hidden"
                   }
                   className="flex"
+                  style={{ opacity: 0, height: 0 }}
                 >
                   {item.child_items.map((childItem, childIndex) => (
                     <div

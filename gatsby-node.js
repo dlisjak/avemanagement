@@ -18,10 +18,24 @@ exports.sourceNodes = async ({ actions }) => {
     return response
   }
 
+  const fetchNews = async () => {
+    let response = []
+    for (let i = 1; i < 3; i++) {
+      const arrayOfNews = await axios.get(
+        `http://avemanagement1.eu/wp-json/wp/v2/news?per_page=100&page=${i}`
+      )
+      response = [...response, ...arrayOfNews.data]
+      if (!arrayOfNews.data) break
+    }
+    return response
+  }
+
   const data = await fetchModels()
+  const news = await fetchNews()
 
   const res = {
     data,
+    news,
   }
 
   res.data.map((user, i) => {
@@ -46,6 +60,29 @@ exports.sourceNodes = async ({ actions }) => {
     userNode.internal.contentDigest = contentDigest
 
     createNode(userNode)
+  })
+
+  res.news.map((news, i) => {
+    const newsNode = {
+      id: `${i}`,
+      parent: `__SOURCE__`,
+      internal: {
+        type: `News`,
+      },
+      children: [],
+
+      slug: news.slug,
+      title: news.title.rendered,
+      acf: news.acf,
+    }
+
+    const contentDigest = crypto
+      .createHash(`md5`)
+      .update(JSON.stringify(newsNode))
+      .digest(`hex`)
+
+    newsNode.internal.contentDigest = contentDigest
+    createNode(newsNode)
   })
   return
 }
@@ -209,15 +246,6 @@ exports.createPages = async ({ graphql, actions }) => {
           node {
             title
             slug
-            acf {
-              news_post_image {
-                url
-                title
-                height
-                width
-                name
-              }
-            }
             content
           }
         }
@@ -231,9 +259,9 @@ exports.createPages = async ({ graphql, actions }) => {
       path: `/news/${node.slug}`,
       component: slash(newsTemplate),
       context: {
-        title: node.title,
-        acf: node.acf,
         content: node.content,
+        slug: node.slug,
+        title: node.title,
       },
     })
   })

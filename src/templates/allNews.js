@@ -51,7 +51,7 @@ const NewsPage = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <div id="content" className="grid" style={{ marginTop: 50 }}>
+      <div id="content" className="grid">
         <div className="grid-col grid-col--1"></div>
         <div className="grid-col grid-col--2"></div>
         <div className="grid-col grid-col--3"></div>
@@ -62,7 +62,6 @@ const NewsPage = ({ data, pageContext }) => {
             const ratio = acf.news_post_image.height / acf.news_post_image.width
             return (
               <div
-                style={{ marginTop: 10 }}
                 className="flex-column justify-between grid-item"
                 key={index}
               >
@@ -76,10 +75,16 @@ const NewsPage = ({ data, pageContext }) => {
                     }}
                     style={{ marginBottom: 0 }}
                   />
-                  <div
+                  <h3
                     style={{ textDecoration: "none", color: "black" }}
                     className="news-card-title"
                     dangerouslySetInnerHTML={{ __html: formatContent(content) }}
+                    style={{
+                      fontWeight: 400,
+                      color: "black",
+                      paddingBottom: 25,
+                      marginBottom: 0,
+                    }}
                   />
                 </Link>
               </div>

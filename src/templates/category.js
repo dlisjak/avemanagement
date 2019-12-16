@@ -53,12 +53,13 @@ const Category = ({ data, pageContext }) => {
           style={{
             position: "absolute",
             right: 0,
-            top: 75,
+            top: -20,
             background: 0,
             border: 0,
             fontWeight: 700,
             padding: 0,
             zIndex: 9999,
+            color: "#ccc",
           }}
         >
           SEARCH
@@ -67,7 +68,7 @@ const Category = ({ data, pageContext }) => {
 
       <div
         className="flex flex-wrap category-cards relative"
-        style={{ marginTop: 100, marginBottom: 75 }}
+        style={{ marginBottom: 75 }}
       >
         {data.allWordpressPost.edges.map(
           (
@@ -95,12 +96,12 @@ const Category = ({ data, pageContext }) => {
                   containerStyles={{ paddingBottom: `130%` }}
                   imageStyles={{ height: "100%", objectFit: "cover" }}
                 />
-                <h2 className="category-card-title flex flex-wrap width-100 relative">
+                <h3 className="category-card-title flex flex-wrap width-100 relative">
                   <span className="width-100">{first_name}</span>
                   <span className="width-100" style={{ top: 15 }}>
                     {last_name}
                   </span>
-                </h2>
+                </h3>
               </Link>
             )
           }
@@ -118,6 +119,7 @@ const Category = ({ data, pageContext }) => {
             fontWeight: 700,
             padding: 0,
             zIndex: 9999,
+            color: "#ccc",
           }}
         >
           SEARCH

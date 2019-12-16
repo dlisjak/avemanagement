@@ -139,7 +139,7 @@ const BecomeAModel = () => {
           handleBlur,
           /* and other goodies */
         }) => (
-          <div className="flex content-padding" style={{ marginTop: 50 }}>
+          <div className="flex content-padding">
             <Form
               id="become-a-model"
               className="flex flex-column contact-form"

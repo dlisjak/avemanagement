@@ -17,11 +17,13 @@ const SubNavBar = posed.div({
 const MobileNav = ({ isVisible, path, data }) => {
   const [selectedItem, setSelectedItem] = useState(null)
   const [childItems, setChildItems] = useState([])
+  const [childIsVisible, setChildVisible] = useState(false)
 
   useEffect(() => {
     const setUpNav = () => {
       const parsedPage = parsePage(path)
-      if (!parsedPage || parsedPage.length < 1) return
+      if (!parsedPage || parsedPage.length < 1 || parsedPage.includes(" "))
+        return
       setActiveMenuItemClass(parsedPage)
       showNavChildren(parsedPage)
     }
@@ -75,7 +77,6 @@ const MobileNav = ({ isVisible, path, data }) => {
         ],
       }
     }
-
     selectItem(item)
   }
 
@@ -85,8 +86,10 @@ const MobileNav = ({ isVisible, path, data }) => {
       setSelectedItem(item)
       setActiveMenuItemClass(item)
       setChildItems(item.child_items)
+      setChildVisible(true)
     } else {
       setChildItems(null)
+      setChildVisible(false)
     }
   }
 
@@ -137,6 +140,7 @@ const MobileNav = ({ isVisible, path, data }) => {
                 className="flex"
                 onClick={() => selectItem(item)}
                 key={index}
+                style={{ alignItems: "center" }}
               >
                 <NavigationItem item={item} />
               </div>
@@ -147,12 +151,13 @@ const MobileNav = ({ isVisible, path, data }) => {
           className="flex"
           onClick={() => selectItem({ title: "SEARCH", url: "/search" })}
           key={"search"}
+          style={{ alignItems: "center" }}
         >
           <NavigationItem item={{ title: "SEARCH", url: "/search" }} />
         </div>
       </div>
       <SubNavBar
-        pose={childItems && isVisible ? "childVisible" : "childHidden"}
+        pose={childItems && childIsVisible ? "childVisible" : "childHidden"}
         className="flex subnav"
       >
         {childItems &&
@@ -161,6 +166,7 @@ const MobileNav = ({ isVisible, path, data }) => {
               className="flex"
               onClick={() => selectItem(childItem)}
               key={index}
+              style={{ alignItems: "center" }}
             >
               <NavigationItem item={childItem} />
             </div>
