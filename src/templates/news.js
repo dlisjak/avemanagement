@@ -129,7 +129,8 @@ const News = ({ pageContext, data }) => {
               data.allNews.edges.length &&
               data.allNews.edges[0] &&
               data.allNews.edges[0].node &&
-              data.allNews.edges[0].node.acf
+              data.allNews.edges[0].node.acf &&
+              data.allNews.edges[0].node.acf.gallery_image
                 ? data.allNews.edges[0].node.acf.gallery_image.map(
                     ({ description, height, url, width, title }, index) => {
                       const ratio = height / width
