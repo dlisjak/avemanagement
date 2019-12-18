@@ -78,7 +78,11 @@ const News = ({ pageContext, data }) => {
           }}
         />
         <div className="flex model__menu">
-          {data.allNews.edges.length && data.allNews.edges[0].node.acf.video ? (
+          {data.allNews.edges.length &&
+          data.allNews.edges[0] &&
+          data.allNews.edges[0].node &&
+          data.allNews.edges[0].node.acf &&
+          data.allNews.edges[0].node.acf.video ? (
             <div
               href="#content"
               onClick={() => setTab("VIDEOS")}
@@ -121,7 +125,11 @@ const News = ({ pageContext, data }) => {
               <div className="grid-col grid-col--2"></div>
               <div className="grid-col grid-col--3"></div>
               <div className="grid-col grid-col--4"></div>
-              {data.allNews.edges && data.allNews.edges.length
+              {data.allNews.edges &&
+              data.allNews.edges.length &&
+              data.allNews.edges[0] &&
+              data.allNews.edges[0].node &&
+              data.allNews.edges[0].node.acf
                 ? data.allNews.edges[0].node.acf.gallery_image.map(
                     ({ description, height, url, width, title }, index) => {
                       const ratio = height / width
