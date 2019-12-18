@@ -1,16 +1,26 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { Link } from "gatsby"
+import posed, { PoseGroup } from "react-pose"
 
 import TickerText from "./Ticker"
 import GetToTop from "./getToTop"
 
+const SearchPose = posed.div({
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+})
+
 const Search = ({ isShown, models, closeSearch }) => {
   const [isOpen, toggleOverlay] = useState(true)
+  const [searchQuery, setSearchQuery] = useState("")
+
+  const inputRef = useRef(null)
 
   useEffect(() => {
     const openOverlay = () => {
       const el = document.querySelector("body")
       el.classList.add("overlay")
+      inputRef.current.focus()
     }
     openOverlay()
 
@@ -22,6 +32,10 @@ const Search = ({ isShown, models, closeSearch }) => {
 
   const closeOverlay = () => {
     closeSearch()
+  }
+
+  const handleSearchQuery = e => {
+    setSearchQuery(e.target.value.toUpperCase())
   }
 
   const scrollToTopSearch = () => {
@@ -41,8 +55,9 @@ const Search = ({ isShown, models, closeSearch }) => {
   }
 
   return (
-    <div
+    <SearchPose
       className="flex flex-column search-overlay"
+      pose={isShown && isOpen ? "visible" : "hidden"}
       style={{
         display: isShown && isOpen ? "block" : "none",
         position: "fixed",
@@ -82,12 +97,27 @@ const Search = ({ isShown, models, closeSearch }) => {
             WOMEN
           </button>
         )}
+        <input
+          ref={inputRef}
+          className="search-input-search"
+          type="text"
+          placeholder="SEARCH BY NAME"
+          onChange={e => handleSearchQuery(e)}
+          value={searchQuery}
+          style={{ fontSize: 22, marginTop: 10 }}
+        />
       </div>
+
       <div
         className="flex flex-column search-queries"
         style={{ paddingTop: 50, paddingBottom: 50, marginBottom: 150 }}
       >
         {sortedModels.map(({ node }, index, arr) => {
+          if (searchQuery) {
+            if (!node.title.toUpperCase().includes(searchQuery.toUpperCase())) {
+              return null
+            }
+          }
           if (index === 0 || node.title[0] !== arr[index - 1].node.title[0]) {
             return (
               <React.Fragment key={index}>
@@ -150,7 +180,7 @@ const Search = ({ isShown, models, closeSearch }) => {
           <i className="up-arrow" onClick={() => scrollToTopSearch()} />
         </div>
       </div>
-    </div>
+    </SearchPose>
   )
 }
 

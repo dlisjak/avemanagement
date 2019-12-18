@@ -27,15 +27,39 @@ const Contact = () => {
         style={{ maxWidth: 500, margin: "auto", textAlign: "center" }}
       >
         <h1>Ave Management</h1>
-        <span>70 SHENTON WAY, #13-06 EON SHENTON SINGAPORE 079118</span>
+        <span style={{ marginBottom: 50 }}>
+          70 SHENTON WAY, #13-06 EON SHENTON SINGAPORE 079118
+        </span>
         <span>T +65 68874629</span>
-        <span>T +65 68874629</span>
+        <span style={{ marginBottom: 20 }}>T +65 68874629</span>
 
-        <a href="mailto:info@avemanagement.com">info@avemanagement.com</a>
+        <a
+          href="mailto:info@avemanagement.com"
+          style={{
+            textDecoration: "none",
+            textTransform: "none",
+            color: "#222",
+          }}
+        >
+          info@avemanagement.com
+        </a>
 
-        <a href="https://goo.gl/maps/JoLuAknYkKp">Google maps</a>
+        <a
+          href="https://goo.gl/maps/JoLuAknYkKp"
+          style={{
+            textDecoration: "none",
+            textTransform: "uppercase",
+            color: "#222",
+            marginTop: 10,
+          }}
+        >
+          Google maps
+        </a>
 
-        <div className="flex flex-column contact-page-history">
+        <div
+          className="flex flex-column contact-page-history"
+          style={{ marginTop: 50 }}
+        >
           <h3>A BRIEF HISTORY</h3>
           <p>
             Founded in 2004 by photographer duo ChuanDo & Frey, AVE Management

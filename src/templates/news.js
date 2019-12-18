@@ -94,6 +94,7 @@ const News = ({ pageContext, data }) => {
           ) : null}
           {data.allNews.edges &&
           data.allNews.edges.length &&
+          data.allNews.edges[0].node.acf &&
           data.allNews.edges[0].node.acf.gallery_image ? (
             <div
               href="#content"

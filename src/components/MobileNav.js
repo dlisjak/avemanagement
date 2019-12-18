@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
-import posed from "react-pose"
+import posed, { PoseGroup } from "react-pose"
 
 import NavigationItem from "./NavigationItem"
 
@@ -10,11 +10,11 @@ const MobileNavPose = posed.div({
 })
 
 const ChildNav = posed.div({
-  hidden: { opacity: 0, height: 0 },
-  visible: { opacity: 1, height: "auto" },
+  exit: { opacity: 0, height: 0, zIndex: -100 },
+  enter: { opacity: 1, height: "auto", zIndex: 999 },
 })
 
-const MobileNav = ({ isVisible, path, data, toggleMenu }) => {
+const MobileNav = ({ isVisible, data, toggleMenu }) => {
   const [womenIsShown, showWomen] = useState(false)
   const [menIsShown, showMen] = useState(false)
 
@@ -44,8 +44,6 @@ const MobileNav = ({ isVisible, path, data, toggleMenu }) => {
       showMen(!menIsShown)
     }
   }
-
-  console.log(womenIsShown)
 
   return (
     <MobileNavPose
@@ -82,37 +80,39 @@ const MobileNav = ({ isVisible, path, data, toggleMenu }) => {
       {data.allWordpressMenusMenusItems.edges[0].node.items.map(
         (item, index) => {
           return (
-            <div
-              className="flex mobile-navigation"
-              onClick={() => showChildren(item)}
-              key={index}
-            >
-              <NavigationItem item={item} />
-              {item.child_items && (
-                <ChildNav
-                  pose={
-                    item.title === "WOMEN"
-                      ? womenIsShown
-                        ? "visible"
-                        : "hidden"
-                      : menIsShown
-                      ? "visible"
-                      : "hidden"
-                  }
-                  className="flex"
-                  style={{ opacity: 0, height: 0 }}
-                >
-                  {item.child_items.map((childItem, childIndex) => (
-                    <div
-                      className="flex mobile-navigation--child"
-                      key={childIndex}
-                    >
-                      <NavigationItem item={childItem} />
-                    </div>
-                  ))}
-                </ChildNav>
-              )}
-            </div>
+            <PoseGroup key={index}>
+              <div
+                className="flex mobile-navigation"
+                onClick={() => showChildren(item)}
+                key={index}
+              >
+                <NavigationItem item={item} />
+                {item.child_items && (
+                  <ChildNav
+                    pose={
+                      item.title === "WOMEN"
+                        ? womenIsShown
+                          ? "enter"
+                          : "exit"
+                        : menIsShown
+                        ? "enter"
+                        : "exit"
+                    }
+                    className="flex"
+                    style={{ opacity: 0, height: 0 }}
+                  >
+                    {item.child_items.map((childItem, childIndex) => (
+                      <div
+                        className="flex mobile-navigation--child"
+                        key={childIndex}
+                      >
+                        <NavigationItem item={childItem} />
+                      </div>
+                    ))}
+                  </ChildNav>
+                )}
+              </div>
+            </PoseGroup>
           )
         }
       )}

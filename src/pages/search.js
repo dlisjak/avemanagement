@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react"
+import React, { useState, useEffect, useContext, useRef } from "react"
 import { graphql, Link } from "gatsby"
 
 import Layout from "../components/layout"
@@ -8,10 +8,13 @@ import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 const Search = ({ data }) => {
   const dispatch = useContext(GlobalDispatchContext)
   const [genderQuery, setGender] = useState(null)
+  const [searchQuery, setSearchQuery] = useState("")
+  const inputRef = useRef(null)
   let tickerText
 
   useEffect(() => {
     const setPath = () => {
+      inputRef.current.focus()
       localStorage.removeItem("ave-ticker")
       tickerText = typeof window !== "undefined" ? window.location.pathname : ""
       dispatch({ type: "SET_PATH", payload: tickerText })
@@ -22,6 +25,10 @@ const Search = ({ data }) => {
       localStorage.setItem("ave-ticker", tickerText)
     }
   }, [])
+
+  const handleSearchQuery = e => {
+    setSearchQuery(e.target.value.toUpperCase())
+  }
 
   const setSearchGender = (e, gender) => {
     setGender(gender)
@@ -51,22 +58,50 @@ const Search = ({ data }) => {
         >
           WOMEN
         </button>
+        <div>
+          <input
+            ref={inputRef}
+            className="search-input-search"
+            type="text"
+            placeholder="SEARCH BY NAME"
+            onChange={e => handleSearchQuery(e)}
+            value={searchQuery}
+            style={{ fontSize: 22, marginTop: 10 }}
+          />
+        </div>
       </div>
       <div
         className="flex flex-column search-queries"
         style={{ paddingTop: 50, paddingBottom: 25 }}
       >
         {data.allModel.edges.map(({ node }, index, arr) => {
+          if (searchQuery) {
+            if (!node.title.toUpperCase().includes(searchQuery.toUpperCase())) {
+              return null
+            }
+          }
           if (index === 0 || node.title[0] !== arr[index - 1].node.title[0]) {
             return (
-              <span
-                style={{ marginTop: 20, marginBottom: 5, fontWeight: 700 }}
-                key={index}
-              >
-                {arr[index].node.title[0]}
-              </span>
+              <React.Fragment key={index}>
+                <span
+                  style={{ marginTop: 20, marginBottom: 5, fontWeight: 700 }}
+                >
+                  {arr[index].node.title[0]}
+                </span>
+                <Link
+                  to={`/${node.slug}`}
+                  style={{
+                    textDecoration: "none",
+                    color: "black",
+                    lineHeight: 1.8,
+                  }}
+                >
+                  {node.title.toUpperCase()}
+                </Link>
+              </React.Fragment>
             )
           }
+
           if (genderQuery) {
             if (genderQuery !== node.acf.gender) return null
           }
