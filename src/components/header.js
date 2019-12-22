@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useContext } from "react"
+import { useStaticQuery, graphql } from "gatsby"
+
 import { Link } from "gatsby"
 
 import Logo from "../images/logo.png"
@@ -9,7 +11,7 @@ import { GlobalStateContext } from "../context/GlobalContextProvider"
 import DesktopNav from "./DesktopNav"
 import MobileNav from "./MobileNav"
 
-const Header = ({ data, path, isMobile, isTablet }) => {
+const Header = ({ isMobile, isTablet }) => {
   const state = useContext(GlobalStateContext)
 
   const [isVisible, setVisibleMenu] = useState(false)
@@ -17,6 +19,27 @@ const Header = ({ data, path, isMobile, isTablet }) => {
   const toggleMenu = isVisible => {
     setVisibleMenu(!isVisible)
   }
+
+  const data = useStaticQuery(graphql`
+    {
+      allWordpressMenusMenusItems(filter: { name: { eq: "Main" } }) {
+        edges {
+          node {
+            name
+            slug
+            items {
+              title
+              child_items {
+                title
+                url
+              }
+              url
+            }
+          }
+        }
+      }
+    }
+  `)
 
   return (
     <div
@@ -58,15 +81,15 @@ const Header = ({ data, path, isMobile, isTablet }) => {
         >
           <Ticker title={"MENU"} />
         </div>
-        {isTablet ? (
+        {isMobile || isTablet ? (
           <MobileNav
             toggleMenu={toggleMenu}
             isVisible={isVisible}
-            path={path}
+            path={state.path}
             data={data}
           />
         ) : (
-          <DesktopNav isVisible={isVisible} path={path} data={data} />
+          <DesktopNav isVisible={isVisible} path={state.path} data={data} />
         )}
       </div>
       <Ticker title={state.path} />

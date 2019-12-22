@@ -13,8 +13,6 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -24,7 +22,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/lool.png`, // This path is relative to the root of the site.
+        icon: `src/images/logo.png`, // This path is relative to the root of the site.
       },
     },
     {
@@ -34,9 +32,9 @@ module.exports = {
          * The base URL of the WordPress site without the trailingslash and the protocol. This is required.
          * Example : 'gatsbyjsexamplewordpress.wordpress.com' or 'www.example-site.com'
          */
-        baseUrl: "http://avemanagement1.eu",
+        baseUrl: "https://avemanagement1.eu/",
         // The protocol. This can be http or https.
-        protocol: "http",
+        protocol: "https",
         // Indicates whether the site is hosted on wordpress.com.
         // If false, then the assumption is made that the site is self hosted.
         // If true, then the plugin will source its content on wordpress.com using the JSON REST API V2.
@@ -86,6 +84,7 @@ module.exports = {
           "**/users",
           "**/news",
           "**/menus",
+          "**/media",
         ],
         // Blacklisted routes using glob patterns
         excludedRoutes: ["**/posts/1456"],
@@ -94,12 +93,14 @@ module.exports = {
         // URLs for thumbnails, or any other media detail.
         // Defaults to false
         keepMediaSizes: false,
-        // use a custom normalizer which is applied after the built-in ones.
+        // use a custom normalizer which is applied aft<er the built-in ones.
         normalizer: function({ entities }) {
           return entities
         },
       },
     },
     `gatsby-plugin-transition-link`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
   ],
 }

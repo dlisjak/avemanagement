@@ -35,6 +35,7 @@
   }
   .contact-input {
     width: 70%;
+    border: 1px solid black;
   }
   .contact-form-submit {
     padding-left: 10px;
@@ -44,12 +45,12 @@
   }
   .contact-label {
     min-width: 150px;
-    font-size: 11px;
+    font-size: 14px;
   }
 
   .contact-error {
     font-size: 10px;
-    top: 12px;
+    top: 0px;
   }
   .grid {
     margin-bottom: 20px;
@@ -214,6 +215,9 @@
   }
 }
 
+@media only screen and (min-width: 480px) and (max-width: 850px) {
+}
+
 @media only screen and (max-width: 850px) {
   .contact-body-text {
     width: 100%;
@@ -260,10 +264,6 @@
     margin: auto;
     display: flex;
     justify-content: center;
-  }
-
-  .contact-error {
-    font-size: 12px;
   }
   .contact-input--date {
     padding-right: 66px;
@@ -510,6 +510,7 @@
 
 .contact-input {
   font-weight: 700;
+  border-bottom: 1px solid black;
 }
 .contact-input--date {
   text-transform: inherit;
@@ -518,7 +519,6 @@
   color: red;
   position: absolute;
   right: 0px;
-  top: 9px;
   font-weight: 700;
 }
 .contact-input--country-code {
@@ -864,6 +864,7 @@ html {
   font-family: "HelveticaNeue";
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  letter-spacing: 0px;
 }
 body {
   overflow: hidden;
@@ -871,6 +872,7 @@ body {
   text-transform: uppercase;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0px;
 }
 body.overlay {
   height: 100vh;
@@ -1137,7 +1139,7 @@ h3 {
   font-family: "HelveticaNeue";
   font-weight: bold;
   text-rendering: optimizeLegibility;
-  font-size: 1.38316rem;
+  font-size: 1.7rem;
   line-height: 1.1;
 }
 h4 {

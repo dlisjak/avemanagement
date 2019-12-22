@@ -6,9 +6,9 @@ import TickerText from "./Ticker"
 const Instagram = () => {
   return (
     <>
-      <TickerText title="INSTAGRAM" />
+      <TickerText title="INSTAGRAM" left={true} />
       <TickerText title="@AVEMANAGEMENT" />
-      <TickerText title="#AVEGIRLS #AVEBOYS" />
+      <TickerText title="#AVEGIRLS #AVEBOYS" left={true} />
     </>
   )
 }

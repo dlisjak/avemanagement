@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import { Link } from "gatsby"
 import posed from "react-pose"
 
 import NavigationItem from "./NavigationItem"
@@ -14,7 +13,7 @@ const SubNavBar = posed.div({
   childVisible: { height: 27 },
 })
 
-const MobileNav = ({ isVisible, path, data }) => {
+const DesktopNav = ({ isVisible, path, data }) => {
   const [selectedItem, setSelectedItem] = useState(null)
   const [childItems, setChildItems] = useState([])
   const [childIsVisible, setChildVisible] = useState(false)
@@ -176,4 +175,4 @@ const MobileNav = ({ isVisible, path, data }) => {
   )
 }
 
-export default MobileNav
+export default DesktopNav

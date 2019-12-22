@@ -63,20 +63,6 @@ const MobileNav = ({ isVisible, data, toggleMenu }) => {
         paddingTop: 60,
       }}
     >
-      <button
-        onClick={() => closeOverlay()}
-        style={{
-          background: 0,
-          border: 0,
-          fontWeight: 700,
-          top: 30,
-          position: "absolute",
-          left: 0,
-          padding: 0,
-        }}
-      >
-        BACK
-      </button>
       {data.allWordpressMenusMenusItems.edges[0].node.items.map(
         (item, index) => {
           return (
@@ -116,6 +102,20 @@ const MobileNav = ({ isVisible, data, toggleMenu }) => {
           )
         }
       )}
+      <button
+        onClick={() => closeOverlay()}
+        style={{
+          background: 0,
+          border: 0,
+          fontWeight: 700,
+          top: 30,
+          position: "absolute",
+          left: 0,
+          padding: 0,
+        }}
+      >
+        BACK
+      </button>
     </MobileNavPose>
   )
 }

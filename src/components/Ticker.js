@@ -1,10 +1,8 @@
 import React from "react"
 
-const TickerText = ({ title, fixed = false }) => {
+const TickerText = ({ title, fixed = false, left = false }) => {
   const reg = new RegExp("([^a-zA-Z])", "g")
   let data = " "
-
-  // console.log(title)
 
   if (title) {
     const titleTicker = title.replace(reg, " ")
@@ -58,10 +56,13 @@ const TickerText = ({ title, fixed = false }) => {
         style={{ fontWeight: 700, maxWidth: 1366 }}
       >
         <div id="tickerwrap">
-          <div id="tickerReverse" style={{ marginRight: 5 }}>
+          <div
+            id={left ? "ticker" : "tickerReverse"}
+            style={{ marginRight: 5 }}
+          >
             {data}
           </div>
-          <div id="ticker2Reverse">{data}</div>
+          <div id={left ? "ticker" : "tickerReverse"}>{data}</div>
         </div>
       </div>
     )

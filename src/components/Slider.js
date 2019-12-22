@@ -13,16 +13,25 @@ const Slider = props => {
   if (typeof window !== "undefined") {
     if (window.innerWidth < 950) {
       params = {
+        autoplay: {
+          delay: 1500,
+        },
         slidesPerView: 3,
         spaceBetween: 5,
       }
     } else if (window.innerWidth < 1150) {
       params = {
+        autoplay: {
+          delay: 1500,
+        },
         slidesPerView: 4,
         spaceBetween: 5,
       }
     } else {
       params = {
+        autoplay: {
+          delay: 1500,
+        },
         slidesPerView: 5,
         spaceBetween: 5,
       }

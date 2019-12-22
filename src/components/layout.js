@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from "react"
-import { useStaticQuery, graphql } from "gatsby"
 import { GlobalStateContext } from "../context/GlobalContextProvider"
 
 import Header from "./header"
@@ -7,7 +6,6 @@ import GetToTop from "./getToTop"
 import "./layout.css"
 
 const Layout = ({ children, isHomepage }) => {
-  const state = useContext(GlobalStateContext)
   const [isMobile, toggleIsMobile] = useState(false)
   const [isTablet, toggleIsTablet] = useState(false)
 
@@ -26,27 +24,6 @@ const Layout = ({ children, isHomepage }) => {
     return () => {}
   }, [])
 
-  const data = useStaticQuery(graphql`
-    {
-      allWordpressMenusMenusItems(filter: { name: { eq: "Main" } }) {
-        edges {
-          node {
-            name
-            slug
-            items {
-              title
-              child_items {
-                title
-                url
-              }
-              url
-            }
-          }
-        }
-      }
-    }
-  `)
-
   // console.log(state.path)
 
   return (
@@ -61,12 +38,7 @@ const Layout = ({ children, isHomepage }) => {
           marginBottom: 125,
         }}
       >
-        <Header
-          path={state.path}
-          isTablet={isTablet}
-          isMobile={isMobile}
-          data={data}
-        />
+        <Header isTablet={isTablet} isMobile={isMobile} />
         <main
           style={{
             width: "100%",

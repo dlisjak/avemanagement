@@ -414,7 +414,7 @@ const BecomeAModel = () => {
       <div
         className="flex flex-column contact-body-text content-padding"
         style={{
-          marginTop: 50,
+          marginTop: isMobile ? 0 : 50,
           marginBottom: 50,
         }}
       >

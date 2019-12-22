@@ -22,7 +22,7 @@ const NavigationItem = ({ item }) => {
   } else if (item.url.includes("http")) {
     return (
       <a
-        href={`${item.url}/`}
+        href={`${item.url}`}
         target="_blank"
         rel="noopener noreferrer"
         data-title={item.title.replace(/\s/g, "-")}
