@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react"
+import React, { useState, useRef, useEffect, Fragment } from "react"
 import fullLength from "../images/fullLength.png"
 import headShot from "../images/headShot.png"
 import midLength from "../images/midLength.png"
@@ -6,9 +6,17 @@ import profile from "../images/profile.png"
 
 const ImageUpload = ({ title, order, text }) => {
   const [file, setFile] = useState("")
+  const [placeholderImage, setPlaceholderImage] = useState("")
   const inputField = useRef(null)
 
-  useEffect(() => {}, [])
+  const placeholderImages = [headShot, profile, midLength, fullLength]
+
+  useEffect(() => {
+    const setPlaceholderImages = () => {
+      setPlaceholderImage(placeholderImages[order])
+    }
+    setPlaceholderImages()
+  })
 
   const handleChange = e => {
     setFile(URL.createObjectURL(e.target.files[0]))
@@ -34,31 +42,35 @@ const ImageUpload = ({ title, order, text }) => {
           objectFit: "contain",
         }}
       >
-        <div
-          className="flex flex-column align-center absolute"
-          style={{ cursor: "pointer" }}
-        >
-          <span style={{}}>{text}</span>
-          <span
-            className="contact-image-upload--span"
-            style={{ cursor: "pointer", fontWeight: 700 }}
-            onClick={e => fireImageSearch(e)}
-          >
-            CLICK TO UPLOAD
-          </span>
-        </div>
-        <input
-          ref={inputField}
-          className="flex flex-wrap absolute contact-image-upload--input"
-          type="file"
-          onChange={e => handleChange(e)}
-          style={{
-            width: "100%",
-            border: 0,
-            opacity: 0,
-            pointerEvents: "none",
-          }}
-        />
+        {!file && (
+          <Fragment>
+            <div
+              className="flex flex-column align-center absolute"
+              style={{ cursor: "pointer" }}
+            >
+              <span>{text}</span>
+              <span
+                className="contact-image-upload--span"
+                style={{ cursor: "pointer", fontWeight: 700 }}
+                onClick={e => fireImageSearch(e)}
+              >
+                CLICK TO UPLOAD
+              </span>
+            </div>
+            <input
+              ref={inputField}
+              className="flex flex-wrap absolute contact-image-upload--input"
+              type="file"
+              onChange={e => handleChange(e)}
+              style={{
+                width: "100%",
+                border: 0,
+                opacity: 0,
+                pointerEvents: "none",
+              }}
+            />
+          </Fragment>
+        )}
         {file && (
           <img
             className="contact-image-upload--image"
@@ -67,6 +79,15 @@ const ImageUpload = ({ title, order, text }) => {
             transitionTime={0.5}
             containerStyles={{ paddingBottom: "130%" }}
             style={{ zIndex: 99 }}
+          />
+        )}
+        {placeholderImage && !file && (
+          <img
+            className="contact-image-upload--image"
+            src={placeholderImage}
+            alt={`Your ${title}`}
+            transitionTime={0.5}
+            containerStyles={{ paddingBottom: "130%" }}
           />
         )}
         {file && (
