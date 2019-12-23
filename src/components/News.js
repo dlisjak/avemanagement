@@ -34,13 +34,19 @@ const News = () => {
                 ({ node: { title, slug, acf } }, i) => (
                   <Link
                     to={`/news/${slug}`}
-                    style={{ display: "flex" }}
+                    style={{
+                      display: "flex",
+                      maxHeight: 300,
+                      height: "100%",
+                      width: "auto",
+                    }}
                     key={i}
                   >
                     <img
                       style={{
-                        height: "auto",
-                        width: "100%",
+                        height: "100%",
+                        maxHeight: 300,
+                        width: "auto",
                         objectFit: "cover",
                       }}
                       src={acf.news_post_image.url}

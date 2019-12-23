@@ -23,8 +23,8 @@ const Contact = () => {
   return (
     <Layout>
       <div
-        className="flex flex-column align-center"
-        style={{ maxWidth: 500, margin: "auto", textAlign: "center" }}
+        className="flex flex-column align-start"
+        style={{ textAlign: "left" }}
       >
         <h1>Ave Management</h1>
         <span style={{ marginBottom: 50 }}>

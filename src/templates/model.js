@@ -2,18 +2,12 @@ import React, { useState, useEffect, useContext } from "react"
 import SmoothImage from "react-smooth-image"
 import Layout from "../components/layout"
 
-import {
-  GlobalDispatchContext,
-  GlobalStateContext,
-} from "../context/GlobalContextProvider"
+import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 
-const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
+const Category = ({ pageContext: { firstName, lastName, acf } }) => {
   const dispatch = useContext(GlobalDispatchContext)
-  const state = useContext(GlobalStateContext)
 
-  console.log(state)
-
-  const [image, setImage] = useState(acf.featuredImage)
+  const [image, setImage] = useState(acf.portfolio[0])
   const [tab, setTab] = useState("portfolio")
   let Colcade
   let tickerText
@@ -40,6 +34,31 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
     setPath()
     initGrid()
   }, [])
+
+  const selectPhoto = direction => {
+    let newImage = image
+
+    const index = acf.portfolio.findIndex(el => {
+      return el.url === image.url
+    })
+
+    if (direction === "prev") {
+      if (acf.portfolio[index - 1]) {
+        newImage = acf.portfolio[index - 1]
+      } else {
+        newImage = acf.portfolio[acf.portfolio.length - 1]
+      }
+    }
+
+    if (direction === "next") {
+      if (acf.portfolio[index + 1]) {
+        newImage = acf.portfolio[index + 1]
+      } else {
+        newImage = acf.portfolio[0]
+      }
+    }
+    setImage(newImage)
+  }
 
   return (
     <Layout>
@@ -214,11 +233,13 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
               )}
             </div>
           </div>
+          <i className="arrow-left" onClick={() => selectPhoto("prev")} />
           <div
             className="model__main--image"
             style={{
               display: "flex",
-              width: "100%",
+              width: "60%",
+              justifyContent: "center",
             }}
           >
             <img
@@ -233,6 +254,7 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
               }}
             />
           </div>
+          <i className="arrow-right" onClick={() => selectPhoto("next")} />
         </div>
 
         <div

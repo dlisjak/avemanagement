@@ -74,7 +74,7 @@ const News = ({ pageContext, data }) => {
             marginBottom: 0,
             objectFit: "contain",
             height: "auto",
-            maxHeight: 620,
+            maxHeight: 920,
           }}
         />
         <div className="flex model__menu">

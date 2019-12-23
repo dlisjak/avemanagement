@@ -43,8 +43,8 @@ const NewsPage = ({ data, pageContext }) => {
     content = splitContent[lastContent - 1]
     content = content.replace("</p>", "")
     content = content.split(" ")
-    content[0] = `<b>${content[0]}</b>`
-    content[1] = `<b>${content[1]}</b>`
+    content[0] = `<b class="news-bold-title">${content[0]}</b>`
+    content[1] = `<b class="news-bold-title">${content[1]}</b> <br />`
     content = content.join(" ")
     return content
   }
@@ -76,14 +76,14 @@ const NewsPage = ({ data, pageContext }) => {
                     style={{ marginBottom: 0 }}
                   />
                   <h3
-                    style={{ textDecoration: "none", color: "black" }}
-                    className="news-card-title"
                     dangerouslySetInnerHTML={{ __html: formatContent(content) }}
                     style={{
                       fontWeight: 400,
-                      color: "black",
+                      color: "rgba(0,0,0,0.6)",
                       paddingBottom: 25,
                       marginBottom: 0,
+                      textDecoration: "none",
+                      fontSize: "1.5rem",
                     }}
                   />
                 </Link>

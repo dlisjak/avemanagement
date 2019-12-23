@@ -1,17 +1,22 @@
-import React, { useEffect, useState, useContext } from "react"
-import { GlobalStateContext } from "../context/GlobalContextProvider"
+import React, { useEffect, useState } from "react"
 
 import Header from "./header"
 import GetToTop from "./getToTop"
+import Loader from "./Loader"
 import "./layout.css"
 
 const Layout = ({ children, isHomepage }) => {
-  const state = useContext(GlobalStateContext)
-
   const [isMobile, toggleIsMobile] = useState(false)
   const [isTablet, toggleIsTablet] = useState(false)
+  const [isLoaderShown, setLoaderShown] = useState(true)
 
   useEffect(() => {
+    const displayLoader = () => {
+      setTimeout(() => {
+        setLoaderShown(false)
+      }, 500)
+    }
+
     // componentDidMount
     const checkIfMobile = () => {
       if (typeof window !== "undefined") {
@@ -20,6 +25,7 @@ const Layout = ({ children, isHomepage }) => {
         if (window.innerWidth < 769) toggleIsTablet(true)
       }
     }
+    displayLoader()
     checkIfMobile()
 
     // componentDidUnmount
@@ -29,6 +35,7 @@ const Layout = ({ children, isHomepage }) => {
 
   return (
     <>
+      {isLoaderShown && <Loader />}
       <div
         className="layout-main"
         style={{

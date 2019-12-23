@@ -15,8 +15,9 @@ const Instagram = ({ posts }) => {
         {posts.edges.map(({ node }, i) => (
           <img
             style={{
-              height: "auto",
-              width: "100%",
+              height: "100%",
+              maxHeight: 300,
+              width: "auto",
               objectFit: "cover",
             }}
             src={node.localFile.publicURL}

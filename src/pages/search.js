@@ -38,7 +38,7 @@ const Search = ({ data }) => {
     <Layout>
       <div
         className="flex flex-column search-queries"
-        style={{ paddingBottom: 25, borderBottom: "1px solid" }}
+        style={{ borderBottom: "1px solid" }}
       >
         <button
           onClick={e => setSearchGender(e, null)}
@@ -66,7 +66,7 @@ const Search = ({ data }) => {
             placeholder="SEARCH BY NAME"
             onChange={e => handleSearchQuery(e)}
             value={searchQuery}
-            style={{ fontSize: 22, marginTop: 10 }}
+            style={{ fontSize: 22, marginTop: 10, width: "100%" }}
           />
         </div>
       </div>

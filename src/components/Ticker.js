@@ -1,7 +1,7 @@
 import React from "react"
 
 const TickerText = ({ title, fixed = false, left = false }) => {
-  const reg = new RegExp("([^a-zA-Z])", "g")
+  const reg = new RegExp("([^a-zA-Z#@])", "g")
   let data = " "
 
   if (title) {
