@@ -8,7 +8,7 @@ import Instagram from "../components/Instagram"
 
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 
-const Home = ({ pageContext }) => {
+const Home = ({ pageContext, data }) => {
   const dispatch = useContext(GlobalDispatchContext)
   let tickerText
 
@@ -41,10 +41,24 @@ const Home = ({ pageContext }) => {
         className="home-instagram"
         style={{ marginTop: 50, marginBottom: 50 }}
       >
-        <Instagram />
+        <Instagram posts={data.allInstaNode} />
       </div>
     </Layout>
   )
 }
+
+export const query = graphql`
+  query MyQuery {
+    allInstaNode(limit: 10) {
+      edges {
+        node {
+          localFile {
+            publicURL
+          }
+        }
+      }
+    }
+  }
+`
 
 export default Home

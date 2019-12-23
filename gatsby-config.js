@@ -84,7 +84,6 @@ module.exports = {
           "**/users",
           "**/news",
           "**/menus",
-          "**/media",
         ],
         // Blacklisted routes using glob patterns
         excludedRoutes: ["**/posts/1456"],
@@ -97,6 +96,12 @@ module.exports = {
         normalizer: function({ entities }) {
           return entities
         },
+      },
+    },
+    {
+      resolve: `gatsby-source-instagram`,
+      options: {
+        username: `avemanagement`,
       },
     },
     `gatsby-plugin-transition-link`,

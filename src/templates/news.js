@@ -57,7 +57,7 @@ const News = ({ pageContext, data }) => {
     <Layout>
       <div
         className="flex flex-column content-padding"
-        style={{ marginBottom: 50 }}
+        style={{ marginBottom: 50, alignItems: "flex-start" }}
       >
         <h2
           className="news-card-title model__name "

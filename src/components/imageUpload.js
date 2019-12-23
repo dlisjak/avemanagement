@@ -1,4 +1,8 @@
 import React, { useState, useRef, useEffect } from "react"
+import fullLength from "../images/fullLength.png"
+import headShot from "../images/headShot.png"
+import midLength from "../images/midLength.png"
+import profile from "../images/profile.png"
 
 const ImageUpload = ({ title, order, text }) => {
   const [file, setFile] = useState("")
@@ -26,6 +30,8 @@ const ImageUpload = ({ title, order, text }) => {
         className="flex flex-column justify-center align-center contact-image-upload relative"
         style={{
           marginBottom: file ? 25 : 10,
+          backgroundImage: title,
+          objectFit: "contain",
         }}
       >
         <div

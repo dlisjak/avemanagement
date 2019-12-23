@@ -46,7 +46,6 @@ const News = () => {
                       src={acf.news_post_image.url}
                       alt={title}
                       title={title}
-                      style={{ width: "100%" }}
                     />
                   </Link>
                 )

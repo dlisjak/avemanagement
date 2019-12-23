@@ -6,6 +6,8 @@ import GetToTop from "./getToTop"
 import "./layout.css"
 
 const Layout = ({ children, isHomepage }) => {
+  const state = useContext(GlobalStateContext)
+
   const [isMobile, toggleIsMobile] = useState(false)
   const [isTablet, toggleIsTablet] = useState(false)
 
@@ -21,7 +23,6 @@ const Layout = ({ children, isHomepage }) => {
     checkIfMobile()
 
     // componentDidUnmount
-    return () => {}
   }, [])
 
   // console.log(state.path)

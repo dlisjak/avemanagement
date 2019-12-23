@@ -24,6 +24,8 @@ const Category = ({ data, pageContext }) => {
     return () => {
       if (typeof window !== "undefined") {
         localStorage.setItem("ave-ticker", tickerText)
+
+        dispatch({ type: "SET_PATH", payload: tickerText })
       }
     }
   }, [])

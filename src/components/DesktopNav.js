@@ -146,14 +146,16 @@ const DesktopNav = ({ isVisible, path, data }) => {
             )
           }
         )}
-        <div
-          className="flex"
-          onClick={() => selectItem({ title: "SEARCH", url: "/search" })}
-          key={"search"}
-          style={{ alignItems: "center" }}
-        >
-          <NavigationItem item={{ title: "SEARCH", url: "/search" }} />
-        </div>
+        {
+          // <div
+          // className="flex"
+          // onClick={() => selectItem({ title: "SEARCH", url: "/search" })}
+          // key={"search"}
+          // style={{ alignItems: "center" }}
+          // >
+          // <NavigationItem item={{ title: "SEARCH", url: "/search" }} />
+          // </div>
+        }
       </div>
       <SubNavBar
         pose={childItems && childIsVisible ? "childVisible" : "childHidden"}

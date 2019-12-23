@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import { Link } from "gatsby"
 
-import Logo from "../images/logo.png"
+import Logo from "../images/logo.svg"
 
 import Ticker from "./Ticker"
 import { GlobalStateContext } from "../context/GlobalContextProvider"
@@ -63,6 +63,9 @@ const Header = ({ isMobile, isTablet }) => {
             marginLeft: 0,
             marginBottom: 0,
             cursor: "pointer",
+            width: "100%",
+            height: "auto",
+            maxWidth: 300,
           }}
         />
       </Link>
@@ -92,7 +95,7 @@ const Header = ({ isMobile, isTablet }) => {
           <DesktopNav isVisible={isVisible} path={state.path} data={data} />
         )}
       </div>
-      <Ticker title={state.path} />
+      <Ticker title={state.path || state.category} />
     </div>
   )
 }

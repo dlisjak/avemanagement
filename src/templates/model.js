@@ -2,10 +2,17 @@ import React, { useState, useEffect, useContext } from "react"
 import SmoothImage from "react-smooth-image"
 import Layout from "../components/layout"
 
-import { GlobalDispatchContext } from "../context/GlobalContextProvider"
+import {
+  GlobalDispatchContext,
+  GlobalStateContext,
+} from "../context/GlobalContextProvider"
 
 const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
   const dispatch = useContext(GlobalDispatchContext)
+  const state = useContext(GlobalStateContext)
+
+  console.log(state)
+
   const [image, setImage] = useState(acf.featuredImage)
   const [tab, setTab] = useState("portfolio")
   let Colcade
@@ -25,12 +32,8 @@ const Category = ({ pageContext: { title, firstName, lastName, acf } }) => {
       }
     }
     const setPath = () => {
-      tickerText = localStorage.getItem("ave-ticker")
-      if (tickerText) {
-        dispatch({ type: "SET_PATH", payload: tickerText })
-      } else {
-        tickerText =
-          typeof window !== "undefined" ? window.location.pathname : ""
+      if (typeof window !== "undefined") {
+        tickerText = localStorage.getItem("ave-ticker")
         dispatch({ type: "SET_PATH", payload: tickerText })
       }
     }
