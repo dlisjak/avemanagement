@@ -2,40 +2,28 @@ import React, { useEffect, useState } from "react"
 
 import Header from "./header"
 import GetToTop from "./getToTop"
-import Loader from "./Loader"
+import Loader from "../components/Loader"
 import "./layout.css"
 
 const Layout = ({ children, isHomepage }) => {
   const [isMobile, toggleIsMobile] = useState(false)
   const [isTablet, toggleIsTablet] = useState(false)
-  const [isLoaderShown, setLoaderShown] = useState(true)
 
   useEffect(() => {
-    const displayLoader = () => {
-      setTimeout(() => {
-        setLoaderShown(false)
-      }, 500)
-    }
-
     // componentDidMount
     const checkIfMobile = () => {
       if (typeof window !== "undefined") {
-        console.log(window.innerWidth)
         if (window.innerWidth < 480) toggleIsMobile(true)
         if (window.innerWidth < 769) toggleIsTablet(true)
       }
     }
-    displayLoader()
     checkIfMobile()
-
     // componentDidUnmount
   }, [])
 
-  // console.log(state.path)
-
   return (
     <>
-      {isLoaderShown && <Loader />}
+      <Loader />
       <div
         className="layout-main"
         style={{

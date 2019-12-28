@@ -31,6 +31,7 @@ const DesktopNav = ({ isVisible, path, data }) => {
   }, [path])
 
   const parsePage = path => {
+    if (!path) return
     const reg = new RegExp("([^a-zA-Z-])", "g")
     return path.replace(reg, " ")
   }

@@ -10,6 +10,7 @@
   }
   .category-cards {
     padding: 0 5px;
+    padding-top: 25px;
   }
   .ticker__page--fixed {
     width: 100%;
@@ -486,8 +487,12 @@
 .mobile-navigation {
   flex-direction: column;
   width: 100%;
-  align-items: center;
+  align-items: flex-start;
   padding: 5px 0;
+}
+
+.mobile-navigation > div {
+  font-weight: inherit !important;
 }
 
 .mobile-navigation div,

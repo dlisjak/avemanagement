@@ -76,8 +76,6 @@ const ImageUpload = ({ title, order, text }) => {
             className="contact-image-upload--image"
             src={file}
             alt={`Your ${title}`}
-            transitionTime={0.5}
-            containerStyles={{ paddingBottom: "130%" }}
             style={{ zIndex: 99 }}
           />
         )}
@@ -86,8 +84,6 @@ const ImageUpload = ({ title, order, text }) => {
             className="contact-image-upload--image"
             src={placeholderImage}
             alt={`Your ${title}`}
-            transitionTime={0.5}
-            containerStyles={{ paddingBottom: "130%" }}
           />
         )}
         {file && (

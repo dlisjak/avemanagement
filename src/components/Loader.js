@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import posed from "react-pose"
+import posed, { PoseGroup } from "react-pose"
 
 import Logo from "../images/logo.svg"
 
@@ -8,8 +8,14 @@ const LoadingLogo = posed.img({
   visible: { opacity: 1 },
 })
 
+const LoadingOverlay = posed.div({
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+})
+
 const Loader = () => {
   const [isLogoShown, setLogoShown] = useState(false)
+  const [isLoaderShown, setLoaderShown] = useState(true)
 
   useEffect(() => {
     const setBodyUnscrollable = () => {
@@ -17,42 +23,55 @@ const Loader = () => {
       bodyEl.classList.add("overlay")
     }
     const showLogo = () => {
-      setTimeout(() => {
-        setLogoShown(true)
-      })
+      setLogoShown(true)
     }
     setBodyUnscrollable()
     showLogo()
+    displayLoader()
+
     return () => {
       const bodyEl = document.querySelector("body")
       bodyEl.classList.remove("overlay")
     }
   }, [])
 
+  const displayLoader = () => {
+    setTimeout(() => {
+      setLoaderShown(false)
+    }, 1000)
+  }
+
   return (
-    <div
-      className="flex flex-column"
-      style={{
-        position: "absolute",
-        display: "flex",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100vh",
-        background: `white`,
-        zIndex: 9999999999,
-        alignItems: "center",
-        justifyContent: "center",
-        paddingTop: 60,
-      }}
-    >
-      <LoadingLogo
-        pose={isLogoShown ? "visible" : "hidden"}
-        src={Logo}
-        alt="AVE LOGO"
-        style={{ width: 300 }}
-      />
-    </div>
+    isLoaderShown && (
+      <PoseGroup>
+        <LoadingOverlay
+          className="flex flex-column"
+          pose={isLoaderShown ? "visible" : "hidden"}
+          key={0}
+          style={{
+            position: "fixed",
+            display: "flex",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100vh",
+            background: `white`,
+            zIndex: 9999999999,
+            alignItems: "center",
+            justifyContent: "center",
+            paddingBottom: 100,
+          }}
+        >
+          <LoadingLogo
+            pose={isLogoShown ? "visible" : "hidden"}
+            key={1}
+            src={Logo}
+            alt="AVE LOGO"
+            style={{ width: 300 }}
+          />
+        </LoadingOverlay>
+      </PoseGroup>
+    )
   )
 }
 

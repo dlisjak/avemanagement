@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import { Link } from "gatsby"
 import posed, { PoseGroup } from "react-pose"
 
 import NavigationItem from "./NavigationItem"
@@ -15,6 +14,7 @@ const ChildNav = posed.div({
 })
 
 const MobileNav = ({ isVisible, data, toggleMenu }) => {
+  const [activeItem, setActiveItem] = useState(null)
   const [womenIsShown, showWomen] = useState(false)
   const [menIsShown, showMen] = useState(false)
 
@@ -25,7 +25,19 @@ const MobileNav = ({ isVisible, data, toggleMenu }) => {
         bodyEl.classList.add("overlay")
       }
     }
+
+    const preselectActiveItem = () => {
+      if (window.location.pathname.includes("women")) {
+        setActiveItem("WOMEN")
+        showWomen(true)
+      } else if (window.location.pathname.includes("men")) {
+        setActiveItem("MEN")
+        showMen(true)
+      }
+    }
+    preselectActiveItem()
     setBodyUnscrollable()
+
     return () => {
       const bodyEl = document.querySelector("body")
       bodyEl.classList.remove("overlay")
@@ -38,9 +50,13 @@ const MobileNav = ({ isVisible, data, toggleMenu }) => {
 
   const showChildren = item => {
     if (!item.child_items) return
+
+    setActiveItem(item.title)
     if (item.title === "WOMEN") {
+      showMen(false)
       showWomen(!womenIsShown)
     } else if (item.title === "MEN") {
+      showWomen(false)
       showMen(!menIsShown)
     }
   }
@@ -70,6 +86,7 @@ const MobileNav = ({ isVisible, data, toggleMenu }) => {
               <div
                 className="flex mobile-navigation"
                 onClick={() => showChildren(item)}
+                style={{ fontWeight: activeItem === item.title ? 700 : 400 }}
                 key={index}
               >
                 <NavigationItem item={item} />
@@ -85,7 +102,12 @@ const MobileNav = ({ isVisible, data, toggleMenu }) => {
                         : "exit"
                     }
                     className="flex"
-                    style={{ opacity: 0, height: 0 }}
+                    style={{
+                      opacity: 0,
+                      height: 0,
+                      flexDirection: "column",
+                      paddingLeft: 50,
+                    }}
                   >
                     {item.child_items.map((childItem, childIndex) => (
                       <div
@@ -110,7 +132,7 @@ const MobileNav = ({ isVisible, data, toggleMenu }) => {
           fontWeight: 700,
           top: 30,
           position: "absolute",
-          left: 0,
+          left: 10,
           padding: 0,
         }}
       >

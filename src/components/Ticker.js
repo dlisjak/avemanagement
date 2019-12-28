@@ -1,8 +1,22 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 
 const TickerText = ({ title, fixed = false, left = false }) => {
+  const tickerRef = useRef(null)
+  const tickerRef2 = useRef(null)
+
   const reg = new RegExp("([^a-zA-Z#@])", "g")
   let data = " "
+
+  useEffect(() => {
+    const setAnimationDuration = () => {
+      const k = 27 / 4
+      const duration = title.length * k
+
+      tickerRef.current.style.animationDuration = `${duration}s`
+      tickerRef2.current.style.animationDuration = `${duration}s`
+    }
+    setAnimationDuration()
+  })
 
   if (title) {
     const titleTicker = title.replace(reg, " ")
@@ -24,8 +38,12 @@ const TickerText = ({ title, fixed = false, left = false }) => {
         style={{ fontWeight: 700 }}
       >
         <div id="tickerwrap">
-          <div id="ticker">{data}</div>
-          <div id="ticker2">{data}</div>
+          <div id="ticker" ref={tickerRef}>
+            {data}
+          </div>
+          <div id="ticker2" ref={tickerRef2}>
+            {data}
+          </div>
         </div>
       </div>
     )
@@ -42,10 +60,12 @@ const TickerText = ({ title, fixed = false, left = false }) => {
         }}
       >
         <div id="tickerwrap">
-          <div id="tickerReverse" style={{ marginRight: 5 }}>
+          <div id="tickerReverse" style={{ marginRight: 5 }} ref={tickerRef}>
             {data}
           </div>
-          <div id="ticker2Reverse">{data}</div>
+          <div id="ticker2Reverse" ref={tickerRef2}>
+            {data}
+          </div>
         </div>
       </div>
     )
@@ -58,11 +78,14 @@ const TickerText = ({ title, fixed = false, left = false }) => {
         <div id="tickerwrap">
           <div
             id={left ? "ticker" : "tickerReverse"}
+            ref={tickerRef}
             style={{ marginRight: 5 }}
           >
             {data}
           </div>
-          <div id={left ? "ticker" : "tickerReverse"}>{data}</div>
+          <div id={left ? "ticker" : "tickerReverse"} ref={tickerRef2}>
+            {data}
+          </div>
         </div>
       </div>
     )

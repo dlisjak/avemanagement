@@ -5,6 +5,7 @@ import SEO from "../components/seo"
 
 import News from "../components/News"
 import Instagram from "../components/Instagram"
+import Loader from "../components/Loader"
 
 import Video1 from "../videos/main-video-1.mp4"
 import Video2 from "../videos/main-video-2.mp4"
@@ -15,6 +16,8 @@ const Home = ({ pageContext, data }) => {
   const dispatch = useContext(GlobalDispatchContext)
   const [videoSrc, setVideoSrc] = useState(null)
   const [videoKey, setVideoKey] = useState(null)
+  const [isLoaderShown, setLoaderShown] = useState(true)
+
   const videoPlayer = useRef(null)
 
   const videoSources = [Video1, Video2]
@@ -34,6 +37,13 @@ const Home = ({ pageContext, data }) => {
       onVidEnding(e, key)
     }
 
+    const removeOverlay = () => {
+      setTimeout(() => {
+        setLoaderShown(false)
+      }, 1100)
+    }
+
+    removeOverlay()
     setPath()
     setVideo()
     return () => {
@@ -51,6 +61,7 @@ const Home = ({ pageContext, data }) => {
 
   return (
     <Layout isHomepage={true}>
+      {isLoaderShown && <Loader />}
       <SEO title="Home" />
       <video
         ref={videoPlayer}
