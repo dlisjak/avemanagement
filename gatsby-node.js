@@ -146,7 +146,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const allModels = await graphql(`
     query AllModels {
-      allModel {
+      allModel(sort: { fields: title }) {
         edges {
           node {
             slug
@@ -268,7 +268,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const allNewsEdges = allNews.data.allWordpressWpNews.edges
   const allNewsTemplate = path.resolve(`./src/templates/allNews.js`)
-  const newsPerPage = 10
+  const newsPerPage = 12
   const numOfPages = Math.ceil(allNewsEdges.length / newsPerPage)
   Array.from({ length: numOfPages }).forEach((_, i) => {
     createPage({

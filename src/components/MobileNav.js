@@ -68,7 +68,7 @@ const MobileNav = ({ isVisible, data, toggleMenu }) => {
       style={{
         position: "absolute",
         display: "flex",
-        top: 15,
+        top: 68,
         left: 0,
         width: "100%",
         height: "100vh",

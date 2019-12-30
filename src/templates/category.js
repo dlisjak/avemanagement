@@ -3,6 +3,7 @@ import Layout from "../components/layout"
 import { graphql, Link } from "gatsby"
 import SmoothImage from "react-smooth-image"
 import Search from "../components/Search"
+import BlackBar from "../components/BlackBar"
 
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 
@@ -17,17 +18,11 @@ const Category = ({ data, pageContext }) => {
       if (typeof window !== "undefined") {
         localStorage.removeItem("ave-ticker")
         tickerText = window.location.pathname
+        localStorage.setItem("ave-ticker", tickerText)
         dispatch({ type: "SET_PATH", payload: tickerText })
       }
     }
     setPath()
-    return () => {
-      if (typeof window !== "undefined") {
-        localStorage.setItem("ave-ticker", tickerText)
-
-        dispatch({ type: "SET_PATH", payload: tickerText })
-      }
-    }
   }, [])
 
   const openSearch = () => {
@@ -67,6 +62,8 @@ const Category = ({ data, pageContext }) => {
           SEARCH
         </button>
       )}
+
+      <BlackBar height={100} />
 
       <div
         className="flex flex-wrap category-cards relative"
@@ -134,6 +131,7 @@ export const query = graphql`
   query CategoryPage($title: String) {
     allWordpressPost(
       filter: { categories: { elemMatch: { name: { eq: $title } } } }
+      sort: { fields: title }
     ) {
       edges {
         node {

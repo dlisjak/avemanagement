@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react"
 import SmoothImage from "react-smooth-image"
 import Layout from "../components/layout"
+import BlackBar from "../components/BlackBar"
 
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 
@@ -31,8 +32,8 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
         dispatch({ type: "SET_PATH", payload: tickerText })
       }
     }
-    setPath()
     initGrid()
+    setPath()
   }, [])
 
   const selectPhoto = direction => {
@@ -65,12 +66,16 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
       <div className="flex model flex-column">
         <h2
           className="flex model__name flex-column content-padding relative"
-          style={{ marginBottom: 0 }}
+          style={{ marginBottom: 5 }}
         >
           <span>{firstName}</span>
           <span>{lastName}</span>
         </h2>
-        <div className="flex model__main content-padding">
+        <BlackBar height={100} />
+        <div
+          className="flex model__main content-padding"
+          style={{ marginTop: 10 }}
+        >
           <div
             className="flex model__main-container flex-column"
             style={{ justifyContent: "space-between" }}
@@ -250,12 +255,14 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
                 marginBottom: 0,
                 objectFit: "contain",
                 height: "auto",
-                maxHeight: 620,
+                maxHeight: 760,
               }}
             />
           </div>
           <i className="arrow-right" onClick={() => selectPhoto("next")} />
         </div>
+
+        <BlackBar height={100} />
 
         <div
           id="content"

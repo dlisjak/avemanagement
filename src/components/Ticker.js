@@ -6,11 +6,15 @@ const TickerText = ({ title, fixed = false, left = false }) => {
 
   const reg = new RegExp("([^a-zA-Z#@])", "g")
   let data = " "
+  let titleTicker = title.replace(reg, " ")
+  if (titleTicker === " special ") {
+    titleTicker = " special arrangement "
+  }
 
   useEffect(() => {
     const setAnimationDuration = () => {
       const k = 27 / 4
-      const duration = title.length * k
+      const duration = titleTicker.length * k
 
       tickerRef.current.style.animationDuration = `${duration}s`
       tickerRef2.current.style.animationDuration = `${duration}s`
@@ -19,7 +23,7 @@ const TickerText = ({ title, fixed = false, left = false }) => {
   })
 
   if (title) {
-    const titleTicker = title.replace(reg, " ")
+    console.log(titleTicker)
 
     for (let i = 0; i < 50; i++) {
       data += ` ${titleTicker} `

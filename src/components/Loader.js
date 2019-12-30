@@ -29,15 +29,14 @@ const Loader = () => {
     showLogo()
     displayLoader()
 
-    return () => {
-      const bodyEl = document.querySelector("body")
-      bodyEl.classList.remove("overlay")
-    }
+    return () => {}
   }, [])
 
   const displayLoader = () => {
     setTimeout(() => {
       setLoaderShown(false)
+      const bodyEl = document.querySelector("body")
+      bodyEl.classList.remove("overlay")
     }, 1000)
   }
 

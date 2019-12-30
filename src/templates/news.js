@@ -26,20 +26,14 @@ const News = ({ pageContext, data }) => {
       }
     }
     const setPath = () => {
-      localStorage.removeItem("ave-ticker")
-      tickerText = typeof window !== "undefined" ? window.location.pathname : ""
-      dispatch({ type: "SET_PATH", payload: tickerText })
+      if (typeof window !== "undefined") {
+        tickerText = localStorage.getItem("ave-ticker")
+        dispatch({ type: "SET_PATH", payload: tickerText })
+      }
     }
     setPath()
     initGrid()
-
-    return () => {
-      localStorage.setItem("ave-ticker", tickerText)
-    }
   }, [])
-
-  console.log(pageContext)
-  console.log(data)
 
   const formatContent = content => {
     const splitContent = content.split("<p>")
@@ -74,7 +68,7 @@ const News = ({ pageContext, data }) => {
             marginBottom: 0,
             objectFit: "contain",
             height: "auto",
-            maxHeight: 920,
+            maxHeight: 760,
           }}
         />
         <div className="flex model__menu">
@@ -117,7 +111,7 @@ const News = ({ pageContext, data }) => {
         {tab === "GALLERY" ? (
           <div
             id="content"
-            className="flex flex-wrap grid"
+            className="flex flex-wrap grid width-100"
             style={{ marginTop: 5 }}
           >
             <>

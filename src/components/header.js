@@ -10,6 +10,7 @@ import { GlobalStateContext } from "../context/GlobalContextProvider"
 
 import DesktopNav from "./DesktopNav"
 import MobileNav from "./MobileNav"
+import BlackBar from "./BlackBar"
 
 const Header = ({ isMobile, isTablet }) => {
   const state = useContext(GlobalStateContext)
@@ -19,6 +20,8 @@ const Header = ({ isMobile, isTablet }) => {
   const toggleMenu = isVisible => {
     setVisibleMenu(!isVisible)
   }
+
+  console.log(state)
 
   const data = useStaticQuery(graphql`
     {
@@ -82,6 +85,7 @@ const Header = ({ isMobile, isTablet }) => {
           onClick={() => toggleMenu(isVisible)}
           style={{ cursor: "pointer", zIndex: 99 }}
         >
+          <BlackBar height={50} />
           <Ticker title={"MENU"} />
         </div>
         {isMobile || isTablet ? (
@@ -95,7 +99,9 @@ const Header = ({ isMobile, isTablet }) => {
           <DesktopNav isVisible={isVisible} path={state.path} data={data} />
         )}
       </div>
-      <Ticker title={state.path || state.category} />
+      <Link to={state.path} style={{ textDecoration: "none" }}>
+        <Ticker title={state.path || state.category} />
+      </Link>
     </div>
   )
 }

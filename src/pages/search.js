@@ -4,6 +4,7 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
+import BlackBar from "../components/BlackBar"
 
 const Search = ({ data }) => {
   const dispatch = useContext(GlobalDispatchContext)
@@ -38,7 +39,7 @@ const Search = ({ data }) => {
     <Layout>
       <div
         className="flex flex-column search-queries"
-        style={{ borderBottom: "1px solid" }}
+        style={{ borderBottom: "1px solid", marginBottom: 20 }}
       >
         <button
           onClick={e => setSearchGender(e, null)}
@@ -66,10 +67,15 @@ const Search = ({ data }) => {
             placeholder="SEARCH BY NAME"
             onChange={e => handleSearchQuery(e)}
             value={searchQuery}
-            style={{ fontSize: 22, marginTop: 10, width: "100%" }}
+            style={{
+              fontSize: 16,
+              marginTop: 10,
+              width: "100%",
+            }}
           />
         </div>
       </div>
+      <BlackBar height={100} />
       <div
         className="flex flex-column search-queries"
         style={{ paddingTop: 50, paddingBottom: 25 }}
@@ -90,6 +96,7 @@ const Search = ({ data }) => {
                 </span>
                 <Link
                   to={`/${node.slug}`}
+                  className="search-result-names"
                   style={{
                     textDecoration: "none",
                     color: "black",
@@ -108,6 +115,7 @@ const Search = ({ data }) => {
           return (
             <Link
               to={`/${node.slug}`}
+              className="search-result-names"
               style={{
                 textDecoration: "none",
                 color: "black",

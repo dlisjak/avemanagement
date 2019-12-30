@@ -9,6 +9,7 @@ import {
 
 import Layout from "../components/layout"
 import ImageUpload from "../components/imageUpload"
+import BlackBar from "../components/BlackBar"
 
 const BecomeAModel = () => {
   const dispatch = useContext(GlobalDispatchContext)
@@ -26,10 +27,6 @@ const BecomeAModel = () => {
       dispatch({ type: "SET_PATH", payload: tickerText })
     }
     setPath()
-
-    return () => {
-      localStorage.setItem("ave-ticker", tickerText)
-    }
   }, [])
 
   if (typeof window !== "undefined") {
@@ -233,16 +230,16 @@ const BecomeAModel = () => {
                     className="contact-input contact-input--country-code"
                     type="input"
                     name="mobileNumber"
-                    placeholder="+65"
+                    placeholder="+00"
                     onChange={e => handleCountryCodeChange(e)}
                     onBlur={handleBlur}
                     value={countryCode}
                   />
                   <input
                     className="contact-input contact-input--mobile"
-                    type="number"
+                    type="input"
                     name="mobileNumber"
-                    placeholder="43555555"
+                    placeholder="00000000"
                     onChange={e => handleMobileChange(e)}
                     onBlur={handleBlur}
                     value={mobileNum}
@@ -411,6 +408,7 @@ const BecomeAModel = () => {
           </div>
         )}
       </Formik>
+      <BlackBar height={100} />
       <div
         className="flex flex-column contact-body-text content-padding"
         style={{
@@ -495,6 +493,7 @@ const BecomeAModel = () => {
           Submit
         </label>
       </div>
+      <BlackBar height={100} />
     </Layout>
   )
 }

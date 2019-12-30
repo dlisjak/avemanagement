@@ -4,6 +4,8 @@ import SmoothImage from "react-smooth-image"
 
 import Layout from "../components/layout"
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
+import BlackBar from "../components/BlackBar"
+import Pagination from "../components/Pagination"
 
 const NewsPage = ({ data, pageContext }) => {
   const dispatch = useContext(GlobalDispatchContext)
@@ -26,15 +28,12 @@ const NewsPage = ({ data, pageContext }) => {
     }
     const setPath = () => {
       localStorage.removeItem("ave-ticker")
-      tickerText = typeof window !== "undefined" ? window.location.pathname : ""
+      tickerText = window.location.pathname
+      localStorage.setItem("ave-ticker", tickerText)
       dispatch({ type: "SET_PATH", payload: tickerText })
     }
     setPath()
     initGrid()
-
-    return () => {
-      localStorage.setItem("ave-ticker", tickerText)
-    }
   }, [])
 
   const formatContent = content => {
@@ -43,15 +42,18 @@ const NewsPage = ({ data, pageContext }) => {
     content = splitContent[lastContent - 1]
     content = content.replace("</p>", "")
     content = content.split(" ")
-    content[0] = `<b class="news-bold-title">${content[0]}</b>`
-    content[1] = `<b class="news-bold-title">${content[1]}</b> <br />`
+    content[0] = `<b><span class="news-bold-title">${content[0]}`
+    content[1] = `${content[1]}</span> <br />`
     content = content.join(" ")
+    content += "</b>"
     return content
   }
 
   return (
     <Layout>
-      <div id="content" className="grid">
+      <Pagination numOfPages={numOfPages} currentPage={currentPage} />
+      <BlackBar height={100} />
+      <div id="content" className="grid" style={{ marginTop: 5 }}>
         <div className="grid-col grid-col--1"></div>
         <div className="grid-col grid-col--2"></div>
         <div className="grid-col grid-col--3"></div>
@@ -79,51 +81,18 @@ const NewsPage = ({ data, pageContext }) => {
                     dangerouslySetInnerHTML={{ __html: formatContent(content) }}
                     style={{
                       fontWeight: 400,
-                      color: "rgba(0,0,0,0.6)",
+                      color: "rgba(0,0,0,0.2)",
                       paddingBottom: 25,
                       marginBottom: 0,
                       textDecoration: "none",
                       fontSize: "1.5rem",
+                      lineHeight: 0.9,
                     }}
                   />
                 </Link>
               </div>
             )
           }
-        )}
-      </div>
-      <div
-        className="flex justify-center align-center"
-        style={{ position: "relative", height: 50, marginBottom: 50 }}
-      >
-        {currentPage !== 1 && currentPage > 3 && (
-          <Link className="pagination-item first" to={`/news/1`}>
-            1
-          </Link>
-        )}
-        {currentPage !== 1 && (
-          <Link
-            className="pagination-item prev"
-            to={`/news/${currentPage - 1}`}
-          >
-            {currentPage - 1}
-          </Link>
-        )}
-        <div className="pagination-item current">
-          <b>{currentPage}</b>
-        </div>
-        {currentPage === numOfPages ? null : (
-          <Link
-            className="pagination-item next"
-            to={`/news/${currentPage + 1}`}
-          >
-            {currentPage + 1}
-          </Link>
-        )}
-        {currentPage !== numOfPages && currentPage < numOfPages - 3 && (
-          <Link className="pagination-item last" to={`/news/${numOfPages}`}>
-            {numOfPages}
-          </Link>
         )}
       </div>
     </Layout>

@@ -9,6 +9,8 @@ const Layout = ({ children, isHomepage }) => {
   const [isMobile, toggleIsMobile] = useState(false)
   const [isTablet, toggleIsTablet] = useState(false)
 
+  const extraHeight = isHomepage ? 50 : 0
+
   useEffect(() => {
     // componentDidMount
     const checkIfMobile = () => {
@@ -39,7 +41,8 @@ const Layout = ({ children, isHomepage }) => {
           style={{
             width: "100%",
             position: "relative",
-            marginTop: !isMobile && !isTablet && !isHomepage ? 225 : 125,
+            marginTop:
+              !isMobile && !isTablet && !isHomepage ? 275 : 225 - extraHeight,
           }}
         >
           {children}

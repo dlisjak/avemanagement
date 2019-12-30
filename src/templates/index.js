@@ -11,6 +11,7 @@ import Video1 from "../videos/main-video-1.mp4"
 import Video2 from "../videos/main-video-2.mp4"
 
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
+import BlackBar from "../components/BlackBar"
 
 const Home = ({ pageContext, data }) => {
   const dispatch = useContext(GlobalDispatchContext)
@@ -46,9 +47,6 @@ const Home = ({ pageContext, data }) => {
     removeOverlay()
     setPath()
     setVideo()
-    return () => {
-      localStorage.setItem("ave-ticker", tickerText)
-    }
   }, [])
 
   const onVidEnding = (e, key) => {
@@ -63,6 +61,7 @@ const Home = ({ pageContext, data }) => {
     <Layout isHomepage={true}>
       {isLoaderShown && <Loader />}
       <SEO title="Home" />
+
       <video
         ref={videoPlayer}
         src={videoSrc}
@@ -70,13 +69,16 @@ const Home = ({ pageContext, data }) => {
         muted
         onEnded={onVidEnding}
         className="home-video width-100"
+        style={{ paddingBottom: 5 }}
       ></video>
-      <div className="home-news" style={{ marginTop: 50 }}>
+      <BlackBar height={125} />
+      <div className="home-news" style={{ marginTop: 5, marginBottom: 10 }}>
         <News />
       </div>
+      <BlackBar height={125} />
       <div
         className="home-instagram"
-        style={{ marginTop: 50, marginBottom: 50 }}
+        style={{ marginTop: 5, marginBottom: 50 }}
       >
         <Instagram posts={data.allInstaNode} />
       </div>

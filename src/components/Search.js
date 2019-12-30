@@ -4,6 +4,7 @@ import posed, { PoseGroup } from "react-pose"
 
 import TickerText from "./Ticker"
 import GetToTop from "./getToTop"
+import BlackBar from "./BlackBar"
 
 const SearchPose = posed.div({
   hidden: { opacity: 0 },
@@ -73,7 +74,7 @@ const Search = ({ isShown, models, closeSearch }) => {
       <TickerText title="SEARCH" />
       <div
         className="flex flex-column search-queries"
-        style={{ paddingTop: 50, borderBottom: "1px solid" }}
+        style={{ paddingTop: 50, borderBottom: "1px solid", marginBottom: 20 }}
       >
         <button
           onClick={e => setSearchGender(e, null)}
@@ -104,9 +105,11 @@ const Search = ({ isShown, models, closeSearch }) => {
           placeholder="SEARCH BY NAME"
           onChange={e => handleSearchQuery(e)}
           value={searchQuery}
-          style={{ fontSize: 22, marginTop: 10, width: "100%" }}
+          style={{ fontSize: 16, marginTop: 10, width: "100%" }}
         />
       </div>
+
+      <BlackBar height={100} />
 
       <div
         className="flex flex-column search-queries"
@@ -128,12 +131,13 @@ const Search = ({ isShown, models, closeSearch }) => {
                 </span>
                 <Link
                   to={`${node.path}`}
+                  className="search-result-names"
                   style={{
                     textDecoration: "none",
                     color: "black",
                     lineHeight: 1.8,
                   }}
-                  key={`model-buttom-${index}`}
+                  key={`model-button-${index}`}
                 >
                   {node.title.toUpperCase()}
                 </Link>
@@ -146,6 +150,7 @@ const Search = ({ isShown, models, closeSearch }) => {
           return (
             <Link
               to={`${node.path}`}
+              className="search-result-names"
               style={{
                 textDecoration: "none",
                 color: "black",
