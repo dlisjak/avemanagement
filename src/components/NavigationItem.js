@@ -1,11 +1,19 @@
 import React from "react"
 import { Link } from "gatsby"
 
+const navigateToPage = e => {
+  e.preventDefault()
+}
+
 const NavigationItem = ({ item }) => {
   if (item.url.includes("#")) {
     return (
-      <div
+      <Link
         data-title={item.title}
+        to={`/${item.title.toLowerCase()}`}
+        activeStyle={{ fontWeight: 700 }}
+        partiallyActive={true}
+        onClick={e => e.preventDefault()}
         style={{
           paddingLeft: 10,
           paddingRight: 10,
@@ -17,7 +25,7 @@ const NavigationItem = ({ item }) => {
         }}
       >
         {item.title}
-      </div>
+      </Link>
     )
   } else if (item.url.includes("http")) {
     return (
@@ -41,9 +49,10 @@ const NavigationItem = ({ item }) => {
   } else {
     return (
       <Link
-        to={`${item.url}/`}
-        target="_blank"
+        to={`${item.url}`}
         data-title={item.title.replace(/\s/g, "-")}
+        partiallyActive={true}
+        onClick={e => e.preventDefault()}
         style={{
           paddingLeft: 10,
           paddingRight: 10,

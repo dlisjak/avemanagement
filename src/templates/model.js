@@ -126,7 +126,7 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
                 <span style={{ cursor: "pointer" }}>INSTAGRAM</span>
               )}
             </div>
-            <div id="bio" className="model__bio flex flex-column">
+            <div id="bio" className="model__bio flex flex-column relative">
               {acf.bio.height && (
                 <span className="model-bio-property">
                   HEIGHT{" "}
@@ -242,7 +242,7 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
           <Swiper loop key={1} {...params} getSwiper={updateSwiper}>
             {acf.portfolio.map(
               ({ url, alt, title, name, height, width }, i) => (
-                <div style={{ display: "flex" }} key={i}>
+                <div style={{ display: "flex", height }} key={i}>
                   <img
                     src={url}
                     alt={alt}

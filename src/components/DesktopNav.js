@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import posed from "react-pose"
+import { navigate } from "@reach/router"
 
 import NavigationItem from "./NavigationItem"
+
+import { GlobalStateContext } from "../context/GlobalContextProvider"
 
 const NavBar = posed.header({
   hidden: { opacity: 0, marginTop: -25, paddingTop: 0, paddingBottom: 0 },
@@ -13,32 +16,41 @@ const SubNavBar = posed.div({
   childVisible: { height: 27 },
 })
 
-const DesktopNav = ({ isVisible, path, data }) => {
+const DesktopNav = ({ toggleMenu, isVisible, data }) => {
+  const state = useContext(GlobalStateContext)
+
   const [selectedItem, setSelectedItem] = useState(null)
   const [childItems, setChildItems] = useState([])
   const [childIsVisible, setChildVisible] = useState(false)
 
   useEffect(() => {
     const setUpNav = () => {
-      const parsedPage = parsePage(path)
-      if (!parsedPage || parsedPage.length < 1 || parsedPage.includes(" "))
-        return
+      const parsedPage = parsePage(state.path)
+      if (!parsedPage) return
+      if (parsedPage.includes("women") || parsedPage.includes("men")) {
+        showNavChildren(parsedPage)
+      } else {
+        selectItem(null)
+        setChildItems(null)
+      }
       setActiveMenuItemClass(parsedPage)
-      showNavChildren(parsedPage)
     }
 
     setUpNav()
-  }, [path])
+  }, [state.path])
 
-  const parsePage = path => {
-    if (!path) return
+  const parsePage = parsedPage => {
+    if (!parsedPage) return
     const reg = new RegExp("([^a-zA-Z-])", "g")
-    return path.replace(reg, " ")
+    return parsedPage.replace(reg, " ")
   }
 
-  const showNavChildren = path => {
-    let item = path
-    if (path.includes("women")) {
+  const showNavChildren = parsedPage => {
+    console.log({ parsedPage })
+    if (!parsedPage) return
+    let item
+
+    if (parsedPage.includes("women")) {
       item = {
         child_items: [
           {
@@ -57,7 +69,7 @@ const DesktopNav = ({ isVisible, path, data }) => {
         title: "WOMEN",
         url: "#",
       }
-    } else if (path.includes("men")) {
+    } else if (parsedPage.includes("men")) {
       item = {
         title: "MEN",
         url: "#",
@@ -81,6 +93,7 @@ const DesktopNav = ({ isVisible, path, data }) => {
   }
 
   const selectItem = item => {
+    console.log({ item })
     if (!item) return
     if (item.child_items) {
       setSelectedItem(item)
@@ -88,8 +101,13 @@ const DesktopNav = ({ isVisible, path, data }) => {
       setChildItems(item.child_items)
       setChildVisible(true)
     } else {
+      toggleMenu(isVisible)
       setChildItems(null)
       setChildVisible(false)
+
+      setTimeout(() => {
+        navigate(item.url)
+      }, 500)
     }
   }
 
@@ -159,7 +177,11 @@ const DesktopNav = ({ isVisible, path, data }) => {
         }
       </div>
       <SubNavBar
-        pose={childItems && childIsVisible ? "childVisible" : "childHidden"}
+        pose={
+          childItems && isVisible && childIsVisible
+            ? "childVisible"
+            : "childHidden"
+        }
         className="flex subnav"
       >
         {childItems &&

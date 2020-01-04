@@ -327,6 +327,7 @@
   }
   .model__main-container {
     max-width: 300px;
+    min-width: 200px;
     font-size: 20px;
   }
   .model-bio-property,
@@ -529,8 +530,10 @@
   max-height: 760px;
 }
 .model-swiper-slide > img {
-  height: auto;
-  width: auto;
+  height: auto !important;
+  width: auto !important;
+
+  object-fit: contain;
 }
 
 .model-slider-navigate.next {

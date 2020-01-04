@@ -94,7 +94,12 @@ const Header = ({ isMobile, isTablet }) => {
             data={data}
           />
         ) : (
-          <DesktopNav isVisible={isVisible} path={state.path} data={data} />
+          <DesktopNav
+            toggleMenu={toggleMenu}
+            isVisible={isVisible}
+            path={state.path}
+            data={data}
+          />
         )}
       </div>
       <Link to={state.path} style={{ textDecoration: "none" }}>
