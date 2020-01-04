@@ -517,7 +517,7 @@
   justify-content: center;
   flex-shrink: 0;
   width: 100%;
-  height: 100%;
+  height: auto;
   position: relative;
   -webkit-transition-property: -webkit-transform;
   transition-property: -webkit-transform;
@@ -529,12 +529,12 @@
   transition: transform 0.2s, -webkit-transform 0.2s;
   max-height: 760px;
 }
-.model-swiper-slide > img {
+/* .model-swiper-slide > img {
   height: auto !important;
   width: auto !important;
 
   object-fit: contain;
-}
+} */
 
 .model-slider-navigate.next {
   cursor: url("../images/rightArrow.png"), auto;

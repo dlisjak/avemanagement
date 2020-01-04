@@ -14,6 +14,7 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
   const [swiper, updateSwiper] = useState(null)
   const [tab, setTab] = useState("portfolio")
   let params = {
+    autoHeight: true,
     slideClass: "model-swiper-slide",
     slidesPerView: 1,
     spaceBetween: 0,
@@ -242,14 +243,13 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
           <Swiper loop key={1} {...params} getSwiper={updateSwiper}>
             {acf.portfolio.map(
               ({ url, alt, title, name, height, width }, i) => (
-                <div style={{ display: "flex", height }} key={i}>
+                <div key={i}>
                   <img
                     src={url}
                     alt={alt}
                     className="model-portfolio-image"
                     title={title}
                     name={name}
-                    style={{ height, width }}
                   />
                 </div>
               )
