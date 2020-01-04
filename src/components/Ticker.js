@@ -23,8 +23,6 @@ const TickerText = ({ title, fixed = false, left = false }) => {
   })
 
   if (title) {
-    console.log(titleTicker)
-
     for (let i = 0; i < 50; i++) {
       data += ` ${titleTicker} `
     }

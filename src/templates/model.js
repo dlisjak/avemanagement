@@ -2,14 +2,22 @@ import React, { useState, useEffect, useContext } from "react"
 import SmoothImage from "react-smooth-image"
 import Layout from "../components/layout"
 import BlackBar from "../components/BlackBar"
+import Swiper from "react-id-swiper"
+
+import "../components/swiper.css"
 
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 
 const Category = ({ pageContext: { firstName, lastName, acf } }) => {
   const dispatch = useContext(GlobalDispatchContext)
 
-  const [image, setImage] = useState(acf.portfolio[0])
+  const [swiper, updateSwiper] = useState(null)
   const [tab, setTab] = useState("portfolio")
+  let params = {
+    slideClass: "model-swiper-slide",
+    slidesPerView: 1,
+    spaceBetween: 0,
+  }
   let Colcade
   let tickerText
 
@@ -36,29 +44,22 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
     setPath()
   }, [])
 
-  const selectPhoto = direction => {
-    let newImage = image
-
-    const index = acf.portfolio.findIndex(el => {
-      return el.url === image.url
-    })
-
-    if (direction === "prev") {
-      if (acf.portfolio[index - 1]) {
-        newImage = acf.portfolio[index - 1]
-      } else {
-        newImage = acf.portfolio[acf.portfolio.length - 1]
-      }
+  const navigateSliderNext = () => {
+    if (swiper !== null) {
+      swiper.slideNext()
     }
+  }
 
-    if (direction === "next") {
-      if (acf.portfolio[index + 1]) {
-        newImage = acf.portfolio[index + 1]
-      } else {
-        newImage = acf.portfolio[0]
-      }
+  const navigateSliderPrev = () => {
+    if (swiper !== null) {
+      swiper.slidePrev()
     }
-    setImage(newImage)
+  }
+
+  const setImage = index => {
+    if (swiper !== null) {
+      swiper.slideTo(index + 1, 0, false)
+    }
   }
 
   return (
@@ -238,28 +239,44 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
               )}
             </div>
           </div>
-          <i className="arrow-left" onClick={() => selectPhoto("prev")} />
+          <Swiper loop key={1} {...params} getSwiper={updateSwiper}>
+            {acf.portfolio.map(
+              ({ url, alt, title, name, height, width }, i) => (
+                <div style={{ display: "flex" }} key={i}>
+                  <img
+                    src={url}
+                    alt={alt}
+                    className="model-portfolio-image"
+                    title={title}
+                    name={name}
+                    style={{ height, width }}
+                  />
+                </div>
+              )
+            )}
+          </Swiper>
           <div
-            className="model__main--image"
+            className="absolute model-slider-navigate prev"
+            onClick={navigateSliderPrev}
             style={{
-              display: "flex",
-              width: "60%",
-              justifyContent: "center",
+              height: "100%",
+              width: "50%",
+              left: 0,
+              zIndex: 99,
+              maxHeight: 760,
             }}
-          >
-            <img
-              src={image.url}
-              alt={image.alt}
-              transitiontime={0.5}
-              style={{
-                marginBottom: 0,
-                objectFit: "contain",
-                height: "auto",
-                maxHeight: 760,
-              }}
-            />
-          </div>
-          <i className="arrow-right" onClick={() => selectPhoto("next")} />
+          />
+          <div
+            className="absolute model-slider-navigate next"
+            onClick={navigateSliderNext}
+            style={{
+              height: "100%",
+              width: "50%",
+              right: 0,
+              zIndex: 99,
+              maxHeight: 760,
+            }}
+          />
         </div>
 
         <BlackBar height={100} />
@@ -284,8 +301,8 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
                         role="button"
                         className="flex-column justify-between grid-item"
                         onClick={() => {
-                          setImage({ title, name, url, alt })
-                          window.scrollTo(0, 27)
+                          setImage(index)
+                          window.scrollTo(0, 272)
                         }}
                         style={{ cursor: "pointer", marginBottom: 5 }}
                         key={index}

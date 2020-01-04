@@ -511,6 +511,36 @@
   line-height: 0.7;
 }
 
+.model-swiper-slide {
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  -webkit-transition-property: -webkit-transform;
+  transition-property: -webkit-transform;
+  transition-property: transform;
+  transition-property: transform, -webkit-transform;
+  -webkit-transition: -webkit-transform 0.2s;
+  transition: -webkit-transform 0.2s;
+  transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
+  max-height: 760px;
+}
+.model-swiper-slide > img {
+  height: auto;
+  width: auto;
+}
+
+.model-slider-navigate.next {
+  cursor: url("../images/rightArrow.png"), auto;
+}
+
+.model-slider-navigate.prev {
+  cursor: url("../images/leftArrow.png"), auto;
+}
+
 .swiper-slide {
   transition: transform 0.2s;
 }
@@ -526,6 +556,7 @@
 .contact-input--date {
   text-transform: inherit;
 }
+
 .contact-error {
   color: red;
   position: absolute;

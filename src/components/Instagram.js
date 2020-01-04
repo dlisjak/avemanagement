@@ -5,7 +5,6 @@ import Slider from "./Slider"
 import TickerText from "./Ticker"
 
 const Instagram = ({ posts }) => {
-  console.log(posts)
   return (
     <Fragment>
       <TickerText title="INSTAGRAM" left={true} />

@@ -21,8 +21,6 @@ const Header = ({ isMobile, isTablet }) => {
     setVisibleMenu(!isVisible)
   }
 
-  console.log(state)
-
   const data = useStaticQuery(graphql`
     {
       allWordpressMenusMenusItems(filter: { name: { eq: "Main" } }) {
