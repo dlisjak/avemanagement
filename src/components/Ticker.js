@@ -24,7 +24,11 @@ const TickerText = ({ title, fixed = false, left = false }) => {
 
   if (title) {
     for (let i = 0; i < 50; i++) {
-      data += ` ${titleTicker} `
+      let space = ""
+      if (i === 2) {
+        space = `                    `
+      }
+      data += `${space} ${titleTicker} `
     }
   }
 

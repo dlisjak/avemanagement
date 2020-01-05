@@ -1002,6 +1002,16 @@ div.ticker__page--fixed {
   object-position: top;
 }
 
+.category-card > div > img,
+.all-news-card > div > img {
+  transition-duration: 200ms;
+}
+
+.category-card > div > img:hover,
+.all-news-card > div > img:hover {
+  transform: scale(1.2);
+}
+
 .width-100 {
   width: 100%;
 }

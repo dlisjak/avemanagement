@@ -67,7 +67,11 @@ const NewsPage = ({ data, pageContext }) => {
                 className="flex-column justify-between grid-item"
                 key={index}
               >
-                <Link to={`/news/${slug}`} style={{ textDecoration: "none" }}>
+                <Link
+                  to={`/news/${slug}`}
+                  className="all-news-card"
+                  style={{ textDecoration: "none" }}
+                >
                   <SmoothImage
                     src={acf.news_post_image.url}
                     alt={title}
