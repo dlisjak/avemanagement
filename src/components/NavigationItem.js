@@ -23,7 +23,7 @@ const NavigationItem = ({ item, isMobile }) => {
           paddingRight: 10,
           paddingTop: 5,
           paddingBottom: 5,
-          fontSize: 20,
+          fontSize: 14,
           textDecoration: "none",
           cursor: "pointer",
         }}
@@ -43,7 +43,7 @@ const NavigationItem = ({ item, isMobile }) => {
           paddingRight: 10,
           paddingTop: 5,
           paddingBottom: 5,
-          fontSize: 20,
+          fontSize: 14,
           textDecoration: "none",
         }}
       >
@@ -62,7 +62,7 @@ const NavigationItem = ({ item, isMobile }) => {
           paddingRight: 10,
           paddingTop: 5,
           paddingBottom: 5,
-          fontSize: 20,
+          fontSize: 14,
           textDecoration: "none",
         }}
       >
