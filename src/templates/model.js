@@ -247,7 +247,7 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
                   <img
                     src={url}
                     alt={alt}
-                    className="model-portfolio-image"
+                    className="model-portfolio-image--swiper"
                     title={title}
                     name={name}
                   />

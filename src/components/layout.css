@@ -544,6 +544,14 @@
   cursor: url("../images/leftArrow.png"), auto;
 }
 
+.model-portfolio-image--swiper {
+  object-fit: contain;
+  width: auto;
+  -o-object-position: top;
+  object-position: top;
+  height: auto;
+}
+
 .swiper-slide {
   transition: transform 0.2s;
 }
