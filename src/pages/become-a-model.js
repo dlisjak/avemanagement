@@ -449,7 +449,10 @@ const BecomeAModel = () => {
         </p>
       </div>
       <div className="flex flex-column">
-        <span className="content-padding" style={{ fontWeight: 700 }}>
+        <span
+          className="content-padding"
+          style={{ fontWeight: 700, marginBottom: 25 }}
+        >
           ENSURE YOUR IMAGES ARE NOT LARGER THAN 2MB EACH IN SIZE
         </span>
         <div className="flex flex-wrap">
