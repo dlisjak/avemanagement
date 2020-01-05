@@ -585,6 +585,65 @@
 .contact-image-upload {
   border: 1px solid lightgrey;
 }
+
+.contact-form-submit-label {
+  color: black;
+  opacity: 0.2;
+  -webkit-animation: fade 0.5s;
+  -moz-animation: fade 0.5s;
+  animation: fade 0.5s;
+  -o-animation: fade 0.5s;
+
+  animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes fade {
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+@-moz-keyframes fade {
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+@-o-keyframes fade {
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
 .contact-form-submit-label:hover {
   color: #ccc;
   cursor: pointer;
