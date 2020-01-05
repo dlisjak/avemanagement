@@ -89,7 +89,7 @@ const MobileNav = ({ isVisible, data, toggleMenu }) => {
                 style={{ fontWeight: activeItem === item.title ? 700 : 400 }}
                 key={index}
               >
-                <NavigationItem item={item} />
+                <NavigationItem isMobile={true} item={item} />
                 {item.child_items && (
                   <ChildNav
                     pose={
@@ -114,7 +114,7 @@ const MobileNav = ({ isVisible, data, toggleMenu }) => {
                         className="flex mobile-navigation--child"
                         key={childIndex}
                       >
-                        <NavigationItem item={childItem} />
+                        <NavigationItem isMobile={true} item={childItem} />
                       </div>
                     ))}
                   </ChildNav>

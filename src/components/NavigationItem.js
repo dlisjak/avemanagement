@@ -1,11 +1,13 @@
 import React from "react"
 import { Link } from "gatsby"
 
-const navigateToPage = e => {
-  e.preventDefault()
+const navigateToPage = (e, isMobile) => {
+  if (!isMobile) {
+    e.preventDefault()
+  }
 }
 
-const NavigationItem = ({ item }) => {
+const NavigationItem = ({ item, isMobile }) => {
   if (item.url.includes("#")) {
     return (
       <Link
@@ -13,13 +15,15 @@ const NavigationItem = ({ item }) => {
         to={`/${item.title.toLowerCase()}`}
         activeStyle={{ fontWeight: 700 }}
         partiallyActive={true}
-        onClick={e => e.preventDefault()}
+        onClick={e => {
+          navigateToPage(e, false)
+        }}
         style={{
           paddingLeft: 10,
           paddingRight: 10,
           paddingTop: 5,
           paddingBottom: 5,
-          fontSize: 14,
+          fontSize: 20,
           textDecoration: "none",
           cursor: "pointer",
         }}
@@ -39,7 +43,7 @@ const NavigationItem = ({ item }) => {
           paddingRight: 10,
           paddingTop: 5,
           paddingBottom: 5,
-          fontSize: 14,
+          fontSize: 20,
           textDecoration: "none",
         }}
       >
@@ -52,13 +56,13 @@ const NavigationItem = ({ item }) => {
         to={`${item.url}`}
         data-title={item.title.replace(/\s/g, "-")}
         partiallyActive={true}
-        onClick={e => e.preventDefault()}
+        onClick={e => navigateToPage(e, isMobile)}
         style={{
           paddingLeft: 10,
           paddingRight: 10,
           paddingTop: 5,
           paddingBottom: 5,
-          fontSize: 14,
+          fontSize: 20,
           textDecoration: "none",
         }}
       >

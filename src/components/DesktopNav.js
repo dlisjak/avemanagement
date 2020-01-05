@@ -46,7 +46,6 @@ const DesktopNav = ({ toggleMenu, isVisible, data }) => {
   }
 
   const showNavChildren = parsedPage => {
-    console.log({ parsedPage })
     if (!parsedPage) return
     let item
 
@@ -93,7 +92,6 @@ const DesktopNav = ({ toggleMenu, isVisible, data }) => {
   }
 
   const selectItem = item => {
-    console.log({ item })
     if (!item) return
     if (item.child_items) {
       setSelectedItem(item)
@@ -165,16 +163,6 @@ const DesktopNav = ({ toggleMenu, isVisible, data }) => {
             )
           }
         )}
-        {
-          // <div
-          // className="flex"
-          // onClick={() => selectItem({ title: "SEARCH", url: "/search" })}
-          // key={"search"}
-          // style={{ alignItems: "center" }}
-          // >
-          // <NavigationItem item={{ title: "SEARCH", url: "/search" }} />
-          // </div>
-        }
       </div>
       <SubNavBar
         pose={
