@@ -527,6 +527,7 @@
   transition: transform 0.2s;
   transition: transform 0.2s, -webkit-transform 0.2s;
   max-height: 760px;
+  max-width: 100vw;
 }
 /* .model-swiper-slide > img {
   height: auto !important;
