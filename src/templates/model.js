@@ -15,10 +15,11 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
   const [swiper, updateSwiper] = useState(null)
   const [tab, setTab] = useState("portfolio")
   let params = {
+    centeredSlides: true,
     autoHeight: true,
     slideClass: "model-swiper-slide",
     slidesPerView: 1,
-    spaceBetween: 0,
+    spaceBetween: 5,
   }
   let Colcade
   let tickerText
@@ -89,11 +90,11 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
         </h2>
         <BlackBar height={100} />
         <div
+          id="slideshow"
           className="flex model__main content-padding"
           style={{ marginTop: 10 }}
         >
           <div
-            id="slideshow"
             className="flex model__main-container flex-column"
             style={{ justifyContent: "space-between", zIndex: 100 }}
           >
