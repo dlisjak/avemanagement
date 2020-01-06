@@ -3,6 +3,7 @@ import SmoothImage from "react-smooth-image"
 import Layout from "../components/layout"
 import BlackBar from "../components/BlackBar"
 import Swiper from "react-id-swiper"
+import AnchorLink from "react-anchor-link-smooth-scroll"
 
 import "../components/swiper.css"
 
@@ -92,13 +93,18 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
           style={{ marginTop: 10 }}
         >
           <div
+            id="slideshow"
             className="flex model__main-container flex-column"
-            style={{ justifyContent: "space-between" }}
+            style={{ justifyContent: "space-between", zIndex: 100 }}
           >
-            <div className="flex model__menu">
+            <div
+              className="flex model__menu"
+              style={{ top: -5, position: "relative" }}
+            >
               {acf.portfolio && (
-                <a
+                <AnchorLink
                   href="#content"
+                  offset="200"
                   onClick={() => setTab("portfolio")}
                   style={{
                     fontWeight: tab === "portfolio" ? "bold" : "normal",
@@ -108,11 +114,12 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
                   }}
                 >
                   PORTFOLIO
-                </a>
+                </AnchorLink>
               )}
               {acf.videos && (
-                <a
+                <AnchorLink
                   href="#content"
+                  offset="200"
                   onClick={() => setTab("videos")}
                   style={{
                     fontWeight: tab === "videos" ? "bold" : "normal",
@@ -122,10 +129,10 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
                   }}
                 >
                   VIDEOS
-                </a>
+                </AnchorLink>
               )}
               {false && (
-                <a
+                <AnchorLink
                   href="#bio"
                   style={{
                     cursor: "pointer",
@@ -134,7 +141,7 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
                   }}
                 >
                   BIO
-                </a>
+                </AnchorLink>
               )}
               {acf.instagram && (
                 <span style={{ cursor: "pointer" }}>INSTAGRAM</span>
@@ -310,14 +317,19 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
                   ({ title, name, url, alt = "", height, width }, index) => {
                     const ratio = height / width
                     return (
-                      <div
+                      <AnchorLink
                         role="button"
+                        href="#slideshow"
+                        offset="200"
                         className="flex-column justify-between grid-item"
                         onClick={() => {
                           setImage(index)
-                          window.scrollTo(0, 272)
                         }}
-                        style={{ cursor: "pointer", marginBottom: 5 }}
+                        style={{
+                          cursor: "pointer",
+                          marginBottom: 5,
+                          display: "block",
+                        }}
                         key={index}
                       >
                         <SmoothImage
@@ -330,7 +342,7 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
                           title={title}
                           name={name}
                         />
-                      </div>
+                      </AnchorLink>
                     )
                   }
                 )}
