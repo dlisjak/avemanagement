@@ -502,6 +502,7 @@
   font-size: 20px !important;
   color: #222;
   font-weight: 400;
+  padding: 2.5px 0;
 }
 .mobile-navigation a[aria-current="page"] {
   font-weight: 700;
