@@ -41,9 +41,22 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
         dispatch({ type: "SET_PATH", payload: tickerText })
       }
     }
+
     initGrid()
     setPath()
   }, [])
+
+  useEffect(() => {
+    const swiperUpdate = () => {
+      setTimeout(() => {
+        if (swiper !== null) {
+          swiper.update()
+        }
+      })
+    }
+
+    swiperUpdate()
+  }, [swiper])
 
   const navigateSliderNext = () => {
     if (swiper !== null) {
