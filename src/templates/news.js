@@ -41,8 +41,8 @@ const News = ({ pageContext, data }) => {
     content = splitContent[lastContent - 1]
     content = content.replace("</p>", "")
     content = content.split(" ")
-    content[0] = `<b>${content[0]}</b>`
-    content[1] = `<b>${content[1]}</b> </br>`
+    content[0] = `<b>${content[0]}`
+    content[1] = `${content[1]}</b> </br>`
     content = content.join(" ")
     return content
   }
@@ -58,7 +58,7 @@ const News = ({ pageContext, data }) => {
           dangerouslySetInnerHTML={{
             __html: formatContent(pageContext.content),
           }}
-          style={{ fontWeight: 400 }}
+          style={{ fontWeight: 700 }}
         />
         <img
           className="news-card__image"
