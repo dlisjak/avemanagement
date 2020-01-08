@@ -102,8 +102,8 @@ const Header = ({ isMobile, isTablet }) => {
           />
         )}
       </div>
-      <Link to={state.path} style={{ textDecoration: "none" }}>
-        <Ticker title={state.path || state.category} />
+      <Link to={state.path || "/"} style={{ textDecoration: "none" }}>
+        <Ticker title={state.path || window.location.pathname} />
       </Link>
     </div>
   )

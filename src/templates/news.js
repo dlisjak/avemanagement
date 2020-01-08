@@ -1,9 +1,11 @@
 import React, { useContext, useState, useEffect } from "react"
 import SmoothImage from "react-smooth-image"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
+import AnchorLink from "react-anchor-link-smooth-scroll"
 
+import Layout from "../components/layout"
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
+import AddressTicker from "../components/AddressTicker"
 
 const News = ({ pageContext, data }) => {
   const dispatch = useContext(GlobalDispatchContext)
@@ -54,6 +56,7 @@ const News = ({ pageContext, data }) => {
         style={{ marginBottom: 50, alignItems: "flex-start" }}
       >
         <h2
+          id="slideshow"
           className="news-card-title model__name "
           dangerouslySetInnerHTML={{
             __html: formatContent(pageContext.content),
@@ -129,13 +132,12 @@ const News = ({ pageContext, data }) => {
                     ({ description, height, url, width, title }, index) => {
                       const ratio = height / width
                       return (
-                        <div
+                        <AnchorLink
                           role="button"
+                          offset={180}
+                          href="#slideshow"
                           className="flex-column justify-between grid-item"
-                          onClick={() => {
-                            setImage({ title, url })
-                            window.scrollTo(0, 27)
-                          }}
+                          onClick={() => setImage({ title, url })}
                           style={{ cursor: "pointer", marginBottom: 5 }}
                           key={index}
                         >
@@ -149,7 +151,7 @@ const News = ({ pageContext, data }) => {
                             imageStyles={{ height: "100%", objectFit: "cover" }}
                             title={title}
                           />
-                        </div>
+                        </AnchorLink>
                       )
                     }
                   )
@@ -164,6 +166,7 @@ const News = ({ pageContext, data }) => {
           />
         )}
       </div>
+      <AddressTicker />
     </Layout>
   )
 }

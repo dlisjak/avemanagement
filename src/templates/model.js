@@ -3,11 +3,13 @@ import SmoothImage from "react-smooth-image"
 import Layout from "../components/layout"
 import BlackBar from "../components/BlackBar"
 import Swiper from "react-id-swiper"
+import YouTube from "react-youtube"
 import AnchorLink from "react-anchor-link-smooth-scroll"
 
 import "../components/swiper.css"
 
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
+import AddressTicker from "../components/AddressTicker"
 
 const Category = ({ pageContext: { firstName, lastName, acf } }) => {
   const dispatch = useContext(GlobalDispatchContext)
@@ -308,7 +310,7 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
           style={{ marginTop: 5 }}
         >
           {tab === "portfolio" && (
-            <>
+            <div className="width-100 flex">
               <div className="grid-col grid-col--1"></div>
               <div className="grid-col grid-col--2"></div>
               <div className="grid-col grid-col--3"></div>
@@ -347,21 +349,25 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
                     )
                   }
                 )}
-            </>
+            </div>
           )}
           {tab === "videos" &&
             acf.videos &&
-            acf.videos.map(({ video_url }, index) => (
-              <iframe
-                src={video_url}
-                width="560"
-                height="315"
-                title={`${video_url}-${index}`}
-                key={index}
-              ></iframe>
-            ))}
+            acf.videos.map(({ video_url }, index) => {
+              video_url = video_url.split(".be/")
+              return (
+                <YouTube
+                  videoId={video_url[1]}
+                  width="560"
+                  height="315"
+                  title={`${video_url}-${index}`}
+                  key={index}
+                />
+              )
+            })}
         </div>
       </div>
+      <AddressTicker />
     </Layout>
   )
 }

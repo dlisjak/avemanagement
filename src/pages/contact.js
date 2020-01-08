@@ -70,23 +70,31 @@ const Contact = () => {
           style={{ marginTop: 50 }}
         >
           <BlackBar height={100} />
-          <h3 style={{ marginTop: 10 }}>HISTORY</h3>
-          <p>
-            Founded in 2004 by photographer duo ChuanDo & Frey, AVE Management
-            has been defining the fashion and modeling industry, becoming one of
-            the most recognized modeling agencies around the world.
+          <span style={{ fontWeight: 700, marginBottom: 25, marginTop: 10 }}>
+            HISTORY
+          </span>
+          <p style={{ maxWidth: 680 }}>
+            Founded in 2004 by international fashion photographers{" "}
+            <b>Chuando & Frey</b>, AVE Management has been defining the fashion
+            and modeling industry, becoming one of the most recognized modeling
+            agencies around the world.
           </p>
-          <p>
+          <p style={{ maxWidth: 680 }}>
             AVE’s strength lies in discovering the most unique and fresh faces,
-            developing each model to their full potential and helping them earn
-            covers on international acclaimed magazines and spots in campaigns
-            of top brands.
+            developing each model to their fullest potential and helping them
+            earn covers on international acclaimed magazines and spots in
+            campaigns of top brands globally.
           </p>
-          <p>
-            AVE represents and developed numerous industry icons including COCO
-            ROCHA, VANESSA AXENTE, DARIA STROKOUS, SASHA LUSS, JAC JAGACIAK,
-            SIGRID AGREN, IRENE HIEMSTRA, DIEGO MIGUEL, RICHARD BIEDUL, MARK
-            COX, TRAVIS SMITH, ADAM BUTCHER and RYAN KEATING among others.
+          <p style={{ maxWidth: 680 }}>
+            AVE represents and developed numerous industry icons and next
+            generation top models including{" "}
+            <b>
+              COCO ROCHA, VANESSA AXENTE, DARIA STROKOUS, SASHA LUSS, JAC MONIKA
+              JAGACIAK, SIGRID AGREN, DENISA DVORAKOVA, ALYSSAH PACCOUD, BRIAN
+              SHIMANSKY, ANDRE ZIEHE, DIEGO MIGUEL, RICHARD BIEDUL, MARK COX,
+              TRAVIS SMITH, SEBASTIAN SAUVE, MATT JAKE YOUNG
+            </b>{" "}
+            and <b>RYAN KEATING</b> among others.
           </p>
         </div>
       </div>

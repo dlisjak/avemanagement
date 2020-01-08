@@ -46,6 +46,14 @@ const Pagination = ({ currentPage, numOfPages }) => (
         {currentPage + 3}
       </Link>
     )}
+    {currentPage > numOfPages - 4 ? null : (
+      <Link
+        className="pagination-item fourth-next"
+        to={`/news/${currentPage + 4}`}
+      >
+        {currentPage + 4}
+      </Link>
+    )}
     {currentPage !== numOfPages && currentPage < numOfPages - 3 && (
       <Link className="pagination-item last" to={`/news/${numOfPages}`}>
         >

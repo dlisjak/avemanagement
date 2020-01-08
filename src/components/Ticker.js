@@ -1,10 +1,17 @@
 import React, { useEffect, useRef } from "react"
 
-const TickerText = ({ title, fixed = false, left = false }) => {
+const TickerText = ({
+  title,
+  fixed = false,
+  left = false,
+  noRepeat = false,
+}) => {
   const tickerRef = useRef(null)
   const tickerRef2 = useRef(null)
 
-  const reg = new RegExp("([^a-zA-Z#@])", "g")
+  const reg = !noRepeat
+    ? new RegExp("([^a-zA-Z#@])", "g")
+    : new RegExp("([^a-zA-Z#@+1234567890])", "g")
   let data = " "
   let titleTicker = title.replace(reg, " ")
   if (titleTicker === " special ") {
@@ -66,6 +73,26 @@ const TickerText = ({ title, fixed = false, left = false }) => {
             {data}
           </div>
           <div id="ticker2Reverse" ref={tickerRef2}>
+            {data}
+          </div>
+        </div>
+      </div>
+    )
+  } else if (noRepeat) {
+    return (
+      <div
+        className="ticker__page ticker flex width-100"
+        style={{ fontWeight: 400, maxWidth: 1366 }}
+      >
+        <div id="tickerwrap">
+          <div
+            id={left ? "ticker" : "tickerReverse"}
+            ref={tickerRef}
+            style={{ marginRight: 5 }}
+          >
+            {data}
+          </div>
+          <div id={left ? "ticker" : "tickerReverse"} ref={tickerRef2}>
             {data}
           </div>
         </div>

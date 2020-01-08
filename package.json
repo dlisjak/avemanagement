@@ -33,6 +33,7 @@
     "react-pose": "^4.0.10",
     "react-smooth-image": "^1.1.0",
     "react-ticker": "^1.2.1",
+    "react-youtube": "^7.9.0",
     "slash": "^3.0.0",
     "swiper": "^5.2.0",
     "video-react": "^0.14.1"

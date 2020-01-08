@@ -161,10 +161,6 @@
     transform: translateX(-30px);
   }
 
-  .pagination-item.current {
-    transform: translateX(0);
-  }
-
   .pagination-item.next {
     transform: translateX(30px);
   }
@@ -182,6 +178,14 @@
   .pagination-item.last {
     transform: translateX(150px);
   } */
+
+  .pagination-item.current {
+    color: rgb(104, 103, 104);
+  }
+
+  .news-ticker-address #tickerwrap {
+    color: rgb(104, 103, 104) !important;
+  }
 
   .model__main-container {
     width: 33%;
