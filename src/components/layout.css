@@ -2,6 +2,9 @@
   .header-fixed-container {
     width: 100%;
   }
+  .news-ticker-address {
+    padding: 5px 25px;
+  }
   .model-slider-navigate {
     display: none;
   }
@@ -98,6 +101,9 @@
 @media only screen and (min-width: 480px) {
   .header-fixed-container {
     width: 80%;
+  }
+  .news-ticker-address {
+    padding: 5px 25%;
   }
   .news-card-title {
     font-size: 24px;

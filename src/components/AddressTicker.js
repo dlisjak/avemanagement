@@ -7,7 +7,6 @@ const AddressTicker = () => (
     className="news-ticker-address"
     style={{
       width: "100%",
-      padding: "5px 25%",
       borderTop: "1px solid",
       borderBottom: "1px solid",
       color: "#ccc",
