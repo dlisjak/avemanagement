@@ -31,17 +31,20 @@ const VizAwareImg = ({
         className="flex flex-column justify-between category-card"
         style={{
           position: "relative",
+          overflow: "hidden",
           opacity: imgViz ? 1 : 0,
           top: imgViz ? 0 : 100,
           transition: "500ms linear",
         }}
       >
-        <img
-          className="category-card-image"
-          src={src}
-          alt={alt}
-          title={title}
-        />
+        <div style={{ overflow: "hidden", height: "100%", width: "100%" }}>
+          <img
+            className="category-card-image"
+            src={src}
+            alt={alt}
+            title={title}
+          />
+        </div>
         <h3 className="category-card-title flex flex-wrap width-100 relative">
           <span className="width-100">{firstName}</span>
           <span className="width-100" style={{ top: 15 }}>

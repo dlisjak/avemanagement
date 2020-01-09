@@ -194,7 +194,6 @@
     width: 33%;
   }
   .category-card > div {
-    padding-bottom: 130% !important;
   }
   .category-card:first-child {
     margin-left: 0;
