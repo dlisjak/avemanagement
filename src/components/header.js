@@ -21,7 +21,7 @@ const Header = ({ isMobile, isTablet }) => {
     setVisibleMenu(!isVisible)
   }
 
-  const tickerHeaderText = ""
+  let tickerHeaderText = ""
 
   if (typeof window !== "undefined") {
     tickerHeaderText = window.location.pathname
