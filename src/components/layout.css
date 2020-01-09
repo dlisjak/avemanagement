@@ -2,6 +2,9 @@
   .header-fixed-container {
     width: 100%;
   }
+  .model-slider-navigate {
+    display: none;
+  }
   h3 {
     font-size: 1.2rem !important;
   }
