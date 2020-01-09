@@ -16,12 +16,18 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
 
   const [swiper, updateSwiper] = useState(null)
   const [tab, setTab] = useState("portfolio")
+
   let params = {
     centeredSlides: true,
     autoHeight: true,
     slideClass: "model-swiper-slide",
     slidesPerView: 1,
     spaceBetween: 5,
+    on: {
+      touchEnd: function(e) {
+        updateAfterTouch(e, this)
+      },
+    },
   }
   let Colcade
   let tickerText
@@ -71,6 +77,13 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
   const navigateSliderPrev = () => {
     if (swiper !== null) {
       swiper.slidePrev()
+    }
+  }
+
+  const updateAfterTouch = (e, swiper) => {
+    if (swiper !== null) {
+      swiper.update()
+      console.log("update swiper")
     }
   }
 
