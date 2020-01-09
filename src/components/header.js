@@ -21,6 +21,12 @@ const Header = ({ isMobile, isTablet }) => {
     setVisibleMenu(!isVisible)
   }
 
+  const tickerHeaderText = ""
+
+  if (typeof window !== "undefined") {
+    tickerHeaderText = window.location.pathname
+  }
+
   const data = useStaticQuery(graphql`
     {
       allWordpressMenusMenusItems(filter: { name: { eq: "Main" } }) {
@@ -103,7 +109,7 @@ const Header = ({ isMobile, isTablet }) => {
         )}
       </div>
       <Link to={state.path || "/"} style={{ textDecoration: "none" }}>
-        <Ticker title={state.path || window.location.pathname} />
+        <Ticker title={state.path || tickerHeaderText} />
       </Link>
     </div>
   )
