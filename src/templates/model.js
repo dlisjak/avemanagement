@@ -23,11 +23,11 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
     slideClass: "model-swiper-slide",
     slidesPerView: 1,
     spaceBetween: 5,
-    on: {
-      touchEnd: function(e) {
-        updateAfterTouch(e, this)
-      },
-    },
+    // on: {
+    //   touchEnd: function(e) {
+    //     updateAfterTouch(e, this)
+    //   },
+    // },
   }
   let Colcade
   let tickerText
@@ -62,7 +62,7 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
         if (swiper !== null) {
           swiper.update()
         }
-      })
+      }, 500)
     }
 
     swiperUpdate()
@@ -80,12 +80,16 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
     }
   }
 
-  const updateAfterTouch = (e, swiper) => {
-    if (swiper !== null) {
-      swiper.update()
-      console.log("update swiper")
-    }
-  }
+  // const updateAfterTouch = (e, swiper) => {
+  //   if (swiper !== null) {
+  //     swiper.update()
+
+  //     const swiperWrapper = document.querySelector(".swiper-wrapper")
+  //     setTimeout(() => {
+  //       swiperWrapper.style.height = "auto"
+  //     })
+  //   }
+  // }
 
   const setImage = index => {
     if (swiper !== null) {
