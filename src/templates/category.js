@@ -4,6 +4,7 @@ import { graphql, Link } from "gatsby"
 import SmoothImage from "react-smooth-image"
 import Search from "../components/Search"
 import BlackBar from "../components/BlackBar"
+import VizAwareImg from "../components/VisibilityImage"
 
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 
@@ -81,27 +82,17 @@ const Category = ({ data, pageContext }) => {
             index
           ) => {
             return (
-              <Link
-                to={path}
-                className="flex flex-column justify-between category-card"
+              <VizAwareImg
                 key={index}
-              >
-                <SmoothImage
-                  className="category-card-image"
-                  src={featured_image.url}
-                  alt={featured_image.alt}
-                  title={featured_image.title}
-                  style={{ marginBottom: 0 }}
-                  containerStyles={{ paddingBottom: `130%` }}
-                  imageStyles={{ height: "100%", objectFit: "cover" }}
-                />
-                <h3 className="category-card-title flex flex-wrap width-100 relative">
-                  <span className="width-100">{first_name}</span>
-                  <span className="width-100" style={{ top: 15 }}>
-                    {last_name}
-                  </span>
-                </h3>
-              </Link>
+                path={path}
+                src={featured_image.url}
+                alt={featured_image.alt}
+                title={featured_image.title}
+                style={{ marginBottom: 0 }}
+                firstName={first_name}
+                lastName={last_name}
+                lazyLoad={index > 3}
+              />
             )
           }
         )}
