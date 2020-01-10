@@ -21,6 +21,13 @@ function reducer(state, action) {
       }
     }
 
+    case "SET_MODEL_INDEX": {
+      return {
+        ...state,
+        index: action.payload,
+      }
+    }
+
     case "SET_CATEGORY": {
       return {
         ...state,

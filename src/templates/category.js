@@ -1,16 +1,19 @@
 import React, { useEffect, useState, useContext } from "react"
 import Layout from "../components/layout"
-import { graphql, Link } from "gatsby"
-import SmoothImage from "react-smooth-image"
+import { graphql } from "gatsby"
 import Search from "../components/Search"
 import BlackBar from "../components/BlackBar"
 import VizAwareImg from "../components/VisibilityImage"
+import AnchorLink from "react-anchor-link-smooth-scroll"
 
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 
 const Category = ({ data, pageContext }) => {
   const dispatch = useContext(GlobalDispatchContext)
+
   const [searchOpen, toggleSearch] = useState(false)
+  const [anchorIndex, setAnchorIndex] = useState("")
+
   const title = pageContext.title.toUpperCase()
   let tickerText
 
@@ -23,7 +26,23 @@ const Category = ({ data, pageContext }) => {
         dispatch({ type: "SET_PATH", payload: tickerText })
       }
     }
+
+    const anchorScroll = () => {
+      const anchor = window.location.hash
+
+      console.log(anchor)
+
+      setAnchorIndex(window.location.hash)
+
+      setTimeout(() => {
+        const el = document.getElementById("anchorButtonIndex")
+        el.click()
+        console.log(el)
+      }, 1000)
+    }
+
     setPath()
+    anchorScroll()
   }, [])
 
   const openSearch = () => {
@@ -83,6 +102,7 @@ const Category = ({ data, pageContext }) => {
           ) => {
             return (
               <VizAwareImg
+                id={first_name + last_name}
                 key={index}
                 path={path}
                 src={featured_image.url}
@@ -115,6 +135,18 @@ const Category = ({ data, pageContext }) => {
           SEARCH
         </button>
       )}
+
+      <AnchorLink
+        id="anchorButtonIndex"
+        href={anchorIndex}
+        offset="300"
+        style={{
+          fontSize: 1,
+          position: "absolute",
+          color: "white",
+          textDecoration: "none",
+        }}
+      />
     </Layout>
   )
 }

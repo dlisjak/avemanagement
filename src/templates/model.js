@@ -53,6 +53,10 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
       if (typeof window !== "undefined") {
         tickerText = localStorage.getItem("ave-ticker")
         dispatch({ type: "SET_PATH", payload: tickerText })
+        dispatch({
+          type: "SET_MODEL_INDEX",
+          payload: (firstName + lastName).replace(" ", ""),
+        })
       }
     }
 

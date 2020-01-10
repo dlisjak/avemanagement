@@ -21,6 +21,8 @@ const Header = ({ isMobile, isTablet }) => {
     setVisibleMenu(!isVisible)
   }
 
+  console.log(state)
+
   let tickerHeaderText = ""
 
   if (typeof window !== "undefined") {
@@ -107,10 +109,19 @@ const Header = ({ isMobile, isTablet }) => {
             data={data}
           />
         )}
+        <Link
+          to={`${state.path}/#${state.index}` || state.path || "/"}
+          style={{
+            textDecoration: "none",
+            textDecoration: "none",
+            position: "absolute",
+            width: "100%",
+            top: 73,
+          }}
+        >
+          <Ticker title={state.path || tickerHeaderText} />
+        </Link>
       </div>
-      <Link to={state.path || "/"} style={{ textDecoration: "none" }}>
-        <Ticker title={state.path || tickerHeaderText} />
-      </Link>
     </div>
   )
 }

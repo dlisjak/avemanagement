@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import VizSensor from "react-visibility-sensor"
 
 const VizAwareImg = ({
+  id,
   src,
   alt,
   title,
@@ -17,6 +18,8 @@ const VizAwareImg = ({
     setImgViz(lazyLoad ? false : true)
   }, [])
 
+  id = id.replace(" ", "")
+
   return (
     <VizSensor
       partialVisibility
@@ -27,6 +30,7 @@ const VizAwareImg = ({
       }}
     >
       <Link
+        id={id}
         to={path}
         className="flex flex-column justify-between category-card"
         style={{
