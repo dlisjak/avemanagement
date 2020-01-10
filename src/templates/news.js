@@ -6,6 +6,7 @@ import AnchorLink from "react-anchor-link-smooth-scroll"
 import Layout from "../components/layout"
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 import AddressTicker from "../components/AddressTicker"
+import BlackBar from "../components/BlackBar"
 
 const News = ({ pageContext, data }) => {
   const dispatch = useContext(GlobalDispatchContext)
@@ -43,7 +44,7 @@ const News = ({ pageContext, data }) => {
     content = splitContent[lastContent - 1]
     content = content.replace("</p>", "")
     content = content.split(" ")
-    content[0] = `<b>${content[0]}`
+    content[0] = `<b class="black-font">${content[0]}`
     content[1] = `${content[1]}</b> </br>`
     content = content.join(" ")
     return content
@@ -56,24 +57,34 @@ const News = ({ pageContext, data }) => {
         style={{ marginBottom: 50, alignItems: "flex-start" }}
       >
         <h2
-          id="slideshow"
           className="news-card-title model__name "
           dangerouslySetInnerHTML={{
             __html: formatContent(pageContext.content),
           }}
-          style={{ fontWeight: 700 }}
+          style={{
+            fontWeight: 700,
+            color: "#ccc",
+            marginTop: 0,
+            marginBottom: 5,
+          }}
         />
+        <BlackBar height={100} />
         <img
+          id="slideshow"
           className="news-card__image"
           src={image.url}
           alt={data.wordpressWpNews.acf.news_post_image.title}
           style={{
-            marginBottom: 0,
             objectFit: "contain",
             height: "auto",
             maxHeight: 760,
+            marginTop: 5,
+            marginBottom: 5,
           }}
         />
+
+        <BlackBar height={100} />
+
         <div className="flex model__menu">
           {data.allNews.edges.length &&
           data.allNews.edges[0] &&
@@ -134,7 +145,7 @@ const News = ({ pageContext, data }) => {
                       return (
                         <AnchorLink
                           role="button"
-                          offset={180}
+                          offset={205}
                           href="#slideshow"
                           className="flex-column justify-between grid-item"
                           onClick={() => setImage({ title, url })}

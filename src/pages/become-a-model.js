@@ -40,6 +40,12 @@ const BecomeAModel = () => {
     }
   }
 
+  const changeColor = (handleBlur, e) => {
+    document.querySelector("input[name='dateOfBirth']").style.opacity = "1"
+
+    handleBlur(e)
+  }
+
   const handleMobileChange = e => {
     if (e.target.value.length > 17) return
     setMobileNum(e.target.value)
@@ -206,7 +212,7 @@ const BecomeAModel = () => {
                   name="dateOfBirth"
                   placeholder="DD / MM / YYYY"
                   onChange={handleChange}
-                  onBlur={handleBlur}
+                  onBlur={e => changeColor(handleBlur, e)}
                   value={values.dateOfBirth}
                 />
                 <ErrorMessage
@@ -416,7 +422,7 @@ const BecomeAModel = () => {
           marginBottom: 50,
         }}
       >
-        <h4 style={{ marginBottom: 0 }}>Upload photographs</h4>
+        <h4 style={{ marginBottom: 20 }}>Upload photographs</h4>
         <p>
           Submit only natural photographs, no professional studio shots are
           required, as we wish to see you in your most natural state.

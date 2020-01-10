@@ -680,17 +680,22 @@
 .ticker__menu {
   background: white;
 }
+
+.contact-input--date {
+  font-weight: 700;
+  opacity: 0.54;
+}
 .contact-input--date::-webkit-input-placeholder {
   font-weight: 700;
-  color: black;
+  opacity: 0.54;
 }
 .contact-input--date::-moz-placeholder {
   font-weight: 700;
-  color: black;
+  opacity: 0.54;
 }
 .contact-input--date::-ms-input-placeholder {
   font-weight: 700;
-  color: black;
+  opacity: 0.54;
 }
 
 .absolute {
@@ -946,7 +951,7 @@ header .flex > :first-child {
 }
 
 .news-card-title {
-  line-height: 0.9;
+  line-height: 0.8;
   margin-top: 2px;
 }
 
@@ -1191,6 +1196,10 @@ hr {
   overflow: visible;
 }
 
+.black-font {
+  color: black;
+}
+
 input {
   border: 0;
   height: 35px;
@@ -1278,6 +1287,8 @@ textarea {
 html {
   box-sizing: border-box;
   overflow-y: scroll;
+  font-weight: normal;
+  letter-spacing: normal;
 }
 * {
   box-sizing: inherit;

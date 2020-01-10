@@ -73,7 +73,7 @@ const Search = ({ isShown, models, closeSearch }) => {
         width: "80%",
         maxWidth: 1366,
         height: "100%",
-        top: 85,
+        top: 235,
         overflow: "scroll",
       }}
     >

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react"
-import SmoothImage from "react-smooth-image"
 import Layout from "../components/layout"
 import BlackBar from "../components/BlackBar"
 import Swiper from "react-id-swiper"
@@ -23,11 +22,6 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
     slideClass: "model-swiper-slide",
     slidesPerView: 1,
     spaceBetween: 5,
-    // on: {
-    //   touchEnd: function(e) {
-    //     updateAfterTouch(e, this)
-    //   },
-    // },
   }
   let Colcade
   let tickerText
@@ -80,17 +74,6 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
     }
   }
 
-  // const updateAfterTouch = (e, swiper) => {
-  //   if (swiper !== null) {
-  //     swiper.update()
-
-  //     const swiperWrapper = document.querySelector(".swiper-wrapper")
-  //     setTimeout(() => {
-  //       swiperWrapper.style.height = "auto"
-  //     })
-  //   }
-  // }
-
   const setImage = index => {
     if (swiper !== null) {
       swiper.slideTo(index + 1, 0, false)
@@ -127,9 +110,9 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
                   offset="200"
                   onClick={() => setTab("portfolio")}
                   style={{
-                    fontWeight: tab === "portfolio" ? "bold" : "normal",
+                    fontWeight: "bold",
                     cursor: "pointer",
-                    color: "black",
+                    color: tab === "portfolio" ? "black" : "#ccc",
                     textDecoration: "none",
                   }}
                 >
@@ -142,21 +125,24 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
                   offset="200"
                   onClick={() => setTab("videos")}
                   style={{
-                    fontWeight: tab === "videos" ? "bold" : "normal",
+                    fontWeight: "bold",
                     cursor: "pointer",
-                    color: "black",
+                    color: tab === "videos" ? "black" : "#ccc",
                     textDecoration: "none",
                   }}
                 >
                   VIDEOS
                 </AnchorLink>
               )}
-              {false && (
+              {acf.about && (
                 <AnchorLink
-                  href="#bio"
+                  href="#slideshow"
+                  offset={210}
+                  onClick={() => setTab("bio")}
                   style={{
                     cursor: "pointer",
-                    color: "black",
+                    color: tab === "bio" ? "black" : "#ccc",
+                    fontWeight: "bold",
                     textDecoration: "none",
                   }}
                 >
@@ -164,7 +150,21 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
                 </AnchorLink>
               )}
               {acf.instagram && (
-                <span style={{ cursor: "pointer" }}>INSTAGRAM</span>
+                <a
+                  href={`https://www.instagram.com/${acf.instagram.replace(
+                    "@",
+                    ""
+                  )}`}
+                  target="_blank"
+                  style={{
+                    cursor: "pointer",
+                    fontWeight: "bold",
+                    color: "#ccc",
+                    textDecoration: "none",
+                  }}
+                >
+                  INSTAGRAM
+                </a>
               )}
             </div>
             <div id="bio" className="model__bio flex flex-column relative">
@@ -280,43 +280,53 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
               )}
             </div>
           </div>
-          <Swiper loop key={1} {...params} getSwiper={updateSwiper}>
-            {acf.portfolio.map(
-              ({ url, alt, title, name, height, width }, i) => (
-                <div key={i}>
-                  <img
-                    src={url}
-                    alt={alt}
-                    className="model-portfolio-image--swiper"
-                    title={title}
-                    name={name}
-                  />
-                </div>
-              )
-            )}
-          </Swiper>
-          <div
-            className="absolute model-slider-navigate prev"
-            onClick={navigateSliderPrev}
-            style={{
-              height: "100%",
-              width: "50%",
-              left: 0,
-              zIndex: 99,
-              maxHeight: 760,
-            }}
-          />
-          <div
-            className="absolute model-slider-navigate next"
-            onClick={navigateSliderNext}
-            style={{
-              height: "100%",
-              width: "50%",
-              right: 0,
-              zIndex: 99,
-              maxHeight: 760,
-            }}
-          />
+          {tab === "portfolio" && (
+            <>
+              <Swiper loop key={1} {...params} getSwiper={updateSwiper}>
+                {acf.portfolio.map(
+                  ({ url, alt, title, name, height, width }, i) => (
+                    <div key={i}>
+                      <img
+                        src={url}
+                        alt={alt}
+                        className="model-portfolio-image--swiper"
+                        title={title}
+                        name={name}
+                      />
+                    </div>
+                  )
+                )}
+              </Swiper>
+              <div
+                className="absolute model-slider-navigate prev"
+                onClick={navigateSliderPrev}
+                style={{
+                  height: "100%",
+                  width: "50%",
+                  left: 0,
+                  zIndex: 99,
+                  maxHeight: 760,
+                }}
+              />
+              <div
+                className="absolute model-slider-navigate next"
+                onClick={navigateSliderNext}
+                style={{
+                  height: "100%",
+                  width: "50%",
+                  right: 0,
+                  zIndex: 99,
+                  maxHeight: 760,
+                }}
+              />
+            </>
+          )}
+          {tab === "bio" && (
+            <div
+              dangerouslySetInnerHTML={{ __html: acf.about }}
+              style={{ width: "100%", marginRight: "10%" }}
+            />
+          )}
         </div>
 
         <BlackBar height={100} />
@@ -326,8 +336,11 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
           className="flex flex-wrap grid"
           style={{ marginTop: 5 }}
         >
-          {tab === "portfolio" && (
-            <div className="width-100 flex">
+          {
+            <div
+              className="width-100 flex"
+              style={{ display: tab === "portfolio" ? "flex" : "none" }}
+            >
               <div className="grid-col grid-col--1"></div>
               <div className="grid-col grid-col--2"></div>
               <div className="grid-col grid-col--3"></div>
@@ -340,7 +353,7 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
                       <AnchorLink
                         role="button"
                         href="#slideshow"
-                        offset="200"
+                        offset={210}
                         className="flex-column justify-between grid-item"
                         onClick={() => {
                           setImage(index)
@@ -352,13 +365,10 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
                         }}
                         key={index}
                       >
-                        <SmoothImage
+                        <img
                           src={url}
                           alt={alt}
                           className="model-portfolio-image"
-                          transitionTime={0.5}
-                          containerStyles={{ paddingBottom: `${ratio * 100}%` }}
-                          imageStyles={{ height: "100%", objectFit: "cover" }}
                           title={title}
                           name={name}
                         />
@@ -367,21 +377,22 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
                   }
                 )}
             </div>
-          )}
-          {tab === "videos" &&
-            acf.videos &&
-            acf.videos.map(({ video_url }, index) => {
-              video_url = video_url.split(".be/")
-              return (
-                <YouTube
-                  videoId={video_url[1]}
-                  width="560"
-                  height="315"
-                  title={`${video_url}-${index}`}
-                  key={index}
-                />
-              )
-            })}
+          }
+          <div style={{ display: tab === "videos" ? "flex" : "none" }}>
+            {acf.videos &&
+              acf.videos.map(({ video_url }, index) => {
+                video_url = video_url.split(".be/")
+                return (
+                  <YouTube
+                    videoId={video_url[1]}
+                    width="560"
+                    height="315"
+                    title={`${video_url}-${index}`}
+                    key={index}
+                  />
+                )
+              })}
+          </div>
         </div>
       </div>
       <AddressTicker />

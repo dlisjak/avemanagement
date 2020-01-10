@@ -68,7 +68,7 @@ const Category = ({ data, pageContext }) => {
 
       <div
         className="flex flex-wrap category-cards relative"
-        style={{ marginBottom: 75 }}
+        style={{ marginBottom: 75, marginTop: 5 }}
       >
         {data.allWordpressPost.edges.map(
           (
@@ -91,7 +91,7 @@ const Category = ({ data, pageContext }) => {
                 style={{ marginBottom: 0 }}
                 firstName={first_name}
                 lastName={last_name}
-                lazyLoad={index > 3}
+                lazyLoad={index > 7}
               />
             )
           }

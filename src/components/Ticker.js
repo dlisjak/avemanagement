@@ -14,7 +14,8 @@ const TickerText = ({
     : new RegExp("([^a-zA-Z#@+1234567890])", "g")
   let data = " "
   let titleTicker = title.replace(reg, " ")
-  if (titleTicker === " special ") {
+
+  if (titleTicker === " special") {
     titleTicker = " special arrangement "
   }
 
@@ -44,7 +45,7 @@ const TickerText = ({
     return (
       <div
         className="ticker__menu ticker flex width-100"
-        style={{ fontWeight: 700 }}
+        style={{ fontWeight: 700, marginTop: 5 }}
       >
         <div id="tickerwrap">
           <div id="ticker" ref={tickerRef}>

@@ -152,6 +152,7 @@ exports.createPages = async ({ graphql, actions }) => {
             slug
             title
             acf {
+              about
               last_name
               instagram
               gender
@@ -217,6 +218,7 @@ exports.createPages = async ({ graphql, actions }) => {
         lastName: node.acf.last_name,
         title: node.title,
         acf: {
+          about: node.acf.about,
           featuredImage: node.acf.featured_image,
           portfolio: node.acf.portfolio,
           videos: node.acf.videos,

@@ -40,6 +40,7 @@ const ImageUpload = ({ title, order, text }) => {
           marginBottom: file ? 25 : 10,
           backgroundImage: title,
           objectFit: "contain",
+          overflow: "hidden",
         }}
       >
         {!file && (
@@ -51,7 +52,11 @@ const ImageUpload = ({ title, order, text }) => {
               <span style={{ color: "white" }}>{text}</span>
               <span
                 className="contact-image-upload--span"
-                style={{ cursor: "pointer", fontWeight: 700 }}
+                style={{
+                  cursor: "pointer",
+                  fontWeight: 700,
+                  textAlign: "center",
+                }}
                 onClick={e => fireImageSearch(e)}
               >
                 CLICK TO UPLOAD
@@ -81,9 +86,10 @@ const ImageUpload = ({ title, order, text }) => {
         )}
         {placeholderImage && !file && (
           <img
-            className="contact-image-upload--image"
+            className="contact-image-upload--image width-100"
             src={placeholderImage}
             alt={`Your ${title}`}
+            style={{ objectFit: "cover" }}
           />
         )}
         {file && (
