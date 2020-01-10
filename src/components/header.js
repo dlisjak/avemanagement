@@ -21,8 +21,6 @@ const Header = ({ isMobile, isTablet }) => {
     setVisibleMenu(!isVisible)
   }
 
-  console.log(state)
-
   let tickerHeaderText = ""
 
   if (typeof window !== "undefined") {

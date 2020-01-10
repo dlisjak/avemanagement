@@ -28,16 +28,14 @@ const Category = ({ data, pageContext }) => {
     }
 
     const anchorScroll = () => {
-      const anchor = window.location.hash
-
-      console.log(anchor)
-
+      if (!window.location.hash) return
       setAnchorIndex(window.location.hash)
 
       setTimeout(() => {
         const el = document.getElementById("anchorButtonIndex")
+        if (!el) return
+
         el.click()
-        console.log(el)
       }, 1000)
     }
 

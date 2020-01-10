@@ -22,8 +22,6 @@ const Search = ({ isShown, models, closeSearch }) => {
       const el = document.querySelector("body")
       el.classList.add("overlay")
       inputRef.current.focus()
-
-      window.addEventListener("click", clickToCloseOverlay)
     }
     openOverlay()
 
@@ -35,10 +33,6 @@ const Search = ({ isShown, models, closeSearch }) => {
 
   const closeOverlay = () => {
     closeSearch()
-  }
-
-  const clickToCloseOverlay = e => {
-    console.log(e)
   }
 
   const handleSearchQuery = e => {

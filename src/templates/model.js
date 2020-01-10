@@ -9,6 +9,8 @@ import "../components/swiper.css"
 
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 import AddressTicker from "../components/AddressTicker"
+import Bio from "../components/Bio"
+import ModelName from "../components/ModelName"
 
 const Category = ({ pageContext: { firstName, lastName, acf } }) => {
   const dispatch = useContext(GlobalDispatchContext)
@@ -76,6 +78,36 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
     swiperUpdate()
   }, [swiper])
 
+  useEffect(() => {
+    const updateMainLayout = () => {
+      if (tab === "videos") {
+        const ytVideos = document.querySelectorAll("iframe")
+        if (!ytVideos) return
+        const mainVideoLayout = document.getElementById("youtubeVideo")
+        const modelMenu = document.getElementById("model_menu")
+
+        const width = ytVideos[0].getAttribute("width")
+        const height = ytVideos[0].getAttribute("height")
+
+        const ratio = width / height
+
+        modelMenu.style.position = "absolute"
+        modelMenu.style.height = "calc(100% - 25px)"
+
+        ytVideos[0].style.width = "100%"
+
+        const newHeight = Math.ceil(ytVideos[0].clientWidth * ratio)
+
+        ytVideos[0].style.height = `${newHeight.toString()}px`
+
+        mainVideoLayout.appendChild(ytVideos[0])
+        ytVideos[0].setAttribute("autoplay", "1")
+      }
+    }
+
+    updateMainLayout()
+  }, [tab])
+
   const navigateSliderNext = () => {
     if (swiper !== null) {
       swiper.slideNext()
@@ -97,20 +129,15 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
   return (
     <Layout>
       <div className="flex model flex-column">
-        <h2
-          className="flex model__name flex-column content-padding relative"
-          style={{ marginBottom: 5 }}
-        >
-          <span>{firstName}</span>
-          <span>{lastName}</span>
-        </h2>
+        <ModelName firstName={firstName} lastName={lastName} />
         <BlackBar height={100} />
         <div
           id="slideshow"
           className="flex model__main content-padding"
-          style={{ marginTop: 10 }}
+          style={{ marginTop: 10, position: "relative" }}
         >
           <div
+            id="model_menu"
             className="flex model__main-container flex-column"
             style={{ justifyContent: "space-between", zIndex: 100 }}
           >
@@ -181,118 +208,7 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
                 </a>
               )}
             </div>
-            <div id="bio" className="model__bio flex flex-column relative">
-              {acf.bio.height && (
-                <span className="model-bio-property">
-                  HEIGHT{" "}
-                  <span
-                    className="model-bio-value"
-                    style={{ fontWeight: "bold" }}
-                  >
-                    {acf.bio.height}
-                  </span>
-                </span>
-              )}
-              {acf.bio.hair && (
-                <span className="model-bio-property">
-                  HAIR{" "}
-                  <span
-                    className="model-bio-value"
-                    style={{ fontWeight: "bold" }}
-                  >
-                    {acf.bio.hair}
-                  </span>
-                </span>
-              )}
-              {acf.bio.eyes && (
-                <span className="model-bio-property">
-                  EYES{" "}
-                  <span
-                    className="model-bio-value"
-                    style={{ fontWeight: "bold" }}
-                  >
-                    {acf.bio.eyes}
-                  </span>
-                </span>
-              )}
-              {acf.bio.bust && (
-                <span className="model-bio-property">
-                  BUST{" "}
-                  <span
-                    className="model-bio-value"
-                    style={{ fontWeight: "bold" }}
-                  >
-                    {acf.bio.bust}
-                  </span>
-                </span>
-              )}
-              {acf.bio.suit && (
-                <span className="model-bio-property">
-                  SUIT{" "}
-                  <span
-                    className="model-bio-value"
-                    style={{ fontWeight: "bold" }}
-                  >
-                    {acf.bio.suit}
-                  </span>
-                </span>
-              )}
-              {acf.bio.shirt && (
-                <span className="model-bio-property">
-                  SHIRT{" "}
-                  <span
-                    className="model-bio-value"
-                    style={{ fontWeight: "bold" }}
-                  >
-                    {acf.bio.shirt}
-                  </span>
-                </span>
-              )}
-              {acf.bio.waist && (
-                <span className="model-bio-property">
-                  WAIST{" "}
-                  <span
-                    className="model-bio-value"
-                    style={{ fontWeight: "bold" }}
-                  >
-                    {acf.bio.waist}
-                  </span>
-                </span>
-              )}
-              {acf.bio.hips && (
-                <span className="model-bio-property">
-                  HIPS{" "}
-                  <span
-                    className="model-bio-value"
-                    style={{ fontWeight: "bold" }}
-                  >
-                    {acf.bio.hips}
-                  </span>
-                </span>
-              )}
-              {acf.bio.inseam && (
-                <span className="model-bio-property">
-                  INSEAM{" "}
-                  <span
-                    className="model-bio-value"
-                    style={{ fontWeight: "bold" }}
-                  >
-                    {acf.bio.inseam}
-                  </span>
-                </span>
-              )}
-              {acf.bio.shoes && (
-                <span className="model-bio-property">
-                  SHOES{" "}
-                  <span
-                    className="model-bio-value"
-                    style={{ fontWeight: "bold" }}
-                  >
-                    {acf.bio.shoes}
-                  </span>
-                </span>
-              )}
-            </div>
+            <Bio acf={acf} />
           </div>
           {tab === "portfolio" && (
             <>
@@ -342,7 +258,10 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
             />
           )}
           {tab === "videos" && (
-            <div id="youtubeVideo" style={{ pointerEvents: "none" }}></div>
+            <div
+              id="youtubeVideo"
+              style={{ pointerEvents: "none", width: "100%", height: "100%" }}
+            ></div>
           )}
         </div>
 
@@ -363,36 +282,31 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
               <div className="grid-col grid-col--3"></div>
               <div className="grid-col grid-col--4"></div>
               {acf.portfolio &&
-                acf.portfolio.map(
-                  ({ title, name, url, alt = "", height, width }, index) => {
-                    const ratio = height / width
-                    return (
-                      <AnchorLink
-                        role="button"
-                        href="#slideshow"
-                        offset={210}
-                        className="flex-column justify-between grid-item"
-                        onClick={() => {
-                          setImage(index)
-                        }}
-                        style={{
-                          cursor: "pointer",
-                          marginBottom: 5,
-                          display: "block",
-                        }}
-                        key={index}
-                      >
-                        <img
-                          src={url}
-                          alt={alt}
-                          className="model-portfolio-image"
-                          title={title}
-                          name={name}
-                        />
-                      </AnchorLink>
-                    )
-                  }
-                )}
+                acf.portfolio.map(({ title, name, url, alt = "" }, index) => (
+                  <AnchorLink
+                    role="button"
+                    href="#slideshow"
+                    offset={210}
+                    className="flex-column justify-between grid-item"
+                    onClick={() => {
+                      setImage(index)
+                    }}
+                    style={{
+                      cursor: "pointer",
+                      marginBottom: 5,
+                      display: "block",
+                    }}
+                    key={index}
+                  >
+                    <img
+                      src={url}
+                      alt={alt}
+                      className="model-portfolio-image"
+                      title={title}
+                      name={name}
+                    />
+                  </AnchorLink>
+                ))}
             </div>
           }
           <div style={{ display: tab === "videos" ? "flex" : "none" }}>
@@ -402,8 +316,6 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
                 return (
                   <YouTube
                     videoId={video_url[1]}
-                    width="560"
-                    height="315"
                     title={`${video_url}-${index}`}
                     opts={youtubeOptions}
                     key={index}
