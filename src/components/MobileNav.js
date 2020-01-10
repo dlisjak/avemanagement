@@ -44,10 +44,6 @@ const MobileNav = ({ isVisible, data, toggleMenu }) => {
     }
   }, [isVisible])
 
-  const closeOverlay = () => {
-    toggleMenu(isVisible)
-  }
-
   const showChildren = item => {
     if (!item.child_items) return
 
@@ -68,7 +64,7 @@ const MobileNav = ({ isVisible, data, toggleMenu }) => {
       style={{
         position: "absolute",
         display: "flex",
-        top: 68,
+        top: 75,
         left: 0,
         width: "100%",
         height: "100vh",
@@ -76,7 +72,7 @@ const MobileNav = ({ isVisible, data, toggleMenu }) => {
         zIndex: 999,
         pointerEvents: isVisible ? "inherit" : "none",
         alignItems: "center",
-        paddingTop: 60,
+        paddingTop: 25,
       }}
     >
       {data.allWordpressMenusMenusItems.edges[0].node.items.map(
@@ -124,20 +120,6 @@ const MobileNav = ({ isVisible, data, toggleMenu }) => {
           )
         }
       )}
-      <button
-        onClick={() => closeOverlay()}
-        style={{
-          background: 0,
-          border: 0,
-          fontWeight: 700,
-          top: 30,
-          position: "absolute",
-          left: 10,
-          padding: 0,
-        }}
-      >
-        BACK
-      </button>
     </MobileNavPose>
   )
 }

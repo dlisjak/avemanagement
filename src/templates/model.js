@@ -16,6 +16,16 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
   const [swiper, updateSwiper] = useState(null)
   const [tab, setTab] = useState("portfolio")
 
+  const youtubeOptions = {
+    controls: 0,
+    disablekb: 1,
+    modestbranding: 1,
+    fs: 0,
+    iv_load_policy: 3,
+    playsinline: 1,
+    rel: 0,
+    showinfo: 0,
+  }
   let params = {
     centeredSlides: true,
     autoHeight: true,
@@ -327,6 +337,9 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
               style={{ width: "100%", marginRight: "10%" }}
             />
           )}
+          {tab === "videos" && (
+            <div id="youtubeVideo" style={{ pointerEvents: "none" }}></div>
+          )}
         </div>
 
         <BlackBar height={100} />
@@ -388,6 +401,7 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
                     width="560"
                     height="315"
                     title={`${video_url}-${index}`}
+                    opts={youtubeOptions}
                     key={index}
                   />
                 )
