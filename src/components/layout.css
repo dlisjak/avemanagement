@@ -1295,7 +1295,7 @@ html {
   box-sizing: border-box;
   overflow-y: scroll;
   font-weight: normal;
-  letter-spacing: normal;
+  letter-spacing: 0;
 }
 * {
   box-sizing: inherit;
