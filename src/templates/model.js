@@ -16,10 +16,10 @@ import ModelPreviewVideos from "../components/ModelPreviewVideos"
 const Category = ({ pageContext: { firstName, lastName, acf } }) => {
   const dispatch = useContext(GlobalDispatchContext)
 
+  const mainVideo = acf.videos ? acf.videos[0].video_url.split(".be/")[1] : ""
+
   const [swiper, updateSwiper] = useState(null)
-  const [videoId, selectVideo] = useState(
-    acf.videos[0].video_url.split(".be/")[1]
-  )
+  const [videoId, selectVideo] = useState(mainVideo)
   const [tab, setTab] = useState("portfolio")
 
   let params = {

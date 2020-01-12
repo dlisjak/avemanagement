@@ -69,6 +69,7 @@ const Search = ({ isShown, models, closeSearch }) => {
         height: "100%",
         top: 235,
         overflow: "scroll",
+        paddingBottom: 200,
       }}
     >
       <TickerText title="SEARCH" />
