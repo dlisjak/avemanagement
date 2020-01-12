@@ -1,19 +1,23 @@
 import React from "react"
+import { Link } from "gatsby"
 
 import Ticker from "../components/Ticker"
 
 const AddressTicker = () => (
-  <div
+  <Link
+    to="/contact"
     className="news-ticker-address"
     style={{
       width: "100%",
       borderTop: "1px solid",
       borderBottom: "1px solid",
       color: "#ccc",
-      marginTop: 50,
+      marginTop: 100,
       display: "flex",
       alignItems: "center",
       flexDirection: "column",
+      textDecoration: "none",
+      textTransform: "none",
     }}
   >
     <Ticker
@@ -26,7 +30,7 @@ const AddressTicker = () => (
       width={"75%"}
       noRepeat={true}
     />
-  </div>
+  </Link>
 )
 
 export default AddressTicker

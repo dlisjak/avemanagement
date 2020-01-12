@@ -144,6 +144,8 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
             marginTop: 5,
             position: "relative",
             marginBottom: tab === "videos" ? 0 : 5,
+            flexDirection: tab === "bio" ? "column" : "row",
+            paddingRight: tab === "bio" ? "35%" : 0,
           }}
         >
           <div
@@ -157,7 +159,7 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
             >
               {acf.portfolio && (
                 <AnchorLink
-                  href="#content"
+                  href="#slideshow"
                   offset="200"
                   onClick={() => setTab("portfolio")}
                   style={{
@@ -172,7 +174,7 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
               )}
               {acf.videos && (
                 <AnchorLink
-                  href="#content"
+                  href="#slideshow"
                   offset="200"
                   onClick={() => setTab("videos")}
                   style={{
@@ -188,7 +190,7 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
               {acf.about && (
                 <AnchorLink
                   href="#slideshow"
-                  offset={210}
+                  offset={200}
                   onClick={() => setTab("bio")}
                   style={{
                     cursor: "pointer",
@@ -218,7 +220,7 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
                 </a>
               )}
             </div>
-            <Bio acf={acf} />
+            {tab !== "bio" && <Bio acf={acf} />}
           </div>
           {tab === "portfolio" && (
             <>
@@ -264,7 +266,7 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
           {tab === "bio" && (
             <div
               dangerouslySetInnerHTML={{ __html: acf.about }}
-              style={{ width: "100%", marginRight: "10%" }}
+              style={{ width: "100%", marginTop: 50 }}
             />
           )}
           {tab === "videos" && <ModelVideo videoId={videoId} />}

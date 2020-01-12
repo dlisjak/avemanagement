@@ -7,6 +7,7 @@ import VizAwareImg from "../components/VisibilityImage"
 import AnchorLink from "react-anchor-link-smooth-scroll"
 
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
+import AddressTicker from "../components/AddressTicker"
 
 const Category = ({ data, pageContext }) => {
   const dispatch = useContext(GlobalDispatchContext)
@@ -145,6 +146,7 @@ const Category = ({ data, pageContext }) => {
           textDecoration: "none",
         }}
       />
+      <AddressTicker />
     </Layout>
   )
 }

@@ -145,17 +145,16 @@ const News = ({ pageContext, data }) => {
                           href="#slideshow"
                           className="flex-column justify-between grid-item"
                           onClick={() => setImage({ title, url })}
-                          style={{ cursor: "pointer", marginBottom: 5 }}
+                          style={{
+                            cursor: "pointer",
+                            marginBottom: 5,
+                            display: "block",
+                          }}
                           key={index}
                         >
-                          <SmoothImage
+                          <img
                             src={url}
                             className="model-portfolio-image"
-                            transitionTime={0.5}
-                            containerStyles={{
-                              paddingBottom: `${ratio * 100}%`,
-                            }}
-                            imageStyles={{ height: "100%", objectFit: "cover" }}
                             title={title}
                           />
                         </AnchorLink>

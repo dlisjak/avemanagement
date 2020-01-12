@@ -285,7 +285,7 @@
   }
 
   div.contact-image-upload {
-    height: 250px;
+    height: auto;
     width: calc(50% - 5px);
     margin: 0;
   }
@@ -493,6 +493,10 @@
   .logo {
     height: 100px;
   }
+}
+
+.search-overlay::-webkit-scrollbar {
+  display: none;
 }
 
 .mobile-navigation {

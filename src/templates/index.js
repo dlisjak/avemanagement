@@ -13,6 +13,7 @@ import Video2 from "../videos/main-video-2.mp4"
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 import BlackBar from "../components/BlackBar"
 import { Link } from "gatsby"
+import AddressTicker from "../components/AddressTicker"
 
 const Home = ({ pageContext, data }) => {
   const dispatch = useContext(GlobalDispatchContext)
@@ -84,6 +85,7 @@ const Home = ({ pageContext, data }) => {
       >
         <Instagram posts={data.allInstaNode} />
       </div>
+      <AddressTicker />
     </Layout>
   )
 }
