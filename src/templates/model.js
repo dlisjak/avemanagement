@@ -144,7 +144,7 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
             marginTop: 5,
             position: "relative",
             marginBottom: tab === "videos" ? 0 : 5,
-            flexDirection: tab === "bio" ? "column" : "row",
+            flexDirection: tab === "bio" && "column",
             paddingRight: tab === "bio" ? "35%" : 0,
           }}
         >
