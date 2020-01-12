@@ -5,6 +5,7 @@ const TickerText = ({
   fixed = false,
   left = false,
   noRepeat = false,
+  width,
 }) => {
   const tickerRef = useRef(null)
   const tickerRef2 = useRef(null)
@@ -83,7 +84,7 @@ const TickerText = ({
     return (
       <div
         className="ticker__page ticker flex width-100"
-        style={{ fontWeight: 400, maxWidth: 1366 }}
+        style={{ fontWeight: 400, maxWidth: 1366, width }}
       >
         <div id="tickerwrap">
           <div

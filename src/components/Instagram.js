@@ -1,5 +1,5 @@
 import React, { Fragment } from "react"
-import { graphql } from "gatsby"
+import { Link } from "gatsby"
 
 import Slider from "./Slider"
 import TickerText from "./Ticker"
@@ -7,9 +7,16 @@ import TickerText from "./Ticker"
 const Instagram = ({ posts }) => {
   return (
     <Fragment>
-      <TickerText title="INSTAGRAM" left={true} />
-      <TickerText title="@AVEMANAGEMENT" />
-      <TickerText title="#AVEGIRLS #AVEBOYS" left={true} />
+      <a
+        href="https://www.instagram.com/avemanagement/"
+        target="_blank"
+        rel="noopener"
+        style={{ textTransform: "none", textDecoration: "none" }}
+      >
+        <TickerText title="INSTAGRAM" left={true} />
+        <TickerText title="@AVEMANAGEMENT" />
+        <TickerText title="#AVEGIRLS #AVEBOYS" left={true} />
+      </a>
       <Slider>
         {posts.edges.map(({ node }, i) => (
           <img

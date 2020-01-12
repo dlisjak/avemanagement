@@ -103,7 +103,7 @@
     width: 80%;
   }
   .news-ticker-address {
-    padding: 5px 25%;
+    padding: 5px 33%;
   }
   .news-card-title {
     font-size: 24px;
@@ -1074,6 +1074,12 @@ div.ticker__page--fixed {
   font-weight: 400;
   src: url("../fonts/HelveticaNeue-Light.woff") format("woff");
   src: url("../fonts/HelveticaNeue-Light.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Avenir";
+  font-weight: 700;
+  src: url("../fonts/Avenir-Heavy.ttf") format("ttf");
 }
 
 html {

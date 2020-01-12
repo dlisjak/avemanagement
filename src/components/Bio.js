@@ -7,7 +7,7 @@ const Bio = ({ acf }) => {
         <span className="model-bio-property">
           HEIGHT{" "}
           <span className="model-bio-value" style={{ fontWeight: "bold" }}>
-            {acf.bio.height}
+            {acf.bio.height} CM
           </span>
         </span>
       )}
@@ -32,6 +32,15 @@ const Bio = ({ acf }) => {
           BUST{" "}
           <span className="model-bio-value" style={{ fontWeight: "bold" }}>
             {acf.bio.bust}
+            <span
+              style={{
+                fontFamily: "Avenir",
+                fontWeight: 700,
+                fontStyle: "italic",
+              }}
+            >
+              ""
+            </span>
           </span>
         </span>
       )}
@@ -56,6 +65,15 @@ const Bio = ({ acf }) => {
           WAIST{" "}
           <span className="model-bio-value" style={{ fontWeight: "bold" }}>
             {acf.bio.waist}
+            <span
+              style={{
+                fontFamily: "Avenir",
+                fontWeight: 700,
+                fontStyle: "italic",
+              }}
+            >
+              ""
+            </span>
           </span>
         </span>
       )}
@@ -64,6 +82,15 @@ const Bio = ({ acf }) => {
           HIPS{" "}
           <span className="model-bio-value" style={{ fontWeight: "bold" }}>
             {acf.bio.hips}
+            <span
+              style={{
+                fontFamily: "Avenir",
+                fontWeight: 700,
+                fontStyle: "italic",
+              }}
+            >
+              ""
+            </span>
           </span>
         </span>
       )}
@@ -72,6 +99,15 @@ const Bio = ({ acf }) => {
           INSEAM{" "}
           <span className="model-bio-value" style={{ fontWeight: "bold" }}>
             {acf.bio.inseam}
+            <span
+              style={{
+                fontFamily: "Avenir",
+                fontWeight: 700,
+                fontStyle: "italic",
+              }}
+            >
+              ""
+            </span>
           </span>
         </span>
       )}

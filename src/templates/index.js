@@ -12,6 +12,7 @@ import Video2 from "../videos/main-video-2.mp4"
 
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 import BlackBar from "../components/BlackBar"
+import { Link } from "gatsby"
 
 const Home = ({ pageContext, data }) => {
   const dispatch = useContext(GlobalDispatchContext)
@@ -71,6 +72,7 @@ const Home = ({ pageContext, data }) => {
         className="home-video width-100"
         style={{ paddingBottom: 5 }}
       ></video>
+
       <BlackBar height={125} />
       <div className="home-news" style={{ marginTop: 5, marginBottom: 10 }}>
         <News />

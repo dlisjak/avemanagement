@@ -7,7 +7,12 @@ import TickerText from "./Ticker"
 const News = () => {
   return (
     <>
-      <TickerText title="NEWS" />
+      <Link
+        to="/news/1"
+        style={{ textTransform: "none", textDecoration: "none" }}
+      >
+        <TickerText title="NEWS" />
+      </Link>
       <StaticQuery
         query={graphql`
           query News {

@@ -92,6 +92,7 @@ const NewsPage = ({ data, pageContext }) => {
                       textDecoration: "none",
                       fontSize: "1.5rem",
                       lineHeight: 0.8,
+                      paddingTop: 5,
                     }}
                   />
                 </Link>

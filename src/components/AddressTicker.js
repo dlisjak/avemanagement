@@ -11,6 +11,9 @@ const AddressTicker = () => (
       borderBottom: "1px solid",
       color: "#ccc",
       marginTop: 50,
+      display: "flex",
+      alignItems: "center",
+      flexDirection: "column",
     }}
   >
     <Ticker
@@ -18,7 +21,11 @@ const AddressTicker = () => (
       left={true}
       noRepeat={true}
     />
-    <Ticker title="INFO@AVEMANAGEMENT.COM  T +65 68874629" noRepeat={true} />
+    <Ticker
+      title="INFO@AVEMANAGEMENT.COM  T +65 68874629"
+      width={"75%"}
+      noRepeat={true}
+    />
   </div>
 )
 
