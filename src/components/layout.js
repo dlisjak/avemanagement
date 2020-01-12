@@ -9,7 +9,7 @@ const Layout = ({ children, isHomepage }) => {
   const [isMobile, toggleIsMobile] = useState(false)
   const [isTablet, toggleIsTablet] = useState(false)
 
-  const extraHeight = isHomepage ? 50 : 0
+  const extraHeight = isHomepage ? 60 : 0
 
   useEffect(() => {
     // componentDidMount

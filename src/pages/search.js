@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext, useRef } from "react"
 import { graphql, Link } from "gatsby"
+import AnchorLink from "react-anchor-link-smooth-scroll"
 
 import Layout from "../components/layout"
 
@@ -10,6 +11,8 @@ const Search = ({ data }) => {
   const dispatch = useContext(GlobalDispatchContext)
   const [genderQuery, setGender] = useState(null)
   const [searchQuery, setSearchQuery] = useState("")
+  const [anchorIndex, setAnchorIndex] = useState("")
+
   const inputRef = useRef(null)
   let tickerText
 
@@ -18,13 +21,24 @@ const Search = ({ data }) => {
       inputRef.current.focus()
       localStorage.removeItem("ave-ticker")
       tickerText = typeof window !== "undefined" ? window.location.pathname : ""
+      localStorage.setItem("ave-ticker", tickerText)
       dispatch({ type: "SET_PATH", payload: tickerText })
     }
-    setPath()
 
-    return () => {
-      localStorage.setItem("ave-ticker", tickerText)
+    const anchorScroll = () => {
+      if (!window.location.hash) return
+      setAnchorIndex(window.location.hash)
+
+      setTimeout(() => {
+        const el = document.getElementById("anchorButtonIndex")
+        if (!el) return
+
+        el.click()
+      }, 1000)
     }
+
+    setPath()
+    anchorScroll()
   }, [])
 
   const handleSearchQuery = e => {
@@ -95,6 +109,7 @@ const Search = ({ data }) => {
                   {arr[index].node.title[0]}
                 </span>
                 <Link
+                  id={`${node.title.replace(" ", "")}`}
                   to={`/${node.slug}`}
                   className="search-result-names"
                   style={{
@@ -114,6 +129,7 @@ const Search = ({ data }) => {
           }
           return (
             <Link
+              id={`${node.title.replace(" ", "")}`}
               to={`/${node.slug}`}
               className="search-result-names"
               style={{
@@ -128,6 +144,17 @@ const Search = ({ data }) => {
           )
         })}
       </div>
+      <AnchorLink
+        id="anchorButtonIndex"
+        href={anchorIndex}
+        offset="180"
+        style={{
+          fontSize: 1,
+          position: "absolute",
+          color: "white",
+          textDecoration: "none",
+        }}
+      />
     </Layout>
   )
 }

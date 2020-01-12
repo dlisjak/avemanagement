@@ -12,8 +12,6 @@ const News = ({ pageContext, data }) => {
   const dispatch = useContext(GlobalDispatchContext)
   const [image, setImage] = useState(data.wordpressWpNews.acf.news_post_image)
   const [tab, setTab] = useState("GALLERY")
-  let Colcade
-  let tickerText
 
   useEffect(() => {
     // componentDidMount
@@ -21,22 +19,20 @@ const News = ({ pageContext, data }) => {
       const grid = document.querySelector(".grid")
 
       if (typeof window !== "undefined") {
-        Colcade = require("colcade")
+        const Colcade = require("colcade")
         const colc = new Colcade(grid, {
           columns: ".grid-col",
           items: ".grid-item",
         })
       }
     }
-    const setPath = () => {
-      if (typeof window !== "undefined") {
-        tickerText = localStorage.getItem("ave-ticker")
-        dispatch({ type: "SET_PATH", payload: tickerText })
-      }
+    if (typeof window !== "undefined") {
+      let tickerText
+      tickerText = localStorage.getItem("ave-ticker")
+      dispatch({ type: "SET_PATH", payload: tickerText })
     }
-    setPath()
     initGrid()
-  }, [])
+  }, [dispatch])
 
   const formatContent = content => {
     const splitContent = content.split("<p>")

@@ -10,6 +10,7 @@ const AddressTicker = () => (
       borderTop: "1px solid",
       borderBottom: "1px solid",
       color: "#ccc",
+      marginTop: 50,
     }}
   >
     <Ticker

@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react"
 import Layout from "../components/layout"
 import BlackBar from "../components/BlackBar"
 import Swiper from "react-id-swiper"
-import YouTube from "react-youtube"
 import AnchorLink from "react-anchor-link-smooth-scroll"
 
 import "../components/swiper.css"
@@ -11,23 +10,18 @@ import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 import AddressTicker from "../components/AddressTicker"
 import Bio from "../components/Bio"
 import ModelName from "../components/ModelName"
+import ModelVideo from "../components/ModelVideo"
+import ModelPreviewVideos from "../components/ModelPreviewVideos"
 
 const Category = ({ pageContext: { firstName, lastName, acf } }) => {
   const dispatch = useContext(GlobalDispatchContext)
 
   const [swiper, updateSwiper] = useState(null)
+  const [videoId, selectVideo] = useState(
+    acf.videos[0].video_url.split(".be/")[1]
+  )
   const [tab, setTab] = useState("portfolio")
 
-  const youtubeOptions = {
-    controls: 0,
-    disablekb: 1,
-    modestbranding: 1,
-    fs: 0,
-    iv_load_policy: 3,
-    playsinline: 1,
-    rel: 0,
-    showinfo: 0,
-  }
   let params = {
     centeredSlides: true,
     autoHeight: true,
@@ -78,35 +72,41 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
     swiperUpdate()
   }, [swiper])
 
-  useEffect(() => {
-    const updateMainLayout = () => {
-      if (tab === "videos") {
-        const ytVideos = document.querySelectorAll("iframe")
-        if (!ytVideos) return
-        const mainVideoLayout = document.getElementById("youtubeVideo")
-        const modelMenu = document.getElementById("model_menu")
+  // useEffect(() => {
+  //   const updateMainLayout = () => {
+  //     if (tab === "videos") {
+  //       const ytVideos = document.querySelectorAll("iframe")
+  //       if (!ytVideos.length) return
+  //       const mainVideoLayout = document.getElementById("youtubeVideo")
+  //       const modelMenu = document.getElementById("model_menu")
 
-        const width = ytVideos[0].getAttribute("width")
-        const height = ytVideos[0].getAttribute("height")
+  //       const width = ytVideos[0].getAttribute("width")
+  //       const height = ytVideos[0].getAttribute("height")
 
-        const ratio = width / height
+  //       const ratio = width / height
+  //       // (ratio = width / height) * height
+  //       // ratio * height = width
+  //       // height = width / ratio
+  //       console.log(ratio)
 
-        modelMenu.style.position = "absolute"
-        modelMenu.style.height = "calc(100% - 25px)"
+  //       modelMenu.style.position = "absolute"
+  //       modelMenu.style.height = "calc(100% - 25px)"
 
-        ytVideos[0].style.width = "100%"
+  //       ytVideos[0].style.width = "100%"
 
-        const newHeight = Math.ceil(ytVideos[0].clientWidth * ratio)
+  //       console.log(ytVideos[0].clientWidth)
 
-        ytVideos[0].style.height = `${newHeight.toString()}px`
+  //       const newHeight = Math.ceil(ytVideos[0].clientWidth / ratio)
 
-        mainVideoLayout.appendChild(ytVideos[0])
-        ytVideos[0].setAttribute("autoplay", "1")
-      }
-    }
+  //       ytVideos[0].style.height = `${newHeight.toString()}px`
 
-    updateMainLayout()
-  }, [tab])
+  //       mainVideoLayout.appendChild(ytVideos[0])
+  //       ytVideos[0].setAttribute("autoplay", "1")
+  //     }
+  //   }
+
+  //   updateMainLayout()
+  // }, [tab])
 
   const navigateSliderNext = () => {
     if (swiper !== null) {
@@ -126,6 +126,12 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
     }
   }
 
+  const updateVideoId = videoUrl => {
+    const videoId = videoUrl.split(".be/")[1]
+
+    selectVideo(videoId)
+  }
+
   return (
     <Layout>
       <div className="flex model flex-column">
@@ -134,7 +140,11 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
         <div
           id="slideshow"
           className="flex model__main content-padding"
-          style={{ marginTop: 10, position: "relative" }}
+          style={{
+            marginTop: 5,
+            position: "relative",
+            marginBottom: tab === "videos" ? 0 : 5,
+          }}
         >
           <div
             id="model_menu"
@@ -257,12 +267,7 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
               style={{ width: "100%", marginRight: "10%" }}
             />
           )}
-          {tab === "videos" && (
-            <div
-              id="youtubeVideo"
-              style={{ pointerEvents: "none", width: "100%", height: "100%" }}
-            ></div>
-          )}
+          {tab === "videos" && <ModelVideo videoId={videoId} />}
         </div>
 
         <BlackBar height={100} />
@@ -309,19 +314,21 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
                 ))}
             </div>
           }
-          <div style={{ display: tab === "videos" ? "flex" : "none" }}>
+          <div
+            style={{
+              display: tab === "videos" ? "flex" : "none",
+              width: "100%",
+              height: "auto",
+            }}
+          >
             {acf.videos &&
-              acf.videos.map(({ video_url }, index) => {
-                video_url = video_url.split(".be/")
-                return (
-                  <YouTube
-                    videoId={video_url[1]}
-                    title={`${video_url}-${index}`}
-                    opts={youtubeOptions}
-                    key={index}
-                  />
-                )
-              })}
+              acf.videos.map(({ video_url }, index) => (
+                <ModelPreviewVideos
+                  videoUrl={video_url}
+                  onClick={() => updateVideoId(video_url)}
+                  key={index}
+                />
+              ))}
           </div>
         </div>
       </div>

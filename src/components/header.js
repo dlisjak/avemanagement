@@ -108,7 +108,7 @@ const Header = ({ isMobile, isTablet }) => {
           />
         )}
         <Link
-          to={`${state.path}/#${state.index}` || state.path || "/"}
+          to={state.index ? `${state.path}/#${state.index}` : state.path}
           style={{
             textDecoration: "none",
             textDecoration: "none",
