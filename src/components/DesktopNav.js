@@ -7,13 +7,19 @@ import NavigationItem from "./NavigationItem"
 import { GlobalStateContext } from "../context/GlobalContextProvider"
 
 const NavBar = posed.header({
-  hidden: { opacity: 0, marginTop: -25, paddingTop: 0, paddingBottom: 0 },
-  visible: { opacity: 1, marginTop: 0, paddingTop: 15, paddingBottom: 15 },
+  hidden: { opacity: 1, marginTop: -25, paddingTop: 0, paddingBottom: 0 },
+  visible: {
+    opacity: 1,
+    marginTop: 0,
+    paddingTop: 15,
+    paddingBottom: 15,
+    transition: { duration: 1000 },
+  },
 })
 
 const SubNavBar = posed.div({
   childHidden: { height: 0 },
-  childVisible: { height: 27 },
+  childVisible: { height: 27, transition: { duration: 1000 } },
 })
 
 const DesktopNav = ({ toggleMenu, isVisible, data }) => {
