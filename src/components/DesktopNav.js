@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react"
-import posed from "react-pose"
+import posed, { PoseGroup } from "react-pose"
 import { navigate } from "@reach/router"
 
 import NavigationItem from "./NavigationItem"
@@ -7,7 +7,13 @@ import NavigationItem from "./NavigationItem"
 import { GlobalStateContext } from "../context/GlobalContextProvider"
 
 const NavBar = posed.header({
-  hidden: { opacity: 1, marginTop: -25, paddingTop: 0, paddingBottom: 0 },
+  hidden: {
+    opacity: 1,
+    marginTop: -25,
+    paddingTop: 0,
+    paddingBottom: 0,
+    transition: { duration: 1000 },
+  },
   visible: {
     opacity: 1,
     marginTop: 0,
@@ -18,8 +24,16 @@ const NavBar = posed.header({
 })
 
 const SubNavBar = posed.div({
-  childHidden: { height: 0 },
-  childVisible: { height: 27, transition: { duration: 1000 } },
+  childHidden: {
+    height: 0,
+    overflow: "hidden",
+    transition: { duration: 1000 },
+  },
+  childVisible: {
+    height: 27,
+    overflow: "auto",
+    transition: { duration: 1000 },
+  },
 })
 
 const DesktopNav = ({ toggleMenu, isVisible, data }) => {
@@ -138,59 +152,63 @@ const DesktopNav = ({ toggleMenu, isVisible, data }) => {
   }
 
   return (
-    <NavBar
-      className="header__menu--desktop flex-column content-padding"
-      pose={isVisible ? "visible" : "hidden"}
-      style={{
-        background: `white`,
-        width: "100%",
-        zIndex: isVisible ? 999 : 0,
-        pointerEvents: isVisible ? "inherit" : "none",
-      }}
-    >
-      <div
-        className="flex"
+    <PoseGroup>
+      <NavBar
+        className="header__menu--desktop flex-column content-padding"
+        pose={isVisible ? "visible" : "hidden"}
         style={{
-          flexDirection: "row",
-          height: !isVisible ? 25 : "auto",
+          background: `white`,
+          width: "100%",
+          zIndex: 999,
+          pointerEvents: isVisible ? "inherit" : "none",
         }}
+        key={"main-navbar"}
       >
-        {data.allWordpressMenusMenusItems.edges[0].node.items.map(
-          (item, index) => {
-            return (
+        <div
+          className="flex"
+          style={{
+            flexDirection: "row",
+            height: !isVisible ? 25 : "auto",
+          }}
+        >
+          {data.allWordpressMenusMenusItems.edges[0].node.items.map(
+            (item, index) => {
+              return (
+                <div
+                  className="flex"
+                  onClick={() => selectItem(item)}
+                  key={index}
+                  style={{ alignItems: "center" }}
+                >
+                  <NavigationItem item={item} />
+                </div>
+              )
+            }
+          )}
+        </div>
+        <SubNavBar
+          pose={
+            childItems && isVisible && childIsVisible
+              ? "childVisible"
+              : "childHidden"
+          }
+          className="flex subnav"
+          key={"sub-nav"}
+        >
+          {childItems &&
+            childItems.map((childItem, index) => (
               <div
                 className="flex"
-                onClick={() => selectItem(item)}
+                onClick={() => selectItem(childItem)}
                 key={index}
                 style={{ alignItems: "center" }}
               >
-                <NavigationItem item={item} />
+                <NavigationItem item={childItem} />
               </div>
-            )
-          }
-        )}
-      </div>
-      <SubNavBar
-        pose={
-          childItems && isVisible && childIsVisible
-            ? "childVisible"
-            : "childHidden"
-        }
-        className="flex subnav"
-      >
-        {childItems &&
-          childItems.map((childItem, index) => (
-            <div
-              className="flex"
-              onClick={() => selectItem(childItem)}
-              key={index}
-              style={{ alignItems: "center" }}
-            >
-              <NavigationItem item={childItem} />
-            </div>
-          ))}
-      </SubNavBar>
-    </NavBar>
+            ))}
+        </SubNavBar>
+      </NavBar>
+    </PoseGroup>
   )
 }
 
