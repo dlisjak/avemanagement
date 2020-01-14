@@ -185,9 +185,6 @@ exports.createPages = async ({ graphql, actions }) => {
                 title
                 name
               }
-              videos {
-                video_url
-              }
               eyes_for_male
               hair_for_male
               height_for_male
@@ -197,6 +194,36 @@ exports.createPages = async ({ graphql, actions }) => {
               sub_title
               suit_for_male
               waist_for_male
+              video_1 {
+                filename
+                url
+                alt
+              }
+              video_2 {
+                filename
+                url
+                alt
+              }
+              video_3 {
+                filename
+                url
+                alt
+              }
+              thumbnail_1 {
+                url
+                title
+                alt
+              }
+              thumbnail_2 {
+                url
+                title
+                alt
+              }
+              thumbnail_3 {
+                alt
+                title
+                url
+              }
             }
           }
         }
@@ -221,7 +248,20 @@ exports.createPages = async ({ graphql, actions }) => {
           about: node.acf.about,
           featuredImage: node.acf.featured_image,
           portfolio: node.acf.portfolio,
-          videos: node.acf.videos,
+          videos: [
+            {
+              video: node.acf.video_1,
+              thumbnail: node.acf.thumbnail_1,
+            },
+            {
+              video: node.acf.video_2,
+              thumbnail: node.acf.thumbnail_2,
+            },
+            {
+              video: node.acf.video_3,
+              thumbnail: node.acf.thumbnail_3,
+            },
+          ],
           instagram: node.acf.instagram,
           bio: {
             height: node.acf.bio_height || node.acf.height_for_male,

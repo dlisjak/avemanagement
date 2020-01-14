@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react"
-import { Link } from "gatsby"
+import { Link, graphql } from "gatsby"
 import SmoothImage from "react-smooth-image"
 
 import Layout from "../components/layout"

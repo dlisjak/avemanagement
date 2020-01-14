@@ -1,21 +1,22 @@
 import React from "react"
 
-const ModelPreviewVideos = ({ videoUrl }) => {
+const ModelPreviewVideos = ({ thumbnail }) => {
   return (
     <div
+      className="category-card"
       style={{
-        width: "25%",
-        height: "auto",
+        height: 250,
         position: "relative",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         cursor: "pointer",
+        overflow: "hidden",
+        backgroundImage: `url(${thumbnail})`,
+        backgroundSize: "cover",
+        backgroundPosition: "top",
       }}
     >
-      <img
-        src={`https://img.youtube.com/vi/${videoUrl.split(".be/")[1]}/0.jpg`}
-      />
       <div
         style={{
           position: "absolute",

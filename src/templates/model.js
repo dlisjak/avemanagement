@@ -16,11 +16,11 @@ import ModelPreviewVideos from "../components/ModelPreviewVideos"
 const Category = ({ pageContext: { firstName, lastName, acf } }) => {
   const dispatch = useContext(GlobalDispatchContext)
 
-  const mainVideo = acf.videos ? acf.videos[0].video_url.split(".be/")[1] : ""
-
   const [swiper, updateSwiper] = useState(null)
-  const [videoId, selectVideo] = useState(mainVideo)
+  const [videoUrl, selectVideo] = useState(acf.videos[0].video.url || null)
   const [tab, setTab] = useState("portfolio")
+
+  console.log(acf)
 
   let params = {
     centeredSlides: true,
@@ -72,42 +72,6 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
     swiperUpdate()
   }, [swiper])
 
-  // useEffect(() => {
-  //   const updateMainLayout = () => {
-  //     if (tab === "videos") {
-  //       const ytVideos = document.querySelectorAll("iframe")
-  //       if (!ytVideos.length) return
-  //       const mainVideoLayout = document.getElementById("youtubeVideo")
-  //       const modelMenu = document.getElementById("model_menu")
-
-  //       const width = ytVideos[0].getAttribute("width")
-  //       const height = ytVideos[0].getAttribute("height")
-
-  //       const ratio = width / height
-  //       // (ratio = width / height) * height
-  //       // ratio * height = width
-  //       // height = width / ratio
-  //       console.log(ratio)
-
-  //       modelMenu.style.position = "absolute"
-  //       modelMenu.style.height = "calc(100% - 25px)"
-
-  //       ytVideos[0].style.width = "100%"
-
-  //       console.log(ytVideos[0].clientWidth)
-
-  //       const newHeight = Math.ceil(ytVideos[0].clientWidth / ratio)
-
-  //       ytVideos[0].style.height = `${newHeight.toString()}px`
-
-  //       mainVideoLayout.appendChild(ytVideos[0])
-  //       ytVideos[0].setAttribute("autoplay", "1")
-  //     }
-  //   }
-
-  //   updateMainLayout()
-  // }, [tab])
-
   const navigateSliderNext = () => {
     if (swiper !== null) {
       swiper.slideNext()
@@ -124,12 +88,6 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
     if (swiper !== null) {
       swiper.slideTo(index + 1, 0, false)
     }
-  }
-
-  const updateVideoId = videoUrl => {
-    const videoId = videoUrl.split(".be/")[1]
-
-    selectVideo(videoId)
   }
 
   return (
@@ -151,7 +109,13 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
           <div
             id="model_menu"
             className="flex model__main-container flex-column"
-            style={{ justifyContent: "space-between", zIndex: 100 }}
+            style={{
+              justifyContent: "space-between",
+              zIndex: 100,
+              position: tab === "videos" && "absolute",
+              top: 2,
+              bottom: 7,
+            }}
           >
             <div
               className="flex model__menu"
@@ -225,19 +189,17 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
           {tab === "portfolio" && (
             <>
               <Swiper loop key={1} {...params} getSwiper={updateSwiper}>
-                {acf.portfolio.map(
-                  ({ url, alt, title, name, height, width }, i) => (
-                    <div key={i}>
-                      <img
-                        src={url}
-                        alt={alt}
-                        className="model-portfolio-image--swiper"
-                        title={title}
-                        name={name}
-                      />
-                    </div>
-                  )
-                )}
+                {acf.portfolio.map(({ url, alt, title, name }, i) => (
+                  <div key={i}>
+                    <img
+                      src={url}
+                      alt={alt}
+                      className="model-portfolio-image--swiper"
+                      title={title}
+                      name={name}
+                    />
+                  </div>
+                ))}
               </Swiper>
               <div
                 className="absolute model-slider-navigate prev"
@@ -269,7 +231,7 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
               style={{ width: "100%", marginTop: 50 }}
             />
           )}
-          {tab === "videos" && <ModelVideo videoId={videoId} />}
+          {tab === "videos" && <ModelVideo videoUrl={videoUrl} />}
         </div>
 
         <BlackBar height={100} />
@@ -316,22 +278,26 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
                 ))}
             </div>
           }
-          <div
-            style={{
-              display: tab === "videos" ? "flex" : "none",
-              width: "100%",
-              height: "auto",
-            }}
-          >
-            {acf.videos &&
-              acf.videos.map(({ video_url }, index) => (
-                <ModelPreviewVideos
-                  videoUrl={video_url}
-                  onClick={() => updateVideoId(video_url)}
-                  key={index}
-                />
-              ))}
-          </div>
+          {tab === "videos" && (
+            <div
+              className="category-cards"
+              style={{
+                width: "100%",
+                height: "auto",
+                display: "flex",
+                flexWrap: "wrap",
+              }}
+            >
+              {acf.videos &&
+                acf.videos.map(({ video, thumbnail }, index) => (
+                  <ModelPreviewVideos
+                    thumbnail={thumbnail.url}
+                    onClick={() => selectVideo(video.url)}
+                    key={index}
+                  />
+                ))}
+            </div>
+          )}
         </div>
       </div>
       <AddressTicker />
