@@ -23,8 +23,6 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
   const [videoUrl, selectVideo] = useState(mainVideo || null)
   const [tab, setTab] = useState("portfolio")
 
-  console.log(acf)
-
   let params = {
     centeredSlides: true,
     autoHeight: true,

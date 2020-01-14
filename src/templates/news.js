@@ -31,15 +31,15 @@ const News = ({
     },
   ]
 
-  if (!allNews.edges[0].node.acf.gallery_image) {
-    allNews.edges[0].node.acf.gallery_image = []
+  if (allNews.edges[0]) {
+    if (!allNews.edges[0].node.acf.gallery_image) {
+      allNews.edges[0].node.acf.gallery_image = []
+    }
   }
 
   acf.video_1 = null
 
   const newsContent = [...allNews.edges[0].node.acf.gallery_image, ...videos]
-
-  console.log({ newsContent })
 
   useEffect(() => {
     // componentDidMount
