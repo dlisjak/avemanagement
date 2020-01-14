@@ -1,11 +1,10 @@
 import React from "react"
 
-const ModelPreviewVideos = ({ thumbnail }) => {
+const NewsPreviewVideos = ({ thumbnail }) => {
   return (
     <div
-      className="category-card grid-item"
       style={{
-        height: 250,
+        height: "100%",
         position: "relative",
         display: "flex",
         justifyContent: "center",
@@ -59,4 +58,4 @@ const ModelPreviewVideos = ({ thumbnail }) => {
   )
 }
 
-export default ModelPreviewVideos
+export default NewsPreviewVideos

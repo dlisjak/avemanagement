@@ -29,13 +29,10 @@
     "react-dom": "^16.11.0",
     "react-helmet": "^5.2.1",
     "react-id-swiper": "^2.4.0",
-    "react-lazyload": "^2.6.5",
-    "react-phone-number-input": "^2.5.1",
     "react-pose": "^4.0.10",
     "react-smooth-image": "^1.1.0",
     "react-ticker": "^1.2.1",
     "react-visibility-sensor": "^5.1.1",
-    "react-youtube": "^7.9.0",
     "slash": "^3.0.0",
     "swiper": "^5.2.0",
     "video-react": "^0.14.1"

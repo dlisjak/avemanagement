@@ -7,18 +7,18 @@ import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 import AddressTicker from "../components/AddressTicker"
 import BlackBar from "../components/BlackBar"
 import ModelVideo from "../components/ModelVideo"
-import ModelPreviewVideos from "../components/ModelPreviewVideos"
+import NewsPreviewVideos from "../components/NewsPreviewVideos"
 
 const News = ({
   pageContext: { content },
   data: {
     allNews,
-    wordpressWpNews: { title, slug, acf },
+    wordpressWpNews: { acf },
   },
 }) => {
   const dispatch = useContext(GlobalDispatchContext)
   const [image, setImage] = useState(acf.news_post_image)
-  const [tab, setTab] = useState("GALLERY")
+  const [video, setVideo] = useState(null)
 
   const videos = [
     {
@@ -35,7 +35,7 @@ const News = ({
     allNews.edges[0].node.acf.gallery_image = []
   }
 
-  acf.video_1 = ""
+  acf.video_1 = null
 
   const newsContent = [...allNews.edges[0].node.acf.gallery_image, ...videos]
 
@@ -74,6 +74,16 @@ const News = ({
     return content
   }
 
+  const setUpVideo = video => {
+    setImage(null)
+    setVideo(video.url)
+  }
+
+  const setUpImage = (title, url) => {
+    setVideo(null)
+    setImage(title, url)
+  }
+
   return (
     <Layout>
       <div
@@ -93,19 +103,24 @@ const News = ({
           }}
         />
         <BlackBar height={100} />
-        <img
+        <div
           id="slideshow"
-          className="news-card__image"
-          src={image.url}
-          alt={acf.news_post_image.title}
-          style={{
-            objectFit: "contain",
-            height: "auto",
-            maxHeight: 760,
-            marginTop: 5,
-            marginBottom: 5,
-          }}
-        />
+          style={{ marginTop: 5, marginBottom: video ? 0 : 5 }}
+        >
+          {image && !video && (
+            <img
+              className="news-card__image"
+              src={image.url}
+              alt={acf.news_post_image.title}
+              style={{
+                objectFit: "contain",
+                height: "auto",
+                maxHeight: 760,
+              }}
+            />
+          )}
+          {video && !image && <ModelVideo videoUrl={video} />}
+        </div>
         <BlackBar height={100} />
         <div
           id="content"
@@ -117,46 +132,51 @@ const News = ({
           <div className="grid-col grid-col--3"></div>
           <div className="grid-col grid-col--4"></div>
           {newsContent &&
-            newsContent.map(({ url, title }, index) => {
-              return (
-                <AnchorLink
-                  role="button"
-                  offset={205}
-                  href="#slideshow"
-                  className="flex-column justify-between grid-item"
-                  onClick={() => setImage({ title, url })}
-                  style={{
-                    cursor: "pointer",
-                    marginBottom: 5,
-                    display: "block",
-                  }}
-                  key={index}
-                >
-                  <img
-                    src={url}
-                    className="model-portfolio-image"
-                    title={title}
-                  />
-                </AnchorLink>
-              )
+            newsContent.map(({ url, title, video, thumbnail }, index) => {
+              if (video && thumbnail) {
+                return (
+                  <AnchorLink
+                    role="button"
+                    offset={205}
+                    href="#slideshow"
+                    className="flex-column justify-between grid-item"
+                    onClick={() => setUpVideo(video)}
+                    style={{
+                      cursor: "pointer",
+                      marginBottom: 5,
+                      display: "block",
+                      height: "100%",
+                    }}
+                    key={index}
+                  >
+                    <NewsPreviewVideos thumbnail={thumbnail.url} key={index} />
+                  </AnchorLink>
+                )
+              } else if (url) {
+                return (
+                  <AnchorLink
+                    role="button"
+                    offset={205}
+                    href="#slideshow"
+                    className="flex-column justify-between grid-item"
+                    onClick={() => setUpImage({ title, url })}
+                    style={{
+                      cursor: "pointer",
+                      marginBottom: 5,
+                      display: "block",
+                    }}
+                    key={index}
+                  >
+                    <img
+                      src={url}
+                      className="model-portfolio-image"
+                      title={title}
+                    />
+                  </AnchorLink>
+                )
+              }
             })}
         </div>
-        {tab === "videos" && (
-          <div
-            className="category-cards"
-            style={{
-              width: "100%",
-              height: "auto",
-              display: "flex",
-              flexWrap: "wrap",
-            }}
-          >
-            {acf.videos &&
-              acf.videos.map(({ video, thumbnail }, index) => (
-                <ModelPreviewVideos thumbnail={thumbnail.url} key={index} />
-              ))}
-          </div>
-        )}
       </div>
       <AddressTicker />
     </Layout>
