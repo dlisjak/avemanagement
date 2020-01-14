@@ -16,8 +16,11 @@ import ModelPreviewVideos from "../components/ModelPreviewVideos"
 const Category = ({ pageContext: { firstName, lastName, acf } }) => {
   const dispatch = useContext(GlobalDispatchContext)
 
+  const mainVideo =
+    acf.videos[0] && acf.videos[0].video && acf.videos[0].video.url
+
   const [swiper, updateSwiper] = useState(null)
-  const [videoUrl, selectVideo] = useState(acf.videos[0].video.url || null)
+  const [videoUrl, selectVideo] = useState(mainVideo || null)
   const [tab, setTab] = useState("portfolio")
 
   console.log(acf)
