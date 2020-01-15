@@ -31,15 +31,20 @@ const News = ({
     },
   ]
 
-  if (allNews.edges[0]) {
-    if (!allNews.edges[0].node.acf.gallery_image) {
-      allNews.edges[0].node.acf.gallery_image = []
-    }
+  let newsContent = []
+
+  const galleryImages =
+    allNews &&
+    allNews.edges[0] &&
+    allNews.edges[0].node &&
+    allNews.edges[0].node.acf
+      ? allNews.edges[0].node.acf.gallery_image
+      : []
+  if (galleryImages && galleryImages.length > 0) {
+    newsContent = [...galleryImages, ...videos]
+  } else {
+    newsContent = videos
   }
-
-  acf.video_1 = null
-
-  const newsContent = [...allNews.edges[0].node.acf.gallery_image, ...videos]
 
   useEffect(() => {
     // componentDidMount
@@ -59,6 +64,9 @@ const News = ({
       tickerText = localStorage.getItem("ave-ticker")
       dispatch({ type: "SET_PATH", payload: tickerText })
     }
+
+    const initGallery = () => {}
+    initGallery()
     initGrid()
   }, [dispatch])
 
@@ -146,6 +154,7 @@ const News = ({
                       marginBottom: 5,
                       display: "block",
                       height: "100%",
+                      minHeight: 250,
                     }}
                     key={index}
                   >
