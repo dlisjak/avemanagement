@@ -31,6 +31,9 @@ const Header = ({ isMobile, isTablet }) => {
       setTimeout(() => {
         collapseTicker(!tickerCollapsed)
       }, 1000)
+    } else if (window.location.pathname === "/") {
+      collapseTicker(!tickerCollapsed)
+      setVisibleMenu(!isVisible)
     } else {
       collapseTicker(!tickerCollapsed)
       setTimeout(() => {
