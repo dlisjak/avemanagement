@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import posed from "react-pose"
 
 import { Link } from "gatsby"
 
@@ -12,13 +13,30 @@ import DesktopNav from "./DesktopNav"
 import MobileNav from "./MobileNav"
 import BlackBar from "./BlackBar"
 
+const CollapsingTicker = posed(Link)({
+  hidden: { top: 55 },
+  visible: { top: 73 },
+})
+
 const Header = ({ isMobile, isTablet }) => {
   const state = useContext(GlobalStateContext)
 
   const [isVisible, setVisibleMenu] = useState(false)
+  const [tickerCollapsed, collapseTicker] = useState(false)
 
   const toggleMenu = isVisible => {
-    setVisibleMenu(!isVisible)
+    if (isVisible) {
+      setVisibleMenu(!isVisible)
+
+      setTimeout(() => {
+        collapseTicker(!tickerCollapsed)
+      }, 1000)
+    } else {
+      collapseTicker(!tickerCollapsed)
+      setTimeout(() => {
+        setVisibleMenu(!isVisible)
+      }, 500)
+    }
   }
 
   let tickerHeaderText = ""
@@ -107,8 +125,9 @@ const Header = ({ isMobile, isTablet }) => {
             data={data}
           />
         )}
-        <Link
+        <CollapsingTicker
           to={state.index ? `${state.path}/#${state.index}` : state.path}
+          pose={tickerCollapsed ? "hidden" : "visible"}
           style={{
             textDecoration: "none",
             textDecoration: "none",
@@ -118,7 +137,7 @@ const Header = ({ isMobile, isTablet }) => {
           }}
         >
           <Ticker title={state.path || tickerHeaderText} />
-        </Link>
+        </CollapsingTicker>
       </div>
     </div>
   )

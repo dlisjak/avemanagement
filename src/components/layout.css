@@ -89,6 +89,11 @@
   }
   .model__main-container {
     font-size: 16px;
+    right: 5px;
+    left: 5px;
+  }
+  #slideshow {
+    padding-right: 5px;
   }
   .logo {
     height: 60px;

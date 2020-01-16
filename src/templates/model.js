@@ -104,7 +104,7 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
             position: "relative",
             marginBottom: tab === "videos" ? 0 : 5,
             flexDirection: tab === "bio" && "column",
-            paddingRight: tab === "bio" ? "35%" : 0,
+            paddingRight: tab === "bio" ? "35%" : 5,
           }}
         >
           <div
