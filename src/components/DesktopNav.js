@@ -12,7 +12,7 @@ const NavBar = posed.header({
     marginTop: -25,
     paddingTop: 0,
     paddingBottom: 0,
-    transition: { duration: 1000 },
+    transition: { duration: 750 },
   },
   visible: {
     opacity: 1,
@@ -27,12 +27,12 @@ const SubNavBar = posed.div({
   childHidden: {
     height: 0,
     overflow: "hidden",
-    transition: { duration: 1000 },
+    transition: { duration: 500 },
   },
   childVisible: {
     height: 27,
     overflow: "auto",
-    transition: { duration: 1000 },
+    transition: { duration: 500 },
   },
 })
 
