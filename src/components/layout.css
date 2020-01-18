@@ -1082,8 +1082,7 @@ div.ticker__page--fixed {
   font-family: "HelveticaNeue";
   font-weight: 400;
   font-style: normal;
-  src: url("../fonts/HelveticaNeue-Light.woff") format("woff");
-  src: url("../fonts/HelveticaNeue-Light.woff2") format("woff2");
+  src: url("../fonts/helveticaneue-light.ttf") format("ttf");
 }
 
 @font-face {
