@@ -500,6 +500,10 @@
   }
 }
 
+.home-video {
+  pointer-events: none;
+}
+
 .search-overlay::-webkit-scrollbar {
   display: none;
 }

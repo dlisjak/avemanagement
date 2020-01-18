@@ -26,6 +26,9 @@ const News = () => {
                       title
                       url
                     }
+                    video_1 {
+                      url
+                    }
                   }
                 }
               }
@@ -36,30 +39,59 @@ const News = () => {
           <div className="width-100 flex">
             <Slider>
               {allWordpressWpNews.edges.map(
-                ({ node: { title, slug, acf } }, i) => (
-                  <Link
-                    to={`/news/${slug}`}
-                    style={{
-                      display: "flex",
-                      maxHeight: 300,
-                      height: "100%",
-                      width: "auto",
-                    }}
-                    key={i}
-                  >
-                    <img
-                      style={{
-                        height: "100%",
-                        maxHeight: 300,
-                        width: "auto",
-                        objectFit: "cover",
-                      }}
-                      src={acf.news_post_image.url}
-                      alt={title}
-                      title={title}
-                    />
-                  </Link>
-                )
+                ({ node: { title, slug, acf } }, i) => {
+                  if (acf.video_1 && acf.video_1.url) {
+                    return (
+                      <Link
+                        to={`/news/${slug}`}
+                        style={{
+                          display: "flex",
+                          maxHeight: 300,
+                          height: "100%",
+                          width: "auto",
+                        }}
+                        key={i}
+                      >
+                        <video
+                          style={{
+                            height: "100%",
+                            maxHeight: 300,
+                            width: "auto",
+                          }}
+                          autoPlay
+                          muted
+                          loop
+                          src={acf.video_1.url}
+                        />
+                      </Link>
+                    )
+                  } else {
+                    return (
+                      <Link
+                        to={`/news/${slug}`}
+                        style={{
+                          display: "flex",
+                          maxHeight: 300,
+                          height: "100%",
+                          width: "auto",
+                        }}
+                        key={i}
+                      >
+                        <img
+                          style={{
+                            height: "100%",
+                            maxHeight: 300,
+                            width: "auto",
+                            objectFit: "cover",
+                          }}
+                          src={acf.news_post_image.url}
+                          alt={title}
+                          title={title}
+                        />
+                      </Link>
+                    )
+                  }
+                }
               )}
             </Slider>
           </div>

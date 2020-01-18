@@ -113,7 +113,7 @@ const News = ({
         <BlackBar height={100} />
         <div
           id="slideshow"
-          style={{ marginTop: 5, marginBottom: video ? 0 : 5 }}
+          style={{ marginTop: 5, marginBottom: video ? 0 : 5, width: "100%" }}
         >
           {image && !video && (
             <img

@@ -15,7 +15,6 @@ import ModelPreviewVideos from "../components/ModelPreviewVideos"
 
 const Model = ({ pageContext: { firstName, lastName, acf } }) => {
   const dispatch = useContext(GlobalDispatchContext)
-  const Colcade = require("colcade")
 
   const mainVideo =
     acf.videos[0] && acf.videos[0].video && acf.videos[0].video.url
@@ -36,13 +35,16 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
     spaceBetween: 5,
   }
   let tickerText
-
+  const Colcade
+  
   useEffect(() => {
     // componentDidMount
     const initGrid = async () => {
       const grid = document.querySelector(".grid")
 
       if (typeof window !== "undefined") {
+        Colcade = require("colcade")
+
         const colc = new Colcade(grid, {
           columns: ".grid-col",
           items: ".grid-item",
