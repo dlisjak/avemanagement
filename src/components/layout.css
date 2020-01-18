@@ -518,7 +518,7 @@
 .mobile-navigation div,
 .mobile-navigation a {
   font-size: 20px !important;
-  color: rgb(104, 103, 104) !important;
+  color: #222;
   font-weight: 300;
   padding: 2.5px 0;
 }
@@ -1080,7 +1080,7 @@ div.ticker__page--fixed {
 
 @font-face {
   font-family: "HelveticaNeue";
-  font-weight: 400;
+  font-weight: 300;
   src: url("../fonts/helveticaneue-light.ttf") format("ttf");
 }
 
@@ -1313,7 +1313,7 @@ html {
   box-sizing: inherit;
 }
 body {
-  color: rgb(104, 103, 104) !important;
+  color: hsla(0, 0%, 0%, 0.8);
   font-family: "HelveticaNeue";
   font-weight: lighter;
   word-wrap: break-word;
