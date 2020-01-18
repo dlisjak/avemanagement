@@ -23,6 +23,10 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
   const [videoUrl, selectVideo] = useState(mainVideo || null)
   const [tab, setTab] = useState("portfolio")
 
+  const isVideoAvailable = acf.videos.some(
+    ({ video, thumbnail }) => video !== null && thumbnail !== null
+  )
+
   let params = {
     centeredSlides: true,
     autoHeight: true,
@@ -137,7 +141,7 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
                   PORTFOLIO
                 </AnchorLink>
               )}
-              {acf.videos && (
+              {isVideoAvailable && (
                 <AnchorLink
                   href="#slideshow"
                   offset="200"
