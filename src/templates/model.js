@@ -35,8 +35,8 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
     spaceBetween: 5,
   }
   let tickerText
-  const Colcade
-  
+  let Colcade
+
   useEffect(() => {
     // componentDidMount
     const initGrid = async () => {
