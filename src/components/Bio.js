@@ -39,7 +39,7 @@ const Bio = ({ acf }) => {
                 fontStyle: "italic",
               }}
             >
-              ""
+              "
             </span>
           </span>
         </span>
@@ -57,6 +57,15 @@ const Bio = ({ acf }) => {
           SHIRT{" "}
           <span className="model-bio-value" style={{ fontWeight: "bold" }}>
             {acf.bio.shirt}
+            <span
+              style={{
+                fontFamily: "Avenir",
+                fontWeight: 700,
+                fontStyle: "italic",
+              }}
+            >
+              "
+            </span>
           </span>
         </span>
       )}
@@ -72,7 +81,7 @@ const Bio = ({ acf }) => {
                 fontStyle: "italic",
               }}
             >
-              ""
+              "
             </span>
           </span>
         </span>
@@ -89,7 +98,7 @@ const Bio = ({ acf }) => {
                 fontStyle: "italic",
               }}
             >
-              ""
+              "
             </span>
           </span>
         </span>
@@ -106,7 +115,7 @@ const Bio = ({ acf }) => {
                 fontStyle: "italic",
               }}
             >
-              ""
+              "
             </span>
           </span>
         </span>

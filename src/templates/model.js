@@ -13,8 +13,9 @@ import ModelName from "../components/ModelName"
 import ModelVideo from "../components/ModelVideo"
 import ModelPreviewVideos from "../components/ModelPreviewVideos"
 
-const Category = ({ pageContext: { firstName, lastName, acf } }) => {
+const Model = ({ pageContext: { firstName, lastName, acf } }) => {
   const dispatch = useContext(GlobalDispatchContext)
+  const Colcade = require("colcade")
 
   const mainVideo =
     acf.videos[0] && acf.videos[0].video && acf.videos[0].video.url
@@ -34,7 +35,6 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
     slidesPerView: 1,
     spaceBetween: 5,
   }
-  let Colcade
   let tickerText
 
   useEffect(() => {
@@ -43,7 +43,6 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
       const grid = document.querySelector(".grid")
 
       if (typeof window !== "undefined") {
-        Colcade = require("colcade")
         const colc = new Colcade(grid, {
           columns: ".grid-col",
           items: ".grid-item",
@@ -306,4 +305,4 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
   )
 }
 
-export default Category
+export default Model
