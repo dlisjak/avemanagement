@@ -295,11 +295,7 @@ const Category = ({ pageContext: { firstName, lastName, acf } }) => {
             >
               {acf.videos &&
                 acf.videos.map(({ video, thumbnail }, index) => (
-                  <ModelPreviewVideos
-                    thumbnail={thumbnail.url}
-                    onClick={selectVideo(video.url)}
-                    key={index}
-                  />
+                  <ModelPreviewVideos thumbnail={thumbnail.url} key={index} />
                 ))}
             </div>
           )}
