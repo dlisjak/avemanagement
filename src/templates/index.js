@@ -69,7 +69,6 @@ const Home = ({ pageContext, data }) => {
         src={videoSrc}
         autoPlay
         muted
-        controls
         controlsList="nodownload"
         onEnded={onVidEnding}
         className="home-video width-100"
