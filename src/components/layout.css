@@ -519,7 +519,7 @@
 .mobile-navigation a {
   font-size: 20px !important;
   color: #222;
-  font-weight: 400;
+  font-weight: 300;
   padding: 2.5px 0;
 }
 .mobile-navigation a[aria-current="page"] {
@@ -1080,8 +1080,7 @@ div.ticker__page--fixed {
 
 @font-face {
   font-family: "HelveticaNeue";
-  font-weight: 400;
-  font-style: normal;
+  font-weight: 300;
   src: url("../fonts/helveticaneue-light.ttf") format("ttf");
 }
 
@@ -1096,9 +1095,11 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   letter-spacing: 0px;
+  font-weight: 300;
 }
 body {
   overflow: hidden;
+  font-weight: 300;
   margin: 0;
   text-transform: uppercase;
   -webkit-font-smoothing: antialiased;
@@ -1299,7 +1300,7 @@ textarea {
 html {
   box-sizing: border-box;
   overflow-y: scroll;
-  font-weight: normal;
+  font-weight: lighter;
   letter-spacing: 0;
 }
 * {
@@ -1314,7 +1315,7 @@ html {
 body {
   color: hsla(0, 0%, 0%, 0.8);
   font-family: "HelveticaNeue";
-  font-weight: normal;
+  font-weight: lighter @;
   word-wrap: break-word;
   font-kerning: normal;
   -moz-font-feature-settings: "kern", "liga", "clig", "calt";
