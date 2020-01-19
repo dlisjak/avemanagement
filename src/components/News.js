@@ -1,10 +1,24 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { StaticQuery, Link, graphql } from "gatsby"
 
 import Slider from "./Slider"
 import TickerText from "./Ticker"
 
 const News = () => {
+  useEffect(() => {
+    const muteVideos = () => {
+      setTimeout(() => {
+        const vids = Array.from(document.getElementsByTagName("video"))
+
+        vids.map(vid => {
+          vid.muted = true
+        })
+      })
+    }
+
+    muteVideos()
+  }, [])
+
   return (
     <>
       <Link
@@ -59,7 +73,6 @@ const News = () => {
                             width: "auto",
                           }}
                           autoPlay
-                          muted
                           loop
                           src={acf.video_1.url}
                         />
