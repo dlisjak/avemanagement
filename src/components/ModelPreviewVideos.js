@@ -1,9 +1,10 @@
 import React from "react"
 
-const ModelPreviewVideos = ({ thumbnail }) => {
+const ModelPreviewVideos = ({ thumbnail, onClick }) => {
   return (
     <div
       className="category-card grid-item"
+      onClick={onClick}
       style={{
         height: 250,
         position: "relative",

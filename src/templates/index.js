@@ -21,8 +21,6 @@ const Home = ({ pageContext, data }) => {
   const [videoKey, setVideoKey] = useState(null)
   const [isLoaderShown, setLoaderShown] = useState(true)
 
-  const videoPlayer = useRef(null)
-
   const videoSources = [Video1, Video2]
   let tickerText
 
@@ -55,8 +53,13 @@ const Home = ({ pageContext, data }) => {
     if (videoKey !== null) {
       key = 1 - videoKey
     }
+
+    const nextVideo = document.getElementById(`home-video-${key}`)
+
     setVideoKey(key)
     setVideoSrc(videoSources[key])
+
+    nextVideo.play()
   }
 
   return (
@@ -65,14 +68,35 @@ const Home = ({ pageContext, data }) => {
       <SEO title="Home" />
 
       <video
-        ref={videoPlayer}
-        src={videoSrc}
-        autoPlay
+        id="home-video-0"
+        src={videoSources[0]}
         muted
         controlsList="nodownload"
         onEnded={onVidEnding}
         className="home-video width-100"
-        style={{ paddingBottom: 5 }}
+        style={{
+          paddingBottom: 5,
+          left: 0,
+          zIndex: videoSrc === videoSources[0] ? 2 : 0,
+          opacity: videoSrc === videoSources[0] ? 1 : 0,
+          position: videoSrc === videoSources[0] ? "relative" : "absolute",
+        }}
+      ></video>
+
+      <video
+        id="home-video-1"
+        src={videoSources[1]}
+        muted
+        controlsList="nodownload"
+        onEnded={onVidEnding}
+        className="home-video width-100"
+        style={{
+          paddingBottom: 5,
+          left: 0,
+          zIndex: videoSrc === videoSources[1] ? 2 : 0,
+          opacity: videoSrc === videoSources[1] ? 1 : 0,
+          position: videoSrc === videoSources[1] ? "relative" : "absolute",
+        }}
       ></video>
 
       <BlackBar height={125} />

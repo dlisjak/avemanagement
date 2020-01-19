@@ -112,7 +112,7 @@ const News = ({
         />
         <BlackBar height={100} />
         <div
-          id="slideshow"
+          id="news-slideshow"
           style={{ marginTop: 5, marginBottom: video ? 0 : 5, width: "100%" }}
         >
           {image && !video && (
@@ -146,7 +146,7 @@ const News = ({
                   <AnchorLink
                     role="button"
                     offset={205}
-                    href="#slideshow"
+                    href="#news-slideshow"
                     className="flex-column justify-between grid-item"
                     onClick={() => setUpVideo(video)}
                     style={{
@@ -166,7 +166,7 @@ const News = ({
                   <AnchorLink
                     role="button"
                     offset={205}
-                    href="#slideshow"
+                    href="#news-slideshow"
                     className="flex-column justify-between grid-item"
                     onClick={() => setUpImage({ title, url })}
                     style={{

@@ -109,7 +109,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
             position: "relative",
             marginBottom: tab === "videos" ? 0 : 5,
             flexDirection: tab === "bio" && "column",
-            paddingRight: tab === "bio" ? "35%" : 5,
+            marginRight: tab === "bio" ? "35%" : 0,
           }}
         >
           <div
@@ -296,7 +296,11 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
             >
               {acf.videos &&
                 acf.videos.map(({ video, thumbnail }, index) => (
-                  <ModelPreviewVideos thumbnail={thumbnail.url} key={index} />
+                  <ModelPreviewVideos
+                    thumbnail={thumbnail.url}
+                    onClick={() => selectVideo(video.url)}
+                    key={index}
+                  />
                 ))}
             </div>
           )}
