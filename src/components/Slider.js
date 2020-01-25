@@ -5,12 +5,13 @@ import "./swiper.css"
 
 const Slider = props => {
   const { children } = props
+  const windowWidth = window.innerWidth <= 480 ? true : false
   let params = {
     autoplay: {
       delay: 1500,
     },
     spaceBetween: 5,
-    autoHeight: true,
+    autoHeight: windowWidth,
     breakpoints: {
       // when window width is >= 320px
       320: {

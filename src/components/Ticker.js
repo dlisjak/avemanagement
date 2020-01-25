@@ -16,7 +16,8 @@ const TickerText = ({ title, left = false, noRepeat = false, width }) => {
 
   useEffect(() => {
     const setAnimationDuration = () => {
-      const duration = Math.ceil(titleTicker.length)
+      const k = 27 / 4
+      const duration = Math.ceil(titleTicker.length * k)
 
       if (tickerRef.current) {
         tickerRef.current.style.animationDuration = `${duration}s`

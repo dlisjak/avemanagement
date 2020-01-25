@@ -5,6 +5,8 @@ import Slider from "./Slider"
 import TickerText from "./Ticker"
 
 const News = () => {
+  const windowWidth = window.innerWidth <= 480 ? "auto" : "100%"
+
   useEffect(() => {
     const muteVideos = () => {
       setTimeout(() => {
@@ -83,7 +85,7 @@ const News = () => {
                         style={{
                           display: "flex",
                           maxHeight: 400,
-                          height: "auto",
+                          height: windowWidth,
                           width: "100%",
                         }}
                         key={i}

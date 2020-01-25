@@ -5,6 +5,8 @@ import Slider from "./Slider"
 import TickerText from "./Ticker"
 
 const Instagram = ({ posts }) => {
+  const windowWidth = window.innerWidth <= 480 ? true : false
+
   return (
     <Fragment>
       <a
@@ -21,8 +23,8 @@ const Instagram = ({ posts }) => {
         {posts.edges.map(({ node }, i) => (
           <img
             style={{
-              height: "auto",
               maxHeight: 400,
+              height: windowWidth,
               width: "auto",
               objectFit: "cover",
             }}
