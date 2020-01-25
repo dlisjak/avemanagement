@@ -22,8 +22,8 @@ const Instagram = ({ posts }) => {
           <img
             style={{
               height: "100%",
-              maxHeight: 300,
-              width: "auto",
+              maxHeight: 400,
+              width: "100%",
               objectFit: "cover",
             }}
             src={node.localFile.publicURL}

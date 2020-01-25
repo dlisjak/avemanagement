@@ -232,7 +232,10 @@ const BecomeAModel = () => {
                 <label className="contact-label" htmlFor="mobileNumber">
                   Mobile
                 </label>
-                <div className="flex width-100" style={{ maxWidth: 650 }}>
+                <div
+                  className="flex width-100"
+                  style={{ maxWidth: 650, borderTop: "1px solid" }}
+                >
                   <input
                     className="contact-input contact-input--country-code"
                     type="input"

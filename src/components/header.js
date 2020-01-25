@@ -93,7 +93,7 @@ const Header = ({ isMobile, isTablet }) => {
             cursor: "pointer",
             width: "100%",
             height: "auto",
-            maxWidth: isMobile ? 300 : 250,
+            maxWidth: !isMobile ? 300 : 200,
           }}
         />
       </Link>

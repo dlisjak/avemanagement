@@ -64,10 +64,10 @@ const Search = ({ isShown, models, closeSearch }) => {
         position: "fixed",
         zIndex: 999,
         background: "white",
-        width: "80%",
+        width: window.innerWidth < 480 ? "100%" : "80%",
         maxWidth: 1366,
         height: "100%",
-        top: 235,
+        top: 220,
         overflow: "scroll",
         paddingBottom: 200,
       }}

@@ -1,8 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import Ticker from "../components/Ticker"
-
 const AddressTicker = () => (
   <Link
     to="/contact"
@@ -11,8 +9,8 @@ const AddressTicker = () => (
       width: "100%",
       borderTop: "1px solid",
       borderBottom: "1px solid",
-      color: "#ccc",
-      marginTop: 100,
+      color: "rgba(0, 0, 0, 0.2)",
+      fontSize: 14,
       display: "flex",
       alignItems: "center",
       flexDirection: "column",
@@ -20,16 +18,8 @@ const AddressTicker = () => (
       textTransform: "none",
     }}
   >
-    <Ticker
-      title="70 SHENTON WAY EON SHENTON #13-06 SINGAPORE 079118"
-      left={true}
-      noRepeat={true}
-    />
-    <Ticker
-      title="INFO@AVEMANAGEMENT.COM  T +65 68874629"
-      width={"75%"}
-      noRepeat={true}
-    />
+    <span>70 SHENTON WAY EON SHENTON #13-06 SINGAPORE 079118</span>
+    <span>INFO@AVEMANAGEMENT.COM T +65 68874629</span>
   </Link>
 )
 

@@ -9,8 +9,6 @@ const Layout = ({ children, isHomepage }) => {
   const [isMobile, toggleIsMobile] = useState(false)
   const [isTablet, toggleIsTablet] = useState(false)
 
-  const extraHeight = isHomepage ? 60 : 0
-
   useEffect(() => {
     // componentDidMount
     const checkIfMobile = () => {
@@ -23,6 +21,28 @@ const Layout = ({ children, isHomepage }) => {
     // componentDidUnmount
   }, [])
 
+  let marginTopEl = 275
+
+  if (!isMobile && !isTablet && isHomepage) {
+    marginTopEl = 180
+  }
+
+  if (isHomepage && isMobile) {
+    marginTopEl = 150
+  }
+
+  if (!isHomepage && isMobile) {
+    marginTopEl = 200
+  }
+
+  if (!isHomepage && isTablet) {
+    marginTopEl = 225
+  }
+
+  if (isHomepage && isTablet && !isMobile) {
+    marginTopEl = 180
+  }
+
   return (
     <>
       <Loader />
@@ -33,16 +53,16 @@ const Layout = ({ children, isHomepage }) => {
           flexWrap: "wrap",
           margin: `0 auto`,
           paddingTop: 0,
-          marginBottom: 125,
+          marginBottom: isMobile ? 0 : 125,
         }}
       >
         <Header isTablet={isTablet} isMobile={isMobile} />
         <main
+          id="main"
           style={{
             width: "100%",
             position: "relative",
-            marginTop:
-              !isMobile && !isTablet && !isHomepage ? 275 : 225 - extraHeight,
+            marginTop: marginTopEl,
           }}
         >
           {children}
