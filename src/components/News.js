@@ -61,16 +61,14 @@ const News = () => {
                         style={{
                           display: "flex",
                           maxHeight: 400,
-                          height: "100%",
+                          height: "auto",
                           width: "100%",
-                          alignItems: "flex-start",
                         }}
                         key={i}
                       >
                         <video
                           style={{
                             height: "auto",
-                            maxHeight: 400,
                             width: "100%",
                           }}
                           autoPlay
@@ -87,15 +85,14 @@ const News = () => {
                           display: "flex",
                           maxHeight: 400,
                           height: "100%",
-                          width: "100%",
+                          width: "auto",
                         }}
                         key={i}
                       >
                         <img
                           style={{
                             height: "100%",
-                            maxHeight: 400,
-                            width: "100%",
+                            width: "auto",
                             objectFit: "cover",
                           }}
                           src={acf.news_post_image.url}

@@ -6,15 +6,12 @@ import "./swiper.css"
 const Slider = props => {
   const { children } = props
   let params = {
-    autoplay: {
-      delay: 1500,
-    },
     slidesPerView: "auto",
     spaceBetween: 5,
   }
 
   if (typeof window !== "undefined") {
-    if (window.innerWidth < 1150) {
+    if (window.innerWidth < 950) {
       params = {
         autoplay: {
           delay: 1500,
@@ -22,14 +19,22 @@ const Slider = props => {
         slidesPerView: "auto",
         spaceBetween: 5,
       }
-    }
-    if (window.innerWidth < 480) {
+    } else if (window.innerWidth < 1150) {
       params = {
         autoplay: {
           delay: 1500,
         },
-        slidesPerView: 1,
+        slidesPerView: "auto",
         spaceBetween: 5,
+      }
+    } else {
+      params = {
+        autoplay: {
+          delay: 1500,
+        },
+        slidesPerView: "auto",
+        spaceBetween: 5,
+        loopedSlides: 10,
       }
     }
   }

@@ -37,7 +37,7 @@ const Loader = () => {
       setLoaderShown(false)
       const bodyEl = document.querySelector("body")
       bodyEl.classList.remove("overlay")
-    }, 1000)
+    }, 1500)
   }
 
   return (

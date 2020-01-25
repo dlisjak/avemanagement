@@ -71,6 +71,7 @@ const Home = ({ pageContext, data }) => {
         id="home-video-0"
         src={videoSources[0]}
         muted
+        playsInline
         controlsList="nodownload"
         onEnded={onVidEnding}
         className="home-video width-100"
@@ -87,6 +88,7 @@ const Home = ({ pageContext, data }) => {
         id="home-video-1"
         src={videoSources[1]}
         muted
+        playsInline
         controlsList="nodownload"
         onEnded={onVidEnding}
         className="home-video width-100"

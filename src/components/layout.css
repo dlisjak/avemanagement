@@ -2,6 +2,9 @@
   .header-fixed-container {
     width: 100%;
   }
+  .masonry-with-columns {
+    columns: 2 auto;
+  }
   #slideshow {
     padding-right: 5px;
   }
@@ -341,6 +344,9 @@
   .model__menu {
     flex-direction: column;
   }
+  .masonry-with-columns {
+    columns: 4 auto;
+  }
   .swiper-slide {
     max-height: 300px;
   }
@@ -422,18 +428,12 @@
 }
 
 @media only screen and (max-width: 1079px) and (min-width: 768px) {
-  .grid-col {
-    width: calc(33% - 5px);
+  .masonry-with-columns {
+    columns: 3 auto;
+    column-gap: 5px;
   }
-  #content .grid-col--1 {
-    margin-right: 2.5px;
-  }
-  #content .grid-col--2 {
-    margin-right: 2.5px;
-    margin-left: 2.5px;
-  }
-  #content .grid-col--3 {
-    margin-left: 2.5px;
+  .swiper-container {
+    max-width: 80vw;
   }
   .contact-image-upload {
     height: calc(500px - 20vh);
@@ -562,6 +562,7 @@
 
 .swiper-container {
   max-width: 95vw;
+  width: 100%;
 }
 /* .model-swiper-slide > img {
   height: auto !important;
@@ -576,6 +577,10 @@
 
 .model-slider-navigate.prev {
   cursor: url("../images/leftArrow.png"), auto;
+}
+
+.masonry-with-columns {
+  column-gap: 5px;
 }
 
 .model-portfolio-image--swiper {
@@ -992,26 +997,6 @@ header .flex > :first-child {
 div.ticker__page--fixed {
   z-index: 9999;
   background: white;
-}
-
-/* 2 columns by default, hide columns 3 & 4 */
-.grid-col--3,
-.grid-col--4 {
-  display: none;
-}
-
-/* 3 columns at medium size */
-@media (min-width: 768px) {
-  .grid-col--3 {
-    display: block;
-  } /* show column 2 */
-}
-
-/* 4 columns at large size */
-@media (min-width: 1080px) {
-  .grid-col--4 {
-    display: block;
-  } /* show column 3 */
 }
 
 .model-portfolio-image {

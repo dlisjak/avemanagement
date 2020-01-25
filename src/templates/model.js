@@ -35,22 +35,10 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
     spaceBetween: 5,
   }
   let tickerText
-  let Colcade
 
   useEffect(() => {
     // componentDidMount
-    const initGrid = async () => {
-      const grid = document.querySelector(".grid")
 
-      if (typeof window !== "undefined") {
-        Colcade = require("colcade")
-
-        const colc = new Colcade(grid, {
-          columns: ".grid-col",
-          items: ".grid-item",
-        })
-      }
-    }
     const setPath = () => {
       if (typeof window !== "undefined") {
         tickerText = localStorage.getItem("ave-ticker")
@@ -62,7 +50,6 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
       }
     }
 
-    initGrid()
     setPath()
   }, [])
 
@@ -244,20 +231,12 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
 
         <BlackBar height={100} />
 
-        <div
-          id="content"
-          className="flex flex-wrap grid"
-          style={{ marginTop: 5 }}
-        >
+        <div id="content" className="flex flex-wrap " style={{ marginTop: 5 }}>
           {
             <div
-              className="width-100 flex"
-              style={{ display: tab === "portfolio" ? "flex" : "none" }}
+              className="width-100 masonry-with-columns"
+              style={{ display: tab === "portfolio" ? "block" : "none" }}
             >
-              <div className="grid-col grid-col--1"></div>
-              <div className="grid-col grid-col--2"></div>
-              <div className="grid-col grid-col--3"></div>
-              <div className="grid-col grid-col--4"></div>
               {acf.portfolio &&
                 acf.portfolio.map(({ title, name, url, alt = "" }, index) => (
                   <AnchorLink
@@ -270,8 +249,8 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                     }}
                     style={{
                       cursor: "pointer",
-                      marginBottom: 5,
-                      display: "block",
+                      marginBottom: 2,
+                      display: "inline-block",
                     }}
                     key={index}
                   >
