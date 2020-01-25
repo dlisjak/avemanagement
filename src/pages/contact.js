@@ -7,6 +7,10 @@ import BlackBar from "../components/BlackBar"
 const Contact = () => {
   const dispatch = useContext(GlobalDispatchContext)
   let tickerText
+  let windowWidth
+  if (typeof window !== "undefined") {
+    windowWidth = window.innerWidth
+  }
 
   useEffect(() => {
     const setPath = () => {
@@ -81,7 +85,7 @@ const Contact = () => {
       <div
         className="flex flex-column contact-page-history content-padding"
         style={{
-          marginTop: window.innerWidth < 480 ? 0 : 50,
+          marginTop: windowWidth < 480 ? 0 : 50,
           position: "relative",
         }}
       >

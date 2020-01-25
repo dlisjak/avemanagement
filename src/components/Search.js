@@ -14,8 +14,11 @@ const SearchPose = posed.div({
 const Search = ({ isShown, models, closeSearch }) => {
   const [isOpen, toggleOverlay] = useState(true)
   const [searchQuery, setSearchQuery] = useState("")
-
   const inputRef = useRef(null)
+  let windowWidth
+  if (typeof window !== "undefined") {
+    windowWidth = window.innerWidth
+  }
 
   useEffect(() => {
     const openOverlay = () => {
@@ -64,7 +67,7 @@ const Search = ({ isShown, models, closeSearch }) => {
         position: "fixed",
         zIndex: 999,
         background: "white",
-        width: window.innerWidth < 480 ? "100%" : "80%",
+        width: windowWidth < 480 ? "100%" : "80%",
         maxWidth: 1366,
         height: "100%",
         top: 220,
