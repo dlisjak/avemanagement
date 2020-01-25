@@ -59,8 +59,6 @@ const News = () => {
                       <Link
                         to={`/news/${slug}`}
                         style={{
-                          display: "flex",
-                          maxHeight: 400,
                           height: "auto",
                           width: "100%",
                         }}
@@ -69,6 +67,7 @@ const News = () => {
                         <video
                           style={{
                             height: "auto",
+                            maxHeight: 300,
                             width: "100%",
                           }}
                           autoPlay
@@ -84,15 +83,13 @@ const News = () => {
                         style={{
                           display: "flex",
                           maxHeight: 400,
-                          height: "100%",
-                          width: "auto",
+                          height: "auto",
+                          width: "100%",
                         }}
                         key={i}
                       >
                         <img
                           style={{
-                            height: "100%",
-                            width: "auto",
                             objectFit: "cover",
                           }}
                           src={acf.news_post_image.url}

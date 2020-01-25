@@ -757,11 +757,6 @@
   border: 0;
 }
 
-.ticker__page #tickerwrap {
-  padding-right: 100%;
-  padding-left: 0;
-}
-
 .search-result-names:hover {
   font-weight: 700;
 }

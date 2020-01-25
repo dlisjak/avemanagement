@@ -6,37 +6,31 @@ import "./swiper.css"
 const Slider = props => {
   const { children } = props
   let params = {
-    slidesPerView: "auto",
+    autoplay: {
+      delay: 1500,
+    },
     spaceBetween: 5,
-  }
-
-  if (typeof window !== "undefined") {
-    if (window.innerWidth < 950) {
-      params = {
-        autoplay: {
-          delay: 1500,
-        },
-        slidesPerView: "auto",
-        spaceBetween: 5,
-      }
-    } else if (window.innerWidth < 1150) {
-      params = {
-        autoplay: {
-          delay: 1500,
-        },
-        slidesPerView: "auto",
-        spaceBetween: 5,
-      }
-    } else {
-      params = {
-        autoplay: {
-          delay: 1500,
-        },
-        slidesPerView: "auto",
-        spaceBetween: 5,
-        loopedSlides: 10,
-      }
-    }
+    autoHeight: true,
+    breakpoints: {
+      // when window width is >= 320px
+      320: {
+        slidesPerView: 1,
+      },
+      // when window width is >= 480px
+      480: {
+        slidesPerView: 2,
+      },
+      // when window width is >= 640px
+      640: {
+        slidesPerView: 3,
+      },
+      960: {
+        slidesPerView: 4,
+      },
+      1080: {
+        slidesPerView: 5,
+      },
+    },
   }
 
   return (
