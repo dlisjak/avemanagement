@@ -95,11 +95,11 @@ const News = ({
   return (
     <Layout>
       <div
-        className="flex flex-column content-padding"
+        className="flex flex-column"
         style={{ marginBottom: 50, alignItems: "flex-start" }}
       >
         <h2
-          className="news-card-title model__name "
+          className="news-card-title model__name content-padding"
           dangerouslySetInnerHTML={{
             __html: formatContent(content),
           }}
@@ -113,6 +113,7 @@ const News = ({
         <BlackBar height={100} />
         <div
           id="news-slideshow"
+          className="content-padding"
           style={{ marginTop: 5, marginBottom: video ? 0 : 5, width: "100%" }}
         >
           {image && !video && (
@@ -132,7 +133,7 @@ const News = ({
         <BlackBar height={100} />
         <div
           id="content"
-          className="flex flex-wrap grid width-100"
+          className="flex flex-wrap grid width-100 content-padding"
           style={{ marginTop: 5 }}
         >
           <div className="grid-col grid-col--1"></div>
@@ -155,6 +156,7 @@ const News = ({
                       display: "block",
                       height: "100%",
                       minHeight: 250,
+                      maxHeight: 250,
                     }}
                     key={index}
                   >

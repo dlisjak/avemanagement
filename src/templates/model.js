@@ -91,9 +91,11 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
   }
 
   const setImage = index => {
-    if (swiper !== null) {
-      swiper.slideTo(index + 1, 0, false)
-    }
+    setTimeout(() => {
+      if (swiper !== null) {
+        swiper.slideTo(index + 1, 1500, false)
+      }
+    })
   }
 
   return (

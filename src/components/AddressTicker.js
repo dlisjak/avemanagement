@@ -16,6 +16,7 @@ const AddressTicker = () => (
       flexDirection: "column",
       textDecoration: "none",
       textTransform: "none",
+      textAlign: "center",
     }}
   >
     <span>70 SHENTON WAY EON SHENTON #13-06 SINGAPORE 079118</span>

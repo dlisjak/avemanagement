@@ -35,7 +35,7 @@ const Layout = ({ children, isHomepage }) => {
     marginTopEl = 200
   }
 
-  if (!isHomepage && isTablet) {
+  if (!isHomepage && isTablet && !isMobile) {
     marginTopEl = 225
   }
 

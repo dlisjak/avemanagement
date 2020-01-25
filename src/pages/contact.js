@@ -24,8 +24,12 @@ const Contact = () => {
     <Layout>
       <BlackBar height={100} />
       <div
-        className="flex flex-column align-start"
-        style={{ textAlign: "left", marginTop: 10 }}
+        className="flex flex-column align-start content-padding"
+        style={{
+          textAlign: "left",
+          marginTop: 10,
+          paddingBottom: 50,
+        }}
       >
         <span style={{ fontWeight: 700, marginBottom: 25 }}>
           Ave Management
@@ -48,9 +52,18 @@ const Contact = () => {
           Google maps
         </a>
 
-        <span style={{ marginBottom: 20, marginTop: 20, fontWeight: 700 }}>
+        <a
+          href="tel:+6568874629"
+          style={{
+            marginBottom: 20,
+            marginTop: 20,
+            fontWeight: 700,
+            textDecoration: "none",
+            color: "black",
+          }}
+        >
           T +65 68874629
-        </span>
+        </a>
 
         <a
           href="mailto:info@avemanagement.com"
@@ -63,39 +76,41 @@ const Contact = () => {
         >
           info@avemanagement.com
         </a>
-
-        <div
-          className="flex flex-column contact-page-history"
-          style={{ marginTop: 50 }}
-        >
-          <BlackBar height={100} />
-          <span style={{ fontWeight: 700, marginBottom: 25, marginTop: 10 }}>
-            HISTORY
-          </span>
-          <p style={{ maxWidth: 680 }}>
-            Founded in 2004 by international fashion photographers{" "}
-            <b>Chuando & Frey</b>, AVE Management has been defining the fashion
-            and modeling industry, becoming one of the most recognized modeling
-            agencies around the world.
-          </p>
-          <p style={{ maxWidth: 680 }}>
-            AVE’s strength lies in discovering the most unique and fresh faces,
-            developing each model to their fullest potential and helping them
-            earn covers on international acclaimed magazines and spots in
-            campaigns of top brands globally.
-          </p>
-          <p style={{ maxWidth: 680 }}>
-            AVE represents and developed numerous industry icons and next
-            generation top models including{" "}
-            <b>
-              COCO ROCHA, VANESSA AXENTE, DARIA STROKOUS, SASHA LUSS, JAC MONIKA
-              JAGACIAK, SIGRID AGREN, DENISA DVORAKOVA, ALYSSAH PACCOUD, BRIAN
-              SHIMANSKY, ANDRE ZIEHE, DIEGO MIGUEL, RICHARD BIEDUL, MARK COX,
-              TRAVIS SMITH, SEBASTIAN SAUVE, MATT JAKE YOUNG
-            </b>{" "}
-            and <b>RYAN KEATING</b> among others.
-          </p>
-        </div>
+      </div>
+      <BlackBar height={100} />
+      <div
+        className="flex flex-column contact-page-history content-padding"
+        style={{
+          marginTop: window.innerWidth < 480 ? 0 : 50,
+          position: "relative",
+        }}
+      >
+        <span style={{ fontWeight: 700, marginBottom: 25, marginTop: 10 }}>
+          HISTORY
+        </span>
+        <p style={{ maxWidth: 680 }}>
+          Founded in 2004 by international fashion photographers{" "}
+          <b>Chuando & Frey</b>, AVE Management has been defining the fashion
+          and modeling industry, becoming one of the most recognized modeling
+          agencies around the world.
+        </p>
+        <p style={{ maxWidth: 680 }}>
+          AVE’s strength lies in discovering the most unique and fresh faces,
+          developing each model to their fullest potential and helping them earn
+          covers on international acclaimed magazines and spots in campaigns of
+          top brands globally.
+        </p>
+        <p style={{ maxWidth: 680 }}>
+          AVE represents and developed numerous industry icons and next
+          generation top models including{" "}
+          <b>
+            COCO ROCHA, VANESSA AXENTE, DARIA STROKOUS, SASHA LUSS, JAC MONIKA
+            JAGACIAK, SIGRID AGREN, DENISA DVORAKOVA, ALYSSAH PACCOUD, BRIAN
+            SHIMANSKY, ANDRE ZIEHE, DIEGO MIGUEL, RICHARD BIEDUL, MARK COX,
+            TRAVIS SMITH, SEBASTIAN SAUVE, MATT JAKE YOUNG
+          </b>{" "}
+          and <b>RYAN KEATING</b> among others.
+        </p>
       </div>
     </Layout>
   )

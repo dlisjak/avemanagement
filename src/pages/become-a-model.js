@@ -465,7 +465,7 @@ const BecomeAModel = () => {
         >
           ENSURE YOUR IMAGES ARE NOT LARGER THAN 2MB EACH IN SIZE
         </span>
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap content-padding">
           <ImageUpload
             isMobile={isMobile}
             order={0}
