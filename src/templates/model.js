@@ -124,7 +124,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                   style={{
                     fontWeight: "bold",
                     cursor: "pointer",
-                    color: tab === "portfolio" ? "black" : "#ccc",
+                    color: tab === "portfolio" ? "black" : "rgba(0,0,0,0.6)",
                     textDecoration: "none",
                   }}
                 >
@@ -139,7 +139,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                   style={{
                     fontWeight: "bold",
                     cursor: "pointer",
-                    color: tab === "videos" ? "black" : "#ccc",
+                    color: tab === "videos" ? "black" : "rgba(0,0,0,0.6)",
                     textDecoration: "none",
                   }}
                 >
@@ -153,7 +153,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                   onClick={() => setTab("bio")}
                   style={{
                     cursor: "pointer",
-                    color: tab === "bio" ? "black" : "#ccc",
+                    color: tab === "bio" ? "black" : "rgba(0,0,0,0.6)",
                     fontWeight: "bold",
                     textDecoration: "none",
                   }}
@@ -171,7 +171,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                   style={{
                     cursor: "pointer",
                     fontWeight: "bold",
-                    color: "#ccc",
+                    color: "rgba(0,0,0,0.6)",
                     textDecoration: "none",
                   }}
                 >

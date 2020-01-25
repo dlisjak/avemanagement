@@ -22,6 +22,7 @@ const ModelVideo = ({ videoUrl }) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        background: "rgba(0, 0, 0, 0.2)",
       }}
     >
       <video

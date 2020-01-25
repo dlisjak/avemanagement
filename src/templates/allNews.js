@@ -90,7 +90,7 @@ const NewsPage = ({ data, pageContext }) => {
                       paddingBottom: 25,
                       marginBottom: 0,
                       textDecoration: "none",
-                      fontSize: "1.5rem",
+                      fontSize: "1.7rem",
                       lineHeight: 0.8,
                       paddingTop: 5,
                     }}

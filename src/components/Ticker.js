@@ -30,7 +30,12 @@ const TickerText = ({ title, left = false, noRepeat = false, width }) => {
   })
 
   if (title) {
-    for (let i = 0; i < 50; i++) {
+    let n
+    if (typeof window !== "undefined") {
+      n = window.innerWidth < 480 ? 10 : 50
+    }
+
+    for (let i = 0; i < n; i++) {
       data += ` ${titleTicker} `
     }
   }
