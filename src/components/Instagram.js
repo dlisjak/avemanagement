@@ -28,7 +28,7 @@ const Instagram = ({ posts }) => {
         <TickerText title="#AVEGIRLS #AVEBOYS" left={true} />
       </a>
       <Slider>
-        {posts.edges.map(({ node }, i) => (
+        {posts.map(({ node }, i) => (
           <img
             ref={ref}
             style={{
@@ -45,5 +45,19 @@ const Instagram = ({ posts }) => {
     </Fragment>
   )
 }
+
+export const query = graphql`
+  query MyQuery {
+    allInstaNode(limit: 10) {
+      edges {
+        node {
+          localFile {
+            publicURL
+          }
+        }
+      }
+    }
+  }
+`
 
 export default Instagram

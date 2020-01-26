@@ -4,7 +4,9 @@ import { StaticQuery, Link, graphql } from "gatsby"
 import Slider from "./Slider"
 import TickerText from "./Ticker"
 
-const News = () => {
+const News = ({ posts }) => {
+  console.log(posts)
+
   let isMobile
   let coverOrContain
   if (typeof window !== "undefined") {
@@ -34,69 +36,43 @@ const News = () => {
       >
         <TickerText title="NEWS" />
       </Link>
-      <StaticQuery
-        query={graphql`
-          query News {
-            allWordpressWpNews(limit: 10) {
-              edges {
-                node {
-                  title
-                  slug
-                  acf {
-                    news_post_image {
-                      title
-                      url
-                    }
-                    video_1 {
-                      url
-                    }
-                  }
-                }
-              }
+      <div className="width-100 flex">
+        <Slider>
+          {posts.map(({ node: { title, slug, acf } }, i) => {
+            if (acf.video_1 && acf.video_1.url) {
+              return (
+                <video
+                  style={{
+                    maxHeight: 400,
+                    height: isMobile ? "auto" : "100%",
+                    width: "auto",
+                  }}
+                  autoPlay
+                  muted
+                  loop
+                  src={acf.video_1.url}
+                  key={i}
+                />
+              )
+            } else {
+              return (
+                <img
+                  key={i}
+                  style={{
+                    maxHeight: 400,
+                    height: isMobile ? "auto" : "100%",
+                    width: "auto",
+                    objectFit: coverOrContain,
+                  }}
+                  src={acf.news_post_image.url}
+                  alt={title}
+                  title={title}
+                />
+              )
             }
-          }
-        `}
-        render={({ allWordpressWpNews }) => (
-          <div className="width-100 flex">
-            <Slider>
-              {allWordpressWpNews.edges.map(
-                ({ node: { title, slug, acf } }, i) => {
-                  if (acf.video_1 && acf.video_1.url) {
-                    return (
-                      <video
-                        style={{
-                          maxHeight: 400,
-                          height: isMobile ? "auto" : "100%",
-                          width: "auto",
-                        }}
-                        autoPlay
-                        muted
-                        loop
-                        src={acf.video_1.url}
-                      />
-                    )
-                  } else {
-                    return (
-                      <img
-                        key={i}
-                        style={{
-                          maxHeight: 400,
-                          height: isMobile ? "auto" : "100%",
-                          width: "auto",
-                          objectFit: coverOrContain,
-                        }}
-                        src={acf.news_post_image.url}
-                        alt={title}
-                        title={title}
-                      />
-                    )
-                  }
-                }
-              )}
-            </Slider>
-          </div>
-        )}
-      />
+          })}
+        </Slider>
+      </div>
     </>
   )
 }

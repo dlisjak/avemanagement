@@ -16,13 +16,12 @@ import { graphql } from "gatsby"
 import AddressTicker from "../components/AddressTicker"
 
 const Home = ({ data }) => {
+  console.log(data)
   const videoSources = [Video1, Video2]
   const videoKey = Math.round(Math.random())
 
   const dispatch = useContext(GlobalDispatchContext)
-
   const [videoSrc, setVideoSrc] = useState(videoSources[videoKey])
-
   let tickerText
 
   useEffect(() => {
@@ -74,14 +73,14 @@ const Home = ({ data }) => {
 
       <BlackBar height={125} />
       <div className="home-news" style={{ marginTop: 5, marginBottom: 10 }}>
-        <News />
+        <News posts={data.allWordpressWpNews.edges} />
       </div>
       <BlackBar height={125} />
       <div
         className="home-instagram"
         style={{ marginTop: 5, marginBottom: 50 }}
       >
-        <Instagram posts={data.allInstaNode} />
+        <Instagram posts={data.allInstaNode.edges} />
       </div>
       <AddressTicker />
     </Layout>
@@ -89,12 +88,29 @@ const Home = ({ data }) => {
 }
 
 export const query = graphql`
-  query MyQuery {
+  {
     allInstaNode(limit: 10) {
       edges {
         node {
           localFile {
             publicURL
+          }
+        }
+      }
+    }
+    allWordpressWpNews(limit: 10) {
+      edges {
+        node {
+          title
+          slug
+          acf {
+            news_post_image {
+              title
+              url
+            }
+            video_1 {
+              url
+            }
           }
         }
       }
