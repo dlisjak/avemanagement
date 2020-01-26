@@ -9,11 +9,10 @@ import News from "../components/News"
 import Instagram from "../components/Instagram"
 import Loader from "../components/Loader"
 
-import Video2 from "../videos/main-video-2.mp4"
-
 import BlackBar from "../components/BlackBar"
 import AddressTicker from "../components/AddressTicker"
-import MainVideo from "../components/MainVideo"
+
+const Video1 = lazy(() => import("../components/MainVideo"))
 
 const Home = ({ data }) => {
   const dispatch = useContext(GlobalDispatchContext)
@@ -52,7 +51,9 @@ const Home = ({ data }) => {
       {isLoaderShown && <Loader />}
       <SEO title="Home" />
 
-      <MainVideo />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Video1 />
+      </Suspense>
 
       <BlackBar height={125} />
       <div className="home-news" style={{ marginTop: 5, marginBottom: 10 }}>
