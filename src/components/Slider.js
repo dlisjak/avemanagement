@@ -11,31 +11,31 @@ const Slider = props => {
   }
   let params = {
     autoplay: {
-      delay: 1500,
+      delay: 3000,
     },
     spaceBetween: 5,
-    slidesPerView: 1,
-    loopedSlides: 10,
+    slidesPerView: "auto",
+    centeredSlides: true,
     // preloadImages: false,
-    breakpoints: {
-      // when window width is >= 480px
-      480: {
-        slidesPerView: 2,
-      },
-      640: {
-        slidesPerView: 2,
-      },
-      960: {
-        slidesPerView: 3,
-      },
-      1080: {
-        slidesPerView: "auto",
-      },
-    },
+    // breakpoints: {
+    //   // when window width is >= 480px
+    //   480: {
+    //     slidesPerView: 2,
+    //   },
+    //   640: {
+    //     slidesPerView: 2,
+    //   },
+    //   960: {
+    //     slidesPerView: 3,
+    //   },
+    //   1080: {
+    //     slidesPerView: "auto",
+    //   },
+    // },
   }
 
   return (
-    <Swiper loop key={1} {...params} style={{ cursor: "grab" }}>
+    <Swiper key={1} {...params} style={{ cursor: "grab" }}>
       {children}
     </Swiper>
   )

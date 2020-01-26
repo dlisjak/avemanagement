@@ -67,6 +67,7 @@ const News = () => {
                         to={`/news/${slug}`}
                         style={{
                           display: "flex",
+                          justifyContent: "center",
                           height: "100%",
                           width: "auto",
                         }}
@@ -91,9 +92,10 @@ const News = () => {
                         to={`/news/${slug}`}
                         style={{
                           display: "flex",
+                          justifyContent: "center",
                           maxHeight: 400,
                           height: isMobile ? "auto" : "100%",
-                          width: isMobile ? "100%" : "auto",
+                          width: "auto",
                         }}
                         key={i}
                       >
