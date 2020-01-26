@@ -139,7 +139,7 @@ const Header = ({ isMobile, isTablet }) => {
             top: 73,
           }}
         >
-          <Ticker title={tickerHeaderText} />
+          <Ticker title={state.path || tickerHeaderText} />
         </CollapsingTicker>
       </div>
     </div>
