@@ -7,8 +7,8 @@ import News from "../components/News"
 import Instagram from "../components/Instagram"
 import Loader from "../components/Loader"
 
-import Video1 from "../videos/main-video-1.mp4"
-import Video2 from "../videos/main-video-2.mp4"
+// import Video1 from "../videos/main-video-1.mp4"
+// import Video2 from "../videos/main-video-2.mp4"
 
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 import BlackBar from "../components/BlackBar"
@@ -17,11 +17,11 @@ import AddressTicker from "../components/AddressTicker"
 
 const Home = ({ pageContext, data }) => {
   const dispatch = useContext(GlobalDispatchContext)
-  const [videoSrc, setVideoSrc] = useState(null)
-  const [videoKey, setVideoKey] = useState(null)
+  // const [videoSrc, setVideoSrc] = useState(null)
+  // const [videoKey, setVideoKey] = useState(null)
   const [isLoaderShown, setLoaderShown] = useState(true)
 
-  const videoSources = [Video1, Video2]
+  // const videoSources = [Video1, Video2]
   let tickerText
 
   useEffect(() => {
@@ -32,11 +32,11 @@ const Home = ({ pageContext, data }) => {
         dispatch({ type: "SET_PATH", payload: tickerText })
       }
     }
-    const setVideo = () => {
-      const key = Math.round(Math.random())
-      const e = new Event("onMount")
-      onVidEnding(e, key)
-    }
+    // const setVideo = () => {
+    //   const key = Math.round(Math.random())
+    //   const e = new Event("onMount")
+    //   onVidEnding(e, key)
+    // }
 
     const removeOverlay = () => {
       setTimeout(() => {
@@ -46,21 +46,21 @@ const Home = ({ pageContext, data }) => {
 
     removeOverlay()
     setPath()
-    setVideo()
+    // setVideo()
   }, [])
 
-  const onVidEnding = (e, key) => {
-    if (videoKey !== null) {
-      key = 1 - videoKey
-    }
+  // const onVidEnding = (e, key) => {
+  //   if (videoKey !== null) {
+  //     key = 1 - videoKey
+  //   }
 
-    const nextVideo = document.getElementById(`home-video-${key}`)
+  //   const nextVideo = document.getElementById(`home-video-${key}`)
 
-    setVideoKey(key)
-    setVideoSrc(videoSources[key])
+  //   setVideoKey(key)
+  //   setVideoSrc(videoSources[key])
 
-    nextVideo.play()
-  }
+  //   nextVideo.play()
+  // }
 
   return (
     <Layout isHomepage={true}>
