@@ -6,8 +6,10 @@ import TickerText from "./Ticker"
 
 const News = () => {
   let isMobile
+  let coverOrContain
   if (typeof window !== "undefined") {
     isMobile = window.innerWidth < 480
+    coverOrContain = window.innerWidth < 480 ? "contain" : "cover"
   }
 
   useEffect(() => {
@@ -64,6 +66,7 @@ const News = () => {
                       <Link
                         to={`/news/${slug}`}
                         style={{
+                          display: "flex",
                           height: "100%",
                           width: "auto",
                         }}
@@ -71,9 +74,9 @@ const News = () => {
                       >
                         <video
                           style={{
-                            height: "auto",
+                            height: "100%",
                             maxHeight: 400,
-                            width: "100%",
+                            width: "auto",
                           }}
                           autoPlay
                           loop
@@ -86,6 +89,7 @@ const News = () => {
                       <Link
                         to={`/news/${slug}`}
                         style={{
+                          display: "flex",
                           maxHeight: 400,
                           height: isMobile ? "auto" : "100%",
                           width: isMobile ? "100%" : "auto",
@@ -94,7 +98,7 @@ const News = () => {
                       >
                         <img
                           style={{
-                            objectFit: "contain",
+                            objectFit: coverOrContain,
                             height: "100%",
                           }}
                           src={acf.news_post_image.url}

@@ -14,11 +14,21 @@ const Slider = props => {
       delay: 1500,
     },
     spaceBetween: 5,
-    autoHeight: isMobile,
     slidesPerView: 1,
+    loopedSlides: 10,
+    // preloadImages: false,
     breakpoints: {
-      // when window width is >= 320px
+      // when window width is >= 480px
       480: {
+        slidesPerView: 2,
+      },
+      640: {
+        slidesPerView: 2,
+      },
+      960: {
+        slidesPerView: 3,
+      },
+      1080: {
         slidesPerView: "auto",
       },
     },
