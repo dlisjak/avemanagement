@@ -1,9 +1,15 @@
 import React, { Fragment } from "react"
+import { useInView } from "react-intersection-observer"
 
 import Slider from "./Slider"
 import TickerText from "./Ticker"
 
 const Instagram = ({ posts }) => {
+  const [ref, inView, entry] = useInView({
+    /* Optional options */
+    threshold: 0,
+  })
+
   let isMobile
   if (typeof window !== "undefined") {
     isMobile = window.innerWidth < 480
@@ -24,6 +30,7 @@ const Instagram = ({ posts }) => {
       <Slider>
         {posts.edges.map(({ node }, i) => (
           <img
+            ref={ref}
             style={{
               maxHeight: 400,
               height: isMobile ? "auto" : "100%",
