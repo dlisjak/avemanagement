@@ -67,40 +67,6 @@ const Home = ({ pageContext, data }) => {
       {isLoaderShown && <Loader />}
       <SEO title="Home" />
 
-      <video
-        id="home-video-0"
-        src={videoSources[0]}
-        muted
-        playsInline
-        controlsList="nodownload"
-        onEnded={onVidEnding}
-        className="home-video width-100"
-        style={{
-          paddingBottom: 5,
-          left: 0,
-          zIndex: videoSrc === videoSources[0] ? 2 : 0,
-          opacity: videoSrc === videoSources[0] ? 1 : 0,
-          position: videoSrc === videoSources[0] ? "relative" : "absolute",
-        }}
-      ></video>
-
-      <video
-        id="home-video-1"
-        src={videoSources[1]}
-        muted
-        playsInline
-        controlsList="nodownload"
-        onEnded={onVidEnding}
-        className="home-video width-100"
-        style={{
-          paddingBottom: 5,
-          left: 0,
-          zIndex: videoSrc === videoSources[1] ? 2 : 0,
-          opacity: videoSrc === videoSources[1] ? 1 : 0,
-          position: videoSrc === videoSources[1] ? "relative" : "absolute",
-        }}
-      ></video>
-
       <BlackBar height={125} />
       <div className="home-news" style={{ marginTop: 5, marginBottom: 10 }}>
         <News />
