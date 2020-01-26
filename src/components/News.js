@@ -63,52 +63,32 @@ const News = () => {
                 ({ node: { title, slug, acf } }, i) => {
                   if (acf.video_1 && acf.video_1.url) {
                     return (
-                      <Link
-                        to={`/news/${slug}`}
+                      <video
                         style={{
-                          display: "flex",
-                          justifyContent: "center",
-                          height: "100%",
-                          width: "auto",
-                        }}
-                        key={i}
-                      >
-                        <video
-                          style={{
-                            height: "100%",
-                            maxHeight: 400,
-                            width: "auto",
-                          }}
-                          autoPlay
-                          muted
-                          loop
-                          src={acf.video_1.url}
-                        />
-                      </Link>
-                    )
-                  } else {
-                    return (
-                      <Link
-                        to={`/news/${slug}`}
-                        style={{
-                          display: "flex",
-                          justifyContent: "center",
                           maxHeight: 400,
                           height: isMobile ? "auto" : "100%",
                           width: "auto",
                         }}
+                        autoPlay
+                        muted
+                        loop
+                        src={acf.video_1.url}
+                      />
+                    )
+                  } else {
+                    return (
+                      <img
                         key={i}
-                      >
-                        <img
-                          style={{
-                            objectFit: coverOrContain,
-                            height: "100%",
-                          }}
-                          src={acf.news_post_image.url}
-                          alt={title}
-                          title={title}
-                        />
-                      </Link>
+                        style={{
+                          maxHeight: 400,
+                          height: isMobile ? "auto" : "100%",
+                          width: "auto",
+                          objectFit: coverOrContain,
+                        }}
+                        src={acf.news_post_image.url}
+                        alt={title}
+                        title={title}
+                      />
                     )
                   }
                 }
