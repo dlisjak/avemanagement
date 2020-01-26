@@ -6,10 +6,6 @@ import Slider from "./Slider"
 import TickerText from "./Ticker"
 
 const News = () => {
-  const [ref, inView, entry] = useInView({
-    /* Optional options */
-    threshold: 0,
-  })
   let isMobile
   let coverOrContain
   if (typeof window !== "undefined") {
@@ -78,7 +74,6 @@ const News = () => {
                         key={i}
                       >
                         <video
-                          ref={ref}
                           style={{
                             height: "100%",
                             maxHeight: 400,
@@ -103,7 +98,6 @@ const News = () => {
                         key={i}
                       >
                         <img
-                          ref={ref}
                           style={{
                             objectFit: coverOrContain,
                             height: "100%",

@@ -29,7 +29,7 @@ const TickerText = ({ title, left = false, noRepeat = false, width }) => {
         tickerRef.current.style.animationDuration = `${duration}s`
       }
     }
-    // setAnimationDuration()
+    setAnimationDuration()
   })
 
   if (titleTicker) {

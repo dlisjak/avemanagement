@@ -37,17 +37,20 @@ const Home = ({ data }) => {
     setPath()
   }, [])
 
+  useEffect(() => {
+    const mainVid = document.getElementById("home-video")
+
+    mainVid.load()
+    mainVid.play()
+  }, [videoSrc])
+
   const onVidEnding = () => {
     let key
     if (videoKey !== null) {
       key = 1 - videoKey
     }
 
-    // const nextVideo = document.getElementById(`home-video-${key}`)
-
     setVideoSrc(videoSources[key])
-
-    // nextVideo.play()
   }
 
   return (
@@ -59,6 +62,7 @@ const Home = ({ data }) => {
         id="home-video"
         src={videoSrc}
         muted
+        autoPlay
         playsInline
         controlsList="nodownload"
         onEnded={() => onVidEnding}
