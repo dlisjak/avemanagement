@@ -5,7 +5,10 @@ import Slider from "./Slider"
 import TickerText from "./Ticker"
 
 const News = () => {
-  const windowWidth = window.innerWidth <= 480 ? "auto" : "100%"
+  let isMobile
+  if (typeof window !== "undefined") {
+    isMobile = window.innerWidth < 480
+  }
 
   useEffect(() => {
     const muteVideos = () => {
@@ -61,15 +64,15 @@ const News = () => {
                       <Link
                         to={`/news/${slug}`}
                         style={{
-                          height: "auto",
-                          width: "100%",
+                          height: "100%",
+                          width: "auto",
                         }}
                         key={i}
                       >
                         <video
                           style={{
                             height: "auto",
-                            maxHeight: 300,
+                            maxHeight: 400,
                             width: "100%",
                           }}
                           autoPlay
@@ -83,16 +86,16 @@ const News = () => {
                       <Link
                         to={`/news/${slug}`}
                         style={{
-                          display: "flex",
                           maxHeight: 400,
-                          height: windowWidth,
-                          width: "100%",
+                          height: isMobile ? "auto" : "100%",
+                          width: isMobile ? "100%" : "auto",
                         }}
                         key={i}
                       >
                         <img
                           style={{
-                            objectFit: "cover",
+                            objectFit: "contain",
+                            height: "100%",
                           }}
                           src={acf.news_post_image.url}
                           alt={title}

@@ -1,11 +1,13 @@
 import React, { Fragment } from "react"
-import { Link } from "gatsby"
 
 import Slider from "./Slider"
 import TickerText from "./Ticker"
 
 const Instagram = ({ posts }) => {
-  const windowWidth = window.innerWidth <= 480 ? true : false
+  let isMobile
+  if (typeof window !== "undefined") {
+    isMobile = window.innerWidth < 480
+  }
 
   return (
     <Fragment>
@@ -24,7 +26,7 @@ const Instagram = ({ posts }) => {
           <img
             style={{
               maxHeight: 400,
-              height: windowWidth,
+              height: isMobile ? "auto" : "100%",
               width: "auto",
               objectFit: "cover",
             }}

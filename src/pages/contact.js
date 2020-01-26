@@ -7,9 +7,9 @@ import BlackBar from "../components/BlackBar"
 const Contact = () => {
   const dispatch = useContext(GlobalDispatchContext)
   let tickerText
-  let windowWidth
+  let isMobile
   if (typeof window !== "undefined") {
-    windowWidth = window.innerWidth
+    isMobile = window.innerWidth < 480
   }
 
   useEffect(() => {
@@ -85,7 +85,7 @@ const Contact = () => {
       <div
         className="flex flex-column contact-page-history content-padding"
         style={{
-          marginTop: windowWidth < 480 ? 0 : 50,
+          marginTop: isMobile < 480 ? 0 : 50,
           position: "relative",
         }}
       >

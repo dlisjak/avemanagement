@@ -15,9 +15,9 @@ const Search = ({ isShown, models, closeSearch }) => {
   const [isOpen, toggleOverlay] = useState(true)
   const [searchQuery, setSearchQuery] = useState("")
   const inputRef = useRef(null)
-  let windowWidth
+  let isMobile
   if (typeof window !== "undefined") {
-    windowWidth = window.innerWidth
+    isMobile = window.innerWidth < 480
   }
 
   useEffect(() => {
@@ -67,7 +67,7 @@ const Search = ({ isShown, models, closeSearch }) => {
         position: "fixed",
         zIndex: 999,
         background: "white",
-        width: windowWidth < 480 ? "100%" : "80%",
+        width: isMobile ? "100%" : "80%",
         maxWidth: 1366,
         height: "100%",
         top: 220,

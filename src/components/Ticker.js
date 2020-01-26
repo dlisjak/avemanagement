@@ -18,7 +18,13 @@ const TickerText = ({ title, left = false, noRepeat = false, width }) => {
     const setAnimationDuration = () => {
       const k = 27 / 4
       const v = 50 / 17
-      const duration = Math.ceil((titleTicker.length * k) / v)
+      let n
+      if (typeof window !== "undefined") {
+        n = window.innerWidth < 480 ? true : false
+      }
+      const duration = n
+        ? Math.ceil((titleTicker.length * k) / v)
+        : Math.ceil(titleTicker.length * k)
 
       if (tickerRef.current) {
         tickerRef.current.style.animationDuration = `${duration}s`
