@@ -25,6 +25,7 @@ const NewsPreviewVideos = ({ thumbnail }) => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          width: "20%",
         }}
       >
         <div

@@ -112,8 +112,13 @@ const News = ({
         <BlackBar height={100} />
         <div
           id="news-slideshow"
-          className="content-padding"
-          style={{ marginTop: 5, marginBottom: video ? 0 : 5, width: "100%" }}
+          className="content-padding flex justify-center"
+          style={{
+            marginTop: 5,
+            marginBottom: video ? 0 : 5,
+            width: "100%",
+            background: "#ccc",
+          }}
         >
           {image && !video && (
             <img
@@ -155,7 +160,6 @@ const News = ({
                       display: "block",
                       height: "100%",
                       minHeight: 250,
-                      maxHeight: 250,
                     }}
                     key={index}
                   >

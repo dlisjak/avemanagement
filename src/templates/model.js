@@ -99,6 +99,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
             marginBottom: tab === "videos" ? 0 : 5,
             flexDirection: tab === "bio" && "column",
             marginRight: tab === "bio" ? "35%" : 0,
+            background: "#ccc",
           }}
         >
           <div
