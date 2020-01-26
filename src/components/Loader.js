@@ -25,20 +25,17 @@ const Loader = () => {
     const showLogo = () => {
       setLogoShown(true)
     }
-    setBodyUnscrollable()
-    showLogo()
+    const displayLoader = () => {
+      setTimeout(() => {
+        setLoaderShown(false)
+        const bodyEl = document.querySelector("body")
+        bodyEl.classList.remove("overlay")
+      }, 1500)
+    }
     displayLoader()
-
-    return () => {}
+    showLogo()
+    setBodyUnscrollable()
   }, [])
-
-  const displayLoader = () => {
-    setTimeout(() => {
-      setLoaderShown(false)
-      const bodyEl = document.querySelector("body")
-      bodyEl.classList.remove("overlay")
-    }, 1500)
-  }
 
   return (
     isLoaderShown && (

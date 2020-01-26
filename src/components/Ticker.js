@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from "react"
 
 const TickerText = ({ title, left = false, noRepeat = false, width }) => {
   const tickerRef = useRef(null)
-  const tickerRef2 = useRef(null)
 
   const reg = !noRepeat
     ? new RegExp("([^a-zA-Z#@])", "g")
@@ -29,11 +28,8 @@ const TickerText = ({ title, left = false, noRepeat = false, width }) => {
       if (tickerRef.current) {
         tickerRef.current.style.animationDuration = `${duration}s`
       }
-      if (tickerRef2.current) {
-        tickerRef2.current.style.animationDuration = `${duration}s`
-      }
     }
-    setAnimationDuration()
+    // setAnimationDuration()
   })
 
   if (titleTicker) {
@@ -76,7 +72,7 @@ const TickerText = ({ title, left = false, noRepeat = false, width }) => {
             </div>
           )}
           {!left && (
-            <div id="tickerReverse" ref={tickerRef2}>
+            <div id="tickerReverse" ref={tickerRef}>
               {data}
             </div>
           )}

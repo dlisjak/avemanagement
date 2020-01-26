@@ -21,9 +21,7 @@ const Category = ({ data, pageContext }) => {
   useEffect(() => {
     const setPath = () => {
       localStorage.removeItem("ave-ticker")
-      tickerText = typeof window !== "undefined" ? window.location.pathname : ""
-      dispatch({ type: "SET_PATH", payload: tickerText })
-      localStorage.setItem("ave-ticker", tickerText)
+      // localStorage.setItem("ave-ticker", tickerText)
     }
 
     const anchorScroll = () => {

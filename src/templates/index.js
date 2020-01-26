@@ -41,7 +41,7 @@ const Home = ({ pageContext, data }) => {
     const removeOverlay = () => {
       setTimeout(() => {
         setLoaderShown(false)
-      }, 1100)
+      }, 1500)
     }
 
     removeOverlay()
