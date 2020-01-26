@@ -1,6 +1,5 @@
 import React, { useEffect } from "react"
 import { StaticQuery, Link, graphql } from "gatsby"
-import { useInView } from "react-intersection-observer"
 
 import Slider from "./Slider"
 import TickerText from "./Ticker"
@@ -80,6 +79,7 @@ const News = () => {
                             width: "auto",
                           }}
                           autoPlay
+                          muted
                           loop
                           src={acf.video_1.url}
                         />
