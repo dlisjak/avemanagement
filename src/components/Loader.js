@@ -21,23 +21,23 @@ const Loader = () => {
     const setBodyUnscrollable = () => {
       const bodyEl = document.querySelector("body")
       bodyEl.classList.add("overlay")
+
+      window.addEventListener("DOMContentLoaded", () => {
+        hideLoader()
+      })
     }
     const showLogo = () => {
       setLogoShown(true)
     }
+
     setBodyUnscrollable()
     showLogo()
-    displayLoader()
-
-    return () => {}
   }, [])
 
-  const displayLoader = () => {
-    setTimeout(() => {
-      setLoaderShown(false)
-      const bodyEl = document.querySelector("body")
-      bodyEl.classList.remove("overlay")
-    }, 1500)
+  const hideLoader = () => {
+    setLoaderShown(false)
+    const bodyEl = document.querySelector("body")
+    bodyEl.classList.remove("overlay")
   }
 
   return (

@@ -51,6 +51,10 @@ const News = ({
     const initGrid = async () => {
       const grid = document.querySelector(".grid")
 
+      let tickerText
+      tickerText = localStorage.getItem("ave-ticker")
+      dispatch({ type: "SET_PATH", payload: tickerText })
+
       if (typeof window !== "undefined") {
         const Colcade = require("colcade")
         const colc = new Colcade(grid, {
@@ -58,11 +62,6 @@ const News = ({
           items: ".grid-item",
         })
       }
-    }
-    if (typeof window !== "undefined") {
-      let tickerText
-      tickerText = localStorage.getItem("ave-ticker")
-      dispatch({ type: "SET_PATH", payload: tickerText })
     }
 
     const initGallery = () => {}
