@@ -1097,6 +1097,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   letter-spacing: 0px;
+  perspective: 1000;
+  -webkit-perspective: 1000;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 body.overlay {
   height: 100vh;
