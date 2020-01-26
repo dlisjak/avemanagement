@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react"
 import Header from "./header"
 import GetToTop from "./getToTop"
 import Loader from "../components/Loader"
-import "./layout.css"
 
 const Layout = ({ children, isHomepage }) => {
   const [isMobile, toggleIsMobile] = useState(false)
