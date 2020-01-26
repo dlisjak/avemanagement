@@ -46,18 +46,4 @@ const Instagram = ({ posts }) => {
   )
 }
 
-export const query = graphql`
-  query MyQuery {
-    allInstaNode(limit: 10) {
-      edges {
-        node {
-          localFile {
-            publicURL
-          }
-        }
-      }
-    }
-  }
-`
-
 export default Instagram
