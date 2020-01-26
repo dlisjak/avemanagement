@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useRef, useState } from "react"
+import React, { useEffect, useContext, useState } from "react"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -7,21 +7,22 @@ import News from "../components/News"
 import Instagram from "../components/Instagram"
 import Loader from "../components/Loader"
 
-// import Video1 from "../videos/main-video-1.mp4"
-// import Video2 from "../videos/main-video-2.mp4"
+import Video1 from "../videos/main-video-1.mp4"
+import Video2 from "../videos/main-video-2.mp4"
 
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 import BlackBar from "../components/BlackBar"
 import { graphql } from "gatsby"
 import AddressTicker from "../components/AddressTicker"
 
-const Home = ({ pageContext, data }) => {
-  const dispatch = useContext(GlobalDispatchContext)
-  // const [videoSrc, setVideoSrc] = useState(null)
-  // const [videoKey, setVideoKey] = useState(null)
-  const [isLoaderShown, setLoaderShown] = useState(true)
+const Home = ({ data }) => {
+  const videoSources = [Video1, Video2]
+  const videoKey = Math.round(Math.random())
 
-  // const videoSources = [Video1, Video2]
+  const dispatch = useContext(GlobalDispatchContext)
+
+  const [videoSrc, setVideoSrc] = useState(videoSources[videoKey])
+
   let tickerText
 
   useEffect(() => {
@@ -32,40 +33,40 @@ const Home = ({ pageContext, data }) => {
         dispatch({ type: "SET_PATH", payload: tickerText })
       }
     }
-    // const setVideo = () => {
-    //   const key = Math.round(Math.random())
-    //   const e = new Event("onMount")
-    //   onVidEnding(e, key)
-    // }
 
-    const removeOverlay = () => {
-      setTimeout(() => {
-        setLoaderShown(false)
-      }, 1500)
-    }
-
-    removeOverlay()
     setPath()
-    // setVideo()
   }, [])
 
-  // const onVidEnding = (e, key) => {
-  //   if (videoKey !== null) {
-  //     key = 1 - videoKey
-  //   }
+  const onVidEnding = () => {
+    let key
+    if (videoKey !== null) {
+      key = 1 - videoKey
+    }
 
-  //   const nextVideo = document.getElementById(`home-video-${key}`)
+    // const nextVideo = document.getElementById(`home-video-${key}`)
 
-  //   setVideoKey(key)
-  //   setVideoSrc(videoSources[key])
+    setVideoSrc(videoSources[key])
 
-  //   nextVideo.play()
-  // }
+    // nextVideo.play()
+  }
 
   return (
     <Layout isHomepage={true}>
-      {isLoaderShown && <Loader />}
+      <Loader />
       <SEO title="Home" />
+
+      <video
+        id="home-video"
+        src={videoSrc}
+        muted
+        playsInline
+        controlsList="nodownload"
+        onEnded={() => onVidEnding}
+        className="home-video width-100"
+        style={{
+          paddingBottom: 5,
+        }}
+      ></video>
 
       <BlackBar height={125} />
       <div className="home-news" style={{ marginTop: 5, marginBottom: 10 }}>

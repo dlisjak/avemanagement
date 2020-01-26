@@ -104,9 +104,15 @@ module.exports = {
         username: `avemanagement`,
       },
     },
-    `gatsby-plugin-transition-link`,
+    {
+      resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
+      options: {
+        devMode: true,
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-preload-fonts`,
+    `gatsby-plugin-preact`,
   ],
 }
