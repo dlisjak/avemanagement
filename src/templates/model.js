@@ -107,7 +107,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
             className="flex model__main-container flex-column"
             style={{
               justifyContent: "space-between",
-              zIndex: 100,
+              zIndex: 98,
               position: tab === "videos" && "absolute",
               top: 2,
               bottom: 7,
@@ -115,7 +115,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
           >
             <div
               className="flex model__menu"
-              style={{ top: -5, position: "relative" }}
+              style={{ top: -5, position: "relative", zIndex: 100 }}
             >
               {acf.portfolio && (
                 <AnchorLink
@@ -124,6 +124,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                   onClick={() => setTab("portfolio")}
                   style={{
                     fontWeight: "bold",
+                    zIndex: 100,
                     cursor: "pointer",
                     color: tab === "portfolio" ? "black" : "rgba(0,0,0,0.6)",
                     textDecoration: "none",
@@ -139,6 +140,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                   onClick={() => setTab("videos")}
                   style={{
                     fontWeight: "bold",
+                    zIndex: 100,
                     cursor: "pointer",
                     color: tab === "videos" ? "black" : "rgba(0,0,0,0.6)",
                     textDecoration: "none",
@@ -154,6 +156,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                   onClick={() => setTab("bio")}
                   style={{
                     cursor: "pointer",
+                    zIndex: 100,
                     color: tab === "bio" ? "black" : "rgba(0,0,0,0.6)",
                     fontWeight: "bold",
                     textDecoration: "none",
@@ -171,6 +174,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                   target="_blank"
                   style={{
                     cursor: "pointer",
+                    zIndex: 100,
                     fontWeight: "bold",
                     color: "rgba(0,0,0,0.6)",
                     textDecoration: "none",
@@ -186,15 +190,14 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
             <>
               <Swiper loop key={1} {...params} getSwiper={updateSwiper}>
                 {acf.portfolio.map(({ url, alt, title, name }, i) => (
-                  <div key={i}>
-                    <img
-                      src={url}
-                      alt={alt}
-                      className="model-portfolio-image--swiper"
-                      title={title}
-                      name={name}
-                    />
-                  </div>
+                  <img
+                    key={i}
+                    src={url}
+                    alt={alt}
+                    className="model-portfolio-image--swiper"
+                    title={title}
+                    name={name}
+                  />
                 ))}
               </Swiper>
               <div

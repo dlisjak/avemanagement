@@ -117,14 +117,12 @@ const Header = ({ isMobile, isTablet }) => {
           <MobileNav
             toggleMenu={toggleMenu}
             isVisible={isVisible}
-            path={state.path}
             data={data}
           />
         ) : (
           <DesktopNav
             toggleMenu={toggleMenu}
             isVisible={isVisible}
-            path={state.path}
             data={data}
           />
         )}

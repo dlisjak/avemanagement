@@ -16,7 +16,6 @@ import { graphql } from "gatsby"
 import AddressTicker from "../components/AddressTicker"
 
 const Home = ({ data }) => {
-  console.log(data)
   const videoSources = [Video1, Video2]
   const videoKey = Math.round(Math.random())
 
@@ -37,10 +36,14 @@ const Home = ({ data }) => {
   }, [])
 
   useEffect(() => {
-    const mainVid = document.getElementById("home-video")
+    const loadAndPlayVideo = () => {
+      const mainVid = document.getElementById("home-video")
 
-    mainVid.load()
-    mainVid.play()
+      mainVid.load()
+      mainVid.play()
+    }
+
+    loadAndPlayVideo()
   }, [videoSrc])
 
   const onVidEnding = () => {
@@ -62,9 +65,8 @@ const Home = ({ data }) => {
         src={videoSrc}
         muted
         autoPlay
-        playsInline
         controlsList="nodownload"
-        onEnded={() => onVidEnding}
+        onEnded={onVidEnding}
         className="home-video width-100"
         style={{
           paddingBottom: 5,
