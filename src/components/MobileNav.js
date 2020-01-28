@@ -4,8 +4,19 @@ import posed, { PoseGroup } from "react-pose"
 import NavigationItem from "./NavigationItem"
 
 const MobileNavPose = posed.div({
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 },
+  hidden: {
+    minHeight: 0,
+    height: 0,
+    paddingTop: 0,
+    paddingBottom: 0,
+    transition: { duration: 750 },
+  },
+  visible: {
+    minHeight: "100vh",
+    paddingTop: 25,
+    paddingBottom: 50,
+    transition: { duration: 1000 },
+  },
 })
 
 const ChildNav = posed.div({
@@ -62,17 +73,16 @@ const MobileNav = ({ isVisible, data, toggleMenu }) => {
       className="flex flex-column"
       pose={isVisible ? "visible" : "hidden"}
       style={{
-        position: "absolute",
+        position: "relative",
         display: "flex",
-        top: 74,
         left: 0,
         width: "100%",
-        height: "100vh",
+        height: "100%",
         background: `white`,
-        zIndex: 999,
+        zIndex: 0,
         pointerEvents: isVisible ? "inherit" : "none",
         alignItems: "center",
-        paddingTop: 25,
+        overflow: "hidden",
       }}
     >
       {data.allWordpressMenusMenusItems.edges[0].node.items.map(

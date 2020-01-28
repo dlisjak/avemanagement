@@ -81,7 +81,7 @@ const Header = ({ isMobile, isTablet }) => {
         background: "white",
       }}
     >
-      <Link to="/">
+      <Link to="/" style={{ zIndex: 99, position: "relative" }}>
         <img
           src={Logo}
           className="logo"
@@ -103,6 +103,7 @@ const Header = ({ isMobile, isTablet }) => {
           position: "relative",
           flexDirection: "column",
           width: "100%",
+          height: 75,
         }}
       >
         <div
