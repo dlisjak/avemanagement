@@ -5,8 +5,6 @@ import Slider from "./Slider"
 import TickerText from "./Ticker"
 
 const News = ({ posts }) => {
-  console.log(posts)
-
   let isMobile
   let coverOrContain
   if (typeof window !== "undefined") {
