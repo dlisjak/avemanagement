@@ -42,7 +42,7 @@ const News = ({ posts }) => {
                 <video
                   style={{
                     maxHeight: 400,
-                    height: isMobile ? "auto" : "100%",
+                    height: isMobile ? "auto" : 400,
                     width: "auto",
                   }}
                   autoPlay
@@ -58,7 +58,7 @@ const News = ({ posts }) => {
                   key={i}
                   style={{
                     maxHeight: 400,
-                    height: isMobile ? "auto" : "100%",
+                    height: isMobile ? "auto" : 400,
                     width: "auto",
                     objectFit: coverOrContain,
                   }}
