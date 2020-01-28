@@ -121,9 +121,7 @@
     padding: 5px 30%;
     margin-top: 100px;
   }
-  .news-card-title {
-    font-size: 1.7rem;
-  }
+
   div.ticker__page--fixed {
     width: 80%;
   }
@@ -346,6 +344,9 @@
 @media only screen and (min-width: 851px) {
   .model__menu {
     flex-direction: column;
+    top: 25px;
+    font-family: "helveticaNeueCondensed";
+    font-size: 2.5rem;
   }
   .masonry-with-columns {
     columns: 4 auto;
@@ -357,15 +358,18 @@
     max-width: 300px;
     min-width: 200px;
     font-size: 20px;
+    padding-left: 2px;
   }
   .model-bio-property,
   .model-bio-value {
-    font-size: 16px;
+    font-size: 2rem;
+    line-height: 1;
   }
   .category-card-title {
     line-height: 0.8;
-    padding-top: 5px;
+    padding-top: 2px;
     padding-bottom: 25px;
+    font-size: 3rem;
   }
   .contact-input--date {
     padding-right: 100px;
@@ -584,6 +588,20 @@
 
 .masonry-with-columns {
   column-gap: 5px;
+}
+
+.model-bio-property,
+.model-bio-value {
+  font-family: "HelveticaNeueCondensed";
+  line-height: 0.8;
+}
+
+.model-bio-property {
+  color: white;
+}
+
+.model-bio-value {
+  color: black;
 }
 
 .model-portfolio-image--swiper {
@@ -1065,18 +1083,27 @@ div.ticker__page--fixed {
 }
 
 @font-face {
-  font-family: "HelveticaNeue";
-  font-weight: 700;
-  src: url("../fonts/HelveticaNeueHeavy.woff") format("woff");
-  src: url("../fonts/HelveticaNeueHeavy.woff2") format("woff2");
+  font-family: "HelveticaNeueCondensed";
+  font-weight: 400;
+  font-style: normal;
+  src: url("../fonts/HelveticaNeue-HeavyCondensed.woff") format("woff");
+  src: url("../fonts/HelveticaNeue-HeavyCondensed.woff2") format("woff2");
 }
 
 @font-face {
   font-family: "HelveticaNeue";
-  font-weight: 400;
+  font-weight: 700;
   font-style: normal;
-  src: url("../fonts/HelveticaNeue-Light.woff") format("woff");
-  src: url("../fonts/HelveticaNeue-Light.woff2") format("woff2");
+  src: url("../fonts/HelveticaNeue-Heavy.woff") format("woff");
+  src: url("../fonts/HelveticaNeue-Heavy.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "HelveticaNeueCondensed";
+  font-weight: 900;
+  font-style: normal;
+  src: url("../fonts/HelveticaNeue-BlackCondensed.woff") format("woff");
+  src: url("../fonts/HelveticaNeue-BlackCondensed.woff2") format("woff2");
 }
 
 @font-face {
@@ -1086,7 +1113,7 @@ div.ticker__page--fixed {
 }
 
 html {
-  font-family: "HelveticaNeue";
+  font-family: "HelveticaNeueCondensed";
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   letter-spacing: 0px;
@@ -1313,7 +1340,7 @@ html {
 }
 body {
   color: hsla(0, 0%, 0%, 0.8);
-  font-family: "HelveticaNeue";
+  font-family: "HelveticaNeueCondensed";
   font-weight: lighter;
   word-wrap: break-word;
   font-kerning: normal;
@@ -1342,13 +1369,15 @@ h1 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: "HelveticaNeue";
-  font-weight: bold;
+  font-family: "HelveticaNeueCondensed";
+  font-weight: 900;
   text-rendering: optimizeLegibility;
   font-size: 2.25rem;
   line-height: 1.1;
 }
 h2 {
+  font-size: 4.5rem;
+  letter-spacing: -2px;
   margin-left: 0;
   margin-right: 0;
   margin-top: 0;
@@ -1357,10 +1386,9 @@ h2 {
   padding-right: 0;
   padding-top: 0;
   color: inherit;
-  font-family: "HelveticaNeue";
-  font-weight: bold;
+  font-family: "HelveticaNeueCondensed";
+  font-weight: 900;
   text-rendering: optimizeLegibility;
-  font-size: 3.2rem;
   line-height: 0.8;
 }
 h3 {
@@ -1373,8 +1401,8 @@ h3 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: "HelveticaNeue";
-  font-weight: bold;
+  font-family: "HelveticaNeueCondensed";
+  font-weight: 900;
   text-rendering: optimizeLegibility;
   font-size: 1.7rem;
   line-height: 1.1;
@@ -1389,8 +1417,8 @@ h4 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: "HelveticaNeue";
-  font-weight: bold;
+  font-family: "HelveticaNeueCondensed";
+  font-weight: 900;
   text-rendering: optimizeLegibility;
   font-size: 1rem;
   line-height: 1.1;
@@ -1405,8 +1433,8 @@ h5 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: "HelveticaNeue";
-  font-weight: bold;
+  font-family: "HelveticaNeueCondensed";
+  font-weight: 900;
   text-rendering: optimizeLegibility;
   font-size: 0.85028rem;
   line-height: 1.1;
@@ -1421,8 +1449,8 @@ h6 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: "HelveticaNeue";
-  font-weight: bold;
+  font-family: "HelveticaNeueCondensed";
+  font-weight: 900;
   text-rendering: optimizeLegibility;
   font-size: 0.78405rem;
   line-height: 1.1;
@@ -1696,7 +1724,7 @@ tt,
 code {
   background-color: hsla(0, 0%, 0%, 0.04);
   border-radius: 3px;
-  font-family: "HelveticaNeue";
+  font-family: "HelveticaNeueCondensed";
   padding: 0;
   padding-top: 0.2em;
   padding-bottom: 0.2em;

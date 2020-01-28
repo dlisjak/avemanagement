@@ -104,9 +104,9 @@ const News = ({
           }}
           style={{
             fontWeight: 700,
-            color: "#ccc",
+            color: "black",
             marginTop: 0,
-            marginBottom: 5,
+            marginBottom: -10,
           }}
         />
         <BlackBar height={100} />
@@ -115,6 +115,7 @@ const News = ({
           className="content-padding flex justify-center"
           style={{
             marginTop: 5,
+            padding: "25 0",
             marginBottom: video ? 0 : 5,
             width: "100%",
             background: "#ccc",

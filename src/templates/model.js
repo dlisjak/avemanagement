@@ -97,9 +97,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
             marginTop: 5,
             position: "relative",
             marginBottom: tab === "videos" ? 0 : 5,
-            flexDirection: tab === "bio" && "column",
-            marginRight: tab === "bio" ? "35%" : 0,
-            background: "#ccc",
+            background: tab === "bio" ? "white" : "#ccc",
           }}
         >
           <div
@@ -111,11 +109,13 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
               position: tab === "videos" && "absolute",
               top: 2,
               bottom: 7,
+              paddingBottom: 25,
+              width: tab === "bio" && 200,
             }}
           >
             <div
               className="flex model__menu"
-              style={{ top: -5, position: "relative", zIndex: 100 }}
+              style={{ position: "relative", zIndex: 100, lineHeight: 0.9 }}
             >
               {acf.portfolio && (
                 <AnchorLink
@@ -126,7 +126,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                     fontWeight: "bold",
                     zIndex: 100,
                     cursor: "pointer",
-                    color: tab === "portfolio" ? "black" : "rgba(0,0,0,0.6)",
+                    color: tab === "portfolio" ? "white" : "black",
                     textDecoration: "none",
                   }}
                 >
@@ -142,7 +142,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                     fontWeight: "bold",
                     zIndex: 100,
                     cursor: "pointer",
-                    color: tab === "videos" ? "black" : "rgba(0,0,0,0.6)",
+                    color: tab === "videos" ? "white" : "black",
                     textDecoration: "none",
                   }}
                 >
@@ -157,7 +157,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                   style={{
                     cursor: "pointer",
                     zIndex: 100,
-                    color: tab === "bio" ? "black" : "rgba(0,0,0,0.6)",
+                    color: tab === "bio" ? "rgba(0,0,0,0.7)" : "black",
                     fontWeight: "bold",
                     textDecoration: "none",
                   }}
@@ -176,7 +176,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                     cursor: "pointer",
                     zIndex: 100,
                     fontWeight: "bold",
-                    color: "rgba(0,0,0,0.6)",
+                    color: "black",
                     textDecoration: "none",
                   }}
                 >
@@ -186,51 +186,64 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
             </div>
             {tab !== "bio" && <Bio acf={acf} />}
           </div>
-          {tab === "portfolio" && (
-            <>
-              <Swiper loop key={1} {...params} getSwiper={updateSwiper}>
-                {acf.portfolio.map(({ url, alt, title, name }, i) => (
-                  <img
-                    key={i}
-                    src={url}
-                    alt={alt}
-                    className="model-portfolio-image--swiper"
-                    title={title}
-                    name={name}
-                  />
-                ))}
-              </Swiper>
-              <div
-                className="absolute model-slider-navigate prev"
-                onClick={navigateSliderPrev}
-                style={{
-                  height: "100%",
-                  width: "50%",
-                  left: 0,
-                  zIndex: 99,
-                  maxHeight: 760,
-                }}
-              />
-              <div
-                className="absolute model-slider-navigate next"
-                onClick={navigateSliderNext}
-                style={{
-                  height: "100%",
-                  width: "50%",
-                  right: 0,
-                  zIndex: 99,
-                  maxHeight: 760,
-                }}
-              />
-            </>
-          )}
-          {tab === "bio" && (
+          <div style={{ display: tab === "portfolio" ? "block" : "none" }}>
+            <Swiper loop key={1} {...params} getSwiper={updateSwiper}>
+              {acf.portfolio.map(({ url, alt, title, name }, i) => (
+                <img
+                  key={i}
+                  src={url}
+                  alt={alt}
+                  className="model-portfolio-image--swiper"
+                  title={title}
+                  name={name}
+                  style={{ padding: "30px 0" }}
+                />
+              ))}
+            </Swiper>
             <div
-              dangerouslySetInnerHTML={{ __html: acf.about }}
-              style={{ width: "100%", marginTop: 50 }}
+              className="absolute model-slider-navigate prev"
+              onClick={navigateSliderPrev}
+              style={{
+                position: "absolute",
+                top: 0,
+                height: "100%",
+                width: "50%",
+                left: 0,
+                zIndex: 99,
+                maxHeight: 820,
+              }}
             />
-          )}
-          {tab === "videos" && <ModelVideo videoUrl={videoUrl} />}
+            <div
+              className="absolute model-slider-navigate next"
+              onClick={navigateSliderNext}
+              style={{
+                position: "absolute",
+                top: 0,
+                height: "100%",
+                width: "50%",
+                right: 0,
+                zIndex: 99,
+                maxHeight: 820,
+              }}
+            />
+          </div>
+          <div
+            dangerouslySetInnerHTML={{ __html: acf.about }}
+            style={{
+              width: "100%",
+              marginTop: 200,
+              fontSize: "1.35rem",
+              lineHeight: 1.2,
+              textTransform: "none",
+              display: tab === "bio" ? "block" : "none",
+            }}
+          />
+          <div
+            className="width-100"
+            style={{ display: tab === "videos" ? "block" : "none" }}
+          >
+            <ModelVideo videoUrl={videoUrl} />
+          </div>
         </div>
 
         <BlackBar height={100} />

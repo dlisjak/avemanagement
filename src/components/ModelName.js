@@ -4,7 +4,7 @@ const ModelName = ({ firstName, lastName }) => {
   return (
     <h2
       className="flex model__name flex-column content-padding relative"
-      style={{ marginBottom: 5 }}
+      style={{ marginBottom: -10, color: "black" }}
     >
       <span>{firstName}</span>
       <span>{lastName}</span>

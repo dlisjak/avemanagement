@@ -67,13 +67,14 @@ const Category = ({ data, pageContext }) => {
           style={{
             position: "absolute",
             right: 0,
-            top: -20,
+            fontSize: "2rem",
+            top: "-1.7rem",
             background: 0,
             border: 0,
             fontWeight: 700,
             padding: 0,
             zIndex: 9999,
-            color: "#ccc",
+            color: "black",
           }}
         >
           SEARCH
