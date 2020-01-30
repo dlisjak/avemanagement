@@ -65,20 +65,23 @@ const Search = ({ isShown, models, closeSearch }) => {
       style={{
         display: isShown && isOpen ? "block" : "none",
         position: "fixed",
-        zIndex: 999,
+        zIndex: 999999,
         background: "white",
-        width: isMobile ? "100%" : "80%",
-        maxWidth: 1366,
+        width: "100%",
+        maxWidth: 1440,
         height: "100%",
-        top: 220,
-        overflow: "scroll",
+        top: isMobile ? 150 : 220,
         paddingBottom: 200,
       }}
     >
       <TickerText title="SEARCH" />
       <div
         className="flex flex-column search-queries"
-        style={{ paddingTop: 50, borderBottom: "1px solid", marginBottom: 20 }}
+        style={{
+          paddingTop: 50,
+          borderBottom: "1px solid",
+          marginBottom: 20,
+        }}
       >
         <button
           onClick={e => setSearchGender(e, null)}
@@ -113,11 +116,19 @@ const Search = ({ isShown, models, closeSearch }) => {
         />
       </div>
 
-      <BlackBar height={100} />
+      <BlackBar height={isMobile ? 50 : 100} />
 
       <div
         className="flex flex-column search-queries"
-        style={{ paddingTop: 50, paddingBottom: 50, marginBottom: 150 }}
+        style={{
+          paddingTop: 20,
+          paddingBottom: 50,
+          marginBottom: 150,
+          paddingBottom: 275,
+          overflow: "scroll",
+          height: "100%",
+          width: "100%",
+        }}
       >
         {sortedModels.map(({ node }, index, arr) => {
           if (searchQuery) {
@@ -174,8 +185,8 @@ const Search = ({ isShown, models, closeSearch }) => {
           bottom: 0,
           padding: 10,
           background: "white",
-          width: "80%",
-          maxWidth: 1366,
+          width: "100%",
+          maxWidth: 1440,
           justifyContent: "spaceBetween",
         }}
       >

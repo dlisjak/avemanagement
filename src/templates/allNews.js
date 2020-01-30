@@ -11,22 +11,10 @@ import AddressTicker from "../components/AddressTicker"
 const NewsPage = ({ data, pageContext }) => {
   const dispatch = useContext(GlobalDispatchContext)
   const { currentPage, numOfPages } = pageContext
-  let Colcade
   let tickerText
 
   useEffect(() => {
     // componentDidMount
-    const initGrid = async () => {
-      const grid = document.querySelector(".grid")
-
-      if (typeof window !== "undefined") {
-        Colcade = require("colcade")
-        const colc = new Colcade(grid, {
-          columns: ".grid-col",
-          items: ".grid-item",
-        })
-      }
-    }
     const setPath = () => {
       localStorage.removeItem("ave-ticker")
       tickerText = window.location.pathname
@@ -34,7 +22,6 @@ const NewsPage = ({ data, pageContext }) => {
       dispatch({ type: "SET_PATH", payload: tickerText })
     }
     setPath()
-    initGrid()
   }, [])
 
   const formatContent = content => {
@@ -42,11 +29,6 @@ const NewsPage = ({ data, pageContext }) => {
     const lastContent = splitContent.length
     content = splitContent[lastContent - 1]
     content = content.replace("</p>", "")
-    content = content.split(" ")
-    content[0] = `<b><span class="news-bold-title">${content[0]}`
-    content[1] = `${content[1]}</span> <br />`
-    content = content.join(" ")
-    content += "</b>"
     return content
   }
 
@@ -54,52 +36,47 @@ const NewsPage = ({ data, pageContext }) => {
     <Layout>
       <Pagination numOfPages={numOfPages} currentPage={currentPage} />
       <BlackBar height={100} />
-      <div id="content" className="grid" style={{ marginTop: 5 }}>
-        <div className="grid-col grid-col--1"></div>
-        <div className="grid-col grid-col--2"></div>
-        <div className="grid-col grid-col--3"></div>
-        <div className="grid-col grid-col--4"></div>
-
-        {data.allWordpressWpNews.edges.map(
-          ({ node: { title, content, slug, acf } }, index) => {
-            const ratio = acf.news_post_image.height / acf.news_post_image.width
-            return (
-              <div
-                className="flex-column justify-between grid-item"
-                key={index}
-              >
-                <Link
-                  to={`/news/${slug}`}
-                  className="all-news-card"
-                  style={{ textDecoration: "none" }}
+      <div id="content" className="flex flex-wrap" style={{ marginTop: 5 }}>
+        <div className="masonry-with-columns width-100">
+          {data.allWordpressWpNews.edges.map(
+            ({ node: { title, content, slug, acf } }, index) => {
+              const ratio =
+                acf.news_post_image.height / acf.news_post_image.width
+              return (
+                <div
+                  className="flex-column justify-between grid-item"
+                  key={index}
                 >
-                  <SmoothImage
-                    src={acf.news_post_image.url}
-                    alt={title}
-                    transitionTime={0.5}
-                    containerStyles={{
-                      paddingBottom: `${ratio * 100}%`,
-                    }}
-                    style={{ marginBottom: 0 }}
-                  />
-                  <h3
-                    dangerouslySetInnerHTML={{ __html: formatContent(content) }}
-                    style={{
-                      fontWeight: 400,
-                      color: "rgba(0,0,0,0.2)",
-                      paddingBottom: 25,
-                      marginBottom: 0,
-                      textDecoration: "none",
-                      fontSize: "1.7rem",
-                      lineHeight: 0.8,
-                      paddingTop: 5,
-                    }}
-                  />
-                </Link>
-              </div>
-            )
-          }
-        )}
+                  <Link
+                    to={`/news/${slug}`}
+                    className="all-news-card category-card"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <img
+                      className="model-portfolio-image"
+                      src={acf.news_post_image.url}
+                      alt={title}
+                      style={{ marginBottom: 0 }}
+                    />
+                    <h3
+                      className="category-card-title flex flex-wrap width-100 relative"
+                      dangerouslySetInnerHTML={{
+                        __html: formatContent(content),
+                      }}
+                      style={{
+                        paddingBottom: 25,
+                        marginBottom: 0,
+                        textDecoration: "none",
+                        lineHeight: 0.8,
+                        marginTop: -7,
+                      }}
+                    />
+                  </Link>
+                </div>
+              )
+            }
+          )}
+        </div>
       </div>
       <AddressTicker />
     </Layout>

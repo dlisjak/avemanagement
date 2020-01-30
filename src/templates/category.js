@@ -66,9 +66,10 @@ const Category = ({ data, pageContext }) => {
           onClick={() => openSearch()}
           style={{
             position: "absolute",
+            fontFamily: "HelveticaNeueCondensed",
             right: 0,
-            fontSize: "2rem",
-            top: "-1.7rem",
+            fontSize: "2.6rem",
+            top: "-2.2rem",
             background: 0,
             border: 0,
             fontWeight: 700,

@@ -49,7 +49,7 @@ const TickerText = ({ title, left = false, noRepeat = false, width }) => {
         className="ticker__menu ticker flex width-100"
         style={{ fontWeight: 700, marginTop: 5 }}
       >
-        <div id="tickerwrap">
+        <div id="tickerwrap" style={{ top: 5, position: "relative" }}>
           <div id="ticker" ref={tickerRef}>
             {data}
           </div>
@@ -60,11 +60,16 @@ const TickerText = ({ title, left = false, noRepeat = false, width }) => {
     return (
       <div
         className="ticker__page ticker flex width-100"
-        style={{ fontWeight: 700, maxWidth: 1366 }}
+        style={{ fontWeight: 700, maxWidth: 1440 }}
       >
         <div
           id="tickerwrap"
-          style={{ paddingRight: left && "100%", paddingLeft: !left && "100%" }}
+          style={{
+            paddingRight: left && "100%",
+            paddingLeft: !left && "100%",
+            top: 5,
+            position: "relative",
+          }}
         >
           {left && (
             <div id="ticker" ref={tickerRef} style={{ marginRight: 5 }}>

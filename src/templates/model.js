@@ -27,6 +27,13 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
     ({ video, thumbnail }) => video !== null && thumbnail !== null
   )
 
+  let isMobile
+  let isTablet
+  if (typeof window !== "undefined") {
+    isMobile = window.innerWidth < 480
+    isTablet = window.innerWidth < 850
+  }
+
   let params = {
     centeredSlides: true,
     autoHeight: true,
@@ -98,6 +105,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
             position: "relative",
             marginBottom: tab === "videos" ? 0 : 5,
             background: tab === "bio" ? "white" : "#ccc",
+            flexDirection: tab === "bio" && (isMobile || isTablet) && "column",
           }}
         >
           <div
@@ -109,13 +117,18 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
               position: tab === "videos" && "absolute",
               top: 2,
               bottom: 7,
-              paddingBottom: 25,
-              width: tab === "bio" && 200,
+              paddingBottom: isMobile ? 10 : 25,
+              width: tab === "bio" && !isMobile && !isTablet && 200,
             }}
           >
             <div
               className="flex model__menu"
-              style={{ position: "relative", zIndex: 100, lineHeight: 0.9 }}
+              style={{
+                position: "relative",
+                zIndex: 100,
+                lineHeight: 0.9,
+                fontFamily: "HelveticaNeueCondensed",
+              }}
             >
               {acf.portfolio && (
                 <AnchorLink
@@ -196,7 +209,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                   className="model-portfolio-image--swiper"
                   title={title}
                   name={name}
-                  style={{ padding: "30px 0" }}
+                  style={{ padding: isMobile ? "10px 0" : "30px 0" }}
                 />
               ))}
             </Swiper>
@@ -231,7 +244,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
             dangerouslySetInnerHTML={{ __html: acf.about }}
             style={{
               width: "100%",
-              marginTop: 200,
+              marginTop: !isMobile && !isTablet && 200,
               fontSize: "1.35rem",
               lineHeight: 1.2,
               textTransform: "none",

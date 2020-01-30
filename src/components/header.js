@@ -14,7 +14,7 @@ import MobileNav from "./MobileNav"
 import BlackBar from "./BlackBar"
 
 const CollapsingTicker = posed(Link)({
-  hidden: { top: 55 },
+  hidden: { top: 50 },
   visible: { top: 73 },
 })
 
@@ -74,8 +74,8 @@ const Header = ({ isMobile, isTablet }) => {
       className="header-fixed-container flex-column"
       style={{
         position: "fixed",
-        maxWidth: 1366,
-        width: isMobile ? "100%" : "80%",
+        maxWidth: 1440,
+        width: "100%",
         display: "block",
         zIndex: 999999,
         background: "white",
@@ -135,6 +135,7 @@ const Header = ({ isMobile, isTablet }) => {
             textDecoration: "none",
             position: "absolute",
             width: "100%",
+            marginTop: 5,
             top: 73,
           }}
         >
