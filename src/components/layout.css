@@ -1065,8 +1065,8 @@ div.ticker__page--fixed {
   font-family: "HelveticaNeueCondensed";
   font-weight: 400;
   font-style: normal;
-  src: url("../fonts/HelveticaNeue-HeavyCondensed.woff") format("woff");
-  src: url("../fonts/HelveticaNeue-HeavyCondensed.woff2") format("woff2");
+  src: url("../fonts/HelveticaNeueNew.woff") format("woff");
+  src: url("../fonts/HelveticaNeueNew.woff2") format("woff2");
 }
 
 @font-face {
@@ -1092,7 +1092,7 @@ div.ticker__page--fixed {
 }
 
 html {
-  font-family: "HelveticaNeueHeavy";
+  font-family: "HelveticaNeueCondensed";
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   letter-spacing: 0px;
@@ -1100,7 +1100,7 @@ html {
 }
 body {
   overflow: hidden;
-  font-family: "HelveticaNeueHeavy";
+  font-family: "HelveticaNeueCondensed";
   font-weight: 300;
   margin: 0;
   text-transform: uppercase;
@@ -1320,7 +1320,7 @@ html {
 }
 body {
   color: hsla(0, 0%, 0%, 0.8);
-  font-family: "HelveticaNeueHeavy";
+  font-family: "HelveticaNeueCondensed";
   font-weight: lighter;
   word-wrap: break-word;
   font-kerning: normal;
