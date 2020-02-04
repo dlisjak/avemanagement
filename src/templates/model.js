@@ -272,7 +272,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                   <AnchorLink
                     role="button"
                     href="#slideshow"
-                    offset={210}
+                    offset={27}
                     className="flex-column justify-between grid-item"
                     onClick={() => {
                       setImage(index)
