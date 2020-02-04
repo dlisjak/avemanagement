@@ -59,7 +59,7 @@
 }
 .contact-label {
   min-width: 150px;
-  font-size: 14px;
+  font-size: 22px;
 }
 
 .contact-error {
@@ -91,7 +91,7 @@
 @media only screen and (max-width: 479px) {
   .model__name {
     font-size: 13vw;
-    margin-bottom: -7px;
+    margin-bottom: -8px;
   }
 }
 

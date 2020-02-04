@@ -16,7 +16,7 @@ const AddressTicker = () => {
         borderTop: "1px solid",
         borderBottom: "1px solid",
         color: "rgba(0, 0, 0)",
-        fontSize: isMobile ? 11 : 17,
+        fontSize: isMobile ? 15 : 20,
         display: "flex",
         alignItems: "center",
         flexDirection: "column",

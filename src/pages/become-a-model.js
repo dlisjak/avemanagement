@@ -424,9 +424,14 @@ const BecomeAModel = () => {
         style={{
           marginTop: isMobile ? 0 : 50,
           marginBottom: 50,
+          fontSize: 20,
+          fontFamily: "HelveticaNeueCondensed",
+          textTransform: "initial",
         }}
       >
-        <h4 style={{ marginBottom: 20 }}>Upload photographs</h4>
+        <h4 style={{ marginBottom: 20, fontSize: "2rem" }}>
+          Upload photographs
+        </h4>
         <p>
           Submit only natural photographs, no professional studio shots are
           required, as we wish to see you in your most natural state.
@@ -461,7 +466,7 @@ const BecomeAModel = () => {
       <div className="flex flex-column">
         <span
           className="content-padding"
-          style={{ fontWeight: 700, marginBottom: 25 }}
+          style={{ fontWeight: 700, marginBottom: 25, fontSize: 32 }}
         >
           ENSURE YOUR IMAGES ARE NOT LARGER THAN 2MB EACH IN SIZE
         </span>

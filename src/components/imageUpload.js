@@ -47,7 +47,12 @@ const ImageUpload = ({ title, order, text }) => {
           <Fragment>
             <div
               className="flex flex-column align-center absolute"
-              style={{ cursor: "pointer", fontSize: 18 }}
+              style={{
+                cursor: "pointer",
+                fontSize: 22,
+                height: 100,
+                justifyContent: "space-evenly",
+              }}
             >
               <span style={{ color: "white" }}>{text}</span>
               <span

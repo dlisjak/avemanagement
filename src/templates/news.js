@@ -106,7 +106,7 @@ const News = ({
             fontWeight: 700,
             color: "black",
             marginTop: 0,
-            marginBottom: -10,
+            marginBottom: -11,
           }}
         />
         <BlackBar height={100} />
