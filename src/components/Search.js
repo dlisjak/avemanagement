@@ -81,6 +81,7 @@ const Search = ({ isShown, models, closeSearch }) => {
           paddingTop: 50,
           borderBottom: "1px solid",
           marginBottom: 20,
+          marginTop: 50,
         }}
       >
         <button
