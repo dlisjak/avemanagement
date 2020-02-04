@@ -133,7 +133,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
               {acf.portfolio && (
                 <AnchorLink
                   href="#slideshow"
-                  offset="200"
+                  offset="250"
                   onClick={() => setTab("portfolio")}
                   style={{
                     fontWeight: "bold",
@@ -218,8 +218,8 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
               onClick={navigateSliderPrev}
               style={{
                 position: "absolute",
-                top: 0,
-                height: "100%",
+                bottom: 0,
+                height: "80%",
                 width: "50%",
                 left: 0,
                 zIndex: 99,
@@ -231,7 +231,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
               onClick={navigateSliderNext}
               style={{
                 position: "absolute",
-                top: 0,
+                bottom: 0,
                 height: "100%",
                 width: "50%",
                 right: 0,
