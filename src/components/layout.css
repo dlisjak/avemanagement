@@ -1233,6 +1233,7 @@ hr {
 input {
   border: 0;
   height: 35px;
+  border-radius: 0;
 }
 
 button,
