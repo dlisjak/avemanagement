@@ -5,6 +5,7 @@ import Search from "../components/Search"
 import BlackBar from "../components/BlackBar"
 import VizAwareImg from "../components/VisibilityImage"
 import AnchorLink from "react-anchor-link-smooth-scroll"
+import { useInView } from "react-intersection-observer"
 
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 import AddressTicker from "../components/AddressTicker"
@@ -41,6 +42,10 @@ const Category = ({ data, pageContext }) => {
     setPath()
     anchorScroll()
   }, [])
+
+  const [ref, inView, entry] = useInView({
+    threshold: 200,
+  })
 
   const openSearch = () => {
     toggleSearch(!searchOpen)
@@ -150,6 +155,7 @@ const Category = ({ data, pageContext }) => {
     </Layout>
   )
 }
+
 export const query = graphql`
   query CategoryPage($title: String) {
     allWordpressPost(

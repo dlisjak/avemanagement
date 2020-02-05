@@ -133,7 +133,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
               {acf.portfolio && (
                 <AnchorLink
                   href="#slideshow"
-                  offset="250"
+                  offset={27}
                   onClick={() => setTab("portfolio")}
                   style={{
                     fontWeight: "bold",
@@ -149,7 +149,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
               {isVideoAvailable && (
                 <AnchorLink
                   href="#slideshow"
-                  offset="200"
+                  offset={27}
                   onClick={() => setTab("videos")}
                   style={{
                     fontWeight: "bold",
@@ -213,7 +213,9 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                 />
               ))}
             </Swiper>
-            <div
+            <AnchorLink
+              href="#slideshow"
+              offset={27}
               className="absolute model-slider-navigate prev"
               onClick={navigateSliderPrev}
               style={{
@@ -226,7 +228,9 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                 maxHeight: 820,
               }}
             />
-            <div
+            <AnchorLink
+              href="#slideshow"
+              offset={27}
               className="absolute model-slider-navigate next"
               onClick={navigateSliderNext}
               style={{

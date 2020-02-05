@@ -1,8 +1,11 @@
 import React from "react"
+import AnchorLink from "react-anchor-link-smooth-scroll"
 
 const ModelPreviewVideos = ({ thumbnail, onClick }) => {
   return (
-    <div
+    <AnchorLink
+      href="#slideshow"
+      offset={27}
       className="category-card grid-item"
       onClick={onClick}
       style={{
@@ -65,7 +68,7 @@ const ModelPreviewVideos = ({ thumbnail, onClick }) => {
           />
         </div>
       </div>
-    </div>
+    </AnchorLink>
   )
 }
 

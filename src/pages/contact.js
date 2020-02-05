@@ -28,10 +28,9 @@ const Contact = () => {
     <Layout>
       <BlackBar height={100} />
       <div
-        className="flex flex-column align-start content-padding"
+        className="flex flex-column align-start content-padding container"
         style={{
           textAlign: "left",
-          marginTop: 10,
           paddingBottom: 50,
         }}
       >
@@ -49,7 +48,6 @@ const Contact = () => {
             textDecoration: "none",
             textTransform: "uppercase",
             color: "#222",
-            marginTop: 10,
             fontWeight: 700,
           }}
         >
@@ -83,9 +81,8 @@ const Contact = () => {
       </div>
       <BlackBar height={100} />
       <div
-        className="flex flex-column contact-page-history content-padding"
+        className="flex flex-column contact-page-history content-padding container"
         style={{
-          marginTop: isMobile < 480 ? 0 : 50,
           position: "relative",
         }}
       >
