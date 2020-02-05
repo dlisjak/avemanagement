@@ -36,11 +36,13 @@ const Home = ({ data }) => {
   }, [])
 
   useEffect(() => {
-    const loadAndPlayVideo = () => {
-      const mainVid = document.getElementById("home-video")
+    const mainVid = document.getElementById("home-video")
 
+    const loadAndPlayVideo = () => {
       mainVid.load()
-      mainVid.play()
+      setTimeout(() => {
+        mainVid.play()
+      }, 500)
     }
 
     loadAndPlayVideo()

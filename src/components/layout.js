@@ -20,26 +20,18 @@ const Layout = ({ children, isHomepage }) => {
     // componentDidUnmount
   }, [])
 
-  let marginTopEl = 275
-
-  if (!isMobile && !isTablet && isHomepage) {
-    marginTopEl = 180
-  }
-
-  if (isHomepage && isMobile) {
-    marginTopEl = 150
-  }
+  let marginTopEl = 0
 
   if (!isHomepage && isMobile) {
-    marginTopEl = 200
+    marginTopEl = 50
   }
 
   if (!isHomepage && isTablet && !isMobile) {
-    marginTopEl = 225
+    marginTopEl = 75
   }
 
-  if (isHomepage && isTablet && !isMobile) {
-    marginTopEl = 180
+  if (!isHomepage && !isTablet && !isMobile) {
+    marginTopEl = 100
   }
 
   return (

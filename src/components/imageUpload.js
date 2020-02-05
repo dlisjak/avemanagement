@@ -105,7 +105,7 @@ const ImageUpload = ({ title, order, text }) => {
               border: 0,
               background: 0,
               textTransform: "uppercase",
-              bottom: -30,
+              bottom: -10,
               fontSize: 13,
             }}
             onClick={() => removeImage()}

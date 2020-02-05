@@ -310,6 +310,9 @@
     font-family: "helveticaNeueCondensed";
     font-size: 2.5rem;
   }
+  .contact-error {
+    font-size: 18px;
+  }
   .container {
     margin: 50px 200px;
   }
