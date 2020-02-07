@@ -749,6 +749,7 @@
   overflow: hidden;
   padding-left: 0;
   box-sizing: content-box;
+  -webkit-transform: translateZ(0);
 }
 
 #tickerwrap {
