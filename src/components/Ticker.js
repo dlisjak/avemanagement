@@ -1,7 +1,12 @@
 import React, { useEffect, useRef } from "react"
+import { useInView } from "react-intersection-observer"
 
 const TickerText = ({ title, left = false, noRepeat = false, width }) => {
   const tickerRef = useRef(null)
+  const [ref, inView, entry] = useInView({
+    /* Optional options */
+    threshold: 0,
+  })
 
   const reg = !noRepeat
     ? new RegExp("([^a-zA-Z#@])", "g")
@@ -48,11 +53,14 @@ const TickerText = ({ title, left = false, noRepeat = false, width }) => {
       <div
         className="ticker__menu ticker flex width-100"
         style={{ fontWeight: 700, marginTop: 5 }}
+        ref={ref}
       >
         <div id="tickerwrap" style={{ top: 7, position: "relative" }}>
-          <div id="ticker" ref={tickerRef}>
-            {data}
-          </div>
+          {inView && (
+            <div id="ticker" ref={tickerRef}>
+              {data}
+            </div>
+          )}
         </div>
       </div>
     )
@@ -61,27 +69,30 @@ const TickerText = ({ title, left = false, noRepeat = false, width }) => {
       <div
         className="ticker__page ticker flex width-100"
         style={{ fontWeight: 700, maxWidth: 1440 }}
+        ref={ref}
       >
-        <div
-          id="tickerwrap"
-          style={{
-            paddingRight: left && "100%",
-            paddingLeft: !left && "100%",
-            top: 7,
-            position: "relative",
-          }}
-        >
-          {left && (
-            <div id="ticker" ref={tickerRef} style={{ marginRight: 5 }}>
-              {data}
-            </div>
-          )}
-          {!left && (
-            <div id="tickerReverse" ref={tickerRef}>
-              {data}
-            </div>
-          )}
-        </div>
+        {inView && (
+          <div
+            id="tickerwrap"
+            style={{
+              paddingRight: left && "100%",
+              paddingLeft: !left && "100%",
+              top: 7,
+              position: "relative",
+            }}
+          >
+            {left && (
+              <div id="ticker" ref={tickerRef} style={{ marginRight: 5 }}>
+                {data}
+              </div>
+            )}
+            {!left && (
+              <div id="tickerReverse" ref={tickerRef}>
+                {data}
+              </div>
+            )}
+          </div>
+        )}
       </div>
     )
   }
