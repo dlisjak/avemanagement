@@ -35,7 +35,7 @@ const TickerText = ({ title, left = false, noRepeat = false, width }) => {
   if (titleTicker) {
     let n
     if (typeof window !== "undefined") {
-      n = window.innerWidth < 480 ? 17 : 50
+      n = window.innerWidth < 480 ? 17 : 55
     }
 
     for (let i = 0; i < n; i++) {
