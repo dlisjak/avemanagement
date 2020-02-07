@@ -36,6 +36,7 @@ const Layout = ({ children, isHomepage }) => {
 
   return (
     <>
+      <Loader />
       <div
         className="layout-main"
         style={{

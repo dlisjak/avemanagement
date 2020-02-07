@@ -781,6 +781,26 @@
   outline: none;
 }
 
+.search-input-search::-webkit-input-placeholder {
+  color: black;
+  opacity: 1;
+}
+
+.search-input-search::-moz-placeholder {
+  color: black;
+  opacity: 1;
+}
+
+.search-input-search::-ms-placeholder {
+  color: black;
+  opacity: 1;
+}
+
+.search-input-search::placeholder {
+  color: black;
+  opacity: 1;
+}
+
 #ticker {
   display: inline-block;
   white-space: nowrap;

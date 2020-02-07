@@ -53,23 +53,23 @@ const Search = ({ data }) => {
     <Layout>
       <div
         className="flex flex-column search-queries"
-        style={{ borderBottom: "1px solid", marginBottom: 20 }}
+        style={{ marginBottom: 20, fontSize: 20 }}
       >
         <button
           onClick={e => setSearchGender(e, null)}
-          style={{ fontWeight: !genderQuery ? 700 : 400 }}
+          style={{ color: !genderQuery ? "black" : "#ccc" }}
         >
           ALL
         </button>
         <button
           onClick={e => setSearchGender(e, "male")}
-          style={{ fontWeight: genderQuery === "male" ? 700 : 400 }}
+          style={{ color: genderQuery === "male" ? "black" : "#ccc" }}
         >
           MEN
         </button>
         <button
           onClick={e => setSearchGender(e, "female")}
-          style={{ fontWeight: genderQuery === "female" ? 700 : 400 }}
+          style={{ color: genderQuery === "female" ? "black" : "#ccc" }}
         >
           WOMEN
         </button>
@@ -78,18 +78,17 @@ const Search = ({ data }) => {
             ref={inputRef}
             className="search-input-search"
             type="text"
-            placeholder="SEARCH BY NAME"
+            placeholder="/SEARCH BY NAME"
             onChange={e => handleSearchQuery(e)}
             value={searchQuery}
             style={{
-              fontSize: 16,
+              fontSize: 24,
               marginTop: 10,
               width: "100%",
             }}
           />
         </div>
       </div>
-      <BlackBar height={100} />
       <div
         className="flex flex-column search-queries"
         style={{ paddingTop: 50, paddingBottom: 25 }}

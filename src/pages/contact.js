@@ -26,21 +26,40 @@ const Contact = () => {
 
   return (
     <Layout>
+      {true && (
+        <div
+          className="flex flex-column align-start content-padding"
+          style={{
+            textAlign: "left",
+          }}
+        >
+          <span
+            style={{
+              fontWeight: 700,
+              fontSize: 45,
+              lineHeight: 0.8,
+              marginBottom: -6,
+              color: "black",
+            }}
+          >
+            Ave Management
+          </span>
+        </div>
+      )}
       <BlackBar height={100} />
       <div
-        className="flex flex-column align-start content-padding container"
+        className="flex flex-column align-start content-padding"
         style={{
           textAlign: "left",
-          paddingBottom: 50,
+          paddingBottom: 30,
+          paddingTop: 20,
+          fontSize: 20,
         }}
       >
-        <span style={{ fontWeight: 700, marginBottom: 25 }}>
-          Ave Management
-        </span>
         <span>70 SHENTON WAY</span>
         <span>EON SHENTON</span>
         <span>#13-06</span>
-        <span style={{ marginBottom: 50 }}>SINGAPORE 079118</span>
+        <span style={{ marginBottom: 20 }}>SINGAPORE 079118</span>
 
         <a
           href="https://goo.gl/maps/JoLuAknYkKp"
@@ -81,7 +100,7 @@ const Contact = () => {
       </div>
       <BlackBar height={100} />
       <div
-        className="flex flex-column contact-page-history content-padding container"
+        className="flex flex-column contact-page-history content-padding"
         style={{
           position: "relative",
         }}
@@ -89,19 +108,19 @@ const Contact = () => {
         <span style={{ fontWeight: 700, marginBottom: 25, marginTop: 10 }}>
           HISTORY
         </span>
-        <p style={{ maxWidth: 680 }}>
+        <p style={{ maxWidth: 680, textTransform: "none" }}>
           Founded in 2004 by international fashion photographers{" "}
           <b>Chuando & Frey</b>, AVE Management has been defining the fashion
           and modeling industry, becoming one of the most recognized modeling
           agencies around the world.
         </p>
-        <p style={{ maxWidth: 680 }}>
+        <p style={{ maxWidth: 680, textTransform: "none" }}>
           AVE’s strength lies in discovering the most unique and fresh faces,
           developing each model to their fullest potential and helping them earn
           covers on international acclaimed magazines and spots in campaigns of
           top brands globally.
         </p>
-        <p style={{ maxWidth: 680 }}>
+        <p style={{ maxWidth: 680, textTransform: "none" }}>
           AVE represents and developed numerous industry icons and next
           generation top models including{" "}
           <b>
