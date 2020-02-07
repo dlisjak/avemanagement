@@ -165,7 +165,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
               {acf.about && (
                 <AnchorLink
                   href="#slideshow"
-                  offset={200}
+                  offset={27}
                   onClick={() => setTab("bio")}
                   style={{
                     cursor: "pointer",
