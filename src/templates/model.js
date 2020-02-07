@@ -221,11 +221,12 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
               style={{
                 position: "absolute",
                 bottom: 0,
-                height: "80%",
+                height: isMobile ? "68%" : "80%",
                 width: "50%",
                 left: 0,
                 zIndex: 99,
                 maxHeight: 820,
+                top: isMobile && 0,
               }}
             />
             <AnchorLink
@@ -236,11 +237,12 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
               style={{
                 position: "absolute",
                 bottom: 0,
-                height: "100%",
+                height: isMobile ? "68%" : "80%",
                 width: "50%",
                 right: 0,
                 zIndex: 99,
                 maxHeight: 820,
+                top: isMobile && 0,
               }}
             />
           </div>
