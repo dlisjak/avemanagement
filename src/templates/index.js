@@ -1,4 +1,5 @@
 import React, { useEffect, useContext, useState } from "react"
+import { useInView } from "react-intersection-observer"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -16,6 +17,11 @@ import { graphql } from "gatsby"
 import AddressTicker from "../components/AddressTicker"
 
 const Home = ({ data }) => {
+  const [ref, inView, entry] = useInView({
+    /* Optional options */
+    threshold: 0,
+  })
+
   const videoSources = [Video1, Video2]
   const videoKey = Math.round(Math.random())
 
@@ -32,7 +38,17 @@ const Home = ({ data }) => {
       }
     }
 
+    const beginPlayingVideo = () => {
+      const mainVid = document.getElementById("home-video")
+
+      mainVid.load()
+      setTimeout(() => {
+        mainVid.play()
+      }, 2000)
+    }
+
     setPath()
+    beginPlayingVideo()
   }, [])
 
   useEffect(() => {
@@ -54,6 +70,8 @@ const Home = ({ data }) => {
       key = 1 - videoKey
     }
 
+    console.log(videoSources[key])
+
     setVideoSrc(videoSources[key])
   }
 
@@ -63,6 +81,7 @@ const Home = ({ data }) => {
       <SEO title="Home" />
 
       <video
+        ref={ref}
         id="home-video"
         src={videoSrc}
         muted

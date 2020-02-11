@@ -23,9 +23,15 @@ const Instagram = ({ posts }) => {
         rel="noopener"
         style={{ textTransform: "none", textDecoration: "none" }}
       >
-        <TickerText title="INSTAGRAM" left={true} />
-        <TickerText title="@AVEMANAGEMENT" />
-        <TickerText title="#AVEGIRLS #AVEBOYS" left={true} />
+        {isMobile ? (
+          <TickerText title="INSTAGRAM" left={true} />
+        ) : (
+          <React.Fragment>
+            <TickerText title="INSTAGRAM" left={true} />
+            <TickerText title="@AVEMANAGEMENT" />
+            <TickerText title="#AVEGIRLS #AVEBOYS" left={true} />
+          </React.Fragment>
+        )}
       </a>
       <Slider>
         {posts.map(({ node }, i) => (
