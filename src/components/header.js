@@ -73,7 +73,7 @@ const Header = ({ isMobile, isTablet }) => {
     <div
       className="header-fixed-container flex-column"
       style={{
-        position: "relative",
+        position: "fixed",
         maxWidth: 1440,
         width: "100%",
         display: "block",

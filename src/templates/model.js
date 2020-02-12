@@ -227,6 +227,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                 zIndex: 99,
                 maxHeight: 820,
                 top: isMobile && 0,
+                display: isMobile || isTablet ? "none" : "block",
               }}
             />
             <AnchorLink
@@ -243,6 +244,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                 zIndex: 99,
                 maxHeight: 820,
                 top: isMobile && 0,
+                display: isMobile || isTablet ? "none" : "block",
               }}
             />
           </div>

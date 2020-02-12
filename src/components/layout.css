@@ -759,12 +759,10 @@
   overflow: hidden;
   color: black;
   padding-left: 100%;
-  -webkit-backface-visibility: hidden;
   -webkit-perspective: 1000;
   -webkit-transform: translateZ(0);
 }
 #ticker {
-  -webkit-backface-visibility: hidden;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-perspective: 1000;
@@ -1151,10 +1149,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   letter-spacing: 0px;
-  perspective: 1000;
-  -webkit-perspective: 1000;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 }
 body.overlay {
   height: 100vh;
