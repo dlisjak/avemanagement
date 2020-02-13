@@ -115,6 +115,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
               justifyContent: "space-between",
               zIndex: 98,
               position: tab === "videos" && "absolute",
+              position: tab === "bio" && "relative",
               top: 2,
               bottom: 7,
               paddingBottom: isMobile ? 10 : 25,

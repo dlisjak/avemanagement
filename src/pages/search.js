@@ -5,7 +5,6 @@ import AnchorLink from "react-anchor-link-smooth-scroll"
 import Layout from "../components/layout"
 
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
-import BlackBar from "../components/BlackBar"
 
 const Search = ({ data }) => {
   const dispatch = useContext(GlobalDispatchContext)
@@ -15,6 +14,11 @@ const Search = ({ data }) => {
 
   const inputRef = useRef(null)
   let tickerText
+
+  let isMobile
+  if (typeof window !== "undefined") {
+    isMobile = window.innerWidth < 480
+  }
 
   useEffect(() => {
     const setPath = () => {
@@ -91,7 +95,7 @@ const Search = ({ data }) => {
       </div>
       <div
         className="flex flex-column search-queries"
-        style={{ paddingTop: 50, paddingBottom: 25 }}
+        style={{ paddingTop: !isMobile && 50, paddingBottom: 25 }}
       >
         {data.allModel.edges.map(({ node }, index, arr) => {
           if (searchQuery) {

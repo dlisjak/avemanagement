@@ -93,6 +93,9 @@
     font-size: 13vw;
     margin-bottom: -8px;
   }
+  .search-queries {
+    padding-top: 20px;
+  }
 }
 
 @media only screen and (min-width: 480px) {
@@ -151,6 +154,7 @@
   .pagination-item.current {
     color: rgb(104, 103, 104);
   }
+
   .news-ticker-address #tickerwrap {
     color: rgb(104, 103, 104) !important;
   }
@@ -326,7 +330,6 @@
     max-height: 300px;
   }
   .model__main-container {
-    max-width: 300px;
     min-width: 200px;
     font-size: 20px;
     padding-left: 2px;
@@ -523,7 +526,7 @@
 .mobile-navigation a {
   color: #222;
   font-weight: 300;
-  padding: 2.5px 0;
+  padding: 2.5px 20px;
 }
 .mobile-navigation a[aria-current="page"] {
   font-weight: 700;
@@ -755,6 +758,7 @@
   font-size: 20px;
   display: flex;
   width: 100%;
+  font-weight: 300;
   overflow: hidden;
   color: black;
   padding-left: 100%;

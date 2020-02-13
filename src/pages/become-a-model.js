@@ -418,7 +418,6 @@ const BecomeAModel = () => {
           </div>
         )}
       </Formik>
-      <BlackBar height={100} />
       <div
         className="flex flex-column contact-body-text content-padding"
         style={{
