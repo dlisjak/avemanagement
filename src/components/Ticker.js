@@ -59,7 +59,7 @@ const TickerText = ({ title, left = false, noRepeat = false, width }) => {
       >
         <div
           id="tickerwrap"
-          style={{ top: isMobile ? 10 : 7, position: "relative" }}
+          style={{ top: isMobile ? 8 : 7, position: "relative" }}
         >
           {inView && (
             <div id="ticker" ref={tickerRef}>
@@ -82,7 +82,7 @@ const TickerText = ({ title, left = false, noRepeat = false, width }) => {
             style={{
               paddingRight: left && "100%",
               paddingLeft: !left && "100%",
-              top: isMobile ? 10 : 7,
+              top: isMobile ? 8 : 7,
               position: "relative",
             }}
           >
