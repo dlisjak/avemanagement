@@ -18,15 +18,17 @@ const TickerText = ({ title, left = false, noRepeat = false, width }) => {
     titleTicker = " special arrangement "
   }
 
+  let isMobile
+  if (typeof window !== "undefined") {
+    isMobile = window.innerWidth < 480 ? true : false
+  }
+
   useEffect(() => {
     const setAnimationDuration = () => {
       const k = 27 / 4
       const v = 50 / 17
-      let n
-      if (typeof window !== "undefined") {
-        n = window.innerWidth < 480 ? true : false
-      }
-      const duration = n
+
+      const duration = isMobile
         ? Math.ceil((titleTicker.length * k) / v)
         : Math.ceil(titleTicker.length * k)
 
@@ -55,7 +57,10 @@ const TickerText = ({ title, left = false, noRepeat = false, width }) => {
         style={{ fontWeight: 700, marginTop: 5 }}
         ref={ref}
       >
-        <div id="tickerwrap" style={{ top: 7, position: "relative" }}>
+        <div
+          id="tickerwrap"
+          style={{ top: isMobile ? 10 : 7, position: "relative" }}
+        >
           {inView && (
             <div id="ticker" ref={tickerRef}>
               {data}
@@ -77,7 +82,7 @@ const TickerText = ({ title, left = false, noRepeat = false, width }) => {
             style={{
               paddingRight: left && "100%",
               paddingLeft: !left && "100%",
-              top: 7,
+              top: isMobile ? 10 : 7,
               position: "relative",
             }}
           >

@@ -749,7 +749,6 @@
   overflow: hidden;
   padding-left: 0;
   box-sizing: content-box;
-  -webkit-transform: translateZ(0);
 }
 
 #tickerwrap {
@@ -760,13 +759,11 @@
   color: black;
   padding-left: 100%;
   -webkit-perspective: 1000;
-  -webkit-transform: translateZ(0);
 }
 #ticker {
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-perspective: 1000;
-  -webkit-transform: translateZ(0);
 }
 .contact-image-upload {
   border: 0;
