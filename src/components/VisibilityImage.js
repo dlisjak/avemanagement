@@ -49,7 +49,10 @@ const VizAwareImg = ({
             title={title}
           />
         </div>
-        <h3 className="category-card-title flex flex-wrap width-100 relative">
+        <h3
+          className="category-card-title flex flex-wrap width-100 relative"
+          style={{ marginTop: -7 }}
+        >
           <span className="width-100">{firstName}</span>
           <span className="width-100" style={{ top: 15 }}>
             {lastName}

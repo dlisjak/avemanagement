@@ -505,7 +505,7 @@ const BecomeAModel = () => {
           className="contact-form-submit-label"
           tabIndex="0"
           htmlFor="submit-form"
-          style={{ marginTop: 10, fontWeight: 700 }}
+          style={{ marginTop: 10, fontWeight: 700, fontSize: 22 }}
         >
           Submit
         </label>

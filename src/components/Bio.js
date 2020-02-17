@@ -39,7 +39,7 @@ const Bio = ({ acf }) => {
                 fontStyle: "italic",
               }}
             >
-              "
+              ”
             </span>
           </span>
         </span>
@@ -64,7 +64,7 @@ const Bio = ({ acf }) => {
                 fontStyle: "italic",
               }}
             >
-              "
+              ”
             </span>
           </span>
         </span>
@@ -81,7 +81,7 @@ const Bio = ({ acf }) => {
                 fontStyle: "italic",
               }}
             >
-              "
+              ”
             </span>
           </span>
         </span>
@@ -98,7 +98,7 @@ const Bio = ({ acf }) => {
                 fontStyle: "italic",
               }}
             >
-              "
+              ”
             </span>
           </span>
         </span>
@@ -115,7 +115,7 @@ const Bio = ({ acf }) => {
                 fontStyle: "italic",
               }}
             >
-              "
+              ”
             </span>
           </span>
         </span>

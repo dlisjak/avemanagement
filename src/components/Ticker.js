@@ -54,15 +54,21 @@ const TickerText = ({ title, left = false, noRepeat = false, width }) => {
     return (
       <div
         className="ticker__menu ticker flex width-100"
-        style={{ fontWeight: 700, marginTop: 5 }}
+        style={{
+          position: "relative",
+          fontWeight: 700,
+          top: isMobile && 9,
+          background: isMobile && "transparent",
+        }}
         ref={ref}
       >
-        <div
-          id="tickerwrap"
-          style={{ top: isMobile ? 8 : 4, position: "relative" }}
-        >
+        <div id="tickerwrap">
           {inView && (
-            <div id="ticker" ref={tickerRef}>
+            <div
+              id="ticker"
+              style={{ position: "relative", top: !isMobile && 4 }}
+              ref={tickerRef}
+            >
               {data}
             </div>
           )}
@@ -73,7 +79,14 @@ const TickerText = ({ title, left = false, noRepeat = false, width }) => {
     return (
       <div
         className="ticker__page ticker flex width-100"
-        style={{ fontWeight: 700, maxWidth: 1440, height: isMobile && 25 }}
+        style={{
+          fontWeight: 700,
+          maxWidth: 1440,
+          position: "relative",
+          fontWeight: 700,
+          top: 4,
+          background: "transparent",
+        }}
         ref={ref}
       >
         {inView && (
@@ -82,8 +95,6 @@ const TickerText = ({ title, left = false, noRepeat = false, width }) => {
             style={{
               paddingRight: left && "100%",
               paddingLeft: !left && "100%",
-              top: isMobile ? 8 : 4,
-              position: "relative",
             }}
           >
             {left && (

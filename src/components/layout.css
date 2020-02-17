@@ -63,7 +63,7 @@
 }
 
 .contact-error {
-  font-size: 10px;
+  font-size: 14px;
   top: 0px;
 }
 .grid {
@@ -110,7 +110,7 @@
     width: 100%;
   }
   .layout-main {
-    width: 100%;
+    width: 80%;
     max-width: 1440px;
   }
   .search-queries {
@@ -610,6 +610,7 @@
 .contact-input {
   font-weight: 700;
   border-bottom: 1px solid black;
+  font-size: 22px;
 }
 .contact-input--date {
   text-transform: inherit;
@@ -626,6 +627,10 @@
 }
 .contact-input--mobile {
   width: 100%;
+}
+.contact-input--mobile::placeholder,
+.contact-input--country-code::placeholder {
+  opacity: 0.2;
 }
 .contact-button-submit:hover {
   color: #ccc;
@@ -965,10 +970,6 @@ i:hover {
 
 header a {
   color: #222;
-}
-
-header a[aria-current="page"] {
-  font-weight: bold;
 }
 
 header div.active,

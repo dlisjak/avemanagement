@@ -14,11 +14,11 @@ import MobileNav from "./MobileNav"
 import BlackBar from "./BlackBar"
 
 const CollapsingTicker = posed(Link)({
-  hidden: { top: 50 },
-  visible: { top: 73 },
+  hidden: { top: 45 },
+  visible: { top: 70 },
 })
 
-const Header = ({ isMobile, isTablet }) => {
+const Header = ({ isMobile, isTablet, isHomepage }) => {
   const state = useContext(GlobalStateContext)
 
   const [isVisible, setVisibleMenu] = useState(false)
@@ -69,16 +69,20 @@ const Header = ({ isMobile, isTablet }) => {
     }
   `)
 
+  let headerHeight = 200
+  if (isHomepage && isMobile) headerHeight = 145
+  if (isHomepage && !isMobile) headerHeight = 165
+
   return (
     <div
       className="header-fixed-container flex-column"
       style={{
-        position: "fixed",
         maxWidth: 1440,
         width: "100%",
         display: "block",
         zIndex: 999999,
         background: "white",
+        height: headerHeight,
       }}
     >
       <Link to="/" style={{ zIndex: 99, position: "relative" }}>
@@ -93,7 +97,7 @@ const Header = ({ isMobile, isTablet }) => {
             cursor: "pointer",
             width: "100%",
             height: "auto",
-            maxWidth: !isMobile ? 300 : 200,
+            maxWidth: !isMobile ? 250 : 175,
           }}
         />
       </Link>
@@ -103,13 +107,13 @@ const Header = ({ isMobile, isTablet }) => {
           position: "relative",
           flexDirection: "column",
           width: "100%",
-          height: "auto",
+          height: isMobile && 100,
         }}
       >
         <div
           className="width-100"
           onClick={() => toggleMenu(isVisible)}
-          style={{ cursor: "pointer", zIndex: 9999 }}
+          style={{ cursor: "pointer", zIndex: 9999, height: isMobile && 80 }}
         >
           <BlackBar height={50} />
           <Ticker title={"MENU"} />
@@ -139,7 +143,7 @@ const Header = ({ isMobile, isTablet }) => {
             top: 73,
           }}
         >
-          <Ticker title={state.path || tickerHeaderText} />
+          {!isHomepage && <Ticker title={state.path || tickerHeaderText} />}
         </CollapsingTicker>
       </div>
     </div>

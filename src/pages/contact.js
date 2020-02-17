@@ -36,13 +36,14 @@ const Contact = () => {
           <span
             style={{
               fontWeight: 700,
-              fontSize: 45,
+              fontSize: !isMobile ? 72 : 44,
               lineHeight: 0.8,
-              marginBottom: -6,
+              marginBottom: !isMobile ? -10 : -7,
               color: "black",
             }}
           >
-            Ave Management
+            Ave
+            <br /> Management
           </span>
         </div>
       )}
@@ -53,7 +54,7 @@ const Contact = () => {
           textAlign: "left",
           paddingBottom: 30,
           paddingTop: 20,
-          fontSize: 20,
+          fontSize: !isMobile ? 24 : 20,
         }}
       >
         <span>70 SHENTON WAY</span>
@@ -103,6 +104,8 @@ const Contact = () => {
         className="flex flex-column contact-page-history content-padding"
         style={{
           position: "relative",
+          fontSize: !isMobile ? 20 : 18,
+          marginLeft: !isMobile && "30%",
         }}
       >
         <span style={{ fontWeight: 700, marginBottom: 25, marginTop: 10 }}>

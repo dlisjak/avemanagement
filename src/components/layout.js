@@ -20,20 +20,6 @@ const Layout = ({ children, isHomepage }) => {
     // componentDidUnmount
   }, [])
 
-  let marginTopEl = 154
-
-  if (!isHomepage && isMobile) {
-    marginTopEl = 178
-  }
-
-  if (!isHomepage && isTablet && !isMobile) {
-    marginTopEl = 210
-  }
-
-  if (!isHomepage && !isTablet && !isMobile) {
-    marginTopEl = 300
-  }
-
   return (
     <>
       <Loader />
@@ -47,13 +33,17 @@ const Layout = ({ children, isHomepage }) => {
           marginBottom: isMobile ? 0 : 125,
         }}
       >
-        <Header isTablet={isTablet} isMobile={isMobile} />
+        <Header
+          isTablet={isTablet}
+          isMobile={isMobile}
+          isHomepage={isHomepage}
+        />
         <main
           id="main"
           style={{
             width: "100%",
             position: "relative",
-            marginTop: marginTopEl,
+            marginTop: !isHomepage && !isMobile && 50,
           }}
         >
           {children}

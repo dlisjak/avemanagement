@@ -1,5 +1,6 @@
 import React, { useEffect, useContext, useState } from "react"
 import { useInView } from "react-intersection-observer"
+import AnchorLink from "react-anchor-link-smooth-scroll"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -18,7 +19,6 @@ import AddressTicker from "../components/AddressTicker"
 
 const Home = ({ data }) => {
   const [ref, inView, entry] = useInView({
-    /* Optional options */
     threshold: 0,
   })
 
@@ -28,6 +28,11 @@ const Home = ({ data }) => {
   const dispatch = useContext(GlobalDispatchContext)
   const [videoSrc, setVideoSrc] = useState(videoSources[videoKey])
   let tickerText
+
+  let isMobile
+  if (typeof window !== "undefined") {
+    isMobile = window.innerWidth < 480
+  }
 
   useEffect(() => {
     const setPath = () => {
@@ -44,7 +49,7 @@ const Home = ({ data }) => {
       mainVid.load()
       setTimeout(() => {
         mainVid.play()
-      }, 2000)
+      }, 1000)
     }
 
     setPath()
@@ -70,14 +75,21 @@ const Home = ({ data }) => {
       key = 1 - videoKey
     }
 
-    console.log(videoSources[key])
-
     setVideoSrc(videoSources[key])
   }
+
+  let headerHeight = 200
+  if (isMobile) headerHeight = 145
+  if (!isMobile) headerHeight = 165
 
   return (
     <Layout isHomepage={true}>
       <Loader />
+      <AnchorLink
+        id="anchorToVideo"
+        href="#home-video"
+        style={{ opacity: 0, position: "absolute", left: 0, bottom: 0 }}
+      />
       <SEO title="Home" />
 
       <video
