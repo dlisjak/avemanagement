@@ -455,7 +455,7 @@
     width: calc(25% - 5px);
   }
   h3.category-card-title {
-    font-size: 3.5vw;
+    font-size: 3vw;
   }
   .grid-col {
     width: 25%;
@@ -1000,7 +1000,7 @@ header .flex > :first-child {
   font-weight: 700;
   padding: 0px;
   color: rgb(204, 204, 204);
-  margin: 0 1rem;
+  margin: 0 0.5rem;
   position: relative;
   text-decoration: none;
 }

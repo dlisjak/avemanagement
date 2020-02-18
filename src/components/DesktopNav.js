@@ -154,7 +154,7 @@ const DesktopNav = ({ toggleMenu, isVisible, data }) => {
   return (
     <PoseGroup>
       <NavBar
-        className="header__menu--desktop flex-column content-padding"
+        className="header__menu--desktop flex-column"
         pose={isVisible ? "visible" : "hidden"}
         style={{
           background: `white`,
