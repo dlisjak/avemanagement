@@ -34,9 +34,7 @@ const Bio = ({ acf }) => {
             {acf.bio.bust}
             <span
               style={{
-                fontFamily: "Avenir",
                 fontWeight: 700,
-                fontStyle: "italic",
               }}
             >
               ”
@@ -59,9 +57,7 @@ const Bio = ({ acf }) => {
             {acf.bio.shirt}
             <span
               style={{
-                fontFamily: "Avenir",
                 fontWeight: 700,
-                fontStyle: "italic",
               }}
             >
               ”
@@ -76,9 +72,7 @@ const Bio = ({ acf }) => {
             {acf.bio.waist}
             <span
               style={{
-                fontFamily: "Avenir",
                 fontWeight: 700,
-                fontStyle: "italic",
               }}
             >
               ”
@@ -93,9 +87,7 @@ const Bio = ({ acf }) => {
             {acf.bio.hips}
             <span
               style={{
-                fontFamily: "Avenir",
                 fontWeight: 700,
-                fontStyle: "italic",
               }}
             >
               ”
@@ -110,9 +102,7 @@ const Bio = ({ acf }) => {
             {acf.bio.inseam}
             <span
               style={{
-                fontFamily: "Avenir",
                 fontWeight: 700,
-                fontStyle: "italic",
               }}
             >
               ”
