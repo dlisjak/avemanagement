@@ -99,7 +99,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
         <BlackBar height={100} />
         <div
           id="slideshow"
-          className="flex model__main content-padding"
+          className="flex model__main"
           style={{
             marginTop: 5,
             position: "relative",
@@ -254,7 +254,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
             style={{
               width: "100%",
               marginTop: !isMobile && !isTablet && 200,
-              fontSize: "1.35rem",
+              fontSize: "18px",
               lineHeight: 1.2,
               textTransform: "none",
               display: tab === "bio" ? "block" : "none",

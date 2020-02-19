@@ -244,7 +244,7 @@
     flex-direction: row;
   }
   .model__menu a {
-    margin: auto;
+    margin: 0 2.5px;
     font-size: 6vw;
     display: flex;
     justify-content: center;

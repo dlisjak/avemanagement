@@ -3,7 +3,6 @@ import { Link } from "gatsby"
 import posed, { PoseGroup } from "react-pose"
 
 import TickerText from "./Ticker"
-import GetToTop from "./getToTop"
 import BlackBar from "./BlackBar"
 
 const SearchPose = posed.div({
@@ -69,7 +68,7 @@ const Search = ({ isShown, models, closeSearch }) => {
         background: "white",
         width: "100%",
         maxWidth: 1440,
-        height: "100%",
+        height: "80%",
         top: isMobile ? 150 : 220,
         paddingBottom: 200,
       }}
