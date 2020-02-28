@@ -6,10 +6,8 @@ import TickerText from "./Ticker"
 
 const News = ({ posts }) => {
   let isMobile
-  let coverOrContain
   if (typeof window !== "undefined") {
     isMobile = window.innerWidth < 480
-    coverOrContain = window.innerWidth < 480 ? "contain" : "cover"
   }
 
   useEffect(() => {
@@ -59,8 +57,8 @@ const News = ({ posts }) => {
                   style={{
                     maxHeight: 400,
                     height: isMobile ? "auto" : 400,
-                    width: "auto",
-                    objectFit: coverOrContain,
+                    width: isMobile ? "100%" : "auto",
+                    objectFit: "cover",
                   }}
                   src={acf.news_post_image.url}
                   alt={title}
