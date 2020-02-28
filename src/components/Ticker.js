@@ -3,6 +3,10 @@ import { useInView } from "react-intersection-observer"
 
 const TickerText = ({ title, left = false, noRepeat = false, search }) => {
   const tickerRef = useRef(null)
+  const [ref, inView, entry] = useInView({
+    /* Optional options */
+    threshold: 1,
+  })
 
   const reg = !noRepeat
     ? new RegExp("([^a-zA-Z#@])", "g")
@@ -19,8 +23,29 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
     isMobile = window.innerWidth < 480 ? true : false
   }
 
+  useEffect(() => {
+    const setAnimationDuration = () => {
+      const k = 27 / 4
+      const v = 50 / 17
+
+      const duration = isMobile
+        ? Math.ceil((titleTicker.length * k) / v)
+        : Math.ceil(titleTicker.length * k)
+
+      if (tickerRef.current) {
+        tickerRef.current.style.animationDuration = `${duration}s`
+      }
+    }
+    setAnimationDuration()
+  })
+
   if (titleTicker) {
-    for (let i = 0; i < 55; i++) {
+    let n
+    if (typeof window !== "undefined") {
+      n = window.innerWidth < 480 ? 17 : 55
+    }
+
+    for (let i = 0; i < n; i++) {
       data += ` ${titleTicker} `
     }
   }
@@ -32,21 +57,21 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
         style={{
           position: "relative",
           fontWeight: 700,
-          top: isMobile && 5,
+          top: isMobile && 4,
           background: isMobile && "white",
         }}
+        ref={ref}
       >
         <div id="tickerwrap">
-          <div
-            id="ticker"
-            style={{
-              position: "relative",
-              top: 5,
-            }}
-            ref={tickerRef}
-          >
-            {data}
-          </div>
+          {inView && (
+            <div
+              id="ticker"
+              style={{ position: "relative", top: 5 }}
+              ref={tickerRef}
+            >
+              {data}
+            </div>
+          )}
         </div>
       </div>
     )
@@ -59,29 +84,31 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
           maxWidth: 1440,
           position: "relative",
           fontWeight: 700,
-          top: search && !isMobile ? -3 : 5,
-          top: isMobile && !search && 6,
+          top: search ? -3 : 5,
           background: "transparent",
         }}
+        ref={ref}
       >
-        <div
-          id="tickerwrap"
-          style={{
-            paddingRight: left && "100%",
-            paddingLeft: !left && "100%",
-          }}
-        >
-          {left && (
-            <div id="ticker" ref={tickerRef} style={{ marginRight: 5 }}>
-              {data}
-            </div>
-          )}
-          {!left && (
-            <div id="tickerReverse" ref={tickerRef}>
-              {data}
-            </div>
-          )}
-        </div>
+        {inView && (
+          <div
+            id="tickerwrap"
+            style={{
+              paddingRight: left && "100%",
+              paddingLeft: !left && "100%",
+            }}
+          >
+            {left && (
+              <div id="ticker" ref={tickerRef} style={{ marginRight: 5 }}>
+                {data}
+              </div>
+            )}
+            {!left && (
+              <div id="tickerReverse" ref={tickerRef}>
+                {data}
+              </div>
+            )}
+          </div>
+        )}
       </div>
     )
   }

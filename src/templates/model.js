@@ -210,7 +210,10 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                   className="model-portfolio-image--swiper"
                   title={title}
                   name={name}
-                  style={{ padding: isMobile ? "10px 0" : "30px 0" }}
+                  style={{
+                    padding: isMobile ? "10px 0" : "30px 0",
+                    margin: 0,
+                  }}
                 />
               ))}
             </Swiper>

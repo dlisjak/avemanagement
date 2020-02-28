@@ -3,6 +3,11 @@ import React, { useState } from "react"
 const ModelVideo = ({ videoUrl }) => {
   const [videoEnd, setVideoEnded] = useState(false)
 
+  let isMobile
+  if (typeof window !== "undefined") {
+    isMobile = window.innerWidth < 480
+  }
+
   const startVideoPlaying = () => {
     if (!videoEnd) return
 
@@ -16,13 +21,13 @@ const ModelVideo = ({ videoUrl }) => {
     <div
       id="youtubeVideo"
       style={{
-        width: "100%",
+        width: isMobile ? "95vw" : "100%",
         height: "100%",
         position: "relative",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        background: "rgba(0, 0, 0, 0.2)",
+        margin: "10px auto",
       }}
     >
       <video
