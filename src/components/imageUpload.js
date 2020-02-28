@@ -35,9 +35,9 @@ const ImageUpload = ({ title, order, text }) => {
   return (
     <>
       <div
-        className="flex flex-column justify-center align-center contact-image-upload relative"
+        className="flex flex-column justify-center align-center contact-image-upload relative flex category-card"
         style={{
-          marginBottom: file ? 25 : 10,
+          marginBottom: file ? 25 : 5,
           backgroundImage: title,
           objectFit: "contain",
           overflow: "hidden",

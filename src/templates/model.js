@@ -101,7 +101,6 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
           id="slideshow"
           className="flex model__main"
           style={{
-            marginTop: 5,
             position: "relative",
             marginBottom: tab === "videos" ? 0 : 5,
             background: tab === "bio" ? "white" : "#ccc",

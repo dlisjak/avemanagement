@@ -52,8 +52,7 @@ const Layout = ({ children, isHomepage, showGetToTop = false }) => {
         >
           {children}
         </main>
-        {isMobile && <GetToTop />}
-        {!isMobile && showGetToTop && <GetToTop show={true} />}
+        {showGetToTop && <GetToTop show={true} />}
         <footer className="flex justify-center width-100"></footer>
       </div>
     </>

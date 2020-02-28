@@ -106,9 +106,9 @@ const News = ({
             fontWeight: 700,
             color: "black",
             marginTop: 0,
-            marginBottom: -11,
+            marginBottom: -5,
             width: "75%",
-            lineHeight: 0.72,
+            lineHeight: 0.7,
           }}
         />
         <BlackBar height={100} />
@@ -132,6 +132,8 @@ const News = ({
                 objectFit: "contain",
                 height: "auto",
                 maxHeight: 760,
+                padding: "10px 0",
+                width: "95vw",
               }}
             />
           )}

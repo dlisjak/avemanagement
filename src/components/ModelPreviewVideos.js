@@ -2,6 +2,11 @@ import React from "react"
 import AnchorLink from "react-anchor-link-smooth-scroll"
 
 const ModelPreviewVideos = ({ thumbnail, onClick }) => {
+  let isMobile
+  if (typeof window !== "undefined") {
+    isMobile = window.innerWidth < 480
+  }
+
   return (
     <AnchorLink
       href="#slideshow"
@@ -9,7 +14,7 @@ const ModelPreviewVideos = ({ thumbnail, onClick }) => {
       className="category-card grid-item"
       onClick={onClick}
       style={{
-        height: 200,
+        height: isMobile ? 125 : 200,
         cursor: "pointer",
         background: "#ccc",
       }}

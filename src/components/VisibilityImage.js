@@ -10,6 +10,7 @@ const VizAwareImg = ({
   firstName,
   lastName,
   path,
+  index,
   lazyLoad,
 }) => {
   const [imgViz, setImgViz] = useState(lazyLoad ? false : true)
@@ -37,7 +38,7 @@ const VizAwareImg = ({
           position: "relative",
           overflow: "hidden",
           opacity: imgViz ? 1 : 0,
-          top: imgViz ? 0 : 100,
+          top: imgViz ? 0 : index % 2 ? 100 : 50,
           transition: "500ms linear",
         }}
       >

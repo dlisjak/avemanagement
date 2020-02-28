@@ -101,6 +101,12 @@
   .search-queries {
     padding-top: 20px;
   }
+  div.model__bio span {
+    font-size: 6.7vw;
+  }
+  .model-bio-property {
+    font-size: 4.5vw !important;
+  }
 }
 
 @media only screen and (min-width: 480px) {
@@ -211,9 +217,6 @@
   .swiper-slide {
     max-height: 200px;
   }
-  .model {
-    margin-top: 25px;
-  }
   .model__main-container {
     width: 100%;
   }
@@ -247,7 +250,7 @@
   }
   .model__menu a {
     margin: 0 2.5px;
-    font-size: 6vw;
+    font-size: 6.7vw;
     display: flex;
     justify-content: center;
   }
@@ -263,7 +266,7 @@
 
   div.contact-image-upload {
     height: auto;
-    width: calc(50% - 5px);
+    width: calc(50% - 2.5px);
     margin: 0;
   }
   .contact-image-upload:first-child {

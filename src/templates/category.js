@@ -108,7 +108,7 @@ const Category = ({ data, pageContext }) => {
             return (
               <VizAwareImg
                 id={first_name + last_name}
-                key={index}
+                index={index}
                 path={path}
                 src={featured_image.url}
                 alt={featured_image.alt}
