@@ -41,12 +41,6 @@ const BecomeAModel = () => {
     }
   }
 
-  const changeColor = (handleBlur, e) => {
-    document.querySelector("input[name='dateOfBirth']").style.opacity = "1"
-
-    handleBlur(e)
-  }
-
   const handleMobileChange = e => {
     if (e.target.value.length > 17) return
     setMobileNum(e.target.value)
@@ -208,12 +202,12 @@ const BecomeAModel = () => {
                   Date of Birth
                 </label>
                 <Field
-                  className="contact-input contact-input--date"
-                  type="date"
+                  className="contact-input"
+                  type="text"
                   name="dateOfBirth"
                   placeholder="DD / MM / YYYY"
                   onChange={handleChange}
-                  onBlur={e => changeColor(handleBlur, e)}
+                  onBlur={handleBlur}
                   value={values.dateOfBirth}
                 />
                 <ErrorMessage
@@ -232,10 +226,7 @@ const BecomeAModel = () => {
                 <label className="contact-label" htmlFor="mobileNumber">
                   Mobile
                 </label>
-                <div
-                  className="flex width-100"
-                  style={{ maxWidth: 650, borderTop: "1px solid" }}
-                >
+                <div className="flex width-100" style={{ maxWidth: 650 }}>
                   <input
                     className="contact-input contact-input--country-code"
                     type="input"
@@ -423,12 +414,18 @@ const BecomeAModel = () => {
         style={{
           marginTop: isMobile ? 0 : 50,
           marginBottom: 50,
-          fontSize: 20,
+          fontSize: isMobile ? 18 : 20,
           fontFamily: "HelveticaNeueCondensed",
           textTransform: "initial",
         }}
       >
-        <h4 style={{ marginBottom: 20, fontSize: "2rem" }}>
+        <h4
+          style={{
+            marginBottom: 20,
+            fontSize: "2rem",
+            textTransform: "uppercase",
+          }}
+        >
           Upload photographs
         </h4>
         <p>
@@ -510,7 +507,6 @@ const BecomeAModel = () => {
           Submit
         </label>
       </div>
-      <BlackBar height={100} />
       <AddressTicker />
     </Layout>
   )

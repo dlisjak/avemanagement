@@ -12,6 +12,10 @@ const NewsPage = ({ data, pageContext }) => {
   const dispatch = useContext(GlobalDispatchContext)
   const { currentPage, numOfPages } = pageContext
   let tickerText
+  let isMobile
+  if (typeof window !== "undefined") {
+    isMobile = window.innerWidth < 480
+  }
 
   useEffect(() => {
     // componentDidMount
@@ -33,8 +37,12 @@ const NewsPage = ({ data, pageContext }) => {
   }
 
   return (
-    <Layout>
-      <Pagination numOfPages={numOfPages} currentPage={currentPage} />
+    <Layout showGetToTop={true}>
+      <Pagination
+        numOfPages={numOfPages}
+        currentPage={currentPage}
+        isMobile={isMobile}
+      />
       <BlackBar height={100} />
       <div id="content" className="flex flex-wrap" style={{ marginTop: 5 }}>
         <div className="masonry-with-columns width-100">

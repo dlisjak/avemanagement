@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react"
 import { useInView } from "react-intersection-observer"
 
-const TickerText = ({ title, left = false, noRepeat = false, width }) => {
+const TickerText = ({ title, left = false, noRepeat = false, search }) => {
   const tickerRef = useRef(null)
   const [ref, inView, entry] = useInView({
     /* Optional options */
@@ -57,8 +57,8 @@ const TickerText = ({ title, left = false, noRepeat = false, width }) => {
         style={{
           position: "relative",
           fontWeight: 700,
-          top: isMobile && 9,
-          background: isMobile && "transparent",
+          top: isMobile && 4,
+          background: isMobile && "white",
         }}
         ref={ref}
       >
@@ -66,7 +66,7 @@ const TickerText = ({ title, left = false, noRepeat = false, width }) => {
           {inView && (
             <div
               id="ticker"
-              style={{ position: "relative", top: !isMobile && 4 }}
+              style={{ position: "relative", top: 5 }}
               ref={tickerRef}
             >
               {data}
@@ -84,7 +84,7 @@ const TickerText = ({ title, left = false, noRepeat = false, width }) => {
           maxWidth: 1440,
           position: "relative",
           fontWeight: 700,
-          top: 5,
+          top: search ? -3 : 5,
           background: "transparent",
         }}
         ref={ref}

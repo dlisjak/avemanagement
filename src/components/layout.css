@@ -1,11 +1,17 @@
 .header-fixed-container {
   width: 100%;
 }
+.getToTop {
+  box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.2);
+}
+.hidden {
+  display: none;
+}
 .model__main-container {
   position: relative;
 }
 .category-card h3 {
-  font-size: 6.9vw;
+  font-size: 5.5vw;
 }
 .masonry-with-columns {
   columns: 2 auto;
@@ -17,9 +23,9 @@
   padding: 5px 0;
   margin-top: 50px;
 }
-/* .model-slider-navigate {
-  display: none;
-} */
+.pagination-item.current {
+  color: rgb(204, 204, 204);
+}
 #content {
   padding: 0 5px;
 }
@@ -60,6 +66,8 @@
 .contact-label {
   min-width: 150px;
   font-size: 22px;
+  bottom: -10px;
+  position: relative;
 }
 
 .contact-error {
@@ -83,6 +91,9 @@
 }
 .logo {
   height: 60px;
+}
+.logo:focus {
+  outline: none;
 }
 .news-card-title {
   max-width: 100%;
@@ -150,9 +161,6 @@
   }
   .model-name {
     position: relative;
-  }
-  .pagination-item.current {
-    color: rgb(104, 103, 104);
   }
 
   .news-ticker-address #tickerwrap {
@@ -303,7 +311,7 @@
 
 @media only screen and (min-width: 769px) {
   h3.category-card-title {
-    font-size: 4.5vw;
+    font-size: 3.7vw;
   }
 }
 
@@ -455,7 +463,7 @@
     width: calc(25% - 5px);
   }
   h3.category-card-title {
-    font-size: 3vw;
+    font-size: 2.8vw;
   }
   .grid-col {
     width: 25%;
@@ -489,7 +497,7 @@
 
 @media only screen and (min-width: 1440px) {
   h3.category-card-title {
-    font-size: 3.2rem;
+    font-size: 2.9rem;
   }
 }
 
@@ -609,7 +617,7 @@
 }
 .contact-input {
   font-weight: 700;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.7);
   font-size: 22px;
 }
 .contact-input--date {
@@ -999,7 +1007,7 @@ header .flex > :first-child {
 .pagination-item {
   font-weight: 700;
   padding: 0px;
-  color: rgb(204, 204, 204);
+  color: black;
   margin: 0 0.5rem;
   position: relative;
   text-decoration: none;

@@ -112,6 +112,7 @@ const MobileNav = ({ isVisible, data, toggleMenu }) => {
                       opacity: 0,
                       height: 0,
                       flexDirection: "column",
+                      marginLeft: 20,
                     }}
                   >
                     {item.child_items.map((childItem, childIndex) => (

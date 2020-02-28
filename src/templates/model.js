@@ -93,7 +93,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
   }
 
   return (
-    <Layout>
+    <Layout showGetToTop={true}>
       <div className="flex model flex-column">
         <ModelName firstName={firstName} lastName={lastName} />
         <BlackBar height={100} />
@@ -268,7 +268,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
           </div>
         </div>
 
-        <BlackBar height={100} />
+        {tab !== "bio" && <BlackBar height={100} />}
 
         <div id="content" className="flex flex-wrap " style={{ marginTop: 5 }}>
           {

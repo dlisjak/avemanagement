@@ -4,7 +4,7 @@ import Header from "./header"
 import GetToTop from "./getToTop"
 import Loader from "../components/Loader"
 
-const Layout = ({ children, isHomepage }) => {
+const Layout = ({ children, isHomepage, showGetToTop = false }) => {
   const [isMobile, toggleIsMobile] = useState(false)
   const [isTablet, toggleIsTablet] = useState(false)
 
@@ -19,6 +19,10 @@ const Layout = ({ children, isHomepage }) => {
     checkIfMobile()
     // componentDidUnmount
   }, [])
+
+  let marginTop = 0
+  if (isMobile && !isHomepage) marginTop = 75
+  if (!isHomepage && !isMobile) marginTop = 100
 
   return (
     <>
@@ -43,12 +47,13 @@ const Layout = ({ children, isHomepage }) => {
           style={{
             width: "100%",
             position: "relative",
-            marginTop: !isHomepage && !isMobile && 50,
+            marginTop: marginTop,
           }}
         >
           {children}
         </main>
         {isMobile && <GetToTop />}
+        {!isMobile && showGetToTop && <GetToTop show={true} />}
         <footer className="flex justify-center width-100"></footer>
       </div>
     </>

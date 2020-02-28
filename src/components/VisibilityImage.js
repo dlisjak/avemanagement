@@ -23,7 +23,7 @@ const VizAwareImg = ({
   return (
     <VizSensor
       partialVisibility
-      minTopValue={100}
+      minTopValue={50}
       active={imgViz ? false : true}
       onChange={isVisible => {
         setImgViz(isVisible)

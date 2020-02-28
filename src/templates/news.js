@@ -92,7 +92,7 @@ const News = ({
   }
 
   return (
-    <Layout>
+    <Layout showGetToTop={true}>
       <div
         className="flex flex-column"
         style={{ marginBottom: 50, alignItems: "flex-start" }}
@@ -107,6 +107,8 @@ const News = ({
             color: "black",
             marginTop: 0,
             marginBottom: -11,
+            width: "75%",
+            lineHeight: 0.72,
           }}
         />
         <BlackBar height={100} />

@@ -69,20 +69,16 @@ const Header = ({ isMobile, isTablet, isHomepage }) => {
     }
   `)
 
-  let headerHeight = 200
-  if (isHomepage && isMobile) headerHeight = 145
-  if (isHomepage && !isMobile) headerHeight = 165
-
   return (
     <div
       className="header-fixed-container flex-column"
       style={{
+        position: "relative",
         maxWidth: 1440,
         width: "100%",
         display: "block",
         zIndex: 999999,
         background: "white",
-        height: headerHeight,
       }}
     >
       <Link to="/" style={{ zIndex: 99, position: "relative" }}>
@@ -107,13 +103,12 @@ const Header = ({ isMobile, isTablet, isHomepage }) => {
           position: "relative",
           flexDirection: "column",
           width: "100%",
-          height: isMobile && 100,
         }}
       >
         <div
           className="width-100"
           onClick={() => toggleMenu(isVisible)}
-          style={{ cursor: "pointer", zIndex: 9999, height: isMobile && 80 }}
+          style={{ cursor: "pointer", zIndex: 9999, height: isMobile && 78 }}
         >
           <BlackBar height={50} />
           <Ticker title={"MENU"} />

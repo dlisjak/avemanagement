@@ -98,8 +98,7 @@ const Home = ({ data }) => {
         src={videoSrc}
         muted
         autoPlay
-        autobuffer
-        playsinline
+        playsInline
         controlsList="nodownload"
         onEnded={onVidEnding}
         className="home-video width-100"

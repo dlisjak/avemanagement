@@ -34,19 +34,23 @@ const Instagram = ({ posts }) => {
         )}
       </a>
       <Slider>
-        {posts.map(({ node }, i) => (
-          <img
-            ref={ref}
-            style={{
-              maxHeight: 400,
-              height: isMobile ? "auto" : "100%",
-              width: "auto",
-              objectFit: "cover",
-            }}
-            src={node.localFile.publicURL}
-            key={i}
-          />
-        ))}
+        {posts.map(({ node }, i) => {
+          if (!(node.localFile || {}).publicURL) return
+
+          return (
+            <img
+              ref={ref}
+              style={{
+                maxHeight: 400,
+                height: isMobile ? "auto" : "100%",
+                width: "auto",
+                objectFit: "cover",
+              }}
+              src={node.localFile.publicURL}
+              key={i}
+            />
+          )
+        })}
       </Slider>
     </Fragment>
   )

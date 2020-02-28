@@ -54,7 +54,7 @@ const Search = ({ data }) => {
   }
 
   return (
-    <Layout>
+    <Layout showGetToTop={true}>
       <div
         className="flex flex-column search-queries"
         style={{ marginBottom: 20, fontSize: 20 }}
@@ -103,6 +103,11 @@ const Search = ({ data }) => {
               return null
             }
           }
+
+          if (genderQuery) {
+            if (genderQuery !== node.acf.gender) return null
+          }
+
           if (index === 0 || node.title[0] !== arr[index - 1].node.title[0]) {
             return (
               <React.Fragment key={index}>
@@ -121,15 +126,12 @@ const Search = ({ data }) => {
                     lineHeight: 1.8,
                   }}
                 >
-                  {node.title.toUpperCase()}
+                  {node.title}
                 </Link>
               </React.Fragment>
             )
           }
 
-          if (genderQuery) {
-            if (genderQuery !== node.acf.gender) return null
-          }
           return (
             <Link
               id={`${node.title.replace(" ", "")}`}
@@ -142,7 +144,7 @@ const Search = ({ data }) => {
               }}
               key={index}
             >
-              {node.title.toUpperCase()}
+              {node.title}
             </Link>
           )
         })}

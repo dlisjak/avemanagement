@@ -56,7 +56,7 @@ const Category = ({ data, pageContext }) => {
   }
 
   return (
-    <Layout>
+    <Layout showGetToTop={true}>
       {searchOpen && (
         <Search
           models={data.allWordpressPost.edges}
@@ -67,7 +67,7 @@ const Category = ({ data, pageContext }) => {
       )}
       {!searchOpen && (
         <button
-          className="category-search--desktop"
+          className="category-search"
           onClick={() => openSearch()}
           style={{
             position: "absolute",
@@ -75,6 +75,7 @@ const Category = ({ data, pageContext }) => {
             right: 0,
             fontSize: "2.6rem",
             top: "-2.2rem",
+            right: -2,
             background: 0,
             border: 0,
             fontWeight: 700,
@@ -121,24 +122,6 @@ const Category = ({ data, pageContext }) => {
           }
         )}
       </div>
-      {!searchOpen && (
-        <button
-          className="category-search--mobile"
-          onClick={() => {
-            openSearch()
-          }}
-          style={{
-            background: 0,
-            border: 0,
-            fontWeight: 700,
-            padding: 0,
-            zIndex: 9999,
-            color: "#ccc",
-          }}
-        >
-          SEARCH
-        </button>
-      )}
 
       <AnchorLink
         id="anchorButtonIndex"

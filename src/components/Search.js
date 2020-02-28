@@ -13,27 +13,32 @@ const SearchPose = posed.div({
 const Search = ({ isShown, models, closeSearch }) => {
   const [isOpen, toggleOverlay] = useState(true)
   const [searchQuery, setSearchQuery] = useState("")
+  const [genderQuery, setGender] = useState(null)
   const inputRef = useRef(null)
+
   let isMobile
   if (typeof window !== "undefined") {
     isMobile = window.innerWidth < 480
   }
 
   useEffect(() => {
+    const el = document.querySelector("body")
+    const el2 = document.querySelector(".header-fixed-container")
+
     const openOverlay = () => {
-      const el = document.querySelector("body")
       el.classList.add("overlay")
+      el2.addEventListener("click", closeOverlay)
       inputRef.current.focus()
     }
     openOverlay()
 
     return () => {
-      const el = document.querySelector("body")
+      el2.removeEventListener("click", closeOverlay)
       el.classList.remove("overlay")
     }
   }, [])
 
-  const closeOverlay = () => {
+  const closeOverlay = e => {
     closeSearch()
   }
 
@@ -51,8 +56,6 @@ const Search = ({ isShown, models, closeSearch }) => {
     a.node.acf.first_name.localeCompare(b.node.acf.first_name)
   )
 
-  const [genderQuery, setGender] = useState(null)
-
   const setSearchGender = (e, gender) => {
     setGender(gender)
   }
@@ -66,21 +69,20 @@ const Search = ({ isShown, models, closeSearch }) => {
         position: "fixed",
         zIndex: 999999,
         background: "white",
-        width: "100%",
+        width: isMobile ? "100%" : "80%",
         maxWidth: 1440,
         height: "80%",
-        top: isMobile ? 150 : 220,
+        top: isMobile ? 150 : 167,
         paddingBottom: 200,
       }}
     >
-      <TickerText title="SEARCH" />
+      <TickerText search={true} title="SEARCH" />
       <div
         className="flex flex-column search-queries"
         style={{
-          paddingTop: 50,
           borderBottom: "1px solid",
           marginBottom: 20,
-          marginTop: 50,
+          marginTop: !isMobile && 50,
         }}
       >
         <button
@@ -124,7 +126,7 @@ const Search = ({ isShown, models, closeSearch }) => {
           paddingTop: 20,
           paddingBottom: 50,
           marginBottom: 150,
-          paddingBottom: 275,
+          paddingBottom: isMobile ? 115 : 275,
           overflow: "scroll",
           height: "100%",
           width: "100%",
