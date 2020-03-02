@@ -66,7 +66,7 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
           {inView && (
             <div
               id="ticker"
-              style={{ position: "relative", top: 5 }}
+              style={{ position: "relative", top: isMobile ? 6 : 5 }}
               ref={tickerRef}
             >
               {data}

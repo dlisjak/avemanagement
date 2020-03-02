@@ -27,6 +27,7 @@ const Layout = ({ children, isHomepage, showGetToTop = false }) => {
 
   return (
     <>
+      <Loader />
       <div
         className="layout-main"
         style={{
@@ -37,7 +38,6 @@ const Layout = ({ children, isHomepage, showGetToTop = false }) => {
           marginBottom: 0,
         }}
       >
-        <Loader />
         <Header
           isTablet={isTablet}
           isMobile={isMobile}
@@ -54,12 +54,6 @@ const Layout = ({ children, isHomepage, showGetToTop = false }) => {
           {children}
         </main>
         {showGetToTop && <GetToTop show={true} />}
-        <footer
-          className="flex justify-center align-center width-100"
-          style={{ height: 300, position: "relative" }}
-        >
-          <AddressTicker />
-        </footer>
       </div>
     </>
   )
