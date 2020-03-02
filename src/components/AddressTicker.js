@@ -1,5 +1,6 @@
 import React from "react"
-import { Link } from "gatsby"
+
+import Logo from "../images/logo.svg"
 
 const AddressTicker = () => {
   let isMobile
@@ -8,26 +9,35 @@ const AddressTicker = () => {
   }
 
   return (
-    <Link
-      to="/contact"
-      className="news-ticker-address"
+    <div
       style={{
-        width: "100%",
-        borderTop: "1px solid",
-        borderBottom: "1px solid",
-        color: "rgba(0, 0, 0)",
-        fontSize: isMobile ? 15 : 20,
+        transform: "rotate(90deg)",
         display: "flex",
-        alignItems: "center",
+        justifyContent: "flex-end",
+        alignItems: "flex-end",
         flexDirection: "column",
-        textDecoration: "none",
-        textTransform: "none",
-        textAlign: "center",
       }}
     >
-      <span>70 SHENTON WAY EON SHENTON #13-06 SINGAPORE 079118</span>
-      <span>INFO@AVEMANAGEMENT.COM T +65 68874629</span>
-    </Link>
+      <span style={{ fontSize: "8rem", lineHeight: 0.75 }}>2020</span>
+      <img
+        style={{ display: "block", position: "relative", left: 35 }}
+        src={Logo}
+        className="logo"
+        alt="Ave Management Logo"
+      />
+      <h3
+        style={{
+          fontSize: "4rem",
+          textAlign: "end",
+          lineHeight: 0.8,
+          fontWeight: 300,
+        }}
+      >
+        MANAGE
+        <br />
+        MENT
+      </h3>
+    </div>
   )
 }
 

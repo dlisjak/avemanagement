@@ -118,7 +118,6 @@ const Home = ({ data }) => {
       >
         <Instagram posts={data.allInstaNode.edges} />
       </div>
-      <AddressTicker />
     </Layout>
   )
 }

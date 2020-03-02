@@ -1,12 +1,10 @@
 import React, { useEffect, useContext } from "react"
 import { Link, graphql } from "gatsby"
-import SmoothImage from "react-smooth-image"
 
 import Layout from "../components/layout"
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 import BlackBar from "../components/BlackBar"
 import Pagination from "../components/Pagination"
-import AddressTicker from "../components/AddressTicker"
 
 const NewsPage = ({ data, pageContext }) => {
   const dispatch = useContext(GlobalDispatchContext)
@@ -86,7 +84,6 @@ const NewsPage = ({ data, pageContext }) => {
           )}
         </div>
       </div>
-      <AddressTicker />
     </Layout>
   )
 }

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 import Header from "./header"
 import GetToTop from "./getToTop"
 import Loader from "../components/Loader"
+import AddressTicker from "./AddressTicker"
 
 const Layout = ({ children, isHomepage, showGetToTop = false }) => {
   const [isMobile, toggleIsMobile] = useState(false)
@@ -34,7 +35,7 @@ const Layout = ({ children, isHomepage, showGetToTop = false }) => {
           flexWrap: "wrap",
           margin: `0 auto`,
           paddingTop: 0,
-          marginBottom: isMobile ? 0 : 125,
+          marginBottom: 0,
         }}
       >
         <Header
@@ -53,7 +54,12 @@ const Layout = ({ children, isHomepage, showGetToTop = false }) => {
           {children}
         </main>
         {showGetToTop && <GetToTop show={true} />}
-        <footer className="flex justify-center width-100"></footer>
+        <footer
+          className="flex justify-center align-center width-100"
+          style={{ height: 300, position: "relative" }}
+        >
+          <AddressTicker />
+        </footer>
       </div>
     </>
   )

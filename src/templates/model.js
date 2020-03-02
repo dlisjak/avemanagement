@@ -7,7 +7,6 @@ import AnchorLink from "react-anchor-link-smooth-scroll"
 import "../components/swiper.css"
 
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
-import AddressTicker from "../components/AddressTicker"
 import Bio from "../components/Bio"
 import ModelName from "../components/ModelName"
 import ModelVideo from "../components/ModelVideo"
@@ -328,7 +327,6 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
           )}
         </div>
       </div>
-      <AddressTicker />
     </Layout>
   )
 }

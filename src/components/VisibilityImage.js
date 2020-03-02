@@ -14,12 +14,26 @@ const VizAwareImg = ({
   lazyLoad,
 }) => {
   const [imgViz, setImgViz] = useState(lazyLoad ? false : true)
+  let isMobile
+  if (typeof window !== "undefined") {
+    isMobile = window.innerWidth < 480
+  }
 
   useEffect(() => {
     setImgViz(lazyLoad ? false : true)
   }, [])
 
   id = id.replace(" ", "")
+
+  let k = 4
+  let top = 50
+  if (isMobile) {
+    if (index % 2) top = 100
+  } else {
+    if (index % 2) top = 175
+    if (index % 3) top = 200
+    if (index % 4) top = 225
+  }
 
   return (
     <VizSensor
@@ -38,7 +52,7 @@ const VizAwareImg = ({
           position: "relative",
           overflow: "hidden",
           opacity: imgViz ? 1 : 0,
-          top: imgViz ? 0 : index % 2 ? 100 : 50,
+          top: imgViz ? 0 : top,
           transition: "500ms linear",
         }}
       >

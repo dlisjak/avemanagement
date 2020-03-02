@@ -9,8 +9,6 @@ import {
 
 import Layout from "../components/layout"
 import ImageUpload from "../components/imageUpload"
-import BlackBar from "../components/BlackBar"
-import AddressTicker from "../components/AddressTicker"
 
 const BecomeAModel = () => {
   const dispatch = useContext(GlobalDispatchContext)
@@ -507,7 +505,6 @@ const BecomeAModel = () => {
           Submit
         </label>
       </div>
-      <AddressTicker />
     </Layout>
   )
 }

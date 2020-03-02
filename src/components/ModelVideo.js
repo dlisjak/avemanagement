@@ -34,6 +34,7 @@ const ModelVideo = ({ videoUrl }) => {
         src={videoUrl}
         autoPlay
         muted
+        playsInline
         onEnded={() => setVideoEnded(true)}
         className="home-video width-100"
         style={{ paddingBottom: 5 }}

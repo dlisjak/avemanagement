@@ -4,7 +4,6 @@ import AnchorLink from "react-anchor-link-smooth-scroll"
 
 import Layout from "../components/layout"
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
-import AddressTicker from "../components/AddressTicker"
 import BlackBar from "../components/BlackBar"
 import ModelVideo from "../components/ModelVideo"
 import NewsPreviewVideos from "../components/NewsPreviewVideos"
@@ -197,7 +196,6 @@ const News = ({
             })}
         </div>
       </div>
-      <AddressTicker />
     </Layout>
   )
 }
