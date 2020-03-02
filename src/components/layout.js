@@ -27,7 +27,6 @@ const Layout = ({ children, isHomepage, showGetToTop = false }) => {
 
   return (
     <>
-      <Loader />
       <div
         className="layout-main"
         style={{
@@ -38,6 +37,7 @@ const Layout = ({ children, isHomepage, showGetToTop = false }) => {
           marginBottom: 0,
         }}
       >
+        <Loader />
         <Header
           isTablet={isTablet}
           isMobile={isMobile}
