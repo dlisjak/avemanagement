@@ -14,7 +14,7 @@ const Layout = ({ children, isHomepage, showGetToTop = false }) => {
     const checkIfMobile = () => {
       if (typeof window !== "undefined") {
         if (window.innerWidth < 480) toggleIsMobile(true)
-        if (window.innerWidth < 769) toggleIsTablet(true)
+        if (window.innerWidth < 1111) toggleIsTablet(true)
       }
     }
     checkIfMobile()

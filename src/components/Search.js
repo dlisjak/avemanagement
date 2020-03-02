@@ -27,18 +27,23 @@ const Search = ({ isShown, models, closeSearch }) => {
 
     const openOverlay = () => {
       el.classList.add("overlay")
-      el2.addEventListener("click", closeOverlay)
+      el.addEventListener("click", closeOverlay)
       inputRef.current.focus()
     }
     openOverlay()
 
     return () => {
-      el2.removeEventListener("click", closeOverlay)
+      el.removeEventListener("click", closeOverlay)
       el.classList.remove("overlay")
     }
   }, [])
 
   const closeOverlay = e => {
+    const some = el => {
+      return el.className === "flex flex-column search-overlay"
+    }
+
+    if (e.path.some(some)) return
     closeSearch()
   }
 

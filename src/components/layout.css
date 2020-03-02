@@ -980,10 +980,22 @@ header a {
 header div.active,
 header a.active {
   font-weight: bold;
+  top: 2px;
+  position: relative;
 }
 
 header .flex > :first-child {
   padding-left: 0 !important;
+}
+
+header div:hover {
+  top: 0;
+}
+
+header .flex > a:first-child:hover {
+  font-weight: 900;
+  top: 2px;
+  position: relative;
 }
 
 .up-arrow {

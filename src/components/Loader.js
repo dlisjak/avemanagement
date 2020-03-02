@@ -45,30 +45,25 @@ const Loader = () => {
           pose={isLoaderShown ? "visible" : "hidden"}
           key={0}
           style={{
+            position: "fixed",
             display: "flex",
             top: 0,
             left: 0,
-            width: "80%",
+            width: "100%",
             height: "100vh",
             background: `white`,
             zIndex: 9999999999,
+            alignItems: "center",
+            justifyContent: "center",
+            paddingBottom: 100,
           }}
         >
           <LoadingLogo
-            className="logo"
             pose={isLogoShown ? "visible" : "hidden"}
             key={1}
             src={Logo}
             alt="AVE LOGO"
-            style={{
-              margin: 5,
-              marginLeft: 0,
-              marginBottom: 0,
-              cursor: "pointer",
-              width: "100%",
-              height: "auto",
-              maxWidth: 250,
-            }}
+            style={{ width: 300 }}
           />
         </LoadingOverlay>
       </PoseGroup>
