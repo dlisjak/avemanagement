@@ -91,13 +91,7 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
         ref={ref}
       >
         {inView && (
-          <div
-            id="tickerwrap"
-            style={{
-              paddingRight: left && "100%",
-              paddingLeft: !left && "100%",
-            }}
-          >
+          <div id="tickerwrap">
             {left && (
               <div id="ticker" ref={tickerRef} style={{ marginRight: 5 }}>
                 {data}
