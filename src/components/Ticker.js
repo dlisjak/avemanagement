@@ -84,7 +84,8 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
           maxWidth: 1440,
           position: "relative",
           fontWeight: 700,
-          top: search ? -3 : 5,
+          top: search && !isMobile ? -3 : 5,
+          top: search && isMobile ? -3 : 6,
           background: "transparent",
         }}
         ref={ref}
