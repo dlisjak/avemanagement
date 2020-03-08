@@ -35,8 +35,7 @@ const Instagram = ({ posts }) => {
       </a>
       <Slider>
         {posts.map(({ node }, i) => {
-          if (!(node.localFile || {}).publicURL) return
-
+          if (!node.publicURL) return
           return (
             <img
               ref={ref}

@@ -3,10 +3,6 @@ import { useInView } from "react-intersection-observer"
 
 const TickerText = ({ title, left = false, noRepeat = false, search }) => {
   const tickerRef = useRef(null)
-  const [ref, inView, entry] = useInView({
-    /* Optional options */
-    threshold: 1,
-  })
 
   const reg = !noRepeat
     ? new RegExp("([^a-zA-Z#@])", "g")
@@ -60,18 +56,15 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
           top: isMobile && 4,
           background: isMobile && "white",
         }}
-        ref={ref}
       >
         <div id="tickerwrap">
-          {inView && (
-            <div
-              id="ticker"
-              style={{ position: "relative", top: isMobile ? 6 : 5 }}
-              ref={tickerRef}
-            >
-              {data}
-            </div>
-          )}
+          <div
+            id="ticker"
+            style={{ position: "relative", top: isMobile ? 6 : 5 }}
+            ref={tickerRef}
+          >
+            {data}
+          </div>
         </div>
       </div>
     )
@@ -88,22 +81,19 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
           top: search && isMobile ? -3 : 6,
           background: "transparent",
         }}
-        ref={ref}
       >
-        {inView && (
-          <div id="tickerwrap">
-            {left && (
-              <div id="ticker" ref={tickerRef} style={{ marginRight: 5 }}>
-                {data}
-              </div>
-            )}
-            {!left && (
-              <div id="tickerReverse" ref={tickerRef}>
-                {data}
-              </div>
-            )}
-          </div>
-        )}
+        <div id="tickerwrap">
+          {left && (
+            <div id="ticker" ref={tickerRef} style={{ marginRight: 5 }}>
+              {data}
+            </div>
+          )}
+          {!left && (
+            <div id="tickerReverse" ref={tickerRef}>
+              {data}
+            </div>
+          )}
+        </div>
       </div>
     )
   }

@@ -78,10 +78,6 @@ const Home = ({ data }) => {
     setVideoSrc(videoSources[key])
   }
 
-  let headerHeight = 200
-  if (isMobile) headerHeight = 145
-  if (!isMobile) headerHeight = 165
-
   return (
     <Layout isHomepage={true}>
       <Loader />

@@ -35,16 +35,12 @@ const Category = ({ data, pageContext }) => {
         if (!el) return
 
         el.click()
-      }, 1000)
+      }, 2000)
     }
 
     setPath()
     anchorScroll()
   }, [])
-
-  const [ref, inView, entry] = useInView({
-    threshold: 200,
-  })
 
   const openSearch = () => {
     toggleSearch(!searchOpen)
@@ -115,7 +111,6 @@ const Category = ({ data, pageContext }) => {
                 style={{ marginBottom: 0 }}
                 firstName={first_name}
                 lastName={last_name}
-                lazyLoad={index > 7}
               />
             )
           }

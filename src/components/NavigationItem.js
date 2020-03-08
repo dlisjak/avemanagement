@@ -21,8 +21,8 @@ const NavigationItem = ({ item, isMobile }) => {
         style={{
           paddingLeft: 10,
           paddingRight: 10,
-          paddingTop: isMobile ? 10 : 5,
-          paddingBottom: 5,
+          paddingTop: isMobile ? 15 : 5,
+          paddingBottom: 15,
           fontSize: 20,
           textDecoration: "none",
           cursor: "pointer",
@@ -60,8 +60,8 @@ const NavigationItem = ({ item, isMobile }) => {
         style={{
           paddingLeft: 10,
           paddingRight: 10,
-          paddingTop: isMobile ? 10 : 5,
-          paddingBottom: 5,
+          paddingTop: isMobile ? 15 : 5,
+          paddingBottom: 15,
           fontSize: 20,
           textDecoration: "none",
         }}

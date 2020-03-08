@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { Link } from "gatsby"
 import VizSensor from "react-visibility-sensor"
 
@@ -11,17 +11,12 @@ const VizAwareImg = ({
   lastName,
   path,
   index,
-  lazyLoad,
 }) => {
-  const [imgViz, setImgViz] = useState(lazyLoad ? false : true)
+  const [imgViz, setImgViz] = useState(false)
   let isMobile
   if (typeof window !== "undefined") {
     isMobile = window.innerWidth < 480
   }
-
-  useEffect(() => {
-    setImgViz(lazyLoad ? false : true)
-  }, [])
 
   id = id.replace(" ", "")
 

@@ -16,8 +16,11 @@ const BecomeAModel = () => {
 
   const [mobileNum, setMobileNum] = useState("")
   const [countryCode, setCountryCode] = useState("")
-  const [isMobile, toggleIsMobile] = useState(false)
   let tickerText
+  let isMobile
+  if (typeof window !== "undefined") {
+    isMobile = window.innerWidth < 480
+  }
 
   useEffect(() => {
     const setPath = () => {
@@ -27,17 +30,6 @@ const BecomeAModel = () => {
     }
     setPath()
   }, [])
-
-  if (typeof window !== "undefined") {
-    window.addEventListener("resize", checkIfMobile)
-  }
-
-  const checkIfMobile = () => {
-    if (typeof window !== "undefined") {
-      const a = window.innerWidth < 1015
-      toggleIsMobile(a)
-    }
-  }
 
   const handleMobileChange = e => {
     if (e.target.value.length > 17) return
@@ -460,7 +452,12 @@ const BecomeAModel = () => {
       <div className="flex flex-column">
         <span
           className="content-padding"
-          style={{ fontWeight: 700, marginBottom: 25, fontSize: 32 }}
+          style={{
+            fontWeight: 700,
+            marginBottom: 25,
+            fontSize: 32,
+            lineHeight: 0.8,
+          }}
         >
           ENSURE YOUR IMAGES ARE NOT LARGER THAN 2MB EACH IN SIZE
         </span>

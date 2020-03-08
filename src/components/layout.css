@@ -96,7 +96,7 @@
 @media only screen and (max-width: 479px) {
   .model__name {
     font-size: 13vw;
-    margin-bottom: -8px;
+    margin-bottom: -4px;
   }
   .search-queries {
     padding-top: 20px;
@@ -992,7 +992,7 @@ header div:hover {
   top: 0;
 }
 
-header .flex > a:first-child:hover {
+header .flex > a.:first-child:hover {
   font-weight: 900;
   top: 2px;
   position: relative;

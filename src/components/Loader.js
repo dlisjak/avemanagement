@@ -23,7 +23,7 @@ const Loader = () => {
       bodyEl.classList.add("overlay")
     }
     const showLogo = () => {
-      setLogoShown(true)
+      setLogoShown(false)
     }
     const displayLoader = () => {
       setTimeout(() => {
@@ -33,7 +33,7 @@ const Loader = () => {
       }, 1500)
     }
     displayLoader()
-    showLogo()
+    // showLogo()
     setBodyUnscrollable()
   }, [])
 
@@ -63,7 +63,7 @@ const Loader = () => {
             key={1}
             src={Logo}
             alt="AVE LOGO"
-            style={{ width: 300 }}
+            style={{ width: 300, opacity: 0 }}
           />
         </LoadingOverlay>
       </PoseGroup>

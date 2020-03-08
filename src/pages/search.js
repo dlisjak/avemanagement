@@ -89,6 +89,7 @@ const Search = ({ data }) => {
               fontSize: 24,
               marginTop: 10,
               width: "100%",
+              padding: 0,
             }}
           />
         </div>

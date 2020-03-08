@@ -10,7 +10,7 @@ const Pagination = ({ currentPage, numOfPages, isMobile }) => (
       justifyContent: "flex-end",
       width: "100%",
       paddingRight: 0,
-      fontSize: isMobile ? "1.6rem" : "2.6rem",
+      fontSize: "2.6rem",
       top: isMobile ? 6 : 1,
     }}
   >
