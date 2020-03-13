@@ -124,7 +124,11 @@ export const query = graphql`
       edges {
         node {
           localFile {
-            publicURL
+            childImageSharp {
+              fixed(width: 150, height: 150) {
+                ...GatsbyImageSharpFixed
+              }
+            }
           }
         }
       }

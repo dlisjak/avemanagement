@@ -37,7 +37,7 @@ const Contact = () => {
             style={{
               fontWeight: 700,
               fontSize: !isMobile ? 72 : 44,
-              lineHeight: 0.8,
+              lineHeight: 0.7,
               marginBottom: !isMobile ? -10 : -7,
               color: "black",
             }}
@@ -47,25 +47,25 @@ const Contact = () => {
           </span>
         </div>
       )}
-      <BlackBar height={100} />
       <div
         className="flex flex-column align-start content-padding"
         style={{
           textAlign: "left",
           paddingBottom: 30,
           paddingTop: 20,
-          fontSize: !isMobile ? 24 : 20,
+          fontSize: !isMobile ? 28 : 20,
+          lineHeight: 0.9,
         }}
       >
         <span>70 SHENTON WAY</span>
         <span>EON SHENTON</span>
         <span>#13-06</span>
-        <span style={{ marginBottom: 20 }}>SINGAPORE 079118</span>
+        <span style={{ marginBottom: !isMobile && 100 }}>SINGAPORE 079118</span>
 
         <a
           href="https://goo.gl/maps/JoLuAknYkKp"
           style={{
-            textDecoration: "none",
+            textDecoration: "underline",
             textTransform: "uppercase",
             color: "#222",
             fontWeight: 700,
@@ -77,10 +77,10 @@ const Contact = () => {
         <a
           href="tel:+6568874629"
           style={{
-            marginBottom: 20,
-            marginTop: 20,
+            marginBottom: 30,
+            marginTop: 30,
             fontWeight: 700,
-            textDecoration: "none",
+            textDecoration: "underline",
             color: "black",
           }}
         >
@@ -90,7 +90,7 @@ const Contact = () => {
         <a
           href="mailto:info@avemanagement.com"
           style={{
-            textDecoration: "none",
+            textDecoration: "underline",
             textTransform: "uppercase",
             color: "#222",
             fontWeight: 700,
@@ -99,16 +99,23 @@ const Contact = () => {
           info@avemanagement.com
         </a>
       </div>
-      <BlackBar height={100} />
       <div
         className="flex flex-column contact-page-history content-padding"
         style={{
           position: "relative",
           fontSize: !isMobile ? 20 : 18,
           marginLeft: !isMobile && "30%",
+          paddingTop: !isMobile && 80,
         }}
       >
-        <span style={{ fontWeight: 700, marginBottom: 25, marginTop: 10 }}>
+        <span
+          style={{
+            fontWeight: 700,
+            marginBottom: 25,
+            marginTop: 10,
+            fontSize: !isMobile && 28,
+          }}
+        >
           HISTORY
         </span>
         <p style={{ maxWidth: 680, textTransform: "none" }}>

@@ -10,7 +10,6 @@ const Layout = ({ children, isHomepage, showGetToTop = false }) => {
   const [isTablet, toggleIsTablet] = useState(false)
 
   useEffect(() => {
-    // componentDidMount
     const checkIfMobile = () => {
       if (typeof window !== "undefined") {
         if (window.innerWidth < 480) toggleIsMobile(true)
@@ -18,7 +17,6 @@ const Layout = ({ children, isHomepage, showGetToTop = false }) => {
       }
     }
     checkIfMobile()
-    // componentDidUnmount
   }, [])
 
   let marginTop = 0

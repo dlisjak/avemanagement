@@ -3,11 +3,6 @@ import posed, { PoseGroup } from "react-pose"
 
 import Logo from "../images/logo.svg"
 
-const LoadingLogo = posed.img({
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 },
-})
-
 const LoadingOverlay = posed.div({
   hidden: { opacity: 0 },
   visible: { opacity: 1 },
@@ -58,12 +53,12 @@ const Loader = () => {
             paddingBottom: 100,
           }}
         >
-          <LoadingLogo
-            pose={isLogoShown ? "visible" : "hidden"}
+          <img
             key={1}
+            className="loading-logo"
             src={Logo}
             alt="AVE LOGO"
-            style={{ width: 300, opacity: 0 }}
+            style={{ width: 300 }}
           />
         </LoadingOverlay>
       </PoseGroup>

@@ -1,15 +1,11 @@
 import React, { Fragment } from "react"
 import { useInView } from "react-intersection-observer"
+import Img from "gatsby-image"
 
 import Slider from "./Slider"
 import TickerText from "./Ticker"
 
 const Instagram = ({ posts }) => {
-  const [ref, inView, entry] = useInView({
-    /* Optional options */
-    threshold: 0,
-  })
-
   let isMobile
   if (typeof window !== "undefined") {
     isMobile = window.innerWidth < 480
@@ -35,17 +31,13 @@ const Instagram = ({ posts }) => {
       </a>
       <Slider>
         {posts.map(({ node }, i) => {
+          console.log(node.localFile.childImageSharp.fixed)
           if (!node.publicURL) return
           return (
-            <img
-              ref={ref}
-              style={{
-                maxHeight: 400,
-                height: isMobile ? "auto" : "100%",
-                width: "auto",
-                objectFit: "cover",
-              }}
-              src={node.localFile.publicURL}
+            <Img
+              height={node.localFile.childImageSharp.fixed.height}
+              width={node.localFile.childImageSharp.fixed.width}
+              fixed={node.localFile.childImageSharp.fixed}
               key={i}
             />
           )

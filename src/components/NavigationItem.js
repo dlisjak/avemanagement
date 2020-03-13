@@ -42,7 +42,7 @@ const NavigationItem = ({ item, isMobile }) => {
           paddingLeft: 10,
           paddingRight: 10,
           paddingTop: isMobile ? 10 : 5,
-          paddingBottom: 5,
+          paddingBottom: 15,
           fontSize: 20,
           textDecoration: "none",
         }}
