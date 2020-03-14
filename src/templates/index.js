@@ -6,7 +6,6 @@ import SEO from "../components/seo"
 
 import News from "../components/News"
 import Instagram from "../components/Instagram"
-import Loader from "../components/Loader"
 import TickerText from "../components/Ticker"
 
 import BlackBar from "../components/BlackBar"
@@ -19,7 +18,7 @@ const Home = ({ data }) => {
 
   const videoSources = [
     "https://avemanagement1.eu/wp-content/uploads/2020/03/main-video-1.mp4",
-    "https://avemanagement1.eu/wp-content/uploads/2020/03/main-video-2.mp4",
+    "https://avemanagement1.eu/wp-content/uploads/2019/10/main-video-2.mp4",
   ]
 
   let isMobile

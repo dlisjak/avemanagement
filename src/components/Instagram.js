@@ -1,8 +1,6 @@
-import React, { Fragment } from "react"
-import Img from "gatsby-image"
+import React from "react"
 
 import Slider from "./Slider"
-import TickerText from "./Ticker"
 
 const Instagram = ({ posts }) => {
   let isMobile

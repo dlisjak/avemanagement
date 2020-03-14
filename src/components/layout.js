@@ -5,13 +5,15 @@ import GetToTop from "./getToTop"
 import Loader from "../components/Loader"
 
 const Layout = ({ children, isHomepage, showGetToTop = false }) => {
-  const [isMobile, toggleIsMobile] = useState(false)
-  const [isTablet, toggleIsTablet] = useState(false)
   const [isLoaderShown, setLoaderShown] = useState(true)
-
   let marginTop = 0
-  if (isMobile && !isHomepage) marginTop = 75
-  if (!isHomepage && !isMobile) marginTop = 100
+  let isMobile
+  let isTablet
+
+  if (typeof window !== "undefined") {
+    isMobile = window.innerWidth < 480
+    isTablet = window.innerWidth < 1111
+  }
 
   useEffect(() => {
     const displayLoader = () => {
@@ -31,14 +33,8 @@ const Layout = ({ children, isHomepage, showGetToTop = false }) => {
     setBodyUnscrollable()
   })
 
-  const checkIfMobile = () => {
-    if (typeof window !== "undefined") {
-      if (window.innerWidth < 480) toggleIsMobile(true)
-      if (window.innerWidth < 1111) toggleIsTablet(true)
-    }
-  }
-
-  checkIfMobile()
+  if (isMobile && !isHomepage) marginTop = 75
+  if (!isHomepage && !isMobile) marginTop = 100
 
   return (
     <>
