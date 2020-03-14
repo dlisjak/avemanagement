@@ -8,6 +8,7 @@ import SEO from "../components/seo"
 import News from "../components/News"
 import Instagram from "../components/Instagram"
 import Loader from "../components/Loader"
+import TickerText from "../components/Ticker"
 
 import Video1 from "../videos/main-video-1.mp4"
 import Video2 from "../videos/main-video-2.mp4"
@@ -20,6 +21,9 @@ const Home = ({ data }) => {
   const [ref, inView, entry] = useInView({
     threshold: 0,
   })
+
+  let isMobile
+  if (window.innerWidth < 480) isMobile = true
 
   const videoSources = [Video1, Video2]
   let videoKey = Math.round(Math.random())
@@ -97,6 +101,22 @@ const Home = ({ data }) => {
         className="home-instagram"
         style={{ marginTop: 5, marginBottom: 50 }}
       >
+        <a
+          href="https://www.instagram.com/avemanagement/"
+          target="_blank"
+          rel="noopener"
+          style={{ textTransform: "none", textDecoration: "none" }}
+        >
+          {isMobile ? (
+            <TickerText title="INSTAGRAM" left={true} />
+          ) : (
+            <React.Fragment>
+              <TickerText title="INSTAGRAM" left={true} />
+              <TickerText title="@AVEMANAGEMENT" />
+              <TickerText title="#AVEGIRLS #AVEBOYS" left={true} />
+            </React.Fragment>
+          )}
+        </a>
         <Instagram posts={data.allInstaNode.edges} />
       </div>
     </Layout>
