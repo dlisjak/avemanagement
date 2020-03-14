@@ -10,9 +10,6 @@ import Instagram from "../components/Instagram"
 import Loader from "../components/Loader"
 import TickerText from "../components/Ticker"
 
-import Video1 from "https://avemanagement1.eu/main-video-1/"
-import Video2 from "https://avemanagement1.eu/main-video-2/"
-
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 import BlackBar from "../components/BlackBar"
 import { graphql } from "gatsby"
@@ -27,11 +24,15 @@ const Home = ({ data }) => {
     isMobile = window.innerWidth < 480
   }
 
-  const videoSources = [Video1, Video2]
+  const videoSources = [
+    "https://avemanagement1.eu/main-video-1/",
+    "https://avemanagement1.eu/main-video-2/",
+  ]
+
   let videoKey = Math.round(Math.random())
 
   const dispatch = useContext(GlobalDispatchContext)
-  const [videoSrc, setVideoSrc] = useState(videoSources[null])
+  const [videoSrc, setVideoSrc] = useState(null)
   let tickerText
 
   useEffect(() => {
