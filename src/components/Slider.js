@@ -16,7 +16,6 @@ const Slider = props => {
     autoHeight: true,
     spaceBetween: 5,
     slidesPerView: isMobile ? 1 : "auto",
-    loop: true,
   }
 
   return (
