@@ -7,6 +7,9 @@
 .hidden {
   display: none;
 }
+.tickerText {
+  margin: 0 1.5px;
+}
 .model__main-container {
   position: relative;
 }

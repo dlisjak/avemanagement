@@ -42,7 +42,7 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
     }
 
     for (let i = 0; i < n; i++) {
-      data += ` ${titleTicker} `
+      data += `<span class="tickerText">${titleTicker}</span>`
     }
   }
 
@@ -62,9 +62,10 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
             id="ticker"
             style={{ position: "relative", top: isMobile ? 6 : 5 }}
             ref={tickerRef}
-          >
-            {data}
-          </div>
+            dangerouslySetInnerHTML={{
+              __html: data,
+            }}
+          ></div>
         </div>
       </div>
     )
@@ -84,14 +85,23 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
       >
         <div id="tickerwrap">
           {left && (
-            <div id="ticker" ref={tickerRef} style={{ marginRight: 5 }}>
-              {data}
-            </div>
+            <div
+              id="ticker"
+              ref={tickerRef}
+              style={{ marginRight: 5 }}
+              dangerouslySetInnerHTML={{
+                __html: data,
+              }}
+            ></div>
           )}
           {!left && (
-            <div id="tickerReverse" ref={tickerRef}>
-              {data}
-            </div>
+            <div
+              id="tickerReverse"
+              dangerouslySetInnerHTML={{
+                __html: data,
+              }}
+              ref={tickerRef}
+            ></div>
           )}
         </div>
       </div>
