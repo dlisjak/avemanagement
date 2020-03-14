@@ -23,7 +23,9 @@ const Home = ({ data }) => {
   })
 
   let isMobile
-  if (window.innerWidth < 480) isMobile = true
+  if (typeof window !== "undefined") {
+    isMobile = window.innerWidth < 480
+  }
 
   const videoSources = [Video1, Video2]
   let videoKey = Math.round(Math.random())
