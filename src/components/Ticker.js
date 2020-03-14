@@ -60,7 +60,11 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
         <div id="tickerwrap">
           <div
             id="ticker"
-            style={{ position: "relative", top: isMobile ? 6 : 5 }}
+            style={{
+              position: "relative",
+              top: isMobile ? 6 : 5,
+              display: "flex",
+            }}
             ref={tickerRef}
             dangerouslySetInnerHTML={{
               __html: data,
@@ -97,7 +101,7 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
           {!left && (
             <div
               id="tickerReverse"
-              style={{ display: "flex" }}
+              style={{ display: "flex", display: "flex" }}
               dangerouslySetInnerHTML={{
                 __html: data,
               }}
