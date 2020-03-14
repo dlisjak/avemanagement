@@ -10,8 +10,8 @@ import Instagram from "../components/Instagram"
 import Loader from "../components/Loader"
 import TickerText from "../components/Ticker"
 
-import Video1 from "../videos/main-video-1.mp4"
-import Video2 from "../videos/main-video-2.mp4"
+import Video1 from "https://avemanagement1.eu/main-video-1/"
+import Video2 from "https://avemanagement1.eu/main-video-2/"
 
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 import BlackBar from "../components/BlackBar"
