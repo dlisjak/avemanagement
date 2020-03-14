@@ -3,12 +3,6 @@ import React, { useState, useEffect } from "react"
 import Logo from "../images/logo.svg"
 
 const Loader = () => {
-  let isMobile
-
-  if (typeof window !== "undefined") {
-    isMobile = window.innerWidth < 480
-  }
-
   return (
     <div
       className="flex flex-column"
@@ -38,7 +32,9 @@ const Loader = () => {
           src={Logo}
           alt="AVE LOGO"
           style={{
-            margin: "5px 5px 0px 0px",
+            margin: 5,
+            marginLeft: 0,
+            marginBottom: 0,
             cursor: "pointer",
             width: "100%",
             height: "auto",
