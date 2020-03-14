@@ -16,7 +16,7 @@ const Slider = props => {
     autoHeight: true,
     spaceBetween: 5,
     slidesPerView: isMobile ? 1 : "auto",
-    centeredSlides: true,
+    loop: true,
   }
 
   return (

@@ -54,7 +54,7 @@ const Search = ({ data }) => {
   }
 
   return (
-    <Layout showGetToTop={true}>
+    <Layout isHomepage={true} showGetToTop={true}>
       <div
         className="flex flex-column search-queries"
         style={{ marginBottom: 20, fontSize: 20 }}

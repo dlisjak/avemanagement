@@ -1,5 +1,4 @@
 import React, { Fragment } from "react"
-import { useInView } from "react-intersection-observer"
 import Img from "gatsby-image"
 
 import Slider from "./Slider"
@@ -31,13 +30,16 @@ const Instagram = ({ posts }) => {
       </a>
       <Slider>
         {posts.map(({ node }, i) => {
-          console.log(node.localFile.childImageSharp.fixed)
-          if (!node.publicURL) return
+          console.log(node.localFile.publicURL)
           return (
-            <Img
-              height={node.localFile.childImageSharp.fixed.height}
-              width={node.localFile.childImageSharp.fixed.width}
-              fixed={node.localFile.childImageSharp.fixed}
+            <img
+              style={{
+                maxHeight: 400,
+                height: isMobile ? "auto" : "100%",
+                width: "auto",
+                objectFit: "cover",
+              }}
+              src={node.localFile.publicURL}
               key={i}
             />
           )

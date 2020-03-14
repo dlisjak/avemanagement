@@ -125,10 +125,9 @@ export const query = graphql`
         node {
           localFile {
             childImageSharp {
-              fixed(width: 150, height: 150) {
-                ...GatsbyImageSharpFixed
-              }
+              id
             }
+            publicURL
           }
         }
       }

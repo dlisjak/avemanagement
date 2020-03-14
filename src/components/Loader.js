@@ -40,17 +40,19 @@ const Loader = () => {
           pose={isLoaderShown ? "visible" : "hidden"}
           key={0}
           style={{
-            position: "fixed",
+            position: "relative",
             display: "flex",
             top: 0,
             left: 0,
-            width: "100%",
+            width: "80%",
             height: "100vh",
             background: `white`,
             zIndex: 9999999999,
             alignItems: "center",
             justifyContent: "center",
             paddingBottom: 100,
+            maxWidth: 1440,
+            margin: "auto",
           }}
         >
           <img
@@ -58,7 +60,16 @@ const Loader = () => {
             className="loading-logo"
             src={Logo}
             alt="AVE LOGO"
-            style={{ width: 300 }}
+            style={{
+              margin: "5px 5px 0px 0px",
+              cursor: "pointer",
+              width: "100%",
+              height: "auto",
+              maxWidth: 250,
+              position: "absolute",
+              top: 0,
+              left: 0,
+            }}
           />
         </LoadingOverlay>
       </PoseGroup>
