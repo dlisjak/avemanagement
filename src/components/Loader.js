@@ -25,7 +25,7 @@ const Loader = () => {
         setLoaderShown(false)
         const bodyEl = document.querySelector("body")
         bodyEl.classList.remove("overlay")
-      }, 1500)
+      }, 15000000)
     }
     displayLoader()
     // showLogo()
@@ -44,6 +44,8 @@ const Loader = () => {
             display: "flex",
             top: 0,
             left: 0,
+            right: 0,
+            bottom: 0,
             width: "80%",
             height: "100vh",
             background: `white`,
