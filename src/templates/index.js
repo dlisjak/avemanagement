@@ -25,8 +25,8 @@ const Home = ({ data }) => {
   }
 
   const videoSources = [
-    "https://avemanagement1.eu/main-video-1/",
-    "https://avemanagement1.eu/main-video-2/",
+    "https://avemanagement1.eu/wp-content/uploads/2020/03/main-video-1.mp4",
+    "https://avemanagement1.eu/wp-content/uploads/2020/03/main-video-2.mp4",
   ]
 
   let videoKey = Math.round(Math.random())
@@ -82,7 +82,10 @@ const Home = ({ data }) => {
       <video
         ref={ref}
         id="home-video"
-        src={videoSrc || "https://avemanagement1.eu/main-video-1/"}
+        src={
+          videoSrc ||
+          "https://avemanagement1.eu/wp-content/uploads/2020/03/main-video-1.mp4"
+        }
         muted
         autoPlay
         playsInline
