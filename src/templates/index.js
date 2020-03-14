@@ -28,11 +28,6 @@ const Home = ({ data }) => {
   const [videoSrc, setVideoSrc] = useState(videoSources[videoKey])
   let tickerText
 
-  let isMobile
-  if (typeof window !== "undefined") {
-    isMobile = window.innerWidth < 480
-  }
-
   useEffect(() => {
     const setPath = () => {
       if (typeof window !== "undefined") {
@@ -53,9 +48,6 @@ const Home = ({ data }) => {
     }
 
     videoKey = 1 - key
-
-    console.log(key)
-    console.log(videoKey)
 
     setVideoSrc(videoSources[key])
     beginPlayingVideo()
