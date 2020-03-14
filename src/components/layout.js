@@ -3,29 +3,46 @@ import React, { useEffect, useState } from "react"
 import Header from "./header"
 import GetToTop from "./getToTop"
 import Loader from "../components/Loader"
-import AddressTicker from "./AddressTicker"
 
 const Layout = ({ children, isHomepage, showGetToTop = false }) => {
   const [isMobile, toggleIsMobile] = useState(false)
   const [isTablet, toggleIsTablet] = useState(false)
-
-  useEffect(() => {
-    const checkIfMobile = () => {
-      if (typeof window !== "undefined") {
-        if (window.innerWidth < 480) toggleIsMobile(true)
-        if (window.innerWidth < 1111) toggleIsTablet(true)
-      }
-    }
-    checkIfMobile()
-  }, [])
+  const [isLoaderShown, setLoaderShown] = useState(true)
 
   let marginTop = 0
   if (isMobile && !isHomepage) marginTop = 75
   if (!isHomepage && !isMobile) marginTop = 100
 
+  useEffect(() => {
+    const displayLoader = () => {
+      setTimeout(() => {
+        setLoaderShown(false)
+        const bodyEl = document.querySelector("body")
+        bodyEl.classList.remove("overlay")
+      }, 1500)
+    }
+
+    const setBodyUnscrollable = () => {
+      const bodyEl = document.querySelector("body")
+      bodyEl.classList.add("overlay")
+    }
+
+    displayLoader()
+    setBodyUnscrollable()
+  })
+
+  const checkIfMobile = () => {
+    if (typeof window !== "undefined") {
+      if (window.innerWidth < 480) toggleIsMobile(true)
+      if (window.innerWidth < 1111) toggleIsTablet(true)
+    }
+  }
+
+  checkIfMobile()
+
   return (
     <>
-      <Loader />
+      {isLoaderShown ? <Loader /> : null}
       <div
         className="layout-main"
         style={{

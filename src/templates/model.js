@@ -184,6 +184,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                     ""
                   )}`}
                   target="_blank"
+                  rel="noopener noreferrer"
                   style={{
                     cursor: "pointer",
                     zIndex: 100,

@@ -1,5 +1,4 @@
-import React, { useEffect, useContext, useState } from "react"
-import { useInView } from "react-intersection-observer"
+import React, { useEffect, useState } from "react"
 import AnchorLink from "react-anchor-link-smooth-scroll"
 
 import Layout from "../components/layout"
@@ -10,41 +9,25 @@ import Instagram from "../components/Instagram"
 import Loader from "../components/Loader"
 import TickerText from "../components/Ticker"
 
-import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 import BlackBar from "../components/BlackBar"
 import { graphql } from "gatsby"
 
 const Home = ({ data }) => {
-  const [ref, inView, entry] = useInView({
-    threshold: 0,
-  })
+  const [videoSrc, setVideoSrc] = useState(null)
 
-  let isMobile
-  if (typeof window !== "undefined") {
-    isMobile = window.innerWidth < 480
-  }
+  let videoKey = Math.round(Math.random())
 
   const videoSources = [
     "https://avemanagement1.eu/wp-content/uploads/2020/03/main-video-1.mp4",
     "https://avemanagement1.eu/wp-content/uploads/2020/03/main-video-2.mp4",
   ]
 
-  let videoKey = Math.round(Math.random())
-
-  const dispatch = useContext(GlobalDispatchContext)
-  const [videoSrc, setVideoSrc] = useState(null)
-  let tickerText
+  let isMobile
+  if (typeof window !== "undefined") {
+    isMobile = window.innerWidth < 480
+  }
 
   useEffect(() => {
-    const setPath = () => {
-      if (typeof window !== "undefined") {
-        localStorage.removeItem("ave-navigation")
-        tickerText = window.location.pathname
-        dispatch({ type: "SET_PATH", payload: tickerText })
-      }
-    }
-
-    setPath()
     beginPlayingVideo()
   }, [])
 
@@ -71,7 +54,6 @@ const Home = ({ data }) => {
 
   return (
     <Layout isHomepage={true}>
-      <Loader />
       <AnchorLink
         id="anchorToVideo"
         href="#home-video"
@@ -80,7 +62,6 @@ const Home = ({ data }) => {
       <SEO title="Home" />
 
       <video
-        ref={ref}
         id="home-video"
         src={
           videoSrc ||
@@ -110,7 +91,7 @@ const Home = ({ data }) => {
         <a
           href="https://www.instagram.com/avemanagement/"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
           style={{ textTransform: "none", textDecoration: "none" }}
         >
           {isMobile ? (
