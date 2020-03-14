@@ -112,7 +112,6 @@ const DesktopNav = ({ toggleMenu, isVisible, data }) => {
   }
 
   const selectItem = item => {
-    console.log(item)
     if (!item) return
     if (item.child_items) {
       setSelectedItem(item)
