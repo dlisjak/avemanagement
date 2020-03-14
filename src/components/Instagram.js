@@ -30,7 +30,6 @@ const Instagram = ({ posts }) => {
       </a>
       <Slider>
         {posts.map(({ node }, i) => {
-          console.log(node.localFile.publicURL)
           return (
             <img
               style={{

@@ -15,7 +15,6 @@ import Video2 from "../videos/main-video-2.mp4"
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 import BlackBar from "../components/BlackBar"
 import { graphql } from "gatsby"
-import AddressTicker from "../components/AddressTicker"
 
 const Home = ({ data }) => {
   const [ref, inView, entry] = useInView({
@@ -23,7 +22,7 @@ const Home = ({ data }) => {
   })
 
   const videoSources = [Video1, Video2]
-  const videoKey = Math.round(Math.random())
+  let videoKey = Math.round(Math.random())
 
   const dispatch = useContext(GlobalDispatchContext)
   const [videoSrc, setVideoSrc] = useState(videoSources[videoKey])
@@ -43,31 +42,9 @@ const Home = ({ data }) => {
       }
     }
 
-    const beginPlayingVideo = () => {
-      const mainVid = document.getElementById("home-video")
-
-      mainVid.load()
-      setTimeout(() => {
-        mainVid.play()
-      }, 1000)
-    }
-
     setPath()
     beginPlayingVideo()
   }, [])
-
-  useEffect(() => {
-    const mainVid = document.getElementById("home-video")
-
-    const loadAndPlayVideo = () => {
-      mainVid.load()
-      setTimeout(() => {
-        mainVid.play()
-      }, 500)
-    }
-
-    loadAndPlayVideo()
-  }, [videoSrc])
 
   const onVidEnding = () => {
     let key
@@ -75,7 +52,22 @@ const Home = ({ data }) => {
       key = 1 - videoKey
     }
 
+    videoKey = 1 - key
+
+    console.log(key)
+    console.log(videoKey)
+
     setVideoSrc(videoSources[key])
+    beginPlayingVideo()
+  }
+
+  const beginPlayingVideo = () => {
+    const mainVid = document.getElementById("home-video")
+
+    mainVid.load()
+    setTimeout(() => {
+      mainVid.play()
+    }, 1000)
   }
 
   return (
@@ -99,7 +91,8 @@ const Home = ({ data }) => {
         onEnded={onVidEnding}
         className="home-video width-100"
         style={{
-          paddingBottom: 5,
+          marginBottom: 5,
+          background: "black",
         }}
       ></video>
 
