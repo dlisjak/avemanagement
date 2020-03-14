@@ -21,7 +21,7 @@ const Layout = ({ children, isHomepage, showGetToTop = false }) => {
         setLoaderShown(false)
         const bodyEl = document.querySelector("body")
         bodyEl.classList.remove("overlay")
-      }, 15000000)
+      }, 1500)
     }
 
     const setBodyUnscrollable = () => {
