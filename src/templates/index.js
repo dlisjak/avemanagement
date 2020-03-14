@@ -31,7 +31,7 @@ const Home = ({ data }) => {
   let videoKey = Math.round(Math.random())
 
   const dispatch = useContext(GlobalDispatchContext)
-  const [videoSrc, setVideoSrc] = useState(videoSources[videoKey])
+  const [videoSrc, setVideoSrc] = useState(videoSources[null])
   let tickerText
 
   useEffect(() => {
@@ -81,7 +81,7 @@ const Home = ({ data }) => {
       <video
         ref={ref}
         id="home-video"
-        src={videoSrc}
+        src={videoSrc || "https://avemanagement1.eu/main-video-1/"}
         muted
         autoPlay
         playsInline
