@@ -19,18 +19,10 @@ const Layout = ({ children, isHomepage, showGetToTop = false }) => {
     const displayLoader = () => {
       setTimeout(() => {
         setLoaderShown(false)
-        const bodyEl = document.querySelector("body")
-        bodyEl.classList.remove("overlay")
       }, 1500)
     }
 
-    const setBodyUnscrollable = () => {
-      const bodyEl = document.querySelector("body")
-      bodyEl.classList.add("overlay")
-    }
-
     displayLoader()
-    setBodyUnscrollable()
   })
 
   if (isMobile && !isHomepage) marginTop = 75

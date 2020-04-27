@@ -1,8 +1,21 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect } from "react"
 
 import Logo from "../images/logo.svg"
 
 const Loader = () => {
+  useEffect(() => {
+    const displayLoader = () => {
+      const bodyEl = document.querySelector("body")
+      bodyEl.classList.add("overlay")
+
+      setTimeout(() => {
+        bodyEl.classList.remove("overlay")
+      }, 1500)
+    }
+
+    displayLoader()
+  })
+
   return (
     <div
       className="flex flex-column"

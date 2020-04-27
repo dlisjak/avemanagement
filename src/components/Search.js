@@ -185,28 +185,6 @@ const Search = ({ isShown, models, closeSearch }) => {
           )
         })}
       </div>
-      <div
-        className="flex"
-        style={{
-          position: "fixed",
-          bottom: 0,
-          padding: 10,
-          background: "white",
-          width: "100%",
-          maxWidth: 1440,
-          justifyContent: "spaceBetween",
-        }}
-      >
-        <button
-          onClick={() => closeOverlay()}
-          style={{ background: 0, border: 0, fontWeight: 700 }}
-        >
-          BACK
-        </button>
-        <div className="flex justify-end width-100">
-          <i className="up-arrow" onClick={() => scrollToTopSearch()} />
-        </div>
-      </div>
     </SearchPose>
   )
 }
