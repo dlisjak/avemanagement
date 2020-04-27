@@ -14,8 +14,8 @@ import MobileNav from "./MobileNav"
 import BlackBar from "./BlackBar"
 
 const CollapsingTicker = posed(Link)({
-  hidden: { top: 45 },
-  visible: { top: 70 },
+  hidden: { top: 45, marginTop: 0 },
+  visible: { top: 70, marginTop: 5 },
 })
 
 const Header = ({ isMobile, isTablet, isHomepage }) => {

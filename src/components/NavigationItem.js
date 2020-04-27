@@ -13,7 +13,6 @@ const NavigationItem = ({ item, isMobile }) => {
       <Link
         data-title={item.title}
         to={`/${item.title.toLowerCase()}`}
-        activeStyle={{ fontWeight: 700 }}
         partiallyActive={true}
         onClick={e => {
           navigateToPage(e, false)
