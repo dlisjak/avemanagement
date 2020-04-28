@@ -103,6 +103,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
             position: "relative",
             marginBottom: tab === "videos" ? 0 : 5,
             background: tab === "bio" ? "white" : "#ccc",
+            flexDirection: "column-reverse",
             flexDirection: tab === "bio" && (isMobile || isTablet) && "column",
           }}
         >
