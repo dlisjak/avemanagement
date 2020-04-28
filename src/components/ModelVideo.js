@@ -27,7 +27,7 @@ const ModelVideo = ({ videoUrl }) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        margin: "10px auto",
+        margin: isMobile ? "10px auto" : "0 auto",
       }}
     >
       <video
@@ -37,7 +37,7 @@ const ModelVideo = ({ videoUrl }) => {
         playsInline
         onEnded={() => setVideoEnded(true)}
         className="home-video width-100"
-        style={{ paddingBottom: 5 }}
+        style={{ paddingBottom: isMobile && 5 }}
       ></video>
       {videoEnd && (
         <div
