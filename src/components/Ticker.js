@@ -2,14 +2,14 @@ import React, { useEffect, useRef } from "react"
 
 const TickerText = ({ title, left = false, noRepeat = false, search }) => {
   const tickerRef = useRef(null)
-
+  console.log(title)
   const reg = !noRepeat
     ? new RegExp("([^a-zA-Z#@])", "g")
     : new RegExp("([^a-zA-Z#@+1234567890])", "g")
   let data = " "
   let titleTicker = title.replace(reg, " ")
 
-  if (titleTicker === " special") {
+  if (titleTicker.includes("special")) {
     titleTicker = " special arrangement "
   }
 

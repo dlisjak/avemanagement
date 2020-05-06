@@ -132,6 +132,8 @@ export const query = graphql`
             news_post_image {
               title
               url
+              height
+              width
             }
             video_1 {
               url

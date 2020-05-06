@@ -63,6 +63,7 @@ const Contact = () => {
         <span style={{ marginBottom: !isMobile && 100 }}>SINGAPORE 079118</span>
 
         <a
+          target="_blank"
           href="https://goo.gl/maps/JoLuAknYkKp"
           style={{
             textDecoration: "underline",

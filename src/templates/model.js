@@ -14,10 +14,9 @@ import ModelPreviewVideos from "../components/ModelPreviewVideos"
 
 const Model = ({ pageContext: { firstName, lastName, acf } }) => {
   const dispatch = useContext(GlobalDispatchContext)
-
   const mainVideo =
     acf.videos[0] && acf.videos[0].video && acf.videos[0].video.url
-
+  const [portfolio, setPortfolio] = useState(null)
   const [swiper, updateSwiper] = useState(null)
   const [videoUrl, selectVideo] = useState(mainVideo || null)
   const [tab, setTab] = useState("portfolio")
@@ -26,11 +25,13 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
     ({ video, thumbnail }) => video !== null && thumbnail !== null
   )
 
+  let columns
   let isMobile
   let isTablet
   if (typeof window !== "undefined") {
     isMobile = window.innerWidth < 480
     isTablet = window.innerWidth < 850
+    columns = isMobile ? 2 : isTablet ? 3 : 4
   }
 
   let params = {
@@ -43,8 +44,6 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
   let tickerText
 
   useEffect(() => {
-    // componentDidMount
-
     const setPath = () => {
       if (typeof window !== "undefined") {
         tickerText = localStorage.getItem("ave-ticker")
@@ -69,7 +68,29 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
     }
 
     swiperUpdate()
-  }, [swiper])
+  }, [swiper, portfolio])
+
+  useEffect(() => {
+    const reorder = (arr, columns) => {
+      const cols = columns
+      const out = []
+      let col = 0
+      while (col < cols) {
+        for (let i = 0; i < arr.length; i += cols) {
+          let _val = arr[i + col]
+          if (_val !== undefined) out.push(_val)
+        }
+        col++
+      }
+      console.log(out)
+      acf.portfolio.forEach((img, i) => {
+        img._index = i
+      })
+      setPortfolio(out)
+    }
+
+    reorder(acf.portfolio, columns)
+  }, [])
 
   const navigateSliderNext = () => {
     if (swiper !== null) {
@@ -86,10 +107,12 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
   const setImage = index => {
     setTimeout(() => {
       if (swiper !== null) {
-        swiper.slideTo(index + 1, 1500, false)
+        swiper.slideTo(index, 1500, false)
       }
     })
   }
+
+  console.log(portfolio)
 
   return (
     <Layout showGetToTop={true}>
@@ -114,6 +137,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
               justifyContent: "space-between",
               zIndex: 98,
               position: tab === "bio" ? "relative" : "absolute",
+              position: isMobile && "relative",
               top: 2,
               bottom: 7,
               paddingBottom: isMobile ? 10 : 25,
@@ -129,7 +153,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                 fontFamily: "HelveticaNeueCondensed",
               }}
             >
-              {acf.portfolio && (
+              {portfolio && (
                 <AnchorLink
                   href="#slideshow"
                   offset={27}
@@ -200,22 +224,24 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
             {tab !== "bio" && <Bio acf={acf} />}
           </div>
           <div style={{ display: tab === "portfolio" ? "block" : "none" }}>
-            <Swiper loop key={1} {...params} getSwiper={updateSwiper}>
-              {acf.portfolio.map(({ url, alt, title, name }, i) => (
-                <img
-                  key={i}
-                  src={url}
-                  alt={alt}
-                  className="model-portfolio-image--swiper"
-                  title={title}
-                  name={name}
-                  style={{
-                    padding: isMobile ? "10px 0" : "30px 0",
-                    margin: 0,
-                  }}
-                />
-              ))}
-            </Swiper>
+            {portfolio && (
+              <Swiper loop key={1} {...params} getSwiper={updateSwiper}>
+                {acf.portfolio.map(({ url, alt, title, name }, i) => (
+                  <img
+                    key={i}
+                    src={url}
+                    alt={alt}
+                    className="model-portfolio-image--swiper"
+                    title={title}
+                    name={name}
+                    style={{
+                      padding: isMobile ? "10px 0" : "30px 0",
+                      margin: 0,
+                    }}
+                  />
+                ))}
+              </Swiper>
+            )}
             <AnchorLink
               href="#slideshow"
               offset={27}
@@ -254,6 +280,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
           <div
             dangerouslySetInnerHTML={{ __html: acf.about }}
             style={{
+              color: "rgb(204, 204, 204)",
               width: "100%",
               marginTop: !isMobile && !isTablet && 200,
               fontSize: "18px",
@@ -272,38 +299,44 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
 
         {tab !== "bio" && <BlackBar height={100} />}
 
-        <div id="content" className="flex flex-wrap " style={{ marginTop: 5 }}>
+        <div
+          id="content"
+          className="flex flex-wrap "
+          style={{ padding: "5px 0 0 0" }}
+        >
           {
             <div
               className="width-100 masonry-with-columns"
               style={{ display: tab === "portfolio" ? "block" : "none" }}
             >
-              {acf.portfolio &&
-                acf.portfolio.map(({ title, name, url, alt = "" }, index) => (
-                  <AnchorLink
-                    role="button"
-                    href="#slideshow"
-                    offset={27}
-                    className="flex-column justify-between grid-item"
-                    onClick={() => {
-                      setImage(index)
-                    }}
-                    style={{
-                      cursor: "pointer",
-                      marginBottom: 2,
-                      display: "inline-block",
-                    }}
-                    key={index}
-                  >
-                    <img
-                      src={url}
-                      alt={alt}
-                      className="model-portfolio-image"
-                      title={title}
-                      name={name}
-                    />
-                  </AnchorLink>
-                ))}
+              {portfolio &&
+                portfolio.map(
+                  ({ title, name, url, alt = "", _index }, index) => (
+                    <AnchorLink
+                      role="button"
+                      href="#slideshow"
+                      offset={27}
+                      className="flex-column justify-between grid-item"
+                      onClick={() => {
+                        setImage(_index + 1)
+                      }}
+                      style={{
+                        cursor: "pointer",
+                        marginBottom: 2,
+                        display: "inline-block",
+                      }}
+                      key={index}
+                    >
+                      <img
+                        src={url}
+                        alt={alt}
+                        className="model-portfolio-image"
+                        title={title}
+                        name={name}
+                      />
+                    </AnchorLink>
+                  )
+                )}
             </div>
           }
           {tab === "videos" && (

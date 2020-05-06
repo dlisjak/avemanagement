@@ -5,7 +5,6 @@ import Search from "../components/Search"
 import BlackBar from "../components/BlackBar"
 import VizAwareImg from "../components/VisibilityImage"
 import AnchorLink from "react-anchor-link-smooth-scroll"
-import { useInView } from "react-intersection-observer"
 
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 
@@ -65,12 +64,11 @@ const Category = ({ data, pageContext }) => {
           className="category-search"
           onClick={() => openSearch()}
           style={{
-            position: "absolute",
+            position: "relative",
             fontFamily: "HelveticaNeueCondensed",
             right: 0,
             fontSize: "2.6rem",
-            top: "-2.2rem",
-            right: -2,
+            top: "0.95rem",
             background: 0,
             border: 0,
             fontWeight: 700,

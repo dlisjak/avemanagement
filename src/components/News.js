@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import { StaticQuery, Link, graphql } from "gatsby"
+import { Link } from "gatsby"
 
 import Slider from "./Slider"
 import TickerText from "./Ticker"
@@ -34,12 +34,12 @@ const News = ({ posts }) => {
       </Link>
       <div className="width-100 flex">
         <Slider>
-          {posts.map(({ node: { title, slug, acf } }, i) => {
+          {posts.map(({ node: { title, acf, height, width } }, i) => {
             if (acf.video_1 && acf.video_1.url) {
               return (
                 <video
                   style={{
-                    maxHeight: 400,
+                    maxHeight: !isMobile && 400,
                     height: isMobile ? "auto" : 400,
                     width: "auto",
                   }}
@@ -55,8 +55,8 @@ const News = ({ posts }) => {
                 <img
                   key={i}
                   style={{
-                    maxHeight: 400,
-                    height: isMobile ? "auto" : 400,
+                    maxHeight: !isMobile && 400,
+                    minHeight: isMobile ? height : 400,
                     width: isMobile ? "100%" : "auto",
                     objectFit: "cover",
                   }}

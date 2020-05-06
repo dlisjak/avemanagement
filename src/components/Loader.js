@@ -37,7 +37,7 @@ const Loader = () => {
     >
       <div
         className="loadingContainer"
-        style={{ width: "80%", margin: "auto", height: "100%" }}
+        style={{ margin: "auto", height: "100%" }}
       >
         <img
           key={1}
@@ -51,7 +51,6 @@ const Loader = () => {
             cursor: "pointer",
             width: "100%",
             height: "auto",
-            maxWidth: 250,
             position: "relative",
           }}
         />

@@ -48,23 +48,10 @@ const News = ({
   useEffect(() => {
     // componentDidMount
     const initGrid = async () => {
-      const grid = document.querySelector(".grid")
-
       let tickerText
       tickerText = localStorage.getItem("ave-ticker")
       dispatch({ type: "SET_PATH", payload: tickerText })
-
-      if (typeof window !== "undefined") {
-        const Colcade = require("colcade")
-        const colc = new Colcade(grid, {
-          columns: ".grid-col",
-          items: ".grid-item",
-        })
-      }
     }
-
-    const initGallery = () => {}
-    initGallery()
     initGrid()
   }, [dispatch])
 
@@ -139,61 +126,59 @@ const News = ({
           {video && !image && <ModelVideo videoUrl={video} />}
         </div>
         <BlackBar height={100} />
-        <div
-          id="content"
-          className="flex flex-wrap grid width-100 content-padding"
-          style={{ marginTop: 5 }}
-        >
-          <div className="grid-col grid-col--1"></div>
-          <div className="grid-col grid-col--2"></div>
-          <div className="grid-col grid-col--3"></div>
-          <div className="grid-col grid-col--4"></div>
-          {newsContent &&
-            newsContent.map(({ url, title, video, thumbnail }, index) => {
-              if (video && thumbnail) {
-                return (
-                  <AnchorLink
-                    role="button"
-                    offset={205}
-                    href="#news-slideshow"
-                    className="flex-column justify-between grid-item"
-                    onClick={() => setUpVideo(video)}
-                    style={{
-                      cursor: "pointer",
-                      marginBottom: 5,
-                      display: "block",
-                      height: "100%",
-                      minHeight: 250,
-                    }}
-                    key={index}
-                  >
-                    <NewsPreviewVideos thumbnail={thumbnail.url} key={index} />
-                  </AnchorLink>
-                )
-              } else if (url) {
-                return (
-                  <AnchorLink
-                    role="button"
-                    offset={205}
-                    href="#news-slideshow"
-                    className="flex-column justify-between grid-item"
-                    onClick={() => setUpImage({ title, url })}
-                    style={{
-                      cursor: "pointer",
-                      marginBottom: 5,
-                      display: "block",
-                    }}
-                    key={index}
-                  >
-                    <img
-                      src={url}
-                      className="model-portfolio-image"
-                      title={title}
-                    />
-                  </AnchorLink>
-                )
-              }
-            })}
+
+        <div id="content" className="flex flex-wrap " style={{ marginTop: 5 }}>
+          <div className="width-100 masonry-with-columns" style={{}}>
+            {newsContent &&
+              newsContent.map(({ url, title, video, thumbnail }, index) => {
+                if (video && thumbnail) {
+                  return (
+                    <AnchorLink
+                      role="button"
+                      offset={205}
+                      href="#news-slideshow"
+                      className="flex-column justify-between grid-item"
+                      onClick={() => setUpVideo(video)}
+                      style={{
+                        cursor: "pointer",
+                        marginBottom: 5,
+                        display: "inline-block",
+                        height: "100%",
+                        minHeight: 250,
+                      }}
+                      key={index}
+                    >
+                      <NewsPreviewVideos
+                        thumbnail={thumbnail.url}
+                        key={index}
+                      />
+                    </AnchorLink>
+                  )
+                } else if (url) {
+                  return (
+                    <AnchorLink
+                      role="button"
+                      offset={205}
+                      href="#news-slideshow"
+                      className="flex-column justify-between grid-item"
+                      onClick={() => setUpImage({ title, url })}
+                      style={{
+                        cursor: "pointer",
+                        marginBottom: 5,
+                        display: "inline-block",
+                      }}
+                      key={index}
+                    >
+                      <img
+                        src={url}
+                        className="model-portfolio-image"
+                        title={title}
+                      />
+                    </AnchorLink>
+                  )
+                }
+              })}
+          </div>
         </div>
       </div>
     </Layout>

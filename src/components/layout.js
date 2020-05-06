@@ -6,7 +6,7 @@ import Loader from "../components/Loader"
 
 const Layout = ({ children, isHomepage, showGetToTop = false }) => {
   const [isLoaderShown, setLoaderShown] = useState(true)
-  let marginTop = 0
+  let marginTop = isHomepage ? 0 : 50
   let isMobile
   let isTablet
 

@@ -123,7 +123,7 @@ const Search = ({ isShown, models, closeSearch }) => {
         />
       </div>
 
-      <BlackBar height={isMobile ? 50 : 100} />
+      {!isMobile && <BlackBar height={100} />}
 
       <div
         className="flex flex-column search-queries"

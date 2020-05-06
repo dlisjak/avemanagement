@@ -131,7 +131,6 @@ const Header = ({ isMobile, isTablet, isHomepage }) => {
           pose={tickerCollapsed ? "hidden" : "visible"}
           style={{
             textDecoration: "none",
-            textDecoration: "none",
             position: "absolute",
             width: "100%",
             marginTop: 5,

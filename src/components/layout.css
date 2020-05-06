@@ -1,28 +1,31 @@
 .header-fixed-container {
   width: 100%;
 }
+.loadingContainer > img {
+  max-width: 250px;
+}
+#main {
+  display: flex;
+  flex-direction: column;
+}
+.category-search {
+  align-self: flex-end;
+}
 .getToTop {
   box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.2);
-}
-@media screen and (max-width: 1111px) {
-  .loadingContainer {
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
 }
 .hidden {
   display: none;
 }
 .tickerText {
-  margin: 0 1.5px;
+  margin: 0 2.5px;
   display: block;
 }
 .model__main-container {
   position: relative;
 }
 .category-card h3 {
-  font-size: 5.5vw;
+  font-size: 6.8vw;
 }
 .masonry-with-columns {
   columns: 2 auto;
@@ -43,9 +46,6 @@
 .ticker__page--fixed {
   width: 100%;
 }
-.swiper-slide {
-  max-height: 120px;
-}
 .content-padding {
   padding: 0 5px;
 }
@@ -54,7 +54,6 @@
 }
 .search-queries {
   align-items: flex-start;
-  padding-left: 10px;
 }
 .search-queries button {
   background: 0;
@@ -115,11 +114,18 @@
 }
 
 @media only screen and (max-width: 479px) {
+  .loadingContainer {
+    width: 100%;
+  }
+  .loadingContainer > img {
+    max-width: 175px;
+  }
   .model__name {
     font-size: 13vw;
     margin-bottom: -4px;
   }
   .search-queries {
+    padding: 0 10px;
     padding-top: 20px;
   }
   div.model__bio span {
@@ -131,6 +137,9 @@
 }
 
 @media only screen and (min-width: 480px) {
+  .loadingContainer {
+    width: 80%;
+  }
   .header-fixed-container {
     width: 100%;
   }
@@ -147,6 +156,7 @@
   }
   .search-queries {
     width: 50%;
+    font-size: 20px;
   }
   .search-queries button {
     background: 0;
@@ -213,7 +223,7 @@
 
 @media only screen and (min-width: 767px) {
   h3.category-card-title {
-    font-size: 4.7vw;
+    font-size: 3.7vw;
   }
 }
 
@@ -234,9 +244,6 @@
 @media only screen and (max-width: 850px) {
   .contact-body-text {
     width: 100%;
-  }
-  .swiper-slide {
-    max-height: 200px;
   }
   .model__main-container {
     width: 100%;
@@ -362,7 +369,7 @@
   }
   .model__name {
     font-size: 5.4rem;
-    margin-bottom: -11px;
+    margin-bottom: -8px;
   }
   .model-bio-property,
   .model-bio-value {
@@ -515,7 +522,7 @@
 
 @media only screen and (min-width: 1440px) {
   h3.category-card-title {
-    font-size: 2.9rem;
+    font-size: 2.5rem;
   }
 }
 
