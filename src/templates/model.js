@@ -31,7 +31,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
   if (typeof window !== "undefined") {
     isMobile = window.innerWidth < 480
     isTablet = window.innerWidth < 850
-    columns = isMobile ? 2 : isTablet ? 3 : 4
+    columns = window.innerWidth < 768 ? 2 : window.innerWidth < 1080 ? 3 : 4
   }
 
   let params = {

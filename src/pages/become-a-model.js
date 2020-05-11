@@ -191,15 +191,35 @@ const BecomeAModel = () => {
                 <label className="contact-label" htmlFor="dateOfBirth">
                   Date of Birth
                 </label>
-                <Field
-                  className="contact-input"
-                  type="text"
-                  name="dateOfBirth"
-                  placeholder="DD / MM / YYYY"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.dateOfBirth}
-                />
+                <div className="flex">
+                  <input
+                    className="contact-input"
+                    type="text"
+                    name="dateOfBirth"
+                    placeholder="DD"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.dateOfBirth}
+                  />
+                  <input
+                    className="contact-input"
+                    type="text"
+                    name="dateOfBirth"
+                    placeholder="MM"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.dateOfBirth}
+                  />
+                  <input
+                    className="contact-input"
+                    type="text"
+                    name="dateOfBirth"
+                    placeholder="YYYY"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.dateOfBirth}
+                  />
+                </div>
                 <ErrorMessage
                   className="contact-error"
                   name="dateOfBirth"

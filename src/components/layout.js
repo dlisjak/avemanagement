@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 import Header from "./header"
 import GetToTop from "./getToTop"
 import Loader from "../components/Loader"
+import AddressTicker from "./AddressTicker"
 
 const Layout = ({ children, isHomepage, showGetToTop = false }) => {
   const [isLoaderShown, setLoaderShown] = useState(true)
@@ -39,6 +40,7 @@ const Layout = ({ children, isHomepage, showGetToTop = false }) => {
           margin: `0 auto`,
           paddingTop: 0,
           marginBottom: 0,
+          justifyContent: "center",
         }}
       >
         <Header
@@ -57,6 +59,7 @@ const Layout = ({ children, isHomepage, showGetToTop = false }) => {
           {children}
         </main>
         {showGetToTop && <GetToTop show={true} />}
+        {true && <AddressTicker />}
       </div>
     </>
   )

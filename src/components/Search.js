@@ -43,6 +43,7 @@ const Search = ({ isShown, models, closeSearch }) => {
       return el.className === "flex flex-column search-overlay"
     }
 
+    if (!e.path) return closeSearch()
     if (e.path.some(some)) return
     closeSearch()
   }
@@ -76,7 +77,7 @@ const Search = ({ isShown, models, closeSearch }) => {
         background: "white",
         width: isMobile ? "100%" : "80%",
         maxWidth: 1440,
-        height: "80%",
+        height: "100%",
         top: isMobile ? 150 : 167,
         paddingBottom: 200,
       }}
@@ -90,6 +91,9 @@ const Search = ({ isShown, models, closeSearch }) => {
           marginTop: !isMobile && 50,
         }}
       >
+        <button className="search-queries__back" onClick={e => closeOverlay(e)}>
+          BACK
+        </button>
         <button
           onClick={e => setSearchGender(e, null)}
           style={{ fontWeight: !genderQuery ? 700 : 400 }}
