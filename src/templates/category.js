@@ -61,21 +61,8 @@ const Category = ({ data, pageContext }) => {
       )}
       {!searchOpen && (
         <button
-          className="category-search"
+          className="category-search category-search__button"
           onClick={() => openSearch()}
-          style={{
-            position: "relative",
-            fontFamily: "HelveticaNeueCondensed",
-            right: 0,
-            fontSize: "2.6rem",
-            top: "0.95rem",
-            background: 0,
-            border: 0,
-            fontWeight: 700,
-            padding: 0,
-            zIndex: 9999,
-            color: "black",
-          }}
         >
           SEARCH
         </button>
