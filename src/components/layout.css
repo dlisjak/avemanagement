@@ -153,6 +153,9 @@ a.search-result-names {
 }
 
 @media only screen and (min-width: 480px) {
+  .news-card-title {
+    margin-bottom: -7px;
+  }
   .loadingContainer {
     width: 80%;
   }
@@ -1188,6 +1191,7 @@ header .flex > a.:first-child:hover {
 .news-card-title {
   line-height: 0.8;
   margin-top: 2px;
+  margin-bottom: -5px;
 }
 
 /* with flexbox */
