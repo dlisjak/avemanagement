@@ -21,13 +21,13 @@ const VizAwareImg = ({
   id = id.replace(" ", "")
 
   let k = 4
-  let top = 20
+  let top = 100
   index++
   index = index % 4
 
   console.log(index)
   if (isMobile) {
-    if (index % 2) top = 100
+    if (index % 2) top = 50
   } else {
     if (index === 1) top = 80
     if (index === 2) top = 160
