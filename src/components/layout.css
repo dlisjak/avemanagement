@@ -7,6 +7,9 @@
 a.search-result-names {
   text-transform: capitalize;
 }
+.contact-input::placeholder {
+  line-height: 2;
+}
 #main {
   display: flex;
   flex-direction: column;
