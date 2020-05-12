@@ -1,6 +1,19 @@
 .header-fixed-container {
   width: 100%;
 }
+.category-search__button {
+  position: "relative";
+  font-family: "HelveticaNeueCondensed";
+  right: 0;
+  font-size: "2.6rem";
+  top: "0.9rem";
+  background: 0;
+  border: 0;
+  font-weight: 700;
+  padding: 0;
+  z-index: 9999;
+  color: "black";
+}
 .loadingContainer > img {
   max-width: 250px;
 }
