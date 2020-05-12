@@ -70,7 +70,7 @@ const Contact = () => {
             textTransform: "uppercase",
             color: "#222",
             fontWeight: 700,
-            marginTop: 30,
+            marginTop: isMobile && 30,
           }}
         >
           Google maps

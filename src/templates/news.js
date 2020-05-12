@@ -92,7 +92,6 @@ const News = ({
             fontWeight: 700,
             color: "black",
             marginTop: 0,
-            marginBottom: -5,
             width: "75%",
             lineHeight: 0.7,
           }}

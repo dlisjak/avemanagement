@@ -4,7 +4,7 @@ import BlackBar from "../components/BlackBar"
 import Swiper from "react-id-swiper"
 import AnchorLink from "react-anchor-link-smooth-scroll"
 
-import "../components/swiper.css"
+import "../components/swiper.min.css"
 
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 import Bio from "../components/Bio"
@@ -82,7 +82,6 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
         }
         col++
       }
-      console.log(out)
       acf.portfolio.forEach((img, i) => {
         img._index = i
       })
@@ -111,8 +110,6 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
       }
     })
   }
-
-  console.log(portfolio)
 
   return (
     <Layout showGetToTop={true}>
