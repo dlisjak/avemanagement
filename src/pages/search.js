@@ -38,7 +38,7 @@ const Search = ({ data }) => {
         if (!el) return
 
         el.click()
-      }, 1000)
+      }, 2000)
     }
 
     setPath()
@@ -51,6 +51,15 @@ const Search = ({ data }) => {
 
   const setSearchGender = (e, gender) => {
     setGender(gender)
+  }
+
+  const ucFirstAllWords = str => {
+    var pieces = str.split(" ")
+    for (var i = 0; i < pieces.length; i++) {
+      var j = pieces[i].charAt(0).toUpperCase()
+      pieces[i] = j + pieces[i].substr(1)
+    }
+    return pieces.join(" ")
   }
 
   return (
@@ -104,6 +113,7 @@ const Search = ({ data }) => {
               return null
             }
           }
+          node.title = node.title.toLowerCase()
 
           if (genderQuery) {
             if (genderQuery !== node.acf.gender) return null
@@ -118,7 +128,7 @@ const Search = ({ data }) => {
                   {arr[index].node.title[0]}
                 </span>
                 <Link
-                  id={`${node.title.replace(" ", "")}`}
+                  id={`${node.title.toUpperCase().replace(" ", "")}`}
                   to={`/${node.slug}`}
                   className="search-result-names"
                   style={{
@@ -135,7 +145,7 @@ const Search = ({ data }) => {
 
           return (
             <Link
-              id={`${node.title.replace(" ", "")}`}
+              id={`${node.title.toUpperCase().replace(" ", "")}`}
               to={`/${node.slug}`}
               className="search-result-names"
               style={{

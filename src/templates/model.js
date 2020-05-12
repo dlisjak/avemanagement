@@ -124,6 +124,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
           className="flex model__main"
           style={{
             position: "relative",
+            marginTop: !isMobile && 5,
             marginBottom: tab === "videos" ? 0 : 5,
             background: tab === "bio" ? "white" : "#ccc",
             flexDirection: "column-reverse",

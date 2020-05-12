@@ -4,6 +4,9 @@
 .loadingContainer > img {
   max-width: 250px;
 }
+a.search-result-names {
+  text-transform: capitalize;
+}
 #main {
   display: flex;
   flex-direction: column;
@@ -180,6 +183,13 @@
   .contact-input {
     max-width: 650px;
     width: 100%;
+  }
+  .contact-input--year {
+    max-width: none;
+    width: 550px;
+  }
+  .contact-input--day {
+    max-width: 50px;
   }
   .contact-label {
     display: flex;

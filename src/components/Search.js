@@ -91,9 +91,6 @@ const Search = ({ isShown, models, closeSearch }) => {
           marginTop: !isMobile && 50,
         }}
       >
-        <button className="search-queries__back" onClick={e => closeOverlay(e)}>
-          BACK
-        </button>
         <button
           onClick={e => setSearchGender(e, null)}
           style={{ fontWeight: !genderQuery ? 700 : 400 }}
@@ -116,18 +113,24 @@ const Search = ({ isShown, models, closeSearch }) => {
             WOMEN
           </button>
         )}
-        <input
-          ref={inputRef}
-          className="search-input-search"
-          type="text"
-          placeholder="SEARCH BY NAME"
-          onChange={e => handleSearchQuery(e)}
-          value={searchQuery}
-          style={{ fontSize: 16, marginTop: 10, width: "100%" }}
-        />
+        <div className="flex align-center">
+          <input
+            ref={inputRef}
+            className="search-input-search"
+            type="text"
+            placeholder="SEARCH BY NAME"
+            onChange={e => handleSearchQuery(e)}
+            value={searchQuery}
+            style={{ fontSize: 16, marginTop: 10, width: "100%" }}
+          />
+          <button
+            className="search-queries__back"
+            onClick={e => closeOverlay(e)}
+          >
+            BACK
+          </button>
+        </div>
       </div>
-
-      {!isMobile && <BlackBar height={100} />}
 
       <div
         className="flex flex-column search-queries"
@@ -147,6 +150,7 @@ const Search = ({ isShown, models, closeSearch }) => {
               return null
             }
           }
+          node.title = node.title.toLowerCase()
           if (index === 0 || node.title[0] !== arr[index - 1].node.title[0]) {
             return (
               <React.Fragment key={index}>
@@ -165,7 +169,7 @@ const Search = ({ isShown, models, closeSearch }) => {
                   }}
                   key={`model-button-${index}`}
                 >
-                  {node.title.toUpperCase()}
+                  {node.title}
                 </Link>
               </React.Fragment>
             )
@@ -184,7 +188,7 @@ const Search = ({ isShown, models, closeSearch }) => {
               }}
               key={`model-${index}`}
             >
-              {node.title.toUpperCase()}
+              {node.title}
             </Link>
           )
         })}
