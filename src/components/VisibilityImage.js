@@ -22,6 +22,7 @@ const VizAwareImg = ({
 
   let k = 4
   let top = 50
+  console.log(index)
   if (isMobile) {
     if (index % 2) top = 100
   } else {
