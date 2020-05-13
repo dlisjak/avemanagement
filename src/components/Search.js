@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from "react"
 import { Link } from "gatsby"
-import posed, { PoseGroup } from "react-pose"
+import posed from "react-pose"
 
 import TickerText from "./Ticker"
-import BlackBar from "./BlackBar"
 
 const SearchPose = posed.div({
   hidden: { opacity: 0 },
@@ -128,11 +127,6 @@ const Search = ({ isShown, models, closeSearch }) => {
                 <Link
                   to={`${node.path}`}
                   className="search-result-names"
-                  style={{
-                    textDecoration: "none",
-                    color: "black",
-                    lineHeight: 1.8,
-                  }}
                   key={`model-button-${index}`}
                 >
                   {node.title}
@@ -147,11 +141,6 @@ const Search = ({ isShown, models, closeSearch }) => {
             <Link
               to={`${node.path}`}
               className="search-result-names"
-              style={{
-                textDecoration: "none",
-                color: "black",
-                lineHeight: 1.8,
-              }}
               key={`model-${index}`}
             >
               {node.title}

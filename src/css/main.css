@@ -308,6 +308,20 @@
   margin-bottom: 5px;
   font-weight: 700;
 }
+.search-result-names {
+  text-decoration: none;
+  color: black;
+  line-height: 1.8;
+}
+.pagination {
+  position: relative;
+  height: 25px;
+  justify-content: flex-end;
+  width: 100%;
+  padding-right: 0;
+  font-size: 2.6rem;
+  top: 6px;
+}
 
 @media only screen and (min-width: 480px) {
   .layout-main {
@@ -365,5 +379,8 @@
   }
   .search-queries--results {
     padding-bottom: 275px;
+  }
+  .pagination {
+    top: 1px;
   }
 }

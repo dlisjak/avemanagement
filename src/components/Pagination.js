@@ -2,18 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 
 const Pagination = ({ currentPage, numOfPages, isMobile }) => (
-  <div
-    className="flex align-center"
-    style={{
-      position: "relative",
-      height: 25,
-      justifyContent: "flex-end",
-      width: "100%",
-      paddingRight: 0,
-      fontSize: "2.6rem",
-      top: isMobile ? 6 : 1,
-    }}
-  >
+  <div className="flex align-center pagination" style={{}}>
     {currentPage !== 1 && currentPage > 3 && (
       <Link className="pagination-item first" to={`/news/1`}>
         1
