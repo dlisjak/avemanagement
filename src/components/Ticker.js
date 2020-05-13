@@ -65,7 +65,7 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
         className="ticker__page ticker flex width-100"
         style={{
           top: search && !isMobile ? -3 : 5,
-          top: search && isMobile ? -3 : 3,
+          top: search && isMobile && -3,
         }}
       >
         <div id="tickerwrap">

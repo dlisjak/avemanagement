@@ -52,8 +52,8 @@
   text-decoration: none;
   position: absolute;
   width: 100%;
-  margin-top: 5;
-  top: 73;
+  margin-top: 5px;
+  top: 73px;
 }
 
 .mobile-navigation {
@@ -281,7 +281,7 @@
 }
 
 .search-overlay {
-  top: 150px;
+  top: 137px;
   width: 100%;
   overflow: hidden;
 }
@@ -295,13 +295,11 @@
   width: 100%;
 }
 .search-queries--results {
-  padding-top: 20px;
-  padding-bottom: 50px;
   margin-bottom: 150px;
-  padding-bottom: 115px;
   overflow: scroll;
   height: 100%;
   width: 100%;
+  padding: 20px 10px 350px 10px;
 }
 .search-queries--results--bold {
   margin-top: 20px;
@@ -321,6 +319,8 @@
   padding-right: 0;
   font-size: 2.6rem;
   top: 6px;
+}
+.tickerReverse {
 }
 
 @media only screen and (min-width: 480px) {
@@ -344,9 +344,6 @@
     background: white;
     width: 100%;
     z-index: 999;
-  }
-  .ticker__menu--container {
-    top: 3px;
   }
   .instagram--image {
     height: 100%;
