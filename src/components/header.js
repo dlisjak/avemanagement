@@ -108,7 +108,7 @@ const Header = ({ isMobile, isTablet, isHomepage }) => {
         <div
           className="width-100"
           onClick={() => toggleMenu(isVisible)}
-          style={{ cursor: "pointer", zIndex: 9999, height: isMobile && 78 }}
+          style={{ cursor: "pointer", zIndex: 9999, height: isMobile && 74 }}
         >
           <BlackBar height={50} />
           <Ticker title={"MENU"} />

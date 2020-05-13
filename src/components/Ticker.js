@@ -51,7 +51,6 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
         style={{
           position: "relative",
           fontWeight: 700,
-          top: isMobile && 4,
           background: isMobile && "white",
         }}
       >
