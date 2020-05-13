@@ -46,22 +46,11 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
 
   if (title === "MENU") {
     return (
-      <div
-        className="ticker__menu ticker flex width-100"
-        style={{
-          position: "relative",
-          fontWeight: 700,
-          background: isMobile && "white",
-        }}
-      >
+      <div className="ticker__menu relative ticker flex width-100">
         <div id="tickerwrap">
           <div
+            className="flex ticker__menu--container relative"
             id="ticker"
-            style={{
-              position: "relative",
-              top: isMobile ? 7 : 3,
-              display: "flex",
-            }}
             ref={tickerRef}
             dangerouslySetInnerHTML={{
               __html: data,
@@ -75,21 +64,16 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
       <div
         className="ticker__page ticker flex width-100"
         style={{
-          fontWeight: 700,
-          maxWidth: 1440,
-          position: "relative",
-          fontWeight: 700,
           top: search && !isMobile ? -3 : 5,
           top: search && isMobile ? -3 : 3,
-          background: "transparent",
         }}
       >
         <div id="tickerwrap">
           {left && (
             <div
               id="ticker"
+              className="inside--ticker flex"
               ref={tickerRef}
-              style={{ marginRight: 5, display: "flex" }}
               dangerouslySetInnerHTML={{
                 __html: data,
               }}
@@ -97,8 +81,8 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
           )}
           {!left && (
             <div
+              className="flex"
               id="tickerReverse"
-              style={{ display: "flex", display: "flex" }}
               dangerouslySetInnerHTML={{
                 __html: data,
               }}

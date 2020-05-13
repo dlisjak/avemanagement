@@ -20,12 +20,10 @@ const VizAwareImg = ({
 
   id = id.replace(" ", "")
 
-  let k = 4
   let top = 100
   index++
   index = index % 4
 
-  console.log(index)
   if (isMobile) {
     if (index % 2) top = 50
   } else {
@@ -49,14 +47,11 @@ const VizAwareImg = ({
         to={path}
         className="flex flex-column justify-between category-card"
         style={{
-          position: "relative",
-          overflow: "hidden",
           opacity: imgViz ? 1 : 0,
           top: imgViz ? 0 : top,
-          transition: "500ms linear",
         }}
       >
-        <div style={{ overflow: "hidden", height: "100%", width: "100%" }}>
+        <div className="viz-aware">
           <img
             className="category-card-image"
             src={src}
@@ -64,14 +59,9 @@ const VizAwareImg = ({
             title={title}
           />
         </div>
-        <h3
-          className="category-card-title flex flex-wrap width-100 relative"
-          style={{ marginTop: -3 }}
-        >
+        <h3 className="category-card-title flex flex-wrap width-100 relative">
           <span className="width-100">{firstName}</span>
-          <span className="width-100" style={{ top: 15 }}>
-            {lastName}
-          </span>
+          <span className="width-100 last-name-model">{lastName}</span>
         </h3>
       </Link>
     </VizSensor>

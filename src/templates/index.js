@@ -54,9 +54,9 @@ const Home = ({ data }) => {
   return (
     <Layout isHomepage={true}>
       <AnchorLink
+        className="anchor-link"
         id="anchorToVideo"
         href="#home-video"
-        style={{ opacity: 0, position: "absolute", left: 0, bottom: 0 }}
       />
       <SEO title="Home" />
 
@@ -72,26 +72,19 @@ const Home = ({ data }) => {
         controlsList="nodownload"
         onEnded={onVidEnding}
         className="home-video width-100"
-        style={{
-          marginBottom: 5,
-          background: "black",
-        }}
       ></video>
 
       <BlackBar height={125} />
-      <div className="home-news" style={{ marginTop: 5, marginBottom: 10 }}>
+      <div className="home-news">
         <News posts={data.allWordpressWpNews.edges} />
       </div>
       <BlackBar height={125} />
-      <div
-        className="home-instagram"
-        style={{ marginTop: 5, marginBottom: 50 }}
-      >
+      <div className="home-instagram">
         <a
           href="https://www.instagram.com/avemanagement/"
           target="_blank"
+          className="instagram--link"
           rel="noopener noreferrer"
-          style={{ textTransform: "none", textDecoration: "none" }}
         >
           {isMobile ? (
             <TickerText title="INSTAGRAM" left={true} />

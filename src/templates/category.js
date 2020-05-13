@@ -70,10 +70,7 @@ const Category = ({ data, pageContext }) => {
 
       <BlackBar height={100} />
 
-      <div
-        className="flex flex-wrap category-cards relative"
-        style={{ marginBottom: 75, marginTop: 5 }}
-      >
+      <div className="flex flex-wrap category-cards relative">
         {data.allWordpressPost.edges.map(
           (
             {
@@ -103,15 +100,10 @@ const Category = ({ data, pageContext }) => {
       </div>
 
       <AnchorLink
+        className="anchor-link"
         id="anchorButtonIndex"
         href={anchorIndex}
         offset="300"
-        style={{
-          fontSize: 1,
-          position: "absolute",
-          color: "white",
-          textDecoration: "none",
-        }}
       />
     </Layout>
   )

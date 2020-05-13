@@ -159,9 +159,6 @@ const DesktopNav = ({ toggleMenu, isVisible, data }) => {
         className="header__menu--desktop flex-column"
         pose={isVisible ? "visible" : "hidden"}
         style={{
-          background: `white`,
-          width: "100%",
-          zIndex: 999,
           pointerEvents: isVisible ? "inherit" : "none",
         }}
         key={"main-navbar"}
@@ -169,7 +166,6 @@ const DesktopNav = ({ toggleMenu, isVisible, data }) => {
         <div
           className="flex"
           style={{
-            flexDirection: "row",
             height: !isVisible ? 25 : "auto",
           }}
         >

@@ -26,23 +26,16 @@ const News = ({ posts }) => {
 
   return (
     <>
-      <Link
-        to="/news/1"
-        style={{ textTransform: "none", textDecoration: "none" }}
-      >
+      <Link className="news-comp--link" to="/news/1">
         <TickerText title="NEWS" />
       </Link>
       <div className="width-100 flex">
         <Slider>
-          {posts.map(({ node: { title, acf, height, width } }, i) => {
+          {posts.map(({ node: { title, acf, height } }, i) => {
             if (acf.video_1 && acf.video_1.url) {
               return (
                 <video
-                  style={{
-                    maxHeight: !isMobile && 400,
-                    height: isMobile ? "auto" : 400,
-                    width: "auto",
-                  }}
+                  className="news-comp--video"
                   autoPlay
                   muted
                   loop
@@ -53,6 +46,7 @@ const News = ({ posts }) => {
             } else {
               return (
                 <img
+                  className="news-comp--image"
                   key={i}
                   style={{
                     maxHeight: !isMobile && 400,

@@ -52,11 +52,6 @@ const Search = ({ isShown, models, closeSearch }) => {
     setSearchQuery(e.target.value.toUpperCase())
   }
 
-  const scrollToTopSearch = () => {
-    const el = document.querySelector(".search-overlay")
-    el.scrollTop = 0
-  }
-
   let sortedModels = models.map(model => model)
   sortedModels = sortedModels.sort((a, b) =>
     a.node.acf.first_name.localeCompare(b.node.acf.first_name)
@@ -72,14 +67,9 @@ const Search = ({ isShown, models, closeSearch }) => {
       pose={isShown && isOpen ? "visible" : "hidden"}
       style={{
         display: isShown && isOpen ? "block" : "none",
-        position: "fixed",
-        zIndex: 999999,
-        background: "white",
         width: isMobile ? "100%" : "80%",
-        maxWidth: 1440,
-        height: "100%",
+
         top: isMobile ? 150 : 167,
-        paddingBottom: 200,
       }}
     >
       <TickerText search={true} title="SEARCH" />

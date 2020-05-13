@@ -120,11 +120,8 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
           id="slideshow"
           className="flex model__main"
           style={{
-            position: "relative",
-            marginTop: !isMobile && 5,
             marginBottom: tab === "videos" ? 0 : 5,
             background: tab === "bio" ? "white" : "#ccc",
-            flexDirection: "column-reverse",
             flexDirection: tab === "bio" && (isMobile || isTablet) && "column",
           }}
         >
@@ -132,36 +129,19 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
             id="model_menu"
             className="flex model__main-container flex-column"
             style={{
-              justifyContent: "space-between",
-              zIndex: 98,
               position: tab === "bio" ? "relative" : "absolute",
-              position: isMobile && "relative",
-              top: 2,
-              bottom: 7,
-              paddingBottom: isMobile ? 10 : 25,
               width: tab === "bio" && !isMobile && !isTablet && 200,
             }}
           >
-            <div
-              className="flex model__menu"
-              style={{
-                position: "relative",
-                zIndex: 100,
-                lineHeight: 0.9,
-                fontFamily: "HelveticaNeueCondensed",
-              }}
-            >
+            <div className="flex model__menu">
               {portfolio && (
                 <AnchorLink
+                  className="model-anchor-link"
                   href="#slideshow"
                   offset={27}
                   onClick={() => setTab("portfolio")}
                   style={{
-                    fontWeight: "bold",
-                    zIndex: 100,
-                    cursor: "pointer",
                     color: tab === "portfolio" ? "white" : "black",
-                    textDecoration: "none",
                   }}
                 >
                   PORTFOLIO
@@ -169,15 +149,12 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
               )}
               {isVideoAvailable && (
                 <AnchorLink
+                  className="model-anchor-link"
                   href="#slideshow"
                   offset={27}
                   onClick={() => setTab("videos")}
                   style={{
-                    fontWeight: "bold",
-                    zIndex: 100,
-                    cursor: "pointer",
                     color: tab === "videos" ? "white" : "black",
-                    textDecoration: "none",
                   }}
                 >
                   VIDEOS
@@ -185,15 +162,12 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
               )}
               {acf.about && (
                 <AnchorLink
+                  className="model-anchor-link"
                   href="#slideshow"
                   offset={27}
                   onClick={() => setTab("bio")}
                   style={{
-                    cursor: "pointer",
-                    zIndex: 100,
                     color: tab === "bio" ? "rgba(0,0,0,0.7)" : "black",
-                    fontWeight: "bold",
-                    textDecoration: "none",
                   }}
                 >
                   BIO
@@ -205,14 +179,11 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                     "@",
                     ""
                   )}`}
+                  className="model-anchor-link"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
-                    cursor: "pointer",
-                    zIndex: 100,
-                    fontWeight: "bold",
                     color: "black",
-                    textDecoration: "none",
                   }}
                 >
                   INSTAGRAM
@@ -232,10 +203,6 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                     className="model-portfolio-image--swiper"
                     title={title}
                     name={name}
-                    style={{
-                      padding: isMobile ? "10px 0" : "30px 0",
-                      margin: 0,
-                    }}
                   />
                 ))}
               </Swiper>
@@ -246,14 +213,6 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
               className="absolute model-slider-navigate prev"
               onClick={navigateSliderPrev}
               style={{
-                position: "absolute",
-                bottom: 0,
-                height: isMobile ? "68%" : "80%",
-                width: "50%",
-                left: 0,
-                zIndex: 99,
-                maxHeight: 820,
-                top: isMobile && 0,
                 display: isMobile || isTablet ? "none" : "block",
               }}
             />
@@ -263,27 +222,15 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
               className="absolute model-slider-navigate next"
               onClick={navigateSliderNext}
               style={{
-                position: "absolute",
-                bottom: 0,
-                height: isMobile ? "68%" : "80%",
-                width: "50%",
-                right: 0,
-                zIndex: 99,
-                maxHeight: 820,
-                top: isMobile && 0,
                 display: isMobile || isTablet ? "none" : "block",
               }}
             />
           </div>
           <div
             dangerouslySetInnerHTML={{ __html: acf.about }}
+            className="model--about"
             style={{
-              color: "rgb(204, 204, 204)",
-              width: "100%",
               marginTop: !isMobile && !isTablet && 200,
-              fontSize: "18px",
-              lineHeight: 1.2,
-              textTransform: "none",
               display: tab === "bio" ? "block" : "none",
             }}
           />
@@ -318,11 +265,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                       onClick={() => {
                         setImage(_index + 1)
                       }}
-                      style={{
-                        cursor: "pointer",
-                        marginBottom: 2,
-                        display: "inline-block",
-                      }}
+                      style={{}}
                       key={index}
                     >
                       <img
@@ -339,12 +282,9 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
           }
           {tab === "videos" && (
             <div
-              className="category-cards"
+              className="category-cards width-100 flex flex-wrap"
               style={{
-                width: "100%",
                 height: "auto",
-                display: "flex",
-                flexWrap: "wrap",
               }}
             >
               {acf.videos &&

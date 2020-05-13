@@ -70,45 +70,14 @@ const Header = ({ isMobile, isTablet, isHomepage }) => {
   `)
 
   return (
-    <div
-      className="header-fixed-container flex-column"
-      style={{
-        position: "relative",
-        maxWidth: 1440,
-        width: "100%",
-        display: "block",
-        zIndex: 999999,
-        background: "white",
-      }}
-    >
+    <div className="header-fixed-container flex-column">
       <Link to="/" style={{ zIndex: 99, position: "relative" }}>
-        <img
-          src={Logo}
-          className="logo"
-          alt="Ave Management Logo"
-          style={{
-            margin: 5,
-            marginLeft: 0,
-            marginBottom: 0,
-            cursor: "pointer",
-            width: "100%",
-            height: "auto",
-            maxWidth: !isMobile ? 250 : 175,
-          }}
-        />
+        <img src={Logo} className="logo" alt="Ave Management Logo" />
       </Link>
-      <div
-        style={{
-          display: "flex",
-          position: "relative",
-          flexDirection: "column",
-          width: "100%",
-        }}
-      >
+      <div className="navigation">
         <div
-          className="width-100"
+          className="navigation__container width-100"
           onClick={() => toggleMenu(isVisible)}
-          style={{ cursor: "pointer", zIndex: 9999, height: isMobile && 74 }}
         >
           <BlackBar height={50} />
           <Ticker title={"MENU"} />
@@ -127,15 +96,9 @@ const Header = ({ isMobile, isTablet, isHomepage }) => {
           />
         )}
         <CollapsingTicker
+          className="collapsing-ticker"
           to={state.index ? `${state.path}/#${state.index}` : state.path}
           pose={tickerCollapsed ? "hidden" : "visible"}
-          style={{
-            textDecoration: "none",
-            position: "absolute",
-            width: "100%",
-            marginTop: isMobile && 5,
-            top: 73,
-          }}
         >
           {!isHomepage && <Ticker title={state.path || tickerHeaderText} />}
         </CollapsingTicker>

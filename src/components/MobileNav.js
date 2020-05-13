@@ -70,19 +70,10 @@ const MobileNav = ({ isVisible, data, toggleMenu }) => {
 
   return (
     <MobileNavPose
-      className="flex flex-column"
+      className="mobile-navigation flex flex-column"
       pose={isVisible ? "visible" : "hidden"}
       style={{
-        position: "relative",
-        display: "flex",
-        left: 0,
-        width: "100%",
-        height: "100%",
-        background: `white`,
-        zIndex: 0,
         pointerEvents: isVisible ? "inherit" : "none",
-        alignItems: "center",
-        overflow: "hidden",
       }}
     >
       {data.allWordpressMenusMenusItems.edges[0].node.items.map(
@@ -90,7 +81,7 @@ const MobileNav = ({ isVisible, data, toggleMenu }) => {
           return (
             <PoseGroup key={index}>
               <div
-                className="flex mobile-navigation"
+                className="flex flex-column"
                 onClick={() => showChildren(item)}
                 style={{ fontWeight: activeItem === item.title ? 700 : 400 }}
                 key={index}
@@ -107,11 +98,10 @@ const MobileNav = ({ isVisible, data, toggleMenu }) => {
                         ? "enter"
                         : "exit"
                     }
-                    className="flex"
+                    className="flex flex-column"
                     style={{
                       opacity: 0,
                       height: 0,
-                      flexDirection: "column",
                       marginLeft: 20,
                     }}
                   >

@@ -32,17 +32,7 @@ const Layout = ({ children, isHomepage, showGetToTop = false }) => {
   return (
     <>
       {isLoaderShown ? <Loader /> : null}
-      <div
-        className="layout-main"
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          margin: `0 auto`,
-          paddingTop: 0,
-          marginBottom: 0,
-          justifyContent: "center",
-        }}
-      >
+      <div className="layout-main">
         <Header
           isTablet={isTablet}
           isMobile={isMobile}
@@ -50,9 +40,8 @@ const Layout = ({ children, isHomepage, showGetToTop = false }) => {
         />
         <main
           id="main"
+          className="main"
           style={{
-            width: "100%",
-            position: "relative",
             marginTop: marginTop,
           }}
         >
