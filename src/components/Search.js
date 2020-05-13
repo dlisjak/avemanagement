@@ -67,20 +67,10 @@ const Search = ({ isShown, models, closeSearch }) => {
       pose={isShown && isOpen ? "visible" : "hidden"}
       style={{
         display: isShown && isOpen ? "block" : "none",
-        width: isMobile ? "100%" : "80%",
-
-        top: isMobile ? 150 : 167,
       }}
     >
       <TickerText search={true} title="SEARCH" />
-      <div
-        className="flex flex-column search-queries"
-        style={{
-          borderBottom: "1px solid",
-          marginBottom: 20,
-          marginTop: !isMobile && 50,
-        }}
-      >
+      <div className="flex flex-column search-queries">
         <button
           onClick={e => setSearchGender(e, null)}
           style={{ fontWeight: !genderQuery ? 700 : 400 }}
@@ -111,7 +101,6 @@ const Search = ({ isShown, models, closeSearch }) => {
             placeholder="SEARCH BY NAME"
             onChange={e => handleSearchQuery(e)}
             value={searchQuery}
-            style={{ fontSize: 16, marginTop: 10, width: "100%" }}
           />
           <button
             className="search-queries__back"
@@ -122,18 +111,7 @@ const Search = ({ isShown, models, closeSearch }) => {
         </div>
       </div>
 
-      <div
-        className="flex flex-column search-queries"
-        style={{
-          paddingTop: 20,
-          paddingBottom: 50,
-          marginBottom: 150,
-          paddingBottom: isMobile ? 115 : 275,
-          overflow: "scroll",
-          height: "100%",
-          width: "100%",
-        }}
-      >
+      <div className="flex flex-column search-queries--results">
         {sortedModels.map(({ node }, index, arr) => {
           if (searchQuery) {
             if (!node.title.toUpperCase().includes(searchQuery.toUpperCase())) {
@@ -144,9 +122,7 @@ const Search = ({ isShown, models, closeSearch }) => {
           if (index === 0 || node.title[0] !== arr[index - 1].node.title[0]) {
             return (
               <React.Fragment key={index}>
-                <span
-                  style={{ marginTop: 20, marginBottom: 5, fontWeight: 700 }}
-                >
+                <span className="search-queries--results--bold">
                   {arr[index].node.title[0]}
                 </span>
                 <Link

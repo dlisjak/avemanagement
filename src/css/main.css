@@ -126,7 +126,7 @@
 }
 
 .ticker__menu--container {
-  top: 7px;
+  top: 3px;
 }
 
 .ticker__page {
@@ -255,6 +255,60 @@
   max-width: 1440px;
 }
 
+.loaderMain {
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  background: white;
+  z-index: 9999999999;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-logo {
+  margin: 5px;
+  margin-left: 0;
+  margin-bottom: 0;
+  cursor: pointer;
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.search-overlay {
+  top: 150px;
+  width: 100%;
+  overflow: hidden;
+}
+.search-queries {
+  border-bottom: 1px solid;
+  margin-bottom: 20px;
+}
+.search-input-search {
+  font-size: 16px;
+  margin-top: 10px;
+  width: 100%;
+}
+.search-queries--results {
+  padding-top: 20px;
+  padding-bottom: 50px;
+  margin-bottom: 150px;
+  padding-bottom: 115px;
+  overflow: scroll;
+  height: 100%;
+  width: 100%;
+}
+.search-queries--results--bold {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+
 @media only screen and (min-width: 480px) {
   .layout-main {
     width: 80%;
@@ -301,5 +355,15 @@
     height: 80%;
     bottom: 0;
     top: unset;
+  }
+  .search-overlay {
+    top: 185px;
+    width: 80%;
+  }
+  .search-queries {
+    padding-top: 50px;
+  }
+  .search-queries--results {
+    padding-bottom: 275px;
   }
 }

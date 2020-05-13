@@ -881,7 +881,7 @@ a.search-result-names {
   display: flex;
   width: 100%;
   font-weight: 300;
-  overflow: in;
+  overflow: inherit;
   color: black;
   padding-left: 100%;
   -webkit-perspective: 1000;
