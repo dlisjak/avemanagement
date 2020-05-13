@@ -60,12 +60,12 @@ const Category = ({ data, pageContext }) => {
         />
       )}
       {!searchOpen && (
-        <button
+        <a
           className="category-search category-search__button"
           onClick={() => openSearch()}
         >
           SEARCH
-        </button>
+        </a>
       )}
 
       <BlackBar height={100} />
