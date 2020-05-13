@@ -1,8 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
 
-const Pagination = ({ currentPage, numOfPages, isMobile }) => (
-  <div className="flex align-center pagination" style={{}}>
+const Pagination = ({ currentPage, numOfPages }) => (
+  <div className="flex align-center pagination">
     {currentPage !== 1 && currentPage > 3 && (
       <Link className="pagination-item first" to={`/news/1`}>
         1

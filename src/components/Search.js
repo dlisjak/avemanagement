@@ -39,7 +39,10 @@ const Search = ({ isShown, models, closeSearch }) => {
 
   const closeOverlay = e => {
     const some = el => {
-      return el.className === "flex flex-column search-overlay"
+      return (
+        el.className === "flex flex-column search-overlay" ||
+        el.className === "search-queries__back"
+      )
     }
 
     if (!e.path) return closeSearch()
