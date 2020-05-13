@@ -4,7 +4,7 @@ import BlackBar from "../components/BlackBar"
 import Swiper from "react-id-swiper"
 import AnchorLink from "react-anchor-link-smooth-scroll"
 
-import "../components/swiper.min.css"
+import "../css/swiper.min.css"
 
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 import Bio from "../components/Bio"

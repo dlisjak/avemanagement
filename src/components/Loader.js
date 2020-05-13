@@ -35,10 +35,7 @@ const Loader = () => {
         justifyContent: "center",
       }}
     >
-      <div
-        className="loadingContainer"
-        style={{ margin: "auto", height: "100%" }}
-      >
+      <div className="loadingContainer">
         <img
           key={1}
           className="loading-logo"

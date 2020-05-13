@@ -1,7 +1,7 @@
 import React from "react"
 import Swiper from "react-id-swiper"
 
-import "./swiper.min.css"
+import "../css/swiper.min.css"
 
 const Slider = props => {
   const { children } = props
