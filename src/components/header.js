@@ -133,7 +133,7 @@ const Header = ({ isMobile, isTablet, isHomepage }) => {
             textDecoration: "none",
             position: "absolute",
             width: "100%",
-            marginTop: 5,
+            marginTop: isMobile && 5,
             top: 73,
           }}
         >

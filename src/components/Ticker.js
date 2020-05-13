@@ -60,14 +60,14 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
             id="ticker"
             style={{
               position: "relative",
-              top: isMobile ? 6 : 5,
+              top: isMobile ? 7 : 3,
               display: "flex",
             }}
             ref={tickerRef}
             dangerouslySetInnerHTML={{
               __html: data,
             }}
-          ></div>
+          />
         </div>
       </div>
     )
@@ -81,7 +81,7 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
           position: "relative",
           fontWeight: 700,
           top: search && !isMobile ? -3 : 5,
-          top: search && isMobile ? -3 : 6,
+          top: search && isMobile ? -3 : 3,
           background: "transparent",
         }}
       >
