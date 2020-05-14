@@ -298,6 +298,7 @@
   top: 137px;
   width: 100%;
   overflow: hidden;
+  max-width: 1440px;
 }
 .search-queries {
   border-bottom: 1px solid;
