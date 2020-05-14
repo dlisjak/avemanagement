@@ -20,23 +20,23 @@ const GetToTop = ({ show }) => {
   }
 
   return (
-    <div
-      id="getToTop"
-      className="getToTop flex justify-end hidden"
-      style={{
-        position: "fixed",
-        width: "auto",
-        bottom: 10,
-        right: 10,
-        borderRadius: "50%",
-        background: "white",
-        display: show && isVisible ? "block" : "none",
-      }}
-    >
-      <AnchorLink href="#main" offset="200">
+    <AnchorLink href="#main" offset="200">
+      <div
+        id="getToTop"
+        className="getToTop flex justify-end hidden"
+        style={{
+          position: "fixed",
+          width: "auto",
+          bottom: 10,
+          right: 10,
+          borderRadius: "50%",
+          background: "white",
+          display: show && isVisible ? "block" : "none",
+        }}
+      >
         <i className="up-arrow" style={{ position: "relative", top: 6 }} />
-      </AnchorLink>
-    </div>
+      </div>
+    </AnchorLink>
   )
 }
 
