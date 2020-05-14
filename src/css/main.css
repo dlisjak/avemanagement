@@ -163,7 +163,6 @@
   padding: 0 5px;
 }
 .category-search__button {
-  top: 7px;
   margin-bottom: -5px;
   position: relative;
   font-family: HelveticaNeueCondensed;
@@ -384,9 +383,6 @@
   .search-overlay {
     top: 185px;
     width: 80%;
-  }
-  .category-search__button {
-    top: 4px;
   }
   .search-queries {
     padding-top: 50px;
