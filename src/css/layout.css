@@ -1,17 +1,4 @@
 /* MAIN CSS */
-.category-search__button {
-  position: relative;
-  font-family: HelveticaNeueCondensed;
-  right: 0;
-  font-size: 2.6rem;
-  top: 9px;
-  background: 0;
-  border: 0;
-  font-weight: 700;
-  padding: 0;
-  z-index: 9999;
-  color: black;
-}
 .category-card {
   position: relative;
   overflow: hidden;
