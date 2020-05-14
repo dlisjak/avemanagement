@@ -38,6 +38,7 @@ const News = ({ posts }) => {
                   className="news-comp--video"
                   autoPlay
                   muted
+                  style={{ width: "auto", height: 400 }}
                   loop
                   src={acf.video_1.url}
                   key={i}
@@ -50,7 +51,7 @@ const News = ({ posts }) => {
                   key={i}
                   style={{
                     maxHeight: !isMobile && 400,
-                    minHeight: isMobile ? height : 400,
+                    height: isMobile ? height : 400,
                     width: isMobile ? "100%" : "auto",
                     objectFit: "cover",
                   }}

@@ -13,6 +13,7 @@ const Slider = props => {
     autoplay: {
       delay: 3000,
     },
+    loop: true,
     autoHeight: true,
     spaceBetween: 5,
     slidesPerView: isMobile ? 1 : "auto",
