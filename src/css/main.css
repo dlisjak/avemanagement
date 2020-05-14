@@ -176,6 +176,9 @@
   z-index: 9999;
   color: black;
 }
+.category-search__button:hover {
+  cursor: pointer;
+}
 
 .viz-aware {
   overflow: hidden;
