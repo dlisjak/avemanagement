@@ -72,44 +72,44 @@ const Search = ({ isShown, models, closeSearch }) => {
       }}
     >
       <TickerText search={true} title="SEARCH" />
-      <div className="flex flex-column search-queries">
+
+      <div
+        className="flex flex-column search-queries"
+        style={{ marginBottom: 20, fontSize: 20 }}
+      >
         <button
           onClick={e => setSearchGender(e, null)}
-          style={{ fontWeight: !genderQuery ? 700 : 400 }}
+          style={{ color: !genderQuery ? "black" : "#ccc" }}
         >
           ALL
         </button>
-        {sortedModels.some(model => model.node.acf.gender === "male") && (
-          <button
-            onClick={e => setSearchGender(e, "male")}
-            style={{ fontWeight: genderQuery === "male" ? 700 : 400 }}
-          >
-            MEN
-          </button>
-        )}
-        {sortedModels.some(model => model.node.acf.gender === "female") && (
-          <button
-            onClick={e => setSearchGender(e, "female")}
-            style={{ fontWeight: genderQuery === "female" ? 700 : 400 }}
-          >
-            WOMEN
-          </button>
-        )}
-        <div className="flex align-center">
+        <button
+          onClick={e => setSearchGender(e, "male")}
+          style={{ color: genderQuery === "male" ? "black" : "#ccc" }}
+        >
+          MEN
+        </button>
+        <button
+          onClick={e => setSearchGender(e, "female")}
+          style={{ color: genderQuery === "female" ? "black" : "#ccc" }}
+        >
+          WOMEN
+        </button>
+        <div>
           <input
             ref={inputRef}
             className="search-input-search"
             type="text"
-            placeholder="SEARCH BY NAME"
+            placeholder="/SEARCH BY NAME"
             onChange={e => handleSearchQuery(e)}
             value={searchQuery}
+            style={{
+              fontSize: 24,
+              marginTop: 10,
+              width: "100%",
+              padding: 0,
+            }}
           />
-          <button
-            className="search-queries__back"
-            onClick={e => closeOverlay(e)}
-          >
-            BACK
-          </button>
         </div>
       </div>
 
