@@ -17,6 +17,8 @@ const Category = ({ data, pageContext }) => {
   const title = pageContext.title.toUpperCase()
   let tickerText
 
+  const isMac = navigator.userAgent.indexOf("Mac") > 0
+
   useEffect(() => {
     const setPath = () => {
       localStorage.removeItem("ave-ticker")
@@ -62,6 +64,7 @@ const Category = ({ data, pageContext }) => {
       {!searchOpen && (
         <a
           className="category-search category-search__button"
+          style={{ marginBottom: isMac ? -14 : -5 }}
           onClick={() => openSearch()}
         >
           SEARCH
