@@ -17,7 +17,10 @@ const Category = ({ data, pageContext }) => {
   const title = pageContext.title.toUpperCase()
   let tickerText
 
-  const isMac = navigator.userAgent.indexOf("Mac") > 0
+  let isMac
+  if (typeof navigatio !== "undefined") {
+    isMac = navigator.userAgent.indexOf("Mac") > 0
+  }
 
   useEffect(() => {
     const setPath = () => {
