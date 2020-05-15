@@ -18,7 +18,7 @@ const Category = ({ data, pageContext }) => {
   let tickerText
 
   let isMac
-  if (typeof navigatio !== "undefined") {
+  if (typeof navigator !== "undefined") {
     isMac = navigator.userAgent.indexOf("Mac") > 0
   }
 
