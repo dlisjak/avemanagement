@@ -67,7 +67,7 @@ const Category = ({ data, pageContext }) => {
       {!searchOpen && (
         <a
           className="category-search category-search__button"
-          style={{ marginBottom: isMac ? -14 : -5 }}
+          style={{ marginBottom: isMac ? -14 : -9 }}
           onClick={() => openSearch()}
         >
           SEARCH
