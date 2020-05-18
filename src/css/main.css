@@ -128,6 +128,10 @@
 .ticker__menu--container {
   top: 3px;
 }
+.pagination {
+  font-weight: bold;
+  text-transform: lowercase;
+}
 
 .ticker__page {
   font-weight: 700;
@@ -135,6 +139,7 @@
   position: relative;
   font-weight: 700;
   background: transparent;
+  top: 3px;
 }
 
 .inside--ticker {
@@ -166,6 +171,7 @@
   position: relative;
   font-family: HelveticaNeueCondensed;
   right: 0;
+  text-transform: lowercase;
   font-size: 2.6rem;
   background: 0;
   border: 0;
@@ -200,7 +206,7 @@
 
 .model__main {
   position: relative;
-  flex-direction: column-reverse;
+  flex-direction: column;
 }
 
 .model__main-container {
@@ -329,15 +335,29 @@
   line-height: 1.8;
 }
 .pagination {
+  padding-right: 5px;
   position: relative;
-  height: 25px;
+  height: 33px;
   justify-content: flex-end;
   width: 100%;
   padding-right: 0;
   font-size: 2.6rem;
-  top: 6px;
+  top: 5px;
 }
-.tickerReverse {
+.news-card-title {
+  line-height: 0.8;
+  margin-top: 2px;
+  margin-bottom: -4px;
+}
+
+.news-back-button {
+  text-decoration: none;
+  top: 14px;
+}
+
+.upload-photographs {
+  text-decoration: underline;
+  text-transform: uppercase;
 }
 
 @media only screen and (min-width: 480px) {
@@ -396,5 +416,12 @@
   }
   .pagination {
     top: 1px;
+    font-size: 3.6rem;
+  }
+  .news-card-title {
+    margin-bottom: -7px;
+  }
+  .model__main {
+    flex-direction: row;
   }
 }
