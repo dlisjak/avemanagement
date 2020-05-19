@@ -70,7 +70,7 @@ const Category = ({ data, pageContext }) => {
           style={{ marginBottom: isMac ? -14 : -9 }}
           onClick={() => openSearch()}
         >
-          SEARCH
+          *search
         </a>
       )}
 

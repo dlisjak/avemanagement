@@ -35,9 +35,9 @@ const ImageUpload = ({ title, order, text }) => {
   return (
     <>
       <div
-        className="flex flex-column justify-center align-center contact-image-upload relative flex category-card"
+        className="flex flex-column justify-center align-center contact-image-upload relative"
         style={{
-          marginBottom: file ? 25 : 5,
+          marginBottom: file ? 25 : 2.5,
           backgroundImage: title,
           objectFit: "contain",
           overflow: "hidden",
@@ -94,7 +94,7 @@ const ImageUpload = ({ title, order, text }) => {
             className="contact-image-upload--image width-100"
             src={placeholderImage}
             alt={`Your ${title}`}
-            style={{ objectFit: "cover" }}
+            style={{ objectFit: "contain" }}
           />
         )}
         {file && (

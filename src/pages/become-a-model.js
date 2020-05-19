@@ -435,15 +435,7 @@ const BecomeAModel = () => {
           textTransform: "initial",
         }}
       >
-        <h4
-          style={{
-            marginBottom: 20,
-            fontSize: "2rem",
-            textTransform: "uppercase",
-          }}
-        >
-          Upload photographs
-        </h4>
+        <h4 className="upload-photographs underline">Upload photographs</h4>
         <p>
           Submit only natural photographs, no professional studio shots are
           required, as we wish to see you in your most natural state.
@@ -476,16 +468,20 @@ const BecomeAModel = () => {
         </p>
       </div>
       <div className="flex flex-column">
-        <span
-          className="content-padding"
-          style={{
-            fontWeight: 700,
-            marginBottom: 25,
-            fontSize: 32,
-            lineHeight: 0.8,
-          }}
-        >
-          ENSURE YOUR IMAGES ARE NOT LARGER THAN 2MB EACH IN SIZE
+        <span className="content-padding">
+          <h4 className="upload-photographs" style={{ marginBottom: -17 }}>
+            ENSURE YOUR IMAGES ARE NOT
+          </h4>
+          <br />{" "}
+          <h4
+            className="upload-photographs underline"
+            style={{
+              position: "relative",
+              top: -2,
+            }}
+          >
+            LARGER THAN 2MB EACH IN SIZE
+          </h4>
         </span>
         <div className="flex flex-wrap content-padding category-cards relative">
           <ImageUpload

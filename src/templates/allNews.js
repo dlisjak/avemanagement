@@ -42,7 +42,7 @@ const NewsPage = ({ data, pageContext }) => {
         isMobile={isMobile}
       />
       <BlackBar height={100} />
-      <div id="content" className="flex flex-wrap" style={{ marginTop: 5 }}>
+      <div className="flex flex-wrap" style={{ marginTop: 5 }}>
         <div className="masonry-with-columns width-100">
           {data.allWordpressWpNews.edges.map(
             ({ node: { title, content, slug, acf } }, index) => {

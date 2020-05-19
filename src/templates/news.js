@@ -46,7 +46,6 @@ const News = ({
   }
 
   useEffect(() => {
-    // componentDidMount
     const initGrid = async () => {
       let tickerText
       tickerText = localStorage.getItem("ave-ticker")
@@ -83,19 +82,29 @@ const News = ({
         className="flex flex-column"
         style={{ marginBottom: 50, alignItems: "flex-start" }}
       >
-        <h2
-          className="news-card-title model__name content-padding"
-          dangerouslySetInnerHTML={{
-            __html: formatContent(content),
-          }}
-          style={{
-            fontWeight: 700,
-            color: "black",
-            marginTop: 0,
-            width: "75%",
-            lineHeight: 0.7,
-          }}
-        />
+        <div className="flex justify-between">
+          <h2
+            className="news-card-title model__name content-padding"
+            dangerouslySetInnerHTML={{
+              __html: formatContent(content),
+            }}
+            style={{
+              fontWeight: 700,
+              color: "black",
+              marginTop: 0,
+              width: "75%",
+              lineHeight: 0.7,
+            }}
+          />
+          <a
+            href="#"
+            className="category-search category-search__button news-back-button"
+            onClick={() => window.history.back()}
+          >
+            *back
+          </a>
+        </div>
+
         <BlackBar height={100} />
         <div
           id="news-slideshow"
@@ -124,10 +133,12 @@ const News = ({
           )}
           {video && !image && <ModelVideo videoUrl={video} />}
         </div>
+        <hr style={{ width: "100%", marginTop: 5, marginBottom: 10 }} />
         <BlackBar height={100} />
+        <hr style={{ width: "100%", marginTop: 10, marginBottom: 10 }} />
 
         <div id="content" className="flex flex-wrap " style={{ marginTop: 5 }}>
-          <div className="width-100 masonry-with-columns" style={{}}>
+          <div className="width-100 masonry-with-columns">
             {newsContent &&
               newsContent.map(({ url, title, video, thumbnail }, index) => {
                 if (video && thumbnail) {

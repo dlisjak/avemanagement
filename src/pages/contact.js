@@ -47,56 +47,34 @@ const Contact = () => {
           </span>
         </div>
       )}
-      <div
-        className="flex flex-column align-start content-padding"
-        style={{
-          textAlign: "left",
-          paddingBottom: 30,
-          paddingTop: 20,
-          fontSize: !isMobile ? 28 : 20,
-          lineHeight: 0.9,
-        }}
-      >
-        <span>70 SHENTON WAY</span>
-        <span>EON SHENTON</span>
-        <span>#13-06</span>
-        <span style={{ marginBottom: !isMobile && 100 }}>SINGAPORE 079118</span>
+      <div className="flex flex-column align-start content-padding contact-info-text">
+        <span className="contact-info-text--span">70 SHENTON WAY</span>
+        <span className="contact-info-text--span">EON SHENTON</span>
+        <span className="contact-info-text--span">#13-06</span>
+        <span className="contact-info-text--span -last">SINGAPORE 079118</span>
 
         <a
+          className="underline contact-text-links"
           target="_blank"
           href="https://goo.gl/maps/JoLuAknYkKp"
-          style={{
-            textDecoration: "underline",
-            textTransform: "uppercase",
-            color: "#222",
-            fontWeight: 700,
-            marginTop: isMobile && 30,
-          }}
         >
           Google maps
         </a>
 
         <a
+          className="underline contact-text-links"
           href="tel:+6568874629"
           style={{
             marginBottom: 30,
             marginTop: 30,
-            fontWeight: 700,
-            textDecoration: "underline",
-            color: "black",
           }}
         >
           T +65 68874629
         </a>
 
         <a
+          className=" underline contact-text-links"
           href="mailto:info@avemanagement.com"
-          style={{
-            textDecoration: "underline",
-            textTransform: "uppercase",
-            color: "#222",
-            fontWeight: 700,
-          }}
         >
           info@avemanagement.com
         </a>

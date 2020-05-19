@@ -11,6 +11,7 @@ import Bio from "../components/Bio"
 import ModelName from "../components/ModelName"
 import ModelVideo from "../components/ModelVideo"
 import ModelPreviewVideos from "../components/ModelPreviewVideos"
+import PortfolioImage from "../components/PortfolioImage"
 
 const Model = ({ pageContext: { firstName, lastName, acf } }) => {
   const dispatch = useContext(GlobalDispatchContext)
@@ -28,6 +29,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
   let columns
   let isMobile
   let isTablet
+
   if (typeof window !== "undefined") {
     isMobile = window.innerWidth < 480
     isTablet = window.innerWidth < 850
@@ -82,14 +84,16 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
         }
         col++
       }
+
       acf.portfolio.forEach((img, i) => {
         img._index = i
+        img._columns = (img._index + 1) % columns
       })
       setPortfolio(out)
     }
 
     reorder(acf.portfolio, columns)
-  }, [])
+  }, [acf.portfolio, columns])
 
   const navigateSliderNext = () => {
     if (swiper !== null) {
@@ -122,7 +126,6 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
           style={{
             marginBottom: tab === "videos" ? 0 : 5,
             background: tab === "bio" ? "white" : "#ccc",
-            flexDirection: tab === "bio" && (isMobile || isTablet) && "column",
           }}
         >
           <div
@@ -167,7 +170,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                   offset={27}
                   onClick={() => setTab("bio")}
                   style={{
-                    color: tab === "bio" ? "rgba(0,0,0,0.7)" : "black",
+                    color: tab === "bio" ? "rgb(204, 204, 204)" : "black",
                   }}
                 >
                   BIO
@@ -246,38 +249,106 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
 
         <div
           id="content"
-          className="flex flex-wrap "
+          className="flex flex-wrap"
           style={{ padding: "5px 0 0 0" }}
         >
           {
             <div
               className="width-100 masonry-with-columns"
-              style={{ display: tab === "portfolio" ? "block" : "none" }}
+              style={{ display: tab !== "portfolio" && "none" }}
             >
-              {portfolio &&
-                portfolio.map(
-                  ({ title, name, url, alt = "", _index }, index) => (
-                    <AnchorLink
-                      role="button"
-                      href="#slideshow"
-                      offset={27}
-                      className="flex-column justify-between grid-item"
-                      onClick={() => {
-                        setImage(_index + 1)
-                      }}
-                      style={{}}
-                      key={index}
-                    >
-                      <img
-                        src={url}
-                        alt={alt}
-                        className="model-portfolio-image"
-                        title={title}
-                        name={name}
-                      />
-                    </AnchorLink>
-                  )
-                )}
+              <div className="column column--1">
+                {portfolio &&
+                  portfolio.map(
+                    (
+                      { title, name, url, alt = "", _index, _columns },
+                      index
+                    ) => {
+                      if (_columns !== 1) return
+
+                      return (
+                        <PortfolioImage
+                          title={title}
+                          name={name}
+                          onClick={() => setImage(_index + 1)}
+                          url={url}
+                          alt={alt}
+                          _index={_index}
+                          key={index}
+                        />
+                      )
+                    }
+                  )}
+              </div>
+              <div className="column column--2">
+                {portfolio &&
+                  portfolio.map(
+                    (
+                      { title, name, url, alt = "", _index, _columns },
+                      index
+                    ) => {
+                      if (_columns !== 2) return
+
+                      return (
+                        <PortfolioImage
+                          title={title}
+                          name={name}
+                          onClick={() => setImage(_index + 1)}
+                          url={url}
+                          alt={alt}
+                          _index={_index}
+                          key={index}
+                        />
+                      )
+                    }
+                  )}
+              </div>
+              <div className="column column--3">
+                {portfolio &&
+                  portfolio.map(
+                    (
+                      { title, name, url, alt = "", _index, _columns },
+                      index
+                    ) => {
+                      if (_columns !== 3) return
+
+                      return (
+                        <PortfolioImage
+                          title={title}
+                          name={name}
+                          onClick={() => setImage(_index + 1)}
+                          url={url}
+                          alt={alt}
+                          _index={_index}
+                          key={index}
+                        />
+                      )
+                    }
+                  )}
+              </div>
+              <div className="column column--4">
+                {portfolio &&
+                  portfolio.map(
+                    (
+                      { title, name, url, alt = "", _index, _columns },
+                      index
+                    ) => {
+                      if (_columns !== 0) return
+
+                      return (
+                        <PortfolioImage
+                          title={title}
+                          name={name}
+                          onClick={() => setImage(_index + 1)}
+                          url={url}
+                          alt={alt}
+                          _index={_index}
+                          key={index}
+                        />
+                      )
+                    }
+                  )}
+              </div>
             </div>
           }
           {tab === "videos" && (
