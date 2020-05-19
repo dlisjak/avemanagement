@@ -13,7 +13,6 @@ const Search = ({ data }) => {
   const [anchorIndex, setAnchorIndex] = useState("")
 
   const inputRef = useRef(null)
-  let tickerText
 
   let isMobile
   if (typeof window !== "undefined") {
@@ -24,7 +23,8 @@ const Search = ({ data }) => {
     const setPath = () => {
       inputRef.current.focus()
       localStorage.removeItem("ave-ticker")
-      tickerText = typeof window !== "undefined" ? window.location.pathname : ""
+      const tickerText =
+        typeof window !== "undefined" ? window.location.pathname : ""
       localStorage.setItem("ave-ticker", tickerText)
       dispatch({ type: "SET_PATH", payload: tickerText })
     }
@@ -43,7 +43,7 @@ const Search = ({ data }) => {
 
     setPath()
     anchorScroll()
-  }, [])
+  }, [dispatch])
 
   const handleSearchQuery = e => {
     setSearchQuery(e.target.value.toUpperCase())
@@ -51,15 +51,6 @@ const Search = ({ data }) => {
 
   const setSearchGender = (e, gender) => {
     setGender(gender)
-  }
-
-  const ucFirstAllWords = str => {
-    var pieces = str.split(" ")
-    for (var i = 0; i < pieces.length; i++) {
-      var j = pieces[i].charAt(0).toUpperCase()
-      pieces[i] = j + pieces[i].substr(1)
-    }
-    return pieces.join(" ")
   }
 
   return (

@@ -43,12 +43,11 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
     slidesPerView: 1,
     spaceBetween: 5,
   }
-  let tickerText
 
   useEffect(() => {
     const setPath = () => {
       if (typeof window !== "undefined") {
-        tickerText = localStorage.getItem("ave-ticker")
+        const tickerText = localStorage.getItem("ave-ticker")
         dispatch({ type: "SET_PATH", payload: tickerText })
         dispatch({
           type: "SET_MODEL_INDEX",
@@ -58,7 +57,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
     }
 
     setPath()
-  }, [])
+  }, [dispatch, firstName, lastName])
 
   useEffect(() => {
     const swiperUpdate = () => {
@@ -125,7 +124,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
           className="flex model__main"
           style={{
             marginBottom: tab === "videos" ? 0 : 5,
-            background: tab === "bio" ? "white" : "#ccc",
+            background: tab === "bio" || tab === "videos" ? "white" : "#ccc",
           }}
         >
           <div
@@ -239,7 +238,10 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
           />
           <div
             className="width-100"
-            style={{ display: tab === "videos" ? "block" : "none" }}
+            style={{
+              display: tab === "videos" ? "block" : "none",
+              marginBottom: 5,
+            }}
           >
             <ModelVideo videoUrl={videoUrl} />
           </div>
@@ -264,7 +266,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                       { title, name, url, alt = "", _index, _columns },
                       index
                     ) => {
-                      if (_columns !== 1) return
+                      if (_columns !== 1) return null
 
                       return (
                         <PortfolioImage
@@ -287,7 +289,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                       { title, name, url, alt = "", _index, _columns },
                       index
                     ) => {
-                      if (_columns !== 2) return
+                      if (_columns !== 2) return null
 
                       return (
                         <PortfolioImage
@@ -310,7 +312,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                       { title, name, url, alt = "", _index, _columns },
                       index
                     ) => {
-                      if (_columns !== 3) return
+                      if (_columns !== 3) return null
 
                       return (
                         <PortfolioImage
@@ -333,7 +335,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                       { title, name, url, alt = "", _index, _columns },
                       index
                     ) => {
-                      if (_columns !== 0) return
+                      if (_columns !== 0) return null
 
                       return (
                         <PortfolioImage

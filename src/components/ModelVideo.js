@@ -3,16 +3,9 @@ import React, { useState } from "react"
 const ModelVideo = ({ videoUrl }) => {
   const [videoEnd, setVideoEnded] = useState(false)
 
-  let isMobile
-  if (typeof window !== "undefined") {
-    isMobile = window.innerWidth < 480
-  }
-
   const startVideoPlaying = () => {
     if (!videoEnd) return
-
     const video = document.querySelector("video")
-
     setVideoEnded(false)
     video.play()
   }
@@ -20,64 +13,24 @@ const ModelVideo = ({ videoUrl }) => {
   return (
     <div
       id="youtubeVideo"
-      style={{
-        width: isMobile ? "95vw" : "100%",
-        height: "100%",
-        position: "relative",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        margin: isMobile ? "10px auto" : "0 auto",
-      }}
+      className="flex align-center justify-center relative"
     >
       <video
         src={videoUrl}
-        autoPlay
         muted
+        autoPlay
         playsInline
         onEnded={() => setVideoEnded(true)}
-        className="home-video width-100"
-        style={{ paddingBottom: isMobile && 5 }}
+        className="width-100 video--newwsss"
       ></video>
       {videoEnd && (
         <div
+          className="video-end flex align-center justify-center absolute"
           onClick={() => startVideoPlaying()}
-          style={{
-            position: "absolute",
-            padding: "10%",
-            border: "1px solid white",
-            borderRadius: "50%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
         >
-          <div
-            style={{
-              position: "absolute",
-              borderLeft: "1px solid white",
-              width: "29%",
-              height: "50%",
-            }}
-          />
-          <div
-            style={{
-              position: "absolute",
-              borderLeft: "1px solid white",
-              width: "29%",
-              height: "50%",
-              transform: "rotate(120deg)",
-            }}
-          />
-          <div
-            style={{
-              position: "absolute",
-              borderLeft: "1px solid white",
-              width: "30%",
-              height: "50%",
-              transform: "rotate(-120deg)",
-            }}
-          />
+          <div className="absolute video-end--playicon" />
+          <div className="absolute video-end--playicon -rotate" />
+          <div className="absolute video-end--playicon -rotate-full" />
         </div>
       )}
     </div>

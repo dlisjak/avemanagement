@@ -39,7 +39,6 @@ const SubNavBar = posed.div({
 const DesktopNav = ({ toggleMenu, isVisible, data }) => {
   const state = useContext(GlobalStateContext)
 
-  const [selectedItem, setSelectedItem] = useState(null)
   const [childItems, setChildItems] = useState([])
   const [childIsVisible, setChildVisible] = useState(false)
 
@@ -57,7 +56,7 @@ const DesktopNav = ({ toggleMenu, isVisible, data }) => {
     }
 
     setUpNav()
-  }, [state.path])
+  }, [state.path, selectItem, showNavChildren])
 
   const parsePage = parsedPage => {
     if (!parsedPage) return
@@ -114,7 +113,6 @@ const DesktopNav = ({ toggleMenu, isVisible, data }) => {
   const selectItem = item => {
     if (!item) return
     if (item.child_items) {
-      setSelectedItem(item)
       setActiveMenuItemClass(item)
       setChildItems(item.child_items)
       setChildVisible(true)

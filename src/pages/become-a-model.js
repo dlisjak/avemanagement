@@ -16,7 +16,6 @@ const BecomeAModel = () => {
 
   const [mobileNum, setMobileNum] = useState("")
   const [countryCode, setCountryCode] = useState("")
-  let tickerText
   let isMobile
   if (typeof window !== "undefined") {
     isMobile = window.innerWidth < 480
@@ -25,11 +24,12 @@ const BecomeAModel = () => {
   useEffect(() => {
     const setPath = () => {
       localStorage.removeItem("ave-ticker")
-      tickerText = typeof window !== "undefined" ? window.location.pathname : ""
+      const tickerText =
+        typeof window !== "undefined" ? window.location.pathname : ""
       dispatch({ type: "SET_PATH", payload: tickerText })
     }
     setPath()
-  }, [])
+  }, [dispatch])
 
   const handleMobileChange = e => {
     if (e.target.value.length > 17) return
@@ -517,7 +517,6 @@ const BecomeAModel = () => {
       >
         <label
           className="contact-form-submit-label"
-          tabIndex="0"
           htmlFor="submit-form"
           style={{ marginTop: 10, fontWeight: 700, fontSize: 22 }}
         >

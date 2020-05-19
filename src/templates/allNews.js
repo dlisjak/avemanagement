@@ -9,7 +9,6 @@ import Pagination from "../components/Pagination"
 const NewsPage = ({ data, pageContext }) => {
   const dispatch = useContext(GlobalDispatchContext)
   const { currentPage, numOfPages } = pageContext
-  let tickerText
   let isMobile
   if (typeof window !== "undefined") {
     isMobile = window.innerWidth < 480
@@ -19,12 +18,12 @@ const NewsPage = ({ data, pageContext }) => {
     // componentDidMount
     const setPath = () => {
       localStorage.removeItem("ave-ticker")
-      tickerText = window.location.pathname
+      const tickerText = window.location.pathname
       localStorage.setItem("ave-ticker", tickerText)
       dispatch({ type: "SET_PATH", payload: tickerText })
     }
     setPath()
-  }, [])
+  }, [dispatch])
 
   const formatContent = content => {
     const splitContent = content.split("<p>")
@@ -45,42 +44,38 @@ const NewsPage = ({ data, pageContext }) => {
       <div className="flex flex-wrap" style={{ marginTop: 5 }}>
         <div className="masonry-with-columns width-100">
           {data.allWordpressWpNews.edges.map(
-            ({ node: { title, content, slug, acf } }, index) => {
-              const ratio =
-                acf.news_post_image.height / acf.news_post_image.width
-              return (
-                <div
-                  className="flex-column justify-between grid-item"
-                  key={index}
+            ({ node: { title, content, slug, acf } }, index) => (
+              <div
+                className="flex-column justify-between grid-item"
+                key={index}
+              >
+                <Link
+                  to={`/news/${slug}`}
+                  className="all-news-card category-card"
+                  style={{ textDecoration: "none" }}
                 >
-                  <Link
-                    to={`/news/${slug}`}
-                    className="all-news-card category-card"
-                    style={{ textDecoration: "none" }}
-                  >
-                    <img
-                      className="model-portfolio-image"
-                      src={acf.news_post_image.url}
-                      alt={title}
-                      style={{ marginBottom: 0 }}
-                    />
-                    <h3
-                      className="category-card-title flex flex-wrap width-100 relative"
-                      dangerouslySetInnerHTML={{
-                        __html: formatContent(content),
-                      }}
-                      style={{
-                        paddingBottom: 25,
-                        marginBottom: 0,
-                        textDecoration: "none",
-                        lineHeight: 0.8,
-                        marginTop: -7,
-                      }}
-                    />
-                  </Link>
-                </div>
-              )
-            }
+                  <img
+                    className="model-portfolio-image"
+                    src={acf.news_post_image.url}
+                    alt={title}
+                    style={{ marginBottom: 0 }}
+                  />
+                  <h3
+                    className="category-card-title flex flex-wrap width-100 relative"
+                    dangerouslySetInnerHTML={{
+                      __html: formatContent(content),
+                    }}
+                    style={{
+                      paddingBottom: 25,
+                      marginBottom: 0,
+                      textDecoration: "none",
+                      lineHeight: 0.8,
+                      marginTop: -7,
+                    }}
+                  />
+                </Link>
+              </div>
+            )
           )}
         </div>
       </div>

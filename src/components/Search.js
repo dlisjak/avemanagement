@@ -15,28 +15,6 @@ const Search = ({ isShown, models, closeSearch }) => {
   const [genderQuery, setGender] = useState(null)
   const inputRef = useRef(null)
 
-  let isMobile
-  if (typeof window !== "undefined") {
-    isMobile = window.innerWidth < 480
-  }
-
-  useEffect(() => {
-    const el = document.querySelector("body")
-    const el2 = document.querySelector(".header-fixed-container")
-
-    const openOverlay = () => {
-      el.classList.add("overlay")
-      el.addEventListener("click", closeOverlay)
-      inputRef.current.focus()
-    }
-    openOverlay()
-
-    return () => {
-      el.removeEventListener("click", closeOverlay)
-      el.classList.remove("overlay")
-    }
-  }, [])
-
   const closeOverlay = e => {
     const some = el => {
       return (
@@ -49,6 +27,22 @@ const Search = ({ isShown, models, closeSearch }) => {
     if (e.path.some(some)) return
     closeSearch()
   }
+
+  useEffect(() => {
+    const el = document.querySelector("body")
+
+    const openOverlay = () => {
+      el.classList.add("overlay")
+      el.addEventListener("click", closeOverlay)
+      inputRef.current.focus()
+    }
+    openOverlay()
+
+    return () => {
+      el.removeEventListener("click", closeOverlay)
+      el.classList.remove("overlay")
+    }
+  }, [closeOverlay])
 
   const handleSearchQuery = e => {
     setSearchQuery(e.target.value.toUpperCase())

@@ -44,6 +44,9 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
     }
   }
 
+  let top = 5
+  if ((search && !isMobile) || (search && isMobile)) top = -3
+
   if (title === "MENU") {
     return (
       <div className="ticker__menu relative ticker flex width-100">
@@ -61,13 +64,7 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
     )
   } else {
     return (
-      <div
-        className="ticker__page ticker flex width-100"
-        style={{
-          top: search && !isMobile ? -3 : 5,
-          top: search && isMobile && -3,
-        }}
-      >
+      <div className="ticker__page ticker flex width-100" style={{ top: top }}>
         <div id="tickerwrap">
           {left && (
             <div

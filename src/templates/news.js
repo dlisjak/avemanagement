@@ -96,48 +96,33 @@ const News = ({
               lineHeight: 0.7,
             }}
           />
-          <a
-            href="#"
+          <button
             className="category-search category-search__button news-back-button"
             onClick={() => window.history.back()}
           >
             *back
-          </a>
+          </button>
         </div>
 
         <BlackBar height={100} />
         <div
           id="news-slideshow"
-          className="content-padding flex justify-center"
-          style={{
-            marginTop: 5,
-            padding: "25 0",
-            marginBottom: video ? 0 : 5,
-            width: "100%",
-            background: "#ccc",
-          }}
+          className="flex justify-center news-slideshow--video"
         >
           {image && !video && (
             <img
               className="news-card__image"
               src={image.url}
               alt={acf.news_post_image.title}
-              style={{
-                objectFit: "contain",
-                height: "auto",
-                maxHeight: 760,
-                padding: "10px 0",
-                width: "95vw",
-              }}
             />
           )}
           {video && !image && <ModelVideo videoUrl={video} />}
         </div>
-        <hr style={{ width: "100%", marginTop: 5, marginBottom: 10 }} />
+        <hr className="hr-news" />
         <BlackBar height={100} />
-        <hr style={{ width: "100%", marginTop: 10, marginBottom: 10 }} />
+        <hr className="hr-news bottom" />
 
-        <div id="content" className="flex flex-wrap " style={{ marginTop: 5 }}>
+        <div id="content" className="flex flex-wrap ">
           <div className="width-100 masonry-with-columns">
             {newsContent &&
               newsContent.map(({ url, title, video, thumbnail }, index) => {
@@ -145,14 +130,14 @@ const News = ({
                   return (
                     <AnchorLink
                       role="button"
-                      offset={205}
+                      offset={20}
                       href="#news-slideshow"
                       className="flex-column justify-between grid-item"
                       onClick={() => setUpVideo(video)}
                       style={{
                         cursor: "pointer",
                         marginBottom: 5,
-                        display: "inline-block",
+                        display: "block",
                         height: "100%",
                         minHeight: 250,
                       }}
@@ -168,25 +153,26 @@ const News = ({
                   return (
                     <AnchorLink
                       role="button"
-                      offset={205}
+                      offset={20}
                       href="#news-slideshow"
                       className="flex-column justify-between grid-item"
                       onClick={() => setUpImage({ title, url })}
                       style={{
                         cursor: "pointer",
                         marginBottom: 5,
-                        display: "inline-block",
+                        display: "block",
                       }}
                       key={index}
                     >
                       <img
                         src={url}
+                        alt=""
                         className="model-portfolio-image"
                         title={title}
                       />
                     </AnchorLink>
                   )
-                }
+                } else return null
               })}
           </div>
         </div>

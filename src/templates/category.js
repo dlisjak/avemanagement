@@ -15,7 +15,6 @@ const Category = ({ data, pageContext }) => {
   const [anchorIndex, setAnchorIndex] = useState("")
 
   const title = pageContext.title.toUpperCase()
-  let tickerText
 
   let isMac
   if (typeof navigator !== "undefined") {
@@ -25,7 +24,8 @@ const Category = ({ data, pageContext }) => {
   useEffect(() => {
     const setPath = () => {
       localStorage.removeItem("ave-ticker")
-      tickerText = typeof window !== "undefined" ? window.location.pathname : ""
+      const tickerText =
+        typeof window !== "undefined" ? window.location.pathname : ""
       dispatch({ type: "SET_PATH", payload: tickerText })
       localStorage.setItem("ave-ticker", tickerText)
     }
@@ -44,7 +44,7 @@ const Category = ({ data, pageContext }) => {
 
     setPath()
     anchorScroll()
-  }, [])
+  }, [dispatch])
 
   const openSearch = () => {
     toggleSearch(!searchOpen)
@@ -65,13 +65,13 @@ const Category = ({ data, pageContext }) => {
         />
       )}
       {!searchOpen && (
-        <a
+        <button
           className="category-search category-search__button"
           style={{ marginBottom: isMac ? -14 : -9 }}
           onClick={() => openSearch()}
         >
           *search
-        </a>
+        </button>
       )}
 
       <BlackBar height={100} />

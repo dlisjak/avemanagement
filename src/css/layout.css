@@ -21,6 +21,8 @@ a.search-result-names {
   width: 50%;
   height: auto;
   max-width: 300px;
+  display: block;
+  position: relative;
 }
 .category-search {
   align-self: flex-end;
@@ -47,9 +49,6 @@ a.search-result-names {
 }
 .pagination-item.current {
   color: rgb(204, 204, 204);
-}
-#content {
-  padding: 0 5px;
 }
 .ticker__page--fixed {
   width: 100%;
@@ -92,10 +91,6 @@ a.search-result-names {
 .contact-error {
   font-size: 14px;
   top: 0px;
-}
-.news-card__image {
-  width: 100%;
-  height: auto;
 }
 
 .news-card-title {

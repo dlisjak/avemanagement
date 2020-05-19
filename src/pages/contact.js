@@ -2,11 +2,9 @@ import React, { useEffect, useContext } from "react"
 import Layout from "../components/layout"
 
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
-import BlackBar from "../components/BlackBar"
 
 const Contact = () => {
   const dispatch = useContext(GlobalDispatchContext)
-  let tickerText
   let isMobile
   if (typeof window !== "undefined") {
     isMobile = window.innerWidth < 480
@@ -16,13 +14,13 @@ const Contact = () => {
     const setPath = () => {
       if (typeof window !== "undefined") {
         localStorage.removeItem("ave-ticker")
-        tickerText = window.location.pathname
+        const tickerText = window.location.pathname
         localStorage.setItem("ave-ticker", tickerText)
         dispatch({ type: "SET_PATH", payload: tickerText })
       }
     }
     setPath()
-  }, [])
+  }, [dispatch])
 
   return (
     <Layout>
@@ -56,6 +54,7 @@ const Contact = () => {
         <a
           className="underline contact-text-links"
           target="_blank"
+          rel="noopener noreferrer"
           href="https://goo.gl/maps/JoLuAknYkKp"
         >
           Google maps
