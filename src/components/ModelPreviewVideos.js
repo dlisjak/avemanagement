@@ -11,66 +11,19 @@ const ModelPreviewVideos = ({ thumbnail, onClick }) => {
     <AnchorLink
       href="#slideshow"
       offset={27}
-      className="category-card grid-item"
+      className="category-card grid-item model-preview"
       onClick={onClick}
-      style={{
-        height: isMobile ? 125 : 200,
-        cursor: "pointer",
-        background: "#ccc",
-      }}
     >
       <div
+        className="flex relative justify-center align-center model-previews--vid"
         style={{
-          position: "relative",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          overflow: "hidden",
           backgroundImage: `url(${thumbnail})`,
-          backgroundSize: "contain",
-          backgroundPosition: "top",
-          backgroundRepeat: "no-repeat",
-          width: "100%",
-          height: "100%",
         }}
       >
-        <div
-          style={{
-            position: "absolute",
-            padding: "20%",
-            border: "1px solid white",
-            borderRadius: "50%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <div
-            style={{
-              position: "absolute",
-              borderLeft: "1px solid white",
-              width: "29%",
-              height: "50%",
-            }}
-          />
-          <div
-            style={{
-              position: "absolute",
-              borderLeft: "1px solid white",
-              width: "29%",
-              height: "50%",
-              transform: "rotate(120deg)",
-            }}
-          />
-          <div
-            style={{
-              position: "absolute",
-              borderLeft: "1px solid white",
-              width: "30%",
-              height: "50%",
-              transform: "rotate(-120deg)",
-            }}
-          />
+        <div className="flex absolute model-previews--vid-inside align-center justify-center">
+          <div className="absolute model-previews--vid-inside-two" />
+          <div className="absolute model-previews--vid-inside-two -two" />
+          <div className="absolute model-previews--vid-inside -three" />
         </div>
       </div>
     </AnchorLink>

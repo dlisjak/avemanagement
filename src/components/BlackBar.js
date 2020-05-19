@@ -2,10 +2,9 @@ import React from "react"
 
 const BlackBar = ({ height }) => (
   <div
+    className="black-bar"
     style={{
       height: height,
-      width: "100%",
-      background: "black",
     }}
   />
 )

@@ -42,7 +42,7 @@ const BecomeAModel = () => {
   }
 
   return (
-    <Layout style={{ marginBottom: 50 }}>
+    <Layout className="margin-bottom--50">
       <Formik
         initialValues={{
           firstName: "",
@@ -130,16 +130,9 @@ const BecomeAModel = () => {
           <div className="flex content-padding">
             <Form
               id="become-a-model"
-              className="flex flex-column contact-form"
-              style={{ width: "100%" }}
+              className="flex flex-column contact-form width-100"
             >
-              <div
-                className="flex"
-                style={{
-                  justifyContent: "space-between",
-                  position: "relative",
-                }}
-              >
+              <div className="flex justify-between relative">
                 <label className="contact-label" htmlFor="firstname">
                   First Name
                 </label>
@@ -157,13 +150,7 @@ const BecomeAModel = () => {
                   component="div"
                 />
               </div>
-              <div
-                className="flex"
-                style={{
-                  justifyContent: "space-between",
-                  position: "relative",
-                }}
-              >
+              <div className="flex justify-between relative">
                 <label className="contact-label" htmlFor="lastName">
                   Surname
                 </label>
@@ -181,17 +168,11 @@ const BecomeAModel = () => {
                   component="div"
                 />
               </div>
-              <div
-                className="flex"
-                style={{
-                  justifyContent: "space-between",
-                  position: "relative",
-                }}
-              >
+              <div className="flex justify-between relative">
                 <label className="contact-label" htmlFor="dateOfBirth">
                   Date of Birth
                 </label>
-                <div className="flex" style={{ maxWidth: 650 }}>
+                <div className="flex contact--width-650">
                   <input
                     className="contact-input contact-input--day"
                     type="text"
@@ -232,17 +213,11 @@ const BecomeAModel = () => {
                   component="div"
                 />
               </div>
-              <div
-                className="flex"
-                style={{
-                  justifyContent: "space-between",
-                  position: "relative",
-                }}
-              >
+              <div className="flex relative justify-between">
                 <label className="contact-label" htmlFor="mobileNumber">
                   Mobile
                 </label>
-                <div className="flex width-100" style={{ maxWidth: 650 }}>
+                <div className="flex width-100 contact--width-650">
                   <input
                     className="contact-input contact-input--country-code"
                     type="input"
@@ -268,13 +243,7 @@ const BecomeAModel = () => {
                   />
                 </div>
               </div>
-              <div
-                className="flex"
-                style={{
-                  justifyContent: "space-between",
-                  position: "relative",
-                }}
-              >
+              <div className="flex justify-between relative">
                 <label className="contact-label" htmlFor="address">
                   Address
                 </label>
@@ -292,13 +261,7 @@ const BecomeAModel = () => {
                   component="div"
                 />
               </div>
-              <div
-                className="flex"
-                style={{
-                  justifyContent: "space-between",
-                  position: "relative",
-                }}
-              >
+              <div className="flex justify-between relative">
                 <label className="contact-label" htmlFor="height">
                   Height
                 </label>
@@ -316,13 +279,7 @@ const BecomeAModel = () => {
                   component="div"
                 />
               </div>
-              <div
-                className="flex"
-                style={{
-                  justifyContent: "space-between",
-                  position: "relative",
-                }}
-              >
+              <div className="flex justify-between relative">
                 <label className="contact-label" htmlFor="age">
                   Age
                 </label>
@@ -340,13 +297,7 @@ const BecomeAModel = () => {
                   component="div"
                 />
               </div>
-              <div
-                className="flex"
-                style={{
-                  justifyContent: "space-between",
-                  position: "relative",
-                }}
-              >
+              <div className="flex justify-between relative">
                 <label className="contact-label" htmlFor="gender">
                   Gender
                 </label>
@@ -364,13 +315,7 @@ const BecomeAModel = () => {
                   component="div"
                 />
               </div>
-              <div
-                className="flex"
-                style={{
-                  justifyContent: "space-between",
-                  position: "relative",
-                }}
-              >
+              <div className="flex relative justify-between">
                 <label className="contact-label" htmlFor="instagram">
                   Instagram
                 </label>
@@ -388,13 +333,7 @@ const BecomeAModel = () => {
                   component="div"
                 />
               </div>
-              <div
-                className="flex"
-                style={{
-                  justifyContent: "space-between",
-                  position: "relative",
-                }}
-              >
+              <div className="flex relative justify-between">
                 <label className="contact-label" htmlFor="email">
                   Email
                 </label>
@@ -425,16 +364,7 @@ const BecomeAModel = () => {
           </div>
         )}
       </Formik>
-      <div
-        className="flex flex-column contact-body-text content-padding"
-        style={{
-          marginTop: isMobile ? 0 : 50,
-          marginBottom: 50,
-          fontSize: isMobile ? 18 : 20,
-          fontFamily: "HelveticaNeueCondensed",
-          textTransform: "initial",
-        }}
-      >
+      <div className="flex flex-column contact-body-text content-padding">
         <h4 className="upload-photographs underline">Upload photographs</h4>
         <p>
           Submit only natural photographs, no professional studio shots are
@@ -511,15 +441,8 @@ const BecomeAModel = () => {
         </div>
       </div>
 
-      <div
-        className="contact-form-submit"
-        style={{ marginTop: 50, marginBottom: 50 }}
-      >
-        <label
-          className="contact-form-submit-label"
-          htmlFor="submit-form"
-          style={{ marginTop: 10, fontWeight: 700, fontSize: 22 }}
-        >
+      <div className="contact-form-submit">
+        <label className="contact-form-submit-label bold" htmlFor="submit-form">
           Submit
         </label>
       </div>

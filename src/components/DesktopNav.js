@@ -171,10 +171,9 @@ const DesktopNav = ({ toggleMenu, isVisible, data }) => {
             (item, index) => {
               return (
                 <div
-                  className="flex"
+                  className="flex align-center"
                   onClick={() => selectItem(item)}
                   key={index}
-                  style={{ alignItems: "center" }}
                 >
                   <NavigationItem item={item} />
                 </div>
@@ -194,10 +193,9 @@ const DesktopNav = ({ toggleMenu, isVisible, data }) => {
           {childItems &&
             childItems.map((childItem, index) => (
               <div
-                className="flex"
+                className="flex align-center"
                 onClick={() => selectItem(childItem)}
                 key={index}
-                style={{ alignItems: "center" }}
               >
                 <NavigationItem item={childItem} />
               </div>

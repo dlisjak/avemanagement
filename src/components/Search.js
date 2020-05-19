@@ -67,10 +67,7 @@ const Search = ({ isShown, models, closeSearch }) => {
     >
       <TickerText search={true} title="SEARCH" />
 
-      <div
-        className="flex flex-column search-queries"
-        style={{ marginBottom: 20, fontSize: 20 }}
-      >
+      <div className="flex flex-column search-queries">
         <button
           onClick={e => setSearchGender(e, null)}
           style={{ color: !genderQuery ? "black" : "#ccc" }}
@@ -97,12 +94,6 @@ const Search = ({ isShown, models, closeSearch }) => {
             placeholder="/SEARCH BY NAME"
             onChange={e => handleSearchQuery(e)}
             value={searchQuery}
-            style={{
-              fontSize: 24,
-              marginTop: 10,
-              width: "100%",
-              padding: 0,
-            }}
           />
         </div>
       </div>

@@ -39,22 +39,12 @@ const ImageUpload = ({ title, order, text }) => {
         style={{
           marginBottom: file ? 25 : 2.5,
           backgroundImage: title,
-          objectFit: "contain",
-          overflow: "hidden",
         }}
       >
         {!file && (
           <Fragment>
-            <div
-              className="flex flex-column align-center absolute"
-              style={{
-                cursor: "pointer",
-                fontSize: 22,
-                height: 100,
-                justifyContent: "space-evenly",
-              }}
-            >
-              <span style={{ color: "white" }}>{text}</span>
+            <div className="flex flex-column align-center absolute file-fragment">
+              <span className="color-white">{text}</span>
               <button
                 className="contact-image-upload--span"
                 onClick={e => fireImageSearch(e)}
@@ -67,42 +57,26 @@ const ImageUpload = ({ title, order, text }) => {
               className="flex flex-wrap absolute contact-image-upload--input"
               type="file"
               onChange={e => handleChange(e)}
-              style={{
-                width: "100%",
-                border: 0,
-                opacity: 0,
-                pointerEvents: "none",
-              }}
             />
           </Fragment>
         )}
         {file && (
           <img
-            className="contact-image-upload--image"
+            className="contact-image-upload--image z-99"
             src={file}
             alt={`Your ${title}`}
-            style={{ zIndex: 99 }}
           />
         )}
         {placeholderImage && !file && (
           <img
-            className="contact-image-upload--image width-100"
+            className="contact-image-upload--image width-100 contain"
             src={placeholderImage}
             alt={`Your ${title}`}
-            style={{ objectFit: "contain" }}
           />
         )}
         {file && (
           <button
             className="absolute contact-button-submit"
-            style={{
-              margin: 10,
-              border: 0,
-              background: 0,
-              textTransform: "uppercase",
-              bottom: -10,
-              fontSize: 13,
-            }}
             onClick={() => removeImage()}
           >
             Remove image

@@ -71,7 +71,7 @@ const Header = ({ isMobile, isTablet, isHomepage }) => {
 
   return (
     <div className="header-fixed-container flex-column">
-      <Link to="/" style={{ zIndex: 99, position: "relative" }}>
+      <Link className="relative z-99" to="/">
         <img src={Logo} className="logo" alt="Ave Management Logo" />
       </Link>
       <div className="navigation">

@@ -7,10 +7,7 @@ const Instagram = ({ posts }) => (
     {posts.map(({ node }, i) => {
       return (
         <img
-          className="instagram--image"
-          style={{
-            width: "auto",
-          }}
+          className="instagram--image width-auto"
           src={node.localFile.publicURL}
           key={i}
         />

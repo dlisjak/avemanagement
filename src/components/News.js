@@ -38,7 +38,6 @@ const News = ({ posts }) => {
                   className="news-comp--video"
                   autoPlay
                   muted
-                  style={{ width: "auto", height: !isMobile ? 400 : "auto" }}
                   loop
                   src={acf.video_1.url}
                   key={i}

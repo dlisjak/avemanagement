@@ -98,12 +98,7 @@ const MobileNav = ({ isVisible, data, toggleMenu }) => {
                         ? "enter"
                         : "exit"
                     }
-                    className="flex flex-column"
-                    style={{
-                      opacity: 0,
-                      height: 0,
-                      marginLeft: 20,
-                    }}
+                    className="flex flex-column child-nav-item"
                   >
                     {item.child_items.map((childItem, childIndex) => (
                       <div

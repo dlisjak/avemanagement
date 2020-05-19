@@ -2,10 +2,7 @@ import React from "react"
 
 const ModelName = ({ firstName, lastName }) => {
   return (
-    <h2
-      className="flex model__name flex-column content-padding relative"
-      style={{ color: "black", lineHeight: 0.7 }}
-    >
+    <h2 className="flex model__name flex-column content-padding relative">
       <span>{firstName}</span>
       <span>{lastName}</span>
     </h2>

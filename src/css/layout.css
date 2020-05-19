@@ -29,6 +29,12 @@ a.search-result-names {
 }
 .getToTop {
   box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  width: auto;
+  bottom: 10px;
+  right: 10px;
+  border-radius: 50%;
+  background: white;
 }
 .hidden {
   display: none;
@@ -81,6 +87,8 @@ a.search-result-names {
 }
 .contact-form-submit {
   padding-left: 10px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 .contact-label {
   min-width: 150px;
@@ -551,6 +559,8 @@ a.search-result-names {
 }
 .contact-image-upload {
   border: 1px solid lightgrey;
+  object-fit: contain;
+  overflow: hidden;
 }
 
 .contact-form-submit-label {
@@ -1000,6 +1010,7 @@ header .flex > a:first-child:hover {
   display: inline-block;
   padding: 10px;
   margin: 20px;
+  top: 6px;
   transform: rotate(-135deg);
   -webkit-transform: rotate(-135deg);
 }
