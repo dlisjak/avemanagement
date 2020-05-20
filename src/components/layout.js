@@ -24,7 +24,7 @@ const Layout = ({ children, isHomepage, showGetToTop = false }) => {
     }
 
     displayLoader()
-  }, [])
+  })
 
   if (isMobile && !isHomepage) marginTop = 75
   if (!isHomepage && !isMobile) marginTop = 100
