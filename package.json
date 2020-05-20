@@ -23,6 +23,7 @@
     "gatsby-source-wordpress": "^3.1.48",
     "gatsby-transformer-sharp": "^2.3.13",
     "path": "^0.12.7",
+    "preact": "^10.4.4",
     "prop-types": "^15.7.2",
     "react": "^16.11.0",
     "react-anchor-link-smooth-scroll": "^1.0.12",
