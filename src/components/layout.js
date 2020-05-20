@@ -40,7 +40,7 @@ const Layout = ({ children, isHomepage, showGetToTop = false }) => {
         />
         <main
           id="main"
-          className="main"
+          className="main flex"
           style={{
             marginTop: marginTop,
           }}

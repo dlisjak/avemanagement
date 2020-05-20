@@ -202,7 +202,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
                     key={i}
                     src={url}
                     alt={alt}
-                    className="model-portfolio-image--swiper"
+                    className="relative flex justify-center model-portfolio-image--swiper"
                     title={title}
                     name={name}
                   />

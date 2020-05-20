@@ -40,7 +40,7 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
     }
 
     for (let i = 0; i < n; i++) {
-      data += `<span class="tickerText">${titleTicker}</span>`
+      data += `<span class="tickerText block">${titleTicker}</span>`
     }
   }
 
