@@ -82,6 +82,12 @@ const News = ({
   }, [dispatch])
 
   useEffect(() => {
+    const muteVideos = () => {
+      document.querySelectorAll("video").forEach(vid => {
+        vid.muted = "true"
+      })
+    }
+
     const swiperUpdate = () => {
       setTimeout(() => {
         if (swiper !== null) {
@@ -90,6 +96,7 @@ const News = ({
       }, 500)
     }
 
+    muteVideos()
     swiperUpdate()
   }, [swiper, newsContent])
 
