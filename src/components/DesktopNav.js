@@ -61,22 +61,6 @@ const DesktopNav = ({ toggleMenu, isVisible, data }) => {
     }
   }
 
-  useEffect(() => {
-    const setUpNav = () => {
-      const parsedPage = parsePage(state.path)
-      if (!parsedPage) return
-      if (parsedPage.includes("women") || parsedPage.includes("men")) {
-        showNavChildren(parsedPage)
-      } else {
-        selectItem(null)
-        setChildItems(null)
-      }
-      setActiveMenuItemClass(parsedPage)
-    }
-
-    setUpNav()
-  }, [state.path, selectItem, showNavChildren])
-
   const parsePage = parsedPage => {
     if (!parsedPage) return
     const reg = new RegExp("([^a-zA-Z-])", "g")
@@ -150,6 +134,22 @@ const DesktopNav = ({ toggleMenu, isVisible, data }) => {
       activeItem.classList.add("active")
     }
   }
+
+  useEffect(() => {
+    const setUpNav = () => {
+      const parsedPage = parsePage(state.path)
+      if (!parsedPage) return
+      if (parsedPage.includes("women") || parsedPage.includes("men")) {
+        showNavChildren(parsedPage)
+      } else {
+        selectItem(null)
+        setChildItems(null)
+      }
+      setActiveMenuItemClass(parsedPage)
+    }
+
+    setUpNav()
+  }, [state.path, selectItem, showNavChildren])
 
   return (
     <PoseGroup>

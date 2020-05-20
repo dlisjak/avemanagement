@@ -16,7 +16,7 @@ const ImageUpload = ({ title, order, text }) => {
       setPlaceholderImage(placeholderImages[order])
     }
     setPlaceholderImages()
-  })
+  }, [])
 
   const handleChange = e => {
     setFile(URL.createObjectURL(e.target.files[0]))

@@ -31,7 +31,7 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
       }
     }
     setAnimationDuration()
-  })
+  }, [])
 
   if (titleTicker) {
     let n
