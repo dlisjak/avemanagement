@@ -20,7 +20,7 @@ const Contact = () => {
       }
     }
     setPath()
-  }, [dispatch])
+  }, [])
 
   return (
     <Layout>

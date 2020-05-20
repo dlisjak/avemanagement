@@ -42,7 +42,7 @@ const Search = ({ isShown, models, closeSearch }) => {
       el.removeEventListener("click", closeOverlay)
       el.classList.remove("overlay")
     }
-  }, [closeOverlay])
+  }, [])
 
   const handleSearchQuery = e => {
     setSearchQuery(e.target.value.toUpperCase())

@@ -10,7 +10,6 @@ import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 import BlackBar from "../components/BlackBar"
 import ModelVideo from "../components/ModelVideo"
 import NewsPreviewVideos from "../components/NewsPreviewVideos"
-import Model from "./model"
 
 const News = ({
   pageContext: { content },
@@ -21,14 +20,6 @@ const News = ({
 }) => {
   const dispatch = useContext(GlobalDispatchContext)
   const [swiper, updateSwiper] = useState(null)
-  const [videoEnd, setVideoEnded] = useState(false)
-
-  const startVideoPlaying = () => {
-    if (!videoEnd) return
-    const video = document.querySelector("video")
-    setVideoEnded(false)
-    video.play()
-  }
 
   const videos = [
     {
@@ -79,7 +70,7 @@ const News = ({
       dispatch({ type: "SET_PATH", payload: tickerText })
     }
     initGrid()
-  }, [dispatch])
+  }, [])
 
   useEffect(() => {
     const muteVideos = () => {
@@ -193,6 +184,8 @@ const News = ({
                       />
                     )
                   }
+
+                  return null
                 })}
               </Swiper>
               <span

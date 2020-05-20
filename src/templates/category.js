@@ -44,7 +44,7 @@ const Category = ({ data, pageContext }) => {
 
     setPath()
     anchorScroll()
-  }, [dispatch])
+  }, [])
 
   const openSearch = () => {
     toggleSearch(!searchOpen)

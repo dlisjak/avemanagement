@@ -43,7 +43,7 @@ const Search = ({ data }) => {
 
     setPath()
     anchorScroll()
-  }, [dispatch])
+  }, [])
 
   const handleSearchQuery = e => {
     setSearchQuery(e.target.value.toUpperCase())
