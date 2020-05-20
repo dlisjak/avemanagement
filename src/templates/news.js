@@ -1,12 +1,16 @@
 import React, { useContext, useState, useEffect } from "react"
 import { graphql } from "gatsby"
 import AnchorLink from "react-anchor-link-smooth-scroll"
+import Swiper from "react-id-swiper"
+
+import "../css/swiper.min.css"
 
 import Layout from "../components/layout"
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 import BlackBar from "../components/BlackBar"
 import ModelVideo from "../components/ModelVideo"
 import NewsPreviewVideos from "../components/NewsPreviewVideos"
+import Model from "./model"
 
 const News = ({
   pageContext: { content },
@@ -16,8 +20,15 @@ const News = ({
   },
 }) => {
   const dispatch = useContext(GlobalDispatchContext)
-  const [image, setImage] = useState(acf.news_post_image)
-  const [video, setVideo] = useState(null)
+  const [swiper, updateSwiper] = useState(null)
+  const [videoEnd, setVideoEnded] = useState(false)
+
+  const startVideoPlaying = () => {
+    if (!videoEnd) return
+    const video = document.querySelector("video")
+    setVideoEnded(false)
+    video.play()
+  }
 
   const videos = [
     {
@@ -53,6 +64,14 @@ const News = ({
     newsContent = videos
   }
 
+  let params = {
+    centeredSlides: true,
+    autoHeight: true,
+    slideClass: "model-swiper-slide",
+    slidesPerView: 1,
+    spaceBetween: 5,
+  }
+
   useEffect(() => {
     const initGrid = async () => {
       let tickerText
@@ -61,6 +80,48 @@ const News = ({
     }
     initGrid()
   }, [dispatch])
+
+  useEffect(() => {
+    const swiperUpdate = () => {
+      setTimeout(() => {
+        if (swiper !== null) {
+          swiper.update()
+        }
+      }, 500)
+    }
+
+    swiperUpdate()
+  }, [swiper, newsContent])
+
+  const checkIfVideoInSwiper = () => {
+    const activeSlide = document
+      .querySelector(".swiper-slide-active")
+      .querySelector("video")
+    if (!activeSlide) {
+      document.querySelectorAll("video").forEach(vid => {
+        vid.pause()
+        vid.currentTime = 0
+      })
+    } else {
+      activeSlide.play()
+    }
+  }
+
+  const navigateSliderNext = () => {
+    if (swiper !== null) {
+      swiper.slideNext()
+
+      checkIfVideoInSwiper()
+    }
+  }
+
+  const navigateSliderPrev = () => {
+    if (swiper !== null) {
+      swiper.slidePrev()
+
+      checkIfVideoInSwiper()
+    }
+  }
 
   const formatContent = content => {
     const splitContent = content.split("<p>")
@@ -72,16 +133,6 @@ const News = ({
     content[1] = `${content[1]}</b> </br>`
     content = content.join(" ")
     return content
-  }
-
-  const setUpVideo = video => {
-    setImage(null)
-    setVideo(video.url)
-  }
-
-  const setUpImage = (title, url) => {
-    setVideo(null)
-    setImage(title, url)
   }
 
   return (
@@ -105,16 +156,58 @@ const News = ({
         <BlackBar height={100} />
         <div
           id="news-slideshow"
-          className="flex justify-center news-slideshow--video"
+          className="flex justify-center news-slideshow--video relative"
         >
-          {image && !video && (
-            <img
-              className="news-card__image"
-              src={image.url}
-              alt={acf.news_post_image.title}
-            />
+          {newsContent && (
+            <>
+              <Swiper loop key={1} {...params} getSwiper={updateSwiper}>
+                {newsContent.map((content, i) => {
+                  if (content.video && content.video.url) {
+                    return (
+                      <div className="news-video--container">
+                        <ModelVideo
+                          videoUrl={content.video.url}
+                          showVideoEnd={false}
+                        />
+                      </div>
+                    )
+                  }
+
+                  if (content.url) {
+                    return (
+                      <img
+                        key={i}
+                        src={content.url}
+                        alt={content.alt}
+                        className="relative flex justify-center model-portfolio-image--swiper"
+                        title={content.title}
+                        name={content.name}
+                        style={{ maxHeight: 760 }}
+                      />
+                    )
+                  }
+                })}
+              </Swiper>
+              <span
+                offset={27}
+                className="absolute model-slider-navigate prev"
+                onClick={() => navigateSliderPrev()}
+                style={{
+                  display: "block",
+                  height: "100%",
+                }}
+              />
+              <span
+                offset={27}
+                className="absolute model-slider-navigate next"
+                onClick={() => navigateSliderNext()}
+                style={{
+                  display: "block",
+                  height: "100%",
+                }}
+              />
+            </>
           )}
-          {video && !image && <ModelVideo videoUrl={video} />}
         </div>
         <hr className="hr-news" />
         <BlackBar height={100} />
@@ -131,7 +224,7 @@ const News = ({
                       offset={20}
                       href="#news-slideshow"
                       className="flex-column justify-between grid-item news-grid-item"
-                      onClick={() => setUpVideo(video)}
+                      onClick={() => console.log(video)}
                       key={index}
                     >
                       <NewsPreviewVideos
@@ -147,7 +240,7 @@ const News = ({
                       offset={20}
                       href="#news-slideshow"
                       className="flex-column justify-between grid-item news-grid-item-img"
-                      onClick={() => setUpImage({ title, url })}
+                      onClick={() => console.log({ title, url })}
                       key={index}
                     >
                       <img

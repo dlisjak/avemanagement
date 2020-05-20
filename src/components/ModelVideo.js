@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 
-const ModelVideo = ({ videoUrl }) => {
-  const [videoEnd, setVideoEnded] = useState(false)
+const ModelVideo = ({ videoUrl, showVideoEnd = true }) => {
+  const [videoEnd, setVideoEnded] = useState(showVideoEnd ? true : false)
 
   const startVideoPlaying = () => {
     if (!videoEnd) return
@@ -18,12 +18,11 @@ const ModelVideo = ({ videoUrl }) => {
       <video
         src={videoUrl}
         muted
-        autoPlay
         playsInline
         onEnded={() => setVideoEnded(true)}
         className="width-100 video--newwsss"
       ></video>
-      {videoEnd && (
+      {videoEnd && showVideoEnd && (
         <div
           className="video-end flex align-center justify-center absolute"
           onClick={() => startVideoPlaying()}

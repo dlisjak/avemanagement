@@ -8,7 +8,10 @@
 .hidden {
   display: none;
 }
-
+.news-video--container {
+  background: white;
+  margin-bottom: -2px;
+}
 .category-card {
   position: relative;
   overflow: hidden;
@@ -2445,7 +2448,7 @@ pre tt:after {
     font-size: 3.6rem;
   }
   .news-card-title {
-    margin-bottom: -7px;
+    margin-bottom: -11px;
   }
   .model__main {
     flex-direction: row;
