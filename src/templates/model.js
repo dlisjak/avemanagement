@@ -65,7 +65,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
     }
 
     reorder(acf.portfolio, columns)
-  }, [acf.portfolio, columns])
+  }, [])
 
   const navigateSliderNext = () => {
     if (swiper !== null) {
@@ -97,7 +97,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
     }
 
     swiperUpdate()
-  }, [swiper, portfolio])
+  }, [])
 
   useEffect(() => {
     const setPath = () => {
@@ -112,7 +112,7 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
     }
 
     setPath()
-  }, [dispatch, firstName, lastName])
+  }, [])
 
   return (
     <Layout showGetToTop={true}>

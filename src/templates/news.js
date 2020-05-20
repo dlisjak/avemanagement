@@ -89,7 +89,7 @@ const News = ({
 
     muteVideos()
     swiperUpdate()
-  }, [swiper, newsContent])
+  }, [])
 
   const checkIfVideoInSwiper = () => {
     const activeSlide = document
