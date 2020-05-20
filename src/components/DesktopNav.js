@@ -42,6 +42,25 @@ const DesktopNav = ({ toggleMenu, isVisible, data }) => {
   const [childItems, setChildItems] = useState([])
   const [childIsVisible, setChildVisible] = useState(false)
 
+  const selectItem = item => {
+    if (!item) return
+    if (item.child_items) {
+      setActiveMenuItemClass(item)
+      setChildItems(item.child_items)
+      setChildVisible(true)
+    } else {
+      toggleMenu(isVisible)
+      setChildItems(null)
+      setChildVisible(false)
+
+      if (item.url.includes("http")) return
+
+      setTimeout(() => {
+        navigate(item.url)
+      }, 500)
+    }
+  }
+
   useEffect(() => {
     const setUpNav = () => {
       const parsedPage = parsePage(state.path)
@@ -108,25 +127,6 @@ const DesktopNav = ({ toggleMenu, isVisible, data }) => {
       }
     }
     selectItem(item)
-  }
-
-  const selectItem = item => {
-    if (!item) return
-    if (item.child_items) {
-      setActiveMenuItemClass(item)
-      setChildItems(item.child_items)
-      setChildVisible(true)
-    } else {
-      toggleMenu(isVisible)
-      setChildItems(null)
-      setChildVisible(false)
-
-      if (item.url.includes("http")) return
-
-      setTimeout(() => {
-        navigate(item.url)
-      }, 500)
-    }
   }
 
   const setActiveMenuItemClass = item => {
