@@ -28,6 +28,14 @@ const News = ({
       video: acf.video_2,
       thumbnail: acf.thumbnail_2,
     },
+    {
+      video: acf.video_3,
+      thumbnail: acf.thumbnail_3,
+    },
+    {
+      video: acf.video_4,
+      thumbnail: acf.thumbnail_4,
+    },
   ]
 
   let newsContent = []
@@ -78,22 +86,12 @@ const News = ({
 
   return (
     <Layout showGetToTop={true}>
-      <div
-        className="flex flex-column"
-        style={{ marginBottom: 50, alignItems: "flex-start" }}
-      >
+      <div className="flex flex-column new-main-container">
         <div className="flex justify-between">
           <h2
             className="news-card-title model__name content-padding"
             dangerouslySetInnerHTML={{
               __html: formatContent(content),
-            }}
-            style={{
-              fontWeight: 700,
-              color: "black",
-              marginTop: 0,
-              width: "75%",
-              lineHeight: 0.7,
             }}
           />
           <button
@@ -132,15 +130,8 @@ const News = ({
                       role="button"
                       offset={20}
                       href="#news-slideshow"
-                      className="flex-column justify-between grid-item"
+                      className="flex-column justify-between grid-item news-grid-item"
                       onClick={() => setUpVideo(video)}
-                      style={{
-                        cursor: "pointer",
-                        marginBottom: 5,
-                        display: "block",
-                        height: "100%",
-                        minHeight: 250,
-                      }}
                       key={index}
                     >
                       <NewsPreviewVideos
@@ -155,13 +146,8 @@ const News = ({
                       role="button"
                       offset={20}
                       href="#news-slideshow"
-                      className="flex-column justify-between grid-item"
+                      className="flex-column justify-between grid-item news-grid-item-img"
                       onClick={() => setUpImage({ title, url })}
-                      style={{
-                        cursor: "pointer",
-                        marginBottom: 5,
-                        display: "block",
-                      }}
                       key={index}
                     >
                       <img

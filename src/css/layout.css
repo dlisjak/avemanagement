@@ -101,9 +101,6 @@ a.search-result-names {
   top: 0px;
 }
 
-.news-card-title {
-  max-width: 100%;
-}
 .loading-logo {
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
