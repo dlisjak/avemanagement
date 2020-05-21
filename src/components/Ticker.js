@@ -44,9 +44,9 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
     }
   }
 
-  let top = 5
-  if ((search && !isMobile) || (search && isMobile)) top = -3
-  console.log(title)
+  let top = 3
+  if (search) top = -3
+
   if (title === "MENU") {
     return (
       <div className="ticker__menu relative ticker flex width-100">

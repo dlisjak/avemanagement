@@ -8,6 +8,9 @@
 .hidden {
   display: none;
 }
+.lowercase {
+  text-transform: lowercase;
+}
 .news-video--container {
   background: white;
   margin-bottom: -2px;
@@ -817,7 +820,6 @@ a.search-result-names {
 }
 
 #ticker {
-  will-change: translateX;
   white-space: nowrap;
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
@@ -830,7 +832,6 @@ a.search-result-names {
 }
 
 #ticker2 {
-  will-change: translateX;
   white-space: nowrap;
   padding-right: 100%;
   -webkit-animation-iteration-count: infinite;
@@ -844,7 +845,6 @@ a.search-result-names {
 }
 
 #tickerReverse {
-  will-change: translateX;
   white-space: nowrap;
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
@@ -856,7 +856,6 @@ a.search-result-names {
   animation-duration: 27s;
 }
 #ticker2Reverse {
-  will-change: translateX;
   white-space: nowrap;
   padding-right: 100%;
   -webkit-animation-iteration-count: infinite;
