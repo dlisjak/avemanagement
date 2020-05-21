@@ -3,7 +3,7 @@ import Swiper from "react-id-swiper"
 
 import "../css/swiper.min.css"
 
-const Slider = props => {
+const Slider = (props) => {
   const { children } = props
   let isMobile
   if (typeof window !== "undefined") {

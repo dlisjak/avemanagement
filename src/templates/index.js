@@ -26,6 +26,10 @@ const Home = ({ data }) => {
     isMobile = window.innerWidth < 480
   }
 
+  useEffect(() => {
+    beginPlayingVideo()
+  }, [])
+
   const onVidEnding = () => {
     let key
     if (videoKey !== null) {
@@ -46,10 +50,6 @@ const Home = ({ data }) => {
       mainVid.play()
     }, 1000)
   }
-
-  useEffect(() => {
-    beginPlayingVideo()
-  }, [])
 
   return (
     <Layout isHomepage={true}>

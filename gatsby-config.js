@@ -93,7 +93,7 @@ module.exports = {
         // Defaults to false
         keepMediaSizes: false,
         // use a custom normalizer which is applied aft<er the built-in ones.
-        normalizer: function({ entities }) {
+        normalizer: function ({ entities }) {
           return entities
         },
       },
@@ -113,5 +113,6 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-preload-fonts`,
+    `gatsby-plugin-preact`,
   ],
 }

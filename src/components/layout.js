@@ -13,7 +13,7 @@ const Layout = ({ children, isHomepage, showGetToTop = false }) => {
 
   if (typeof window !== "undefined") {
     isMobile = window.innerWidth < 480
-    isTablet = window.innerWidth < 1080
+    isTablet = window.innerWidth < 1111
   }
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const Layout = ({ children, isHomepage, showGetToTop = false }) => {
         />
         <main
           id="main"
-          className="main flex"
+          className="main"
           style={{
             marginTop: marginTop,
           }}

@@ -14,7 +14,7 @@ const Loader = () => {
     }
 
     displayLoader()
-  }, [])
+  })
 
   return (
     <div className="loaderMain flex flex-column" key={0}>
