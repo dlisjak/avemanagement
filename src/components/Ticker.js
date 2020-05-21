@@ -17,17 +17,6 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
     isMobile = window.innerWidth < 480 ? true : false
   }
 
-  if (titleTicker) {
-    let n
-    if (typeof window !== "undefined") {
-      n = window.innerWidth < 480 ? 17 : 55
-    }
-
-    for (let i = 0; i < n; i++) {
-      data += `<span class="tickerText block">${titleTicker}</span>`
-    }
-  }
-
   useEffect(() => {
     const setAnimationDuration = () => {
       const k = 27 / 4
@@ -44,9 +33,20 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
     setAnimationDuration()
   })
 
+  if (titleTicker) {
+    let n
+    if (typeof window !== "undefined") {
+      n = window.innerWidth < 480 ? 17 : 55
+    }
+
+    for (let i = 0; i < n; i++) {
+      data += `<span class="tickerText block">${titleTicker}</span>`
+    }
+  }
+
   let top = 5
   if ((search && !isMobile) || (search && isMobile)) top = -3
-
+  console.log(title)
   if (title === "MENU") {
     return (
       <div className="ticker__menu relative ticker flex width-100">
