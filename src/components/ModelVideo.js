@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import VideoPlayButton from "./VideoPlayButton"
 
 const ModelVideo = ({ videoUrl, showVideoEnd = true }) => {
   const [videoEnd, setVideoEnded] = useState(showVideoEnd ? true : false)
@@ -22,16 +23,7 @@ const ModelVideo = ({ videoUrl, showVideoEnd = true }) => {
         onEnded={() => setVideoEnded(true)}
         className="width-100 video--newwsss"
       ></video>
-      {videoEnd && showVideoEnd && (
-        <div
-          className="video-end flex align-center justify-center absolute"
-          onClick={() => startVideoPlaying()}
-        >
-          <div className="absolute video-end--playicon" />
-          <div className="absolute video-end--playicon -rotate" />
-          <div className="absolute video-end--playicon -rotate-full" />
-        </div>
-      )}
+      {videoEnd && <VideoPlayButton onClick={startVideoPlaying} />}
     </div>
   )
 }

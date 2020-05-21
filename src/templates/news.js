@@ -78,10 +78,7 @@ const News = ({
         vid.muted = "true"
       })
     }
-    muteVideos()
-  }, [])
 
-  useEffect(() => {
     const swiperUpdate = () => {
       setTimeout(() => {
         if (swiper !== null) {
@@ -90,8 +87,9 @@ const News = ({
       }, 500)
     }
 
+    muteVideos()
     swiperUpdate()
-  })
+  }, [swiper, newsContent])
 
   const checkIfVideoInSwiper = () => {
     const activeSlide = document
@@ -164,7 +162,7 @@ const News = ({
                 {newsContent.map((content, i) => {
                   if (content.video && content.video.url) {
                     return (
-                      <div className="news-video--container">
+                      <div className="news-video--container" key={i}>
                         <ModelVideo
                           videoUrl={content.video.url}
                           showVideoEnd={false}
