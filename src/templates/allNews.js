@@ -22,7 +22,7 @@ const NewsPage = ({ data, pageContext }) => {
       dispatch({ type: "SET_PATH", payload: tickerText })
     }
     setPath()
-  }, [])
+  }, [dispatch])
 
   const formatContent = content => {
     const splitContent = content.split("<p>")

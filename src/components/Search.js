@@ -15,35 +15,6 @@ const Search = ({ isShown, models, closeSearch }) => {
   const [genderQuery, setGender] = useState(null)
   const inputRef = useRef(null)
 
-  const closeOverlay = e => {
-    const some = el => {
-      return (
-        el.className === "flex flex-column search-overlay" ||
-        el.className === "search-queries__back"
-      )
-    }
-
-    if (!e.path) return closeSearch()
-    if (e.path.some(some)) return
-    closeSearch()
-  }
-
-  useEffect(() => {
-    const el = document.querySelector("body")
-
-    const openOverlay = () => {
-      el.classList.add("overlay")
-      el.addEventListener("click", closeOverlay)
-      inputRef.current.focus()
-    }
-    openOverlay()
-
-    return () => {
-      el.removeEventListener("click", closeOverlay)
-      el.classList.remove("overlay")
-    }
-  }, [])
-
   const handleSearchQuery = e => {
     setSearchQuery(e.target.value.toUpperCase())
   }
@@ -56,6 +27,35 @@ const Search = ({ isShown, models, closeSearch }) => {
   const setSearchGender = (e, gender) => {
     setGender(gender)
   }
+
+  useEffect(() => {
+    const el = document.querySelector("body")
+
+    const closeOverlay = e => {
+      const some = el => {
+        return (
+          el.className === "flex flex-column search-overlay" ||
+          el.className === "search-queries__back"
+        )
+      }
+
+      if (!e.path) return closeSearch()
+      if (e.path.some(some)) return
+      closeSearch()
+    }
+
+    const openOverlay = () => {
+      el.classList.add("overlay")
+      el.addEventListener("click", closeOverlay)
+      inputRef.current.focus()
+    }
+    openOverlay()
+
+    return () => {
+      el.removeEventListener("click", closeOverlay)
+      el.classList.remove("overlay")
+    }
+  }, [closeSearch])
 
   return (
     <SearchPose

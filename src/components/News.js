@@ -15,7 +15,7 @@ const News = ({ posts }) => {
       setTimeout(() => {
         const vids = Array.from(document.getElementsByTagName("video"))
 
-        vids.map(vid => {
+        vids.forEach(vid => {
           vid.muted = true
         })
       })

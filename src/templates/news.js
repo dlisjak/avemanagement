@@ -70,7 +70,7 @@ const News = ({
       dispatch({ type: "SET_PATH", payload: tickerText })
     }
     initGrid()
-  }, [])
+  }, [dispatch])
 
   useEffect(() => {
     const muteVideos = () => {
@@ -89,7 +89,7 @@ const News = ({
 
     muteVideos()
     swiperUpdate()
-  }, [])
+  }, [swiper])
 
   const checkIfVideoInSwiper = () => {
     const activeSlide = document

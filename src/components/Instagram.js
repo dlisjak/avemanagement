@@ -10,6 +10,7 @@ const Instagram = ({ posts }) => (
         style={{
           width: "auto",
         }}
+        alt=""
         src={node.localFile.publicURL}
         key={i}
       />
