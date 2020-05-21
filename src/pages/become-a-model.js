@@ -29,7 +29,7 @@ const BecomeAModel = () => {
       dispatch({ type: "SET_PATH", payload: tickerText })
     }
     setPath()
-  }, [dispatch])
+  }, [])
 
   const handleMobileChange = e => {
     if (e.target.value.length > 17) return

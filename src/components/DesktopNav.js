@@ -149,7 +149,7 @@ const DesktopNav = ({ toggleMenu, isVisible, data }) => {
     }
 
     setUpNav()
-  }, [selectItem, showNavChildren, state.path])
+  }, [])
 
   return (
     <PoseGroup>

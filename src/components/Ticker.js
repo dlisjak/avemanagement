@@ -42,9 +42,7 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
       }
     }
     setAnimationDuration()
-  }, [isMobile, titleTicker.length])
-
-  console.log(title)
+  }, [])
 
   let top = 5
   if ((search && !isMobile) || (search && isMobile)) top = -3

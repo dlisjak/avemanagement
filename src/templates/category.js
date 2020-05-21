@@ -21,6 +21,14 @@ const Category = ({ data, pageContext }) => {
     isMac = navigator.userAgent.indexOf("Mac") > 0
   }
 
+  const openSearch = () => {
+    toggleSearch(!searchOpen)
+  }
+
+  const closeSearch = () => {
+    toggleSearch(false)
+  }
+
   useEffect(() => {
     const setPath = () => {
       localStorage.removeItem("ave-ticker")
@@ -29,7 +37,10 @@ const Category = ({ data, pageContext }) => {
       dispatch({ type: "SET_PATH", payload: tickerText })
       localStorage.setItem("ave-ticker", tickerText)
     }
+    setPath()
+  }, [])
 
+  useEffect(() => {
     const anchorScroll = () => {
       if (!window.location.hash) return
       setAnchorIndex(window.location.hash)
@@ -42,17 +53,8 @@ const Category = ({ data, pageContext }) => {
       }, 2000)
     }
 
-    setPath()
     anchorScroll()
-  }, [dispatch])
-
-  const openSearch = () => {
-    toggleSearch(!searchOpen)
-  }
-
-  const closeSearch = () => {
-    toggleSearch(false)
-  }
+  }, [])
 
   return (
     <Layout showGetToTop={true}>

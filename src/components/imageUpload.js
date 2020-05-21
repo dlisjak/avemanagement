@@ -30,7 +30,7 @@ const ImageUpload = ({ title, order, text }) => {
       setPlaceholderImage(placeholderImages[order])
     }
     setPlaceholderImages()
-  }, [order, placeholderImages])
+  }, [])
 
   return (
     <>

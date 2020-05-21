@@ -55,7 +55,7 @@ const Search = ({ isShown, models, closeSearch }) => {
       el.removeEventListener("click", closeOverlay)
       el.classList.remove("overlay")
     }
-  }, [closeSearch])
+  }, [])
 
   return (
     <SearchPose

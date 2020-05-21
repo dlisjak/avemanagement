@@ -29,32 +29,6 @@ const MobileNav = ({ isVisible, data, toggleMenu }) => {
   const [womenIsShown, showWomen] = useState(false)
   const [menIsShown, showMen] = useState(false)
 
-  useEffect(() => {
-    const setBodyUnscrollable = () => {
-      const bodyEl = document.querySelector("body")
-      if (isVisible) {
-        bodyEl.classList.add("overlay")
-      }
-    }
-
-    const preselectActiveItem = () => {
-      if (window.location.pathname.includes("women")) {
-        setActiveItem("WOMEN")
-        showWomen(true)
-      } else if (window.location.pathname.includes("men")) {
-        setActiveItem("MEN")
-        showMen(true)
-      }
-    }
-    preselectActiveItem()
-    setBodyUnscrollable()
-
-    return () => {
-      const bodyEl = document.querySelector("body")
-      bodyEl.classList.remove("overlay")
-    }
-  }, [isVisible])
-
   const showChildren = item => {
     if (!item.child_items) return
 
@@ -67,6 +41,35 @@ const MobileNav = ({ isVisible, data, toggleMenu }) => {
       showMen(!menIsShown)
     }
   }
+
+  useEffect(() => {
+    const setBodyUnscrollable = () => {
+      const bodyEl = document.querySelector("body")
+      if (isVisible) {
+        bodyEl.classList.add("overlay")
+      }
+    }
+
+    setBodyUnscrollable()
+
+    return () => {
+      const bodyEl = document.querySelector("body")
+      bodyEl.classList.remove("overlay")
+    }
+  }, [])
+
+  useEffect(() => {
+    const preselectActiveItem = () => {
+      if (window.location.pathname.includes("women")) {
+        setActiveItem("WOMEN")
+        showWomen(true)
+      } else if (window.location.pathname.includes("men")) {
+        setActiveItem("MEN")
+        showMen(true)
+      }
+    }
+    preselectActiveItem()
+  }, [])
 
   return (
     <MobileNavPose

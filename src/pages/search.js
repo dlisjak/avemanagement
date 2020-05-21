@@ -19,6 +19,14 @@ const Search = ({ data }) => {
     isMobile = window.innerWidth < 480
   }
 
+  const handleSearchQuery = e => {
+    setSearchQuery(e.target.value.toUpperCase())
+  }
+
+  const setSearchGender = (e, gender) => {
+    setGender(gender)
+  }
+
   useEffect(() => {
     const setPath = () => {
       inputRef.current.focus()
@@ -28,7 +36,10 @@ const Search = ({ data }) => {
       localStorage.setItem("ave-ticker", tickerText)
       dispatch({ type: "SET_PATH", payload: tickerText })
     }
+    setPath()
+  }, [])
 
+  useEffect(() => {
     const anchorScroll = () => {
       if (!window.location.hash) return
       setAnchorIndex(window.location.hash)
@@ -41,17 +52,8 @@ const Search = ({ data }) => {
       }, 2000)
     }
 
-    setPath()
     anchorScroll()
-  }, [dispatch])
-
-  const handleSearchQuery = e => {
-    setSearchQuery(e.target.value.toUpperCase())
-  }
-
-  const setSearchGender = (e, gender) => {
-    setGender(gender)
-  }
+  }, [])
 
   return (
     <Layout showGetToTop={true}>
