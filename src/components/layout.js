@@ -13,7 +13,7 @@ const Layout = ({ children, isHomepage, showGetToTop = false }) => {
 
   if (typeof window !== "undefined") {
     isMobile = window.innerWidth < 480
-    isTablet = window.innerWidth < 1111
+    isTablet = window.innerWidth < 1080
   }
 
   useEffect(() => {
