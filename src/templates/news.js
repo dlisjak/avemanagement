@@ -21,6 +21,7 @@ const News = ({
   const dispatch = useContext(GlobalDispatchContext)
   const [swiper, updateSwiper] = useState(null)
 
+  console.log(acf)
   const videos = [
     {
       video: acf.video_1,
@@ -54,6 +55,11 @@ const News = ({
   } else {
     newsContent = videos
   }
+
+  newsContent.forEach((el, i) => {
+    console.log(el, i)
+    el._index = i
+  })
 
   let params = {
     centeredSlides: true,
@@ -90,6 +96,14 @@ const News = ({
     muteVideos()
     swiperUpdate()
   }, [swiper, newsContent])
+
+  const setImage = index => {
+    setTimeout(() => {
+      if (swiper !== null) {
+        swiper.slideTo(index + 1, 1500, false)
+      }
+    })
+  }
 
   const checkIfVideoInSwiper = () => {
     const activeSlide = document
@@ -159,34 +173,28 @@ const News = ({
           {newsContent && (
             <>
               <Swiper loop key={1} {...params} getSwiper={updateSwiper}>
-                {newsContent.map((content, i) => {
-                  if (content.video && content.video.url) {
-                    return (
-                      <div className="news-video--container" key={i}>
-                        <ModelVideo
-                          videoUrl={content.video.url}
-                          showVideoEnd={false}
-                        />
-                      </div>
-                    )
-                  }
-
-                  if (content.url) {
-                    return (
-                      <img
-                        key={i}
-                        src={content.url}
-                        alt={content.alt}
-                        className="relative flex justify-center model-portfolio-image--swiper"
-                        title={content.title}
-                        name={content.name}
-                        style={{ maxHeight: 760 }}
+                {newsContent.map((content, i) =>
+                  content.video && content.video.url ? (
+                    <div className="news-video--container" key={i}>
+                      <ModelVideo
+                        videoUrl={content.video.url}
+                        showVideoEnd={false}
                       />
-                    )
-                  }
-
-                  return null
-                })}
+                    </div>
+                  ) : content.url ? (
+                    <img
+                      key={i}
+                      src={content.url}
+                      alt={content.alt}
+                      className="relative flex justify-center model-portfolio-image--swiper"
+                      title={content.title}
+                      name={content.name}
+                      style={{ maxHeight: 760 }}
+                    />
+                  ) : (
+                    <></>
+                  )
+                )}
               </Swiper>
               <span
                 offset={27}
@@ -216,43 +224,45 @@ const News = ({
         <div id="content" className="flex flex-wrap ">
           <div className="width-100 masonry-with-columns">
             {newsContent &&
-              newsContent.map(({ url, title, video, thumbnail }, index) => {
-                if (video && thumbnail) {
-                  return (
-                    <AnchorLink
-                      role="button"
-                      offset={20}
-                      href="#news-slideshow"
-                      className="flex-column justify-between grid-item news-grid-item"
-                      onClick={() => console.log(video)}
-                      key={index}
-                    >
-                      <NewsPreviewVideos
-                        thumbnail={thumbnail.url}
+              newsContent.map(
+                ({ url, title, video, thumbnail, _index }, index) => {
+                  if (video && thumbnail) {
+                    return (
+                      <AnchorLink
+                        role="button"
+                        offset={20}
+                        href="#news-slideshow"
+                        className="flex-column justify-between grid-item news-grid-item"
+                        onClick={() => setImage(_index)}
                         key={index}
-                      />
-                    </AnchorLink>
-                  )
-                } else if (url) {
-                  return (
-                    <AnchorLink
-                      role="button"
-                      offset={20}
-                      href="#news-slideshow"
-                      className="flex-column justify-between grid-item news-grid-item-img"
-                      onClick={() => console.log({ title, url })}
-                      key={index}
-                    >
-                      <img
-                        src={url}
-                        alt=""
-                        className="model-portfolio-image"
-                        title={title}
-                      />
-                    </AnchorLink>
-                  )
-                } else return null
-              })}
+                      >
+                        <NewsPreviewVideos
+                          thumbnail={thumbnail.url}
+                          key={index}
+                        />
+                      </AnchorLink>
+                    )
+                  } else if (url) {
+                    return (
+                      <AnchorLink
+                        role="button"
+                        offset={20}
+                        href="#news-slideshow"
+                        className="flex-column justify-between grid-item news-grid-item-img"
+                        onClick={() => setImage(_index)}
+                        key={index}
+                      >
+                        <img
+                          src={url}
+                          alt=""
+                          className="model-portfolio-image"
+                          title={title}
+                        />
+                      </AnchorLink>
+                    )
+                  } else return null
+                }
+              )}
           </div>
         </div>
       </div>

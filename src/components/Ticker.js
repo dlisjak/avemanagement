@@ -40,12 +40,12 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
     }
 
     for (let i = 0; i < n; i++) {
-      data += `<span class="tickerText block">${titleTicker}</span>`
+      data += `<span class="tickerText">${titleTicker}</span>`
     }
   }
 
-  let top = 3
-  if (search) top = -3
+  let top = 5
+  if ((search && !isMobile) || (search && isMobile)) top = -3
 
   if (title === "MENU") {
     return (
