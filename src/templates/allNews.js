@@ -14,6 +14,18 @@ const NewsPage = ({ data, pageContext }) => {
     isMobile = window.innerWidth < 480
   }
 
+  useEffect(() => {
+    const setPath = () => {
+      if (typeof window !== "undefined") {
+        localStorage.removeItem("ave-ticker")
+        const tickerText = window.location.pathname
+        localStorage.setItem("ave-ticker", tickerText)
+        dispatch({ type: "SET_PATH", payload: tickerText })
+      }
+    }
+    setPath()
+  }, [])
+
   const formatContent = content => {
     const splitContent = content.split("<p>")
     const lastContent = splitContent.length
@@ -21,16 +33,6 @@ const NewsPage = ({ data, pageContext }) => {
     content = content.replace("</p>", "")
     return content
   }
-
-  useEffect(() => {
-    const setPath = () => {
-      localStorage.removeItem("ave-ticker")
-      const tickerText = window.location.pathname
-      localStorage.setItem("ave-ticker", tickerText)
-      dispatch({ type: "SET_PATH", payload: tickerText })
-    }
-    setPath()
-  }, [])
 
   return (
     <Layout showGetToTop={true}>

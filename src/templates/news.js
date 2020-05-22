@@ -71,8 +71,7 @@ const News = ({
 
   useEffect(() => {
     const initGrid = async () => {
-      let tickerText
-      tickerText = localStorage.getItem("ave-ticker")
+      const tickerText = localStorage.getItem("ave-ticker")
       dispatch({ type: "SET_PATH", payload: tickerText })
     }
     initGrid()

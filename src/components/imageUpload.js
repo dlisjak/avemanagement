@@ -11,6 +11,13 @@ const ImageUpload = ({ title, order, text }) => {
 
   const placeholderImages = [headShot, profile, midLength, fullLength]
 
+  useEffect(() => {
+    const setPlaceholderImages = () => {
+      setPlaceholderImage(placeholderImages[order])
+    }
+    setPlaceholderImages()
+  })
+
   const handleChange = e => {
     setFile(URL.createObjectURL(e.target.files[0]))
   }
@@ -24,13 +31,6 @@ const ImageUpload = ({ title, order, text }) => {
     e.stopPropagation()
     inputField.current.click()
   }
-
-  useEffect(() => {
-    const setPlaceholderImages = () => {
-      setPlaceholderImage(placeholderImages[order])
-    }
-    setPlaceholderImages()
-  }, [])
 
   return (
     <>

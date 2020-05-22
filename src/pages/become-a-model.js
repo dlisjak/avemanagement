@@ -23,10 +23,12 @@ const BecomeAModel = () => {
 
   useEffect(() => {
     const setPath = () => {
-      localStorage.removeItem("ave-ticker")
-      const tickerText =
-        typeof window !== "undefined" ? window.location.pathname : ""
-      dispatch({ type: "SET_PATH", payload: tickerText })
+      if (typeof window !== "undefined") {
+        localStorage.removeItem("ave-ticker")
+        const tickerText = window.location.pathname
+        localStorage.setItem("ave-ticker", tickerText)
+        dispatch({ type: "SET_PATH", payload: tickerText })
+      }
     }
     setPath()
   }, [])
