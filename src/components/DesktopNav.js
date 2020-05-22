@@ -39,27 +39,25 @@ const SubNavBar = posed.div({
 const DesktopNav = ({ toggleMenu, isVisible, data }) => {
   const state = useContext(GlobalStateContext)
 
+  const [selectedItem, setSelectedItem] = useState(null)
   const [childItems, setChildItems] = useState([])
   const [childIsVisible, setChildVisible] = useState(false)
 
-  const selectItem = item => {
-    if (!item) return
-    if (item.child_items) {
-      setActiveMenuItemClass(item)
-      setChildItems(item.child_items)
-      setChildVisible(true)
-    } else {
-      toggleMenu(isVisible)
-      setChildItems(null)
-      setChildVisible(false)
-
-      if (item.url.includes("http")) return
-
-      setTimeout(() => {
-        navigate(item.url)
-      }, 500)
+  useEffect(() => {
+    const setUpNav = () => {
+      const parsedPage = parsePage(state.path)
+      if (!parsedPage) return
+      if (parsedPage.includes("women") || parsedPage.includes("men")) {
+        showNavChildren(parsedPage)
+      } else {
+        selectItem(null)
+        setChildItems(null)
+      }
+      setActiveMenuItemClass(parsedPage)
     }
-  }
+
+    setUpNav()
+  }, [state.path])
 
   const parsePage = parsedPage => {
     if (!parsedPage) return
@@ -113,6 +111,26 @@ const DesktopNav = ({ toggleMenu, isVisible, data }) => {
     selectItem(item)
   }
 
+  const selectItem = item => {
+    if (!item) return
+    if (item.child_items) {
+      setSelectedItem(item)
+      setActiveMenuItemClass(item)
+      setChildItems(item.child_items)
+      setChildVisible(true)
+    } else {
+      toggleMenu(isVisible)
+      setChildItems(null)
+      setChildVisible(false)
+
+      if (item.url.includes("http")) return
+
+      setTimeout(() => {
+        navigate(item.url)
+      }, 500)
+    }
+  }
+
   const setActiveMenuItemClass = item => {
     let itemTitle = item.title || item
 
@@ -134,22 +152,6 @@ const DesktopNav = ({ toggleMenu, isVisible, data }) => {
       activeItem.classList.add("active")
     }
   }
-
-  useEffect(() => {
-    const setUpNav = () => {
-      const parsedPage = parsePage(state.path)
-      if (!parsedPage) return
-      if (parsedPage.includes("women") || parsedPage.includes("men")) {
-        showNavChildren(parsedPage)
-      } else {
-        selectItem(null)
-        setChildItems(null)
-      }
-      setActiveMenuItemClass(parsedPage)
-    }
-
-    setUpNav()
-  }, [])
 
   return (
     <PoseGroup>

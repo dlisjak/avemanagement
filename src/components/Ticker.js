@@ -31,7 +31,7 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
       }
     }
     setAnimationDuration()
-  })
+  }, [])
 
   if (titleTicker) {
     let n
@@ -40,9 +40,14 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
     }
 
     for (let i = 0; i < n; i++) {
-      data += `<span class="tickerText">${titleTicker}</span>`
+      data += `<span class="tickerText block">${titleTicker}</span>`
     }
   }
+
+  console.log(title)
+
+  let top = 5
+  if ((search && !isMobile) || (search && isMobile)) top = -3
 
   if (title === "MENU") {
     return (
@@ -61,13 +66,7 @@ const TickerText = ({ title, left = false, noRepeat = false, search }) => {
     )
   } else {
     return (
-      <div
-        className="ticker__page ticker flex width-100"
-        style={{
-          top: search && !isMobile ? -3 : 5,
-          top: search && isMobile && -3,
-        }}
-      >
+      <div className="ticker__page ticker flex width-100" style={{ top: top }}>
         <div id="tickerwrap">
           {left && (
             <div

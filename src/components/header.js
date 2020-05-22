@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react"
+import React, { useState, useContext } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import posed from "react-pose"
 
@@ -14,8 +14,8 @@ import MobileNav from "./MobileNav"
 import BlackBar from "./BlackBar"
 
 const CollapsingTicker = posed(Link)({
-  hidden: { top: 45, marginTop: 0 },
-  visible: { top: 70, marginTop: 5 },
+  hidden: { top: 45 },
+  visible: { top: 70 },
 })
 
 const Header = ({ isMobile, isTablet, isHomepage }) => {
@@ -24,7 +24,7 @@ const Header = ({ isMobile, isTablet, isHomepage }) => {
   const [isVisible, setVisibleMenu] = useState(false)
   const [tickerCollapsed, collapseTicker] = useState(false)
 
-  const toggleMenu = (isVisible) => {
+  const toggleMenu = isVisible => {
     if (isVisible) {
       setVisibleMenu(!isVisible)
 
@@ -76,6 +76,8 @@ const Header = ({ isMobile, isTablet, isHomepage }) => {
       </Link>
       <div className="navigation">
         <div
+          tabIndex={0}
+          role="button"
           className="navigation__container width-100"
           onClick={() => toggleMenu(isVisible)}
         >

@@ -15,34 +15,14 @@ const Search = ({ isShown, models, closeSearch }) => {
   const [genderQuery, setGender] = useState(null)
   const inputRef = useRef(null)
 
-  const handleSearchQuery = e => {
-    setSearchQuery(e.target.value.toUpperCase())
-  }
-
-  let sortedModels = models.map(model => model)
-  sortedModels = sortedModels.sort((a, b) =>
-    a.node.acf.first_name.localeCompare(b.node.acf.first_name)
-  )
-
-  const setSearchGender = (e, gender) => {
-    setGender(gender)
+  let isMobile
+  if (typeof window !== "undefined") {
+    isMobile = window.innerWidth < 480
   }
 
   useEffect(() => {
     const el = document.querySelector("body")
-
-    const closeOverlay = e => {
-      const some = el => {
-        return (
-          el.className === "flex flex-column search-overlay" ||
-          el.className === "search-queries__back"
-        )
-      }
-
-      if (!e.path) return closeSearch()
-      if (e.path.some(some)) return
-      closeSearch()
-    }
+    const el2 = document.querySelector(".header-fixed-container")
 
     const openOverlay = () => {
       el.classList.add("overlay")
@@ -57,6 +37,32 @@ const Search = ({ isShown, models, closeSearch }) => {
     }
   }, [])
 
+  const closeOverlay = e => {
+    const some = el => {
+      return (
+        el.className === "flex flex-column search-overlay" ||
+        el.className === "search-queries__back"
+      )
+    }
+
+    if (!e.path) return closeSearch()
+    if (e.path.some(some)) return
+    closeSearch()
+  }
+
+  const handleSearchQuery = e => {
+    setSearchQuery(e.target.value.toUpperCase())
+  }
+
+  let sortedModels = models.map(model => model)
+  sortedModels = sortedModels.sort((a, b) =>
+    a.node.acf.first_name.localeCompare(b.node.acf.first_name)
+  )
+
+  const setSearchGender = (e, gender) => {
+    setGender(gender)
+  }
+
   return (
     <SearchPose
       className="flex flex-column search-overlay"
@@ -67,7 +73,10 @@ const Search = ({ isShown, models, closeSearch }) => {
     >
       <TickerText search={true} title="SEARCH" />
 
-      <div className="flex flex-column search-queries">
+      <div
+        className="flex flex-column search-queries"
+        style={{ marginBottom: 20, fontSize: 20 }}
+      >
         <button
           onClick={e => setSearchGender(e, null)}
           style={{ color: !genderQuery ? "black" : "#ccc" }}
@@ -94,6 +103,12 @@ const Search = ({ isShown, models, closeSearch }) => {
             placeholder="/SEARCH BY NAME"
             onChange={e => handleSearchQuery(e)}
             value={searchQuery}
+            style={{
+              fontSize: 24,
+              marginTop: 10,
+              width: "100%",
+              padding: 0,
+            }}
           />
         </div>
       </div>
