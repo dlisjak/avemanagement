@@ -45,6 +45,33 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
   }
 
   useEffect(() => {
+    const setPath = () => {
+      if (typeof window !== "undefined") {
+        const tickerText = localStorage.getItem("ave-ticker")
+        dispatch({ type: "SET_PATH", payload: tickerText })
+        dispatch({
+          type: "SET_MODEL_INDEX",
+          payload: (firstName + lastName).replace(" ", ""),
+        })
+      }
+    }
+
+    setPath()
+  }, [])
+
+  useEffect(() => {
+    const swiperUpdate = () => {
+      setTimeout(() => {
+        if (swiper !== null) {
+          swiper.update()
+        }
+      }, 500)
+    }
+
+    swiperUpdate()
+  }, [swiper, portfolio])
+
+  useEffect(() => {
     const reorder = (arr, columns) => {
       const cols = columns
       const out = []
@@ -86,33 +113,6 @@ const Model = ({ pageContext: { firstName, lastName, acf } }) => {
       }
     })
   }
-
-  useEffect(() => {
-    const swiperUpdate = () => {
-      setTimeout(() => {
-        if (swiper !== null) {
-          swiper.update()
-        }
-      }, 500)
-    }
-
-    swiperUpdate()
-  }, [])
-
-  useEffect(() => {
-    const setPath = () => {
-      if (typeof window !== "undefined") {
-        const tickerText = localStorage.getItem("ave-ticker")
-        dispatch({ type: "SET_PATH", payload: tickerText })
-        dispatch({
-          type: "SET_MODEL_INDEX",
-          payload: (firstName + lastName).replace(" ", ""),
-        })
-      }
-    }
-
-    setPath()
-  }, [])
 
   return (
     <Layout showGetToTop={true}>
