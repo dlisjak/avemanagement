@@ -781,12 +781,10 @@ a.search-result-names {
   overflow: inherit;
   color: black;
   padding-left: 100%;
-  -webkit-perspective: 1000;
 }
 #ticker {
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
-  -webkit-perspective: 1000;
 }
 .contact-image-upload {
   border: 0;
@@ -2079,6 +2077,9 @@ pre tt:after {
 <<<<<<< HEAD
 =======
 
+<<<<<<< HEAD
+>>>>>>> parent of 4c4c5c2... new changes
+=======
 >>>>>>> parent of 4c4c5c2... new changes
 .grid-item {
   cursor: pointer;
@@ -2346,6 +2347,7 @@ pre tt:after {
     height: auto;
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
   .contact-text-links {
     margin-top: 0;
   }
@@ -2353,6 +2355,8 @@ pre tt:after {
     margin-top: 50px;
     font-size: 20px;
   }
+=======
+>>>>>>> parent of 4c4c5c2... new changes
 =======
 >>>>>>> parent of 4c4c5c2... new changes
   .collapsing-ticker {
@@ -2416,6 +2420,7 @@ pre tt:after {
     flex-direction: row;
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
   .model__bio {
     top: 6px;
   }
@@ -2444,6 +2449,8 @@ pre tt:after {
     margin-right: 0;
     margin-left: 2.5px;
   }
+=======
+>>>>>>> parent of 4c4c5c2... new changes
 =======
 >>>>>>> parent of 4c4c5c2... new changes
 }
