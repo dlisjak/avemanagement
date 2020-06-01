@@ -1265,12 +1265,6 @@ button,
 select {
   text-transform: none;
 }
-[type="reset"],
-[type="submit"],
-button,
-html [type="button"] {
-  /* -webkit-appearance: button; */
-}
 [type="button"]::-moz-focus-inner,
 [type="reset"]::-moz-focus-inner,
 [type="submit"]::-moz-focus-inner,
@@ -2074,13 +2068,6 @@ pre tt:after {
   line-height: 1.2;
   text-transform: none;
 }
-<<<<<<< HEAD
-=======
-
-<<<<<<< HEAD
->>>>>>> parent of 4c4c5c2... new changes
-=======
->>>>>>> parent of 4c4c5c2... new changes
 .grid-item {
   cursor: pointer;
   margin-bottom: 2;
@@ -2346,8 +2333,6 @@ pre tt:after {
   .navigation__container {
     height: auto;
   }
-<<<<<<< HEAD
-<<<<<<< HEAD
   .contact-text-links {
     margin-top: 0;
   }
@@ -2355,10 +2340,6 @@ pre tt:after {
     margin-top: 50px;
     font-size: 20px;
   }
-=======
->>>>>>> parent of 4c4c5c2... new changes
-=======
->>>>>>> parent of 4c4c5c2... new changes
   .collapsing-ticker {
     margin-top: 0;
   }
@@ -2419,8 +2400,6 @@ pre tt:after {
   .model__main {
     flex-direction: row;
   }
-<<<<<<< HEAD
-<<<<<<< HEAD
   .model__bio {
     top: 6px;
   }
@@ -2449,8 +2428,4 @@ pre tt:after {
     margin-right: 0;
     margin-left: 2.5px;
   }
-=======
->>>>>>> parent of 4c4c5c2... new changes
-=======
->>>>>>> parent of 4c4c5c2... new changes
 }
