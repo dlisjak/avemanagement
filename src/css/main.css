@@ -2239,7 +2239,7 @@ pre tt:after {
   margin-bottom: 50px;
   font-size: 18px;
   font-family: HelveticaNeueCondensed;
-  textransform: initial;
+  text-transform: initial;
 }
 .search-queries {
   margin-bottom: 20px;
